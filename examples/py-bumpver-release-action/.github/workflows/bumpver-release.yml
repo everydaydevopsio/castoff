@@ -1,0 +1,85 @@
+name: Bump version & create release (reusable)
+
+on:
+  workflow_call:
+    inputs:
+      level:
+        description: "Version bump: patch, minor, major"
+        required: true
+        type: string
+        default: patch
+      use_ai_release_notes:
+        description: "Use AI to generate release notes"
+        required: false
+        type: boolean
+        default: false
+    secrets:
+      OPENAI_API_KEY:
+        required: false
+
+jobs:
+  bump-and-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install bumpver
+        run: pip install --upgrade pip bumpver
+
+      - name: Configure Git
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+
+      - name: Bump Version
+        id: bump
+        run: |
+          case "${{ inputs.level }}" in
+            patch) FLAG="--patch" ;;
+            minor) FLAG="--minor" ;;
+            major) FLAG="--major" ;;
+            *) echo "Invalid level"; exit 1 ;;
+          esac
+
+          bumpver update $FLAG --commit --tag
+          echo "tag=$(git describe --tags --abbrev=0)" >> $GITHUB_OUTPUT
+
+      - name: Push changes
+        run: |
+          git push origin HEAD
+          git push origin --tags
+
+      - name: Generate AI release notes
+        id: ai_notes
+        if: inputs.use_ai_release_notes == true
+        uses: markcallen/ai-release-notes-action@v1
+        with:
+          openai_api_key: ${{ secrets.OPENAI_API_KEY }}
+          tag: ${{ steps.bump.outputs.tag }}
+
+      - name: Create GitHub Release (AI notes)
+        if: inputs.use_ai_release_notes == true && steps.ai_notes.outcome == 'success'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.bump.outputs.tag }}
+          body: ${{ steps.ai_notes.outputs.release_notes }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create GitHub Release (fallback)
+        if: inputs.use_ai_release_notes != true || steps.ai_notes.outcome != 'success'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.bump.outputs.tag }}
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

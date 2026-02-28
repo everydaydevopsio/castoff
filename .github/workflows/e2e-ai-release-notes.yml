@@ -1,0 +1,39 @@
+# E2E test workflow for ai-release-notes-action
+# Run locally with: act workflow_dispatch -s OPENAI_API_KEY=sk-...
+# Or: act -W .github/workflows/e2e-ai-release-notes.yml workflow_dispatch
+name: E2E - AI Release Notes Action
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag to use for testing"
+        required: false
+        default: "v0.0.0-e2e-test"
+
+jobs:
+  test-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate AI release notes (e2e)
+        id: ai_notes
+        uses: ./ai-release-notes-action
+        with:
+          openai_api_key: ${{ secrets.OPENAI_API_KEY }}
+          tag: ${{ inputs.tag || 'v0.0.0-e2e-test' }}
+          max_commits: "10"
+
+      - name: Verify output
+        run: |
+          echo "Generated notes:"
+          echo "${{ steps.ai_notes.outputs.release_notes }}"
+          if [ -z "${{ steps.ai_notes.outputs.release_notes }}" ]; then
+            echo "ERROR: release_notes output is empty"
+            exit 1
+          fi
+          echo "✓ E2E test passed"

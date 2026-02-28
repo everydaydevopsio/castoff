@@ -1,0 +1,30 @@
+name: "AI Release Notes Generator"
+description: "Generate GitHub release notes using OpenAI ChatGPT models"
+author: "markcallen"
+branding:
+  icon: "book-open"
+  color: "blue"
+
+inputs:
+  openai_api_key:
+    description: "OpenAI API key"
+    required: true
+  model:
+    description: "OpenAI model to use"
+    required: false
+    default: "gpt-4.1-mini"
+  tag:
+    description: "Release tag (e.g. v1.2.3)"
+    required: true
+  max_commits:
+    description: "Max commits to analyze"
+    required: false
+    default: "200"
+
+outputs:
+  release_notes:
+    description: "AI-generated release notes in Markdown"
+
+runs:
+  using: "node20"
+  main: "index.js"
