@@ -17,11 +17,18 @@ npm install -g @nektos/act
 From the repo root:
 
 ```bash
+# Recommended wrappers
+make e2e-act
+OPENAI_API_KEY=sk-your-key-here make e2e-act-live
+
 # List available workflows
 act -l
 
-# Run the E2E workflow (requires OPENAI_API_KEY)
-act workflow_dispatch -s OPENAI_API_KEY=sk-your-key-here
+# Run guardrail E2E only (no OpenAI key needed)
+act -W .github/workflows/e2e-ai-release-notes.yml workflow_dispatch
+
+# Run live OpenAI E2E as well
+act -W .github/workflows/e2e-ai-release-notes.yml workflow_dispatch -s OPENAI_API_KEY=sk-your-key-here
 
 # Dry run (see what would run without executing)
 act workflow_dispatch -n
@@ -50,4 +57,4 @@ ACT reads secrets from:
 | **GitHub Local Actions** (VS Code) | ACT integration inside the editor |
 | **Self-hosted runner** | True GitHub env; overkill for most action dev |
 
-**Note**: Your example workflows use `workflow_call`—ACT has basic support but some [limitations](https://github.com/nektos/act/issues/826) (e.g. boolean inputs as strings). The e2e workflow above runs the action directly to avoid those issues.
+**Note**: Your example workflows use `workflow_call` and ACT has some [limitations](https://github.com/nektos/act/issues/826) (e.g. boolean inputs as strings). The e2e workflow here runs the action directly to avoid those issues.
