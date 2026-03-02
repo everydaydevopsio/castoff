@@ -1,4 +1,4 @@
-const { formatCommits, buildPrompt, extractNotes } = require("./index");
+const { formatCommits, buildPrompt, extractNotes, parseMaxCommits } = require("./index");
 
 describe("formatCommits", () => {
   it("formats raw git log output into bullet list", () => {
@@ -126,6 +126,31 @@ describe("extractNotes", () => {
     };
     expect(extractNotes(completion, "v3.0.0")).toBe(
       "# Release v3.0.0\n\n_Auto-generated notes unavailable._"
+    );
+  });
+});
+
+describe("parseMaxCommits", () => {
+  it("returns default when input is empty", () => {
+    expect(parseMaxCommits("")).toBe(200);
+  });
+
+  it("returns parsed positive integer", () => {
+    expect(parseMaxCommits("25")).toBe(25);
+  });
+
+  it("throws on non-numeric input", () => {
+    expect(() => parseMaxCommits("abc")).toThrow(
+      "Input 'max_commits' must be an integer between 1 and 1000."
+    );
+  });
+
+  it("throws on out-of-range input", () => {
+    expect(() => parseMaxCommits("0")).toThrow(
+      "Input 'max_commits' must be an integer between 1 and 1000."
+    );
+    expect(() => parseMaxCommits("1001")).toThrow(
+      "Input 'max_commits' must be an integer between 1 and 1000."
     );
   });
 });

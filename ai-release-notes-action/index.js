@@ -1,5 +1,5 @@
 const core = require("@actions/core");
-const { execSync } = require("child_process");
+const { execFileSync } = require("child_process");
 const OpenAI = require("openai");
 
 /**
@@ -53,27 +53,43 @@ function extractNotes(completion, tag) {
   );
 }
 
+/**
+ * Parse and validate max_commits input from workflow config.
+ * @param {string} value - Raw max_commits input
+ * @returns {number} Parsed positive integer in allowed bounds
+ */
+function parseMaxCommits(value) {
+  const parsed = Number.parseInt(value || "200", 10);
+  if (!Number.isInteger(parsed) || parsed < 1 || parsed > 1000) {
+    throw new Error("Input 'max_commits' must be an integer between 1 and 1000.");
+  }
+  return parsed;
+}
+
 async function run() {
   try {
     const apiKey = core.getInput("openai_api_key", { required: true });
     const model = core.getInput("model") || "gpt-4.1-mini";
     const tag = core.getInput("tag", { required: true });
-    const maxCommits = parseInt(core.getInput("max_commits") || "200", 10);
+    const maxCommits = parseMaxCommits(core.getInput("max_commits"));
 
     const client = new OpenAI({ apiKey });
 
     let previousTag = "";
     try {
-      previousTag = execSync("git describe --tags --abbrev=0 HEAD^", {
-        encoding: "utf8",
-      }).trim();
+      previousTag = execFileSync(
+        "git",
+        ["describe", "--tags", "--abbrev=0", "HEAD^"],
+        { encoding: "utf8" }
+      ).trim();
     } catch {
       core.info("No previous tag found (first release).");
     }
 
     const logRange = previousTag ? `${previousTag}..HEAD` : "HEAD";
-    const rawCommits = execSync(
-      `git log --pretty=format:'%h %s' ${logRange} -n ${maxCommits}`,
+    const rawCommits = execFileSync(
+      "git",
+      ["log", "--pretty=format:%h %s", logRange, "-n", String(maxCommits)],
       { encoding: "utf8" }
     ).trim();
 
@@ -106,4 +122,4 @@ if (require.main === module) {
   run();
 }
 
-module.exports = { formatCommits, buildPrompt, extractNotes };
+module.exports = { formatCommits, buildPrompt, extractNotes, parseMaxCommits, run };
