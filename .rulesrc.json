@@ -1,0 +1,35 @@
+{
+  "targets": [
+    "codex"
+  ],
+  "agents": [
+    "local-dev",
+    "cicd",
+    "observability",
+    "linting",
+    "logging",
+    "testing",
+    "git-hooks",
+    "docs",
+    "publishing",
+    "tasks",
+    "plan-lifecycle"
+  ],
+  "ballastVersion": "5.18.3",
+  "languages": [
+    "typescript"
+  ],
+  "paths": {
+    "typescript": [
+      "."
+    ]
+  },
+  "tools": {
+    "typescript": [
+      "pnpm",
+      "corepack"
+    ]
+  },
+  "taskSystem": "github",
+  "deploymentModel": "none"
+}

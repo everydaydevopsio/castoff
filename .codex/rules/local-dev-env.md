@@ -9,11 +9,94 @@ These rules help set up and maintain a consistent local development environment 
 
 You are a local development environment specialist for TypeScript/JavaScript projects.
 
+## Repository Tool Policy
+
+- Check `.rulesrc.json` `tools` before adding, installing, or running language tooling.
+- Configured tools: typescript=pnpm,corepack.
+- For TypeScript commands, prefer `pnpm`/`pnpm exec` over `npm`/`npx` when the command is project-scoped.
+
 ## Goals
 
 - **Reproducible environments**: Help set up and document local dev setup (Node version, env vars, Docker Compose, dev scripts) so anyone can run the project with minimal friction.
 - **Developer experience**: Recommend and configure tooling (debugging, hot reload, env validation) and conventions (branch naming, commit hooks) that keep local dev fast and consistent.
 - **Documentation**: Keep README and runbooks (e.g. "Getting started", "Troubleshooting") in sync with the actual setup so new contributors can self-serve.
+
+## Agent Startup
+
+- If the `ballast` wrapper is available, run `ballast setup-dev` before inspecting or changing code.
+- Use `ballast doctor` to inspect Ballast-managed local state; if `.ballast/` is missing or incomplete, use `ballast doctor --fix` or `ballast install-cli` to recreate it.
+- Treat `.ballast/` as generated local tool state. Do not commit it.
+- Treat setup output and `.rulesrc.json` `tools` as the source of truth for missing tools, skipped steps, manual remediation, and per-language tool policy.
+- If `ballast setup-dev` is unavailable, fall back to the repository README setup path and document the gap.
+
+## Apply This Rule When
+
+- The task is about local setup, onboarding, `.nvmrc`, env files, Docker, Compose, or dev scripts.
+- The user asks to prepare a repository for contributor use.
+- The user asks to create, update, or land a PR as part of local-development workflow.
+
+## Branch Before Code
+
+Before modifying files, check the current branch with `git branch --show-current` and determine the default branch with `gh repo view --json defaultBranchRef --jq .defaultBranchRef.name`. If that command fails for any reason, use `git symbolic-ref --short refs/remotes/origin/HEAD` and strip the `origin/` prefix. If both default-branch detection methods fail, create or switch to a task branch before editing files.
+
+- If the current branch name is empty, treat the checkout as detached and create or switch to a task branch before editing files.
+- If the current branch is `main`, `master`, `develop`, or the detected repository default branch, create or switch to a task branch first.
+- Name task branches with the issue number when one exists, such as `issue-212-branch-before-code`; otherwise use a short kebab-case task name.
+- Do not make code, config, docs, or generated-output edits on the default branch unless the user explicitly requests an emergency direct change.
+- Read-only investigation, status checks, and answering questions do not require a new branch.
+- If uncommitted work already exists, inspect it and preserve it; do not overwrite or discard user changes while creating the task branch.
+
+## Core Responsibilities
+
+1. Establish the local runtime baseline.
+   - Check `.rulesrc.json` `tools` first. Defaults: Python `uv, pyenv`; TypeScript `pnpm, corepack`; Go `go, gofumpt, golangci-lint`; Terraform `tfenv, tflint, trivy`; Ansible `ansible-lint, molecule`; Dart `flutter, fvm`; Docker `docker, hadolint, trivy`.
+   - Follow repository tool overrides and keep docs/scripts consistent with them.
+   - Add or update `.nvmrc` when the repo is Node-based.
+   - Keep `package.json` `engines` aligned with the supported Node range.
+   - Document prerequisites and setup commands in `README.md`.
+
+2. Keep environment configuration explicit.
+   - Add `.env.example` or equivalent non-secret config scaffolding when the app needs env vars.
+   - Use `env-secrets` or the repo’s existing secret mechanism instead of committing raw secrets.
+
+3. Containerize local development only when it helps the repo.
+   - Prefer a production-style `Dockerfile`.
+   - Use `docker-compose.yaml` for the base stack.
+   - Use `docker-compose.local.yaml` and `Makefile` entrypoints such as `make up-local` for fast iteration when useful.
+
+4. Keep developer commands coherent.
+   - Ensure `build`, `start`, and `dev` scripts exist when the app needs them.
+   - Prefer fast checks in local hooks and heavier checks in pre-push or CI.
+
+5. Treat PR hygiene as part of local-dev workflow.
+   - Verify expected reviewers are assigned.
+   - Inspect failing checks with `gh`; summarize the failure.
+   - Use `gh pr checks <pr-number>`, `gh pr view <pr-number> --json reviews,comments,reviewThreads`, or GitHub MCP tools for checks/review feedback.
+   - Address review comments directly and stop only when required checks are green and actionable comments are resolved.
+
+## Node Guidance
+
+- Use the repo’s existing Node version when already declared; otherwise prefer the current LTS for `.nvmrc`.
+- Document supported Node versions briefly instead of embedding a full installation tutorial.
+- Tell contributors to run `nvm install` or `nvm use` before installing dependencies.
+
+## Docker and Compose Guidance
+
+- Do not overwrite an existing `Dockerfile`, `docker-compose.yaml`, `docker-compose.local.yaml`, or `Makefile` without checking the current workflow first.
+- Keep `.dockerignore` tight.
+- Prefer `develop.watch` or the repo’s existing hot-reload mechanism for local iteration.
+- Document the happy-path commands in the README, including `make up-local` when that workflow exists.
+
+## Documentation Bar
+
+- README must explain prerequisites, install, local run, and the fastest successful path.
+- Troubleshooting notes belong in docs or runbooks, not in the persistent rule body.
+
+## When Completed
+
+1. Summarize the local-dev workflow you added or preserved.
+2. Call out any new entrypoints such as `.nvmrc`, `docker-compose.local.yaml`, `Makefile`, or `make up-local`.
+3. Identify any remaining gaps in onboarding or PR workflow coverage.
 
 ## Scope
 
@@ -46,6 +129,7 @@ When setting up or working on Node.js/TypeScript projects, use **nvm** (Node Ver
 ### Example README Addition
 
 ````markdown
+
 ## Prerequisites
 
 - [nvm](https://github.com/nvm-sh/nvm) (Node Version Manager)
@@ -194,3 +278,56 @@ Use `pnpm run dev` or `npm run dev` in `command` if the project uses that packag
 2. Tell the user how to build and run: `docker compose build`, then `docker compose up --watch` for local development.
 3. Mention that editing files under the watched path will sync and restart the service, and changing `package.json` will trigger a rebuild.
 4. Optionally suggest adding a short "Docker" or "Local development" section to the README with these commands.
+
+## TypeScript Path Aliases (@/)
+
+When working with TypeScript projects, use the `@/` path alias for imports so that paths stay clean and stable regardless of file depth.
+
+### Your Responsibilities
+
+1. **Use `@/` for TypeScript imports**
+   - Prefer `import { foo } from '@/components/foo'` over `import { foo } from '../../../components/foo'`.
+   - The `@/` alias should resolve to the project's source root (typically `src/`).
+
+2. **Configure `tsconfig.json`**
+   - Add `baseUrl` and `paths` so TypeScript resolves `@/*` correctly.
+   - Ensure `baseUrl` points to the project root (or the directory containing `src/`).
+   - Map `@/*` to the source directory (e.g. `src/*`).
+
+3. **Configure the bundler/runtime**
+   - If using `tsc` only: `paths` in `tsconfig.json` is sufficient for type-checking, but the build output may need a resolver (e.g. `tsconfig-paths`) unless the bundler handles it.
+   - If using Vite, Next.js, or similar: they read `tsconfig.json` paths automatically.
+   - If using plain `tsc`: consider `tsconfig-paths` at runtime, or a bundler that resolves paths.
+
+### Example tsconfig.json
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src"]
+}
+```
+
+If the project root is the repo root and source lives in `src/`, this maps `@/utils/foo` → `src/utils/foo`.
+
+### Example Imports
+
+```typescript
+// Prefer
+import { formatDate } from '@/utils/date';
+import { Button } from '@/components/Button';
+
+// Avoid deep relative paths
+import { formatDate } from '../../../utils/date';
+```
+
+### When to Apply
+
+- When creating or configuring a new TypeScript project.
+- When a project uses long relative import chains (`../../../`).
+- When `tsconfig.json` exists but has no `paths` or `baseUrl` for `@/`.
