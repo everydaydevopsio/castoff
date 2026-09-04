@@ -2,7 +2,7 @@ SHELL := /bin/bash
 
 ACTION_DIR := ai-release-notes-action
 
-.PHONY: install build test lint e2e-act e2e-act-live
+.PHONY: install build test test-coverage lint lint-fix e2e-act e2e-act-live
 
 install:
 	cd $(ACTION_DIR) && pnpm install

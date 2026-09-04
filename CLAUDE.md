@@ -12,14 +12,14 @@ Suggested facts to record:
 
 - Canonical GitHub repo: `markcallen/ai-release-tools`
 - Default branch: `main`
-- Primary package manager: `<pnpm | npm | yarn | uv | go>`
+- Primary package manager: `pnpm` (v9; lockfile at `ai-release-notes-action/pnpm-lock.yaml`)
 - Version-file locations agents should check first: `.nvmrc`
-- Canonical config files: `<paths agents should read before falling back to discovery>`
-- Primary CI workflows: `ci.yml`
-- Primary release/publish workflows: `e2e-ai-release-notes.yml, release.yml`
-- Preferred build/test/lint/format/coverage commands: `make test, make lint, make build`
-- Coverage threshold: `<value>`
-- Generated or protected paths agents should avoid editing directly: `.ballast/`
+- Canonical config files: `ai-release-notes-action/package.json`, `ai-release-notes-action/eslint.config.js`, `ai-release-notes-action/jest.config.js`
+- Primary CI workflows: `.github/workflows/ci.yml`
+- Primary release/publish workflows: `.github/workflows/release.yml`
+- Preferred build/test/lint/format/coverage commands: `make build`, `make test`, `make test-coverage`, `make lint`
+- Coverage threshold: 75% (lines, functions, branches, statements)
+- Generated or protected paths agents should avoid editing directly: `.ballast/`, `ai-release-notes-action/dist/`
 
 Update this section when those facts change. If live runtime state is required, discover it separately instead of treating it as a durable repo fact.
 

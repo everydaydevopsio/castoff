@@ -138,7 +138,7 @@ Engineering teams spend time manually writing release notes from commit history.
 ### 15.4 Consumer Usage
 Users reference the action by major version tag:
 ```yaml
-uses: markcallen/ai-release-tools/ai-release-notes-action@v1
+uses: markcallen/ai-release-tools/ai-release-notes-action@v0
 ```
 Or by exact version for pinning:
 ```yaml
