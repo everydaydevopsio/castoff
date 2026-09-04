@@ -1,6 +1,7 @@
 {
   "targets": [
-    "codex"
+    "codex",
+    "claude"
   ],
   "agents": [
     "local-dev",
@@ -21,7 +22,7 @@
   ],
   "paths": {
     "typescript": [
-      "."
+      "ai-release-notes-action"
     ]
   },
   "tools": {

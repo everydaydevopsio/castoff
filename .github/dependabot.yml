@@ -1,0 +1,29 @@
+version: 2
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/ai-release-notes-action'
+    schedule:
+      interval: 'weekly'
+    open-pull-requests-limit: 10
+    groups:
+      testing:
+        patterns:
+          - 'jest'
+          - '@jest/*'
+      dev-tooling:
+        dependency-type: 'development'
+        patterns:
+          - 'eslint*'
+          - '@eslint/*'
+          - 'prettier'
+          - 'globals'
+          - '@vercel/ncc'
+      production-dependencies:
+        dependency-type: 'production'
+        patterns:
+          - '*'
+
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
