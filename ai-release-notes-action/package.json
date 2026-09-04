@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "ncc build index.js -o dist --license licenses.txt",
+    "prepare": "git -C .. config core.hooksPath .husky 2>/dev/null || git config core.hooksPath .husky",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "lint": "eslint .",
@@ -24,7 +25,18 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.6",
     "globals": "^17.12.0",
+    "husky": "^9.1.7",
     "jest": "^29.7.0",
+    "lint-staged": "^17.4.1",
     "prettier": "^3.9.6"
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "**/*.{json,md,yaml,yml}": [
+      "prettier --write"
+    ]
   }
 }
