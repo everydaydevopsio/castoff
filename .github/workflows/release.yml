@@ -1,0 +1,101 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      level:
+        description: 'Version bump level'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+# Let in-flight releases complete — never cancel a publish mid-flight
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Bump, Build, and Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+          cache-dependency-path: 'ai-release-notes-action/pnpm-lock.yaml'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        working-directory: ai-release-notes-action
+
+      - name: Run tests
+        run: pnpm test
+        working-directory: ai-release-notes-action
+
+      - name: Bump version
+        id: bump
+        working-directory: ai-release-notes-action
+        run: |
+          npm version ${{ inputs.level }} --no-git-tag-version
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "tag=v${VERSION}" >> "$GITHUB_OUTPUT"
+          MAJOR=$(echo "${VERSION}" | cut -d. -f1)
+          echo "major_tag=v${MAJOR}" >> "$GITHUB_OUTPUT"
+
+      - name: Build dist
+        run: pnpm build
+        working-directory: ai-release-notes-action
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit release artifacts
+        run: |
+          git add ai-release-notes-action/package.json
+          git add ai-release-notes-action/dist/
+          git commit -m "chore: release ${{ steps.bump.outputs.tag }}"
+
+      - name: Tag and push
+        run: |
+          git tag "${{ steps.bump.outputs.tag }}"
+          git tag -f "${{ steps.bump.outputs.major_tag }}"
+          git push origin main
+          git push origin "${{ steps.bump.outputs.tag }}"
+          git push origin "${{ steps.bump.outputs.major_tag }}" --force
+
+      - name: Generate AI release notes
+        id: release_notes
+        uses: ./ai-release-notes-action
+        if: ${{ secrets.OPENAI_API_KEY != '' }}
+        with:
+          openai_api_key: ${{ secrets.OPENAI_API_KEY }}
+          tag: ${{ steps.bump.outputs.tag }}
+        continue-on-error: true
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.bump.outputs.tag }}
+          name: ${{ steps.bump.outputs.tag }}
+          body: ${{ steps.release_notes.outputs.release_notes || '' }}
+          generate_release_notes: ${{ steps.release_notes.outputs.release_notes == '' }}

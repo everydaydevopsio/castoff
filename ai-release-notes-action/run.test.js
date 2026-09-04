@@ -1,4 +1,4 @@
-describe("run", () => {
+describe('run', () => {
   let coreMock;
   let execFileSyncMock;
   let createCompletionMock;
@@ -12,7 +12,7 @@ describe("run", () => {
       getInput: jest.fn(),
       info: jest.fn(),
       setOutput: jest.fn(),
-      setFailed: jest.fn(),
+      setFailed: jest.fn()
     };
 
     execFileSyncMock = jest.fn();
@@ -20,68 +20,70 @@ describe("run", () => {
     OpenAIMock = jest.fn().mockImplementation(() => ({
       chat: {
         completions: {
-          create: createCompletionMock,
-        },
-      },
+          create: createCompletionMock
+        }
+      }
     }));
 
-    jest.doMock("@actions/core", () => coreMock);
-    jest.doMock("child_process", () => ({ execFileSync: execFileSyncMock }));
-    jest.doMock("openai", () => OpenAIMock);
+    jest.doMock('@actions/core', () => coreMock);
+    jest.doMock('child_process', () => ({ execFileSync: execFileSyncMock }));
+    jest.doMock('openai', () => OpenAIMock);
 
-    ({ run } = require("./index"));
+    ({ run } = require('./index'));
   });
 
-  it("handles missing previous tag and still sets release notes output", async () => {
+  it('handles missing previous tag and still sets release notes output', async () => {
     coreMock.getInput.mockImplementation((name) => {
-      if (name === "openai_api_key") return "test-key";
-      if (name === "model") return "";
-      if (name === "tag") return "v1.2.3";
-      if (name === "max_commits") return "";
-      return "";
+      if (name === 'openai_api_key') return 'test-key';
+      if (name === 'model') return '';
+      if (name === 'tag') return 'v1.2.3';
+      if (name === 'max_commits') return '';
+      return '';
     });
 
     execFileSyncMock.mockImplementation((_cmd, args) => {
-      if (args[0] === "describe") {
-        throw new Error("no previous tag");
+      if (args[0] === 'describe') {
+        throw new Error('no previous tag');
       }
-      if (args[0] === "log") {
-        return "abc123 Fix bug\ndef456 Add feature";
+      if (args[0] === 'log') {
+        return 'abc123 Fix bug\ndef456 Add feature';
       }
-      throw new Error("unexpected git args");
+      throw new Error('unexpected git args');
     });
 
     createCompletionMock.mockResolvedValue({
-      choices: [{ message: { content: "## Highlights\n\n- Fixed bug" } }],
+      choices: [{ message: { content: '## Highlights\n\n- Fixed bug' } }]
     });
 
     await run();
 
     expect(execFileSyncMock).toHaveBeenCalledWith(
-      "git",
-      ["describe", "--tags", "--abbrev=0", "HEAD^"],
-      { encoding: "utf8" }
+      'git',
+      ['describe', '--tags', '--abbrev=0', 'HEAD^'],
+      { encoding: 'utf8' }
     );
     expect(execFileSyncMock).toHaveBeenCalledWith(
-      "git",
-      ["log", "--pretty=format:%h %s", "HEAD", "-n", "200"],
-      { encoding: "utf8" }
+      'git',
+      ['log', '--pretty=format:%h %s', 'HEAD', '-n', '200'],
+      { encoding: 'utf8' }
     );
-    expect(coreMock.info).toHaveBeenCalledWith("No previous tag found (first release).");
+    expect(coreMock.info).toHaveBeenCalledWith(
+      'No previous tag found (first release).'
+    );
     expect(coreMock.setOutput).toHaveBeenCalledWith(
-      "release_notes",
-      "## Highlights\n\n- Fixed bug"
+      'release_notes',
+      '## Highlights\n\n- Fixed bug'
     );
     expect(coreMock.setFailed).not.toHaveBeenCalled();
   });
 
-  it("fails fast on invalid max_commits input", async () => {
+  it('fails fast on invalid max_commits input', async () => {
     coreMock.getInput.mockImplementation((name) => {
-      if (name === "openai_api_key") return "test-key";
-      if (name === "model") return "gpt-4.1-mini";
-      if (name === "tag") return "v1.2.3";
-      if (name === "max_commits") return "abc";
-      return "";
+      if (name === 'openai_api_key') return 'test-key';
+      if (name === 'model') return 'gpt-4.1-mini';
+      if (name === 'tag') return 'v1.2.3';
+      if (name === 'max_commits') return 'abc';
+      return '';
     });
 
     await run();
@@ -93,53 +95,53 @@ describe("run", () => {
     expect(createCompletionMock).not.toHaveBeenCalled();
   });
 
-  it("returns fallback notes when completion content is missing", async () => {
+  it('returns fallback notes when completion content is missing', async () => {
     coreMock.getInput.mockImplementation((name) => {
-      if (name === "openai_api_key") return "test-key";
-      if (name === "model") return "gpt-4.1-mini";
-      if (name === "tag") return "v9.9.9";
-      if (name === "max_commits") return "10";
-      return "";
+      if (name === 'openai_api_key') return 'test-key';
+      if (name === 'model') return 'gpt-4.1-mini';
+      if (name === 'tag') return 'v9.9.9';
+      if (name === 'max_commits') return '10';
+      return '';
     });
 
     execFileSyncMock.mockImplementation((_cmd, args) => {
-      if (args[0] === "describe") return "v9.9.8";
-      if (args[0] === "log") return "abc123 Update docs";
-      throw new Error("unexpected git args");
+      if (args[0] === 'describe') return 'v9.9.8';
+      if (args[0] === 'log') return 'abc123 Update docs';
+      throw new Error('unexpected git args');
     });
 
     createCompletionMock.mockResolvedValue({
-      choices: [{ message: {} }],
+      choices: [{ message: {} }]
     });
 
     await run();
 
     expect(coreMock.setOutput).toHaveBeenCalledWith(
-      "release_notes",
-      "# Release v9.9.9\n\n_Auto-generated notes unavailable._"
+      'release_notes',
+      '# Release v9.9.9\n\n_Auto-generated notes unavailable._'
     );
     expect(coreMock.setFailed).not.toHaveBeenCalled();
   });
 
-  it("fails the action when OpenAI call errors", async () => {
+  it('fails the action when OpenAI call errors', async () => {
     coreMock.getInput.mockImplementation((name) => {
-      if (name === "openai_api_key") return "test-key";
-      if (name === "model") return "gpt-4.1-mini";
-      if (name === "tag") return "v2.0.0";
-      if (name === "max_commits") return "10";
-      return "";
+      if (name === 'openai_api_key') return 'test-key';
+      if (name === 'model') return 'gpt-4.1-mini';
+      if (name === 'tag') return 'v2.0.0';
+      if (name === 'max_commits') return '10';
+      return '';
     });
 
     execFileSyncMock.mockImplementation((_cmd, args) => {
-      if (args[0] === "describe") return "v1.9.9";
-      if (args[0] === "log") return "abc123 Add feature";
-      throw new Error("unexpected git args");
+      if (args[0] === 'describe') return 'v1.9.9';
+      if (args[0] === 'log') return 'abc123 Add feature';
+      throw new Error('unexpected git args');
     });
 
-    createCompletionMock.mockRejectedValue(new Error("OpenAI unavailable"));
+    createCompletionMock.mockRejectedValue(new Error('OpenAI unavailable'));
 
     await run();
 
-    expect(coreMock.setFailed).toHaveBeenCalledWith("OpenAI unavailable");
+    expect(coreMock.setFailed).toHaveBeenCalledWith('OpenAI unavailable');
   });
 });

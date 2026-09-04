@@ -2,3 +2,5 @@
 .env
 node_modules/
 .ballast/
+coverage/
+package-lock.json
