@@ -87,7 +87,6 @@ jobs:
       - name: Generate AI release notes
         id: release_notes
         uses: ./castoff
-        if: ${{ secrets.OPENAI_API_KEY != '' }}
         with:
           openai_api_key: ${{ secrets.OPENAI_API_KEY }}
           tag: ${{ steps.bump.outputs.tag }}
