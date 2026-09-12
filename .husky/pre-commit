@@ -1,1 +1,1 @@
-cd ai-release-notes-action && pnpm exec lint-staged
+cd castoff && pnpm exec lint-staged

@@ -4,7 +4,7 @@
 
 - [ ] Add LICENSE (MIT)
 
-## ai-release-notes-action
+## castoff
 
 - [ ] Add simple tests for index.js
 - [ ] Add examples for different OpenAI models

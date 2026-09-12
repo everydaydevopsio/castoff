@@ -1,7 +1,7 @@
 version: 2
 updates:
   - package-ecosystem: 'npm'
-    directory: '/ai-release-notes-action'
+    directory: '/castoff'
     schedule:
       interval: 'weekly'
     open-pull-requests-limit: 10
