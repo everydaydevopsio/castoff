@@ -3,20 +3,21 @@
   "version": "1.0.0",
   "description": "GitHub Action that generates release notes using OpenAI",
   "main": "index.js",
+  "type": "module",
   "license": "MIT",
   "scripts": {
     "build": "ncc build index.js -o dist --license licenses.txt",
     "prepare": "git -C .. config core.hooksPath .husky 2>/dev/null || git config core.hooksPath .husky",
-    "test": "jest",
-    "test:coverage": "jest --coverage",
+    "test": "NODE_OPTIONS='--experimental-vm-modules' jest",
+    "test:coverage": "NODE_OPTIONS='--experimental-vm-modules' jest --coverage",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prettier": "prettier . --check",
     "prettier:fix": "prettier . --write"
   },
   "dependencies": {
-    "@actions/core": "^1.11.1",
-    "openai": "^5.1.0"
+    "@actions/core": "^3.0.1",
+    "openai": "^7.8.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

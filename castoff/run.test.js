@@ -1,11 +1,12 @@
+import { jest } from '@jest/globals';
+
 describe('run', () => {
   let coreMock;
   let execFileSyncMock;
   let createCompletionMock;
-  let OpenAIMock;
   let run;
 
-  beforeEach(() => {
+  beforeEach(async () => {
     jest.resetModules();
 
     coreMock = {
@@ -17,19 +18,29 @@ describe('run', () => {
 
     execFileSyncMock = jest.fn();
     createCompletionMock = jest.fn();
-    OpenAIMock = jest.fn().mockImplementation(() => ({
-      chat: {
-        completions: {
-          create: createCompletionMock
-        }
-      }
+
+    jest.unstable_mockModule('@actions/core', () => ({
+      getInput: coreMock.getInput,
+      info: coreMock.info,
+      setOutput: coreMock.setOutput,
+      setFailed: coreMock.setFailed
     }));
 
-    jest.doMock('@actions/core', () => coreMock);
-    jest.doMock('child_process', () => ({ execFileSync: execFileSyncMock }));
-    jest.doMock('openai', () => OpenAIMock);
+    jest.unstable_mockModule('child_process', () => ({
+      execFileSync: execFileSyncMock
+    }));
 
-    ({ run } = require('./index'));
+    jest.unstable_mockModule('openai', () => ({
+      default: jest.fn().mockImplementation(() => ({
+        chat: {
+          completions: {
+            create: createCompletionMock
+          }
+        }
+      }))
+    }));
+
+    ({ run } = await import('./index.js'));
   });
 
   it('handles missing previous tag and still sets release notes output', async () => {

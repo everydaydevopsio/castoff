@@ -1,6 +1,6 @@
-const core = require('@actions/core');
-const { execFileSync } = require('child_process');
-const OpenAI = require('openai');
+import { getInput, setOutput, setFailed, info } from '@actions/core';
+import { execFileSync } from 'child_process';
+import OpenAI from 'openai';
 
 /**
  * Format raw git log output into a bullet list for the prompt.
@@ -70,10 +70,10 @@ function parseMaxCommits(value) {
 
 async function run() {
   try {
-    const apiKey = core.getInput('openai_api_key', { required: true });
-    const model = core.getInput('model') || 'gpt-4.1-mini';
-    const tag = core.getInput('tag', { required: true });
-    const maxCommits = parseMaxCommits(core.getInput('max_commits'));
+    const apiKey = getInput('openai_api_key', { required: true });
+    const model = getInput('model') || 'gpt-4.1-mini';
+    const tag = getInput('tag', { required: true });
+    const maxCommits = parseMaxCommits(getInput('max_commits'));
 
     const client = new OpenAI({ apiKey });
 
@@ -85,7 +85,7 @@ async function run() {
         { encoding: 'utf8' }
       ).trim();
     } catch {
-      core.info('No previous tag found (first release).');
+      info('No previous tag found (first release).');
     }
 
     const logRange = previousTag ? `${previousTag}..HEAD` : 'HEAD';
@@ -113,21 +113,11 @@ async function run() {
 
     const notes = extractNotes(completion, tag);
 
-    core.setOutput('release_notes', notes);
-    core.info('AI release notes generated successfully.');
+    setOutput('release_notes', notes);
+    info('AI release notes generated successfully.');
   } catch (error) {
-    core.setFailed(error.message);
+    setFailed(error.message);
   }
 }
 
-if (require.main === module) {
-  run();
-}
-
-module.exports = {
-  formatCommits,
-  buildPrompt,
-  extractNotes,
-  parseMaxCommits,
-  run
-};
+export { formatCommits, buildPrompt, extractNotes, parseMaxCommits, run };
