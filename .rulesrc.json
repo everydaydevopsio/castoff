@@ -1,6 +1,7 @@
 {
   "targets": [
-    "codex"
+    "codex",
+    "claude"
   ],
   "agents": [
     "local-dev",
