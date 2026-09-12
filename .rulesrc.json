@@ -16,7 +16,6 @@
     "tasks",
     "plan-lifecycle"
   ],
-  "ballastVersion": "5.18.3",
   "skills": [
     "owasp-security-scan",
     "aws-health-review",
@@ -28,6 +27,7 @@
     "ballast-project-maintenance",
     "docker-registry-publish"
   ],
+  "ballastVersion": "5.18.3",
   "languages": [
     "typescript"
   ],
