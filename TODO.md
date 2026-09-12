@@ -2,11 +2,12 @@
 
 ## Repository-wide
 
-- [ ] Add LICENSE (MIT)
+- [x] Add LICENSE (MIT)
+- [x] Install Ballast rules for all targets (claude, codex)
 
 ## castoff
 
-- [ ] Add simple tests for index.js
+- [x] Add simple tests for index.js
 - [ ] Add examples for different OpenAI models
 
 ## examples/node-release-it-release-action
