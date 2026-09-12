@@ -17,6 +17,17 @@
     "plan-lifecycle"
   ],
   "ballastVersion": "5.18.3",
+  "skills": [
+    "owasp-security-scan",
+    "aws-health-review",
+    "aws-live-health-review",
+    "aws-weekly-security-review",
+    "github-health-check",
+    "github-pr-copilot-cycle",
+    "ballast-audit",
+    "ballast-project-maintenance",
+    "docker-registry-publish"
+  ],
   "languages": [
     "typescript"
   ],
