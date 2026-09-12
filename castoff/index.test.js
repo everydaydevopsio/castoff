@@ -1,9 +1,9 @@
-const {
+import {
   formatCommits,
   buildPrompt,
   extractNotes,
   parseMaxCommits
-} = require('./index');
+} from './index.js';
 
 describe('formatCommits', () => {
   it('formats raw git log output into bullet list', () => {

@@ -35,7 +35,6 @@ jobs:
           echo "✓ Guardrail test passed"
 
   test-action-live:
-    if: ${{ secrets.OPENAI_API_KEY != '' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
