@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-ACTION_DIR := ai-release-notes-action
+ACTION_DIR := castoff
 
 .PHONY: install build test test-coverage lint lint-fix e2e-act e2e-act-live
 

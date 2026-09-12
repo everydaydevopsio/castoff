@@ -1,5 +1,5 @@
 {
-  "name": "ai-release-notes-action",
+  "name": "castoff",
   "version": "0.1.0",
   "description": "GitHub Action that generates release notes using OpenAI",
   "main": "index.js",

@@ -1,6 +1,6 @@
 name: 'AI Release Notes Generator'
 description: 'Generate GitHub release notes using OpenAI ChatGPT models'
-author: 'markcallen'
+author: 'everydaydevopsio'
 branding:
   icon: 'book-open'
   color: 'blue'

@@ -25,15 +25,15 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
-          cache-dependency-path: 'ai-release-notes-action/pnpm-lock.yaml'
+          cache-dependency-path: 'castoff/pnpm-lock.yaml'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-        working-directory: ai-release-notes-action
+        working-directory: castoff
 
       - name: Run tests with coverage
         run: pnpm test:coverage
-        working-directory: ai-release-notes-action
+        working-directory: castoff
 
   lint:
     name: Lint
@@ -49,16 +49,16 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
-          cache-dependency-path: 'ai-release-notes-action/pnpm-lock.yaml'
+          cache-dependency-path: 'castoff/pnpm-lock.yaml'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-        working-directory: ai-release-notes-action
+        working-directory: castoff
 
       - name: Lint
         run: pnpm lint
-        working-directory: ai-release-notes-action
+        working-directory: castoff
 
       - name: Prettier check
         run: pnpm prettier
-        working-directory: ai-release-notes-action
+        working-directory: castoff
