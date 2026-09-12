@@ -1,6 +1,6 @@
 {
-  "name": "ai-release-notes-action",
-  "version": "0.1.0",
+  "name": "castoff",
+  "version": "1.0.0",
   "description": "GitHub Action that generates release notes using OpenAI",
   "main": "index.js",
   "license": "MIT",

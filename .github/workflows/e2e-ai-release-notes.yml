@@ -13,14 +13,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
       - name: Run action with invalid max_commits (expected failure)
         id: invalid_commits
         continue-on-error: true
-        uses: ./ai-release-notes-action
+        uses: ./castoff
         with:
           openai_api_key: "dummy-key"
           tag: ${{ inputs.tag || 'v0.0.0-e2e-test' }}
@@ -39,13 +39,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
       - name: Generate AI release notes (e2e)
         id: ai_notes
-        uses: ./ai-release-notes-action
+        uses: ./castoff
         with:
           openai_api_key: ${{ secrets.OPENAI_API_KEY }}
           tag: ${{ inputs.tag || 'v0.0.0-e2e-test' }}

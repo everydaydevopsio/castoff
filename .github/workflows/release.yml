@@ -26,33 +26,33 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: main
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
         with:
           version: 9
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
-          cache-dependency-path: 'ai-release-notes-action/pnpm-lock.yaml'
+          cache-dependency-path: 'castoff/pnpm-lock.yaml'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-        working-directory: ai-release-notes-action
+        working-directory: castoff
 
       - name: Run tests
         run: pnpm test
-        working-directory: ai-release-notes-action
+        working-directory: castoff
 
       - name: Bump version
         id: bump
-        working-directory: ai-release-notes-action
+        working-directory: castoff
         run: |
           npm version ${{ inputs.level }} --no-git-tag-version
           VERSION=$(node -p "require('./package.json').version")
@@ -63,7 +63,7 @@ jobs:
 
       - name: Build dist
         run: pnpm build
-        working-directory: ai-release-notes-action
+        working-directory: castoff
 
       - name: Configure git
         run: |
@@ -72,8 +72,8 @@ jobs:
 
       - name: Commit release artifacts
         run: |
-          git add ai-release-notes-action/package.json
-          git add ai-release-notes-action/dist/
+          git add castoff/package.json
+          git add castoff/dist/
           git commit -m "chore: release ${{ steps.bump.outputs.tag }}"
 
       - name: Tag and push
@@ -86,15 +86,14 @@ jobs:
 
       - name: Generate AI release notes
         id: release_notes
-        uses: ./ai-release-notes-action
-        if: ${{ secrets.OPENAI_API_KEY != '' }}
+        uses: ./castoff
         with:
           openai_api_key: ${{ secrets.OPENAI_API_KEY }}
           tag: ${{ steps.bump.outputs.tag }}
         continue-on-error: true
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ steps.bump.outputs.tag }}
           name: ${{ steps.bump.outputs.tag }}

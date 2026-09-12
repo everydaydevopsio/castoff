@@ -1,4 +1,9 @@
-# AI Release Notes GitHub Action (by markcallen)
+# Castoff — AI Release Notes GitHub Action
+
+[![CI](https://github.com/everydaydevopsio/castoff/actions/workflows/ci.yml/badge.svg)](https://github.com/everydaydevopsio/castoff/actions/workflows/ci.yml)
+[![Release](https://github.com/everydaydevopsio/castoff/actions/workflows/release.yml/badge.svg)](https://github.com/everydaydevopsio/castoff/actions/workflows/release.yml)
+[![License](https://img.shields.io/github/license/everydaydevopsio/castoff)](../LICENSE)
+[![GitHub Release](https://img.shields.io/github/v/release/everydaydevopsio/castoff)](https://github.com/everydaydevopsio/castoff/releases)
 
 This GitHub Action generates release notes using ChatGPT (OpenAI).
 It takes commit history between tags and generates clean, structured Markdown
@@ -20,7 +25,7 @@ suitable for GitHub Releases.
 ```yaml
 - name: AI Release Notes
   id: ai_notes
-  uses: markcallen/ai-release-notes-action@v1
+  uses: everydaydevopsio/castoff/castoff@v1
   with:
     openai_api_key: ${{ secrets.OPENAI_API_KEY }}
     tag: ${{ steps.bump.outputs.tag }}
@@ -38,9 +43,6 @@ Then pass the notes to a GitHub Release step:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-## Publish
+## License
 
-```bash
-git tag v1
-git push origin v1
-```
+MIT License - see [LICENSE](../LICENSE) file for details.

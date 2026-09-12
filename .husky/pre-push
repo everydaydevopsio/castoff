@@ -1,1 +1,1 @@
-cd ai-release-notes-action && pnpm test
+cd castoff && pnpm test
