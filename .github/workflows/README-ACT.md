@@ -18,6 +18,7 @@ From the repo root:
 
 ```bash
 # Run validation guardrails and the live OpenAI test
+export OPENAI_API_KEY="your-openai-api-key"
 make e2e-act
 
 # List available workflows
@@ -29,14 +30,11 @@ act workflow_dispatch -n
 
 ## Secrets
 
-`make e2e-act` uses the `.secrets` file in the repository root. If it does not
-exist, the wrapper creates it from the `OPENAI_API_KEY` environment variable with
-owner-only read/write permissions. Export your key before the first run. If both
-the file and environment variable are missing, the command stops with an error.
-
-Existing `.secrets` files are preserved, including their keys and other settings.
-The file is gitignored and must contain `OPENAI_API_KEY` for the live test. Both
-the validation guardrail test and the live OpenAI test run through this target.
+`make e2e-act` requires an exported, nonempty `OPENAI_API_KEY` environment
+variable. If it is unset or empty, the command stops with an error before
+starting ACT. The key is passed to ACT from the environment; no `.secrets`
+file is read or created. Both the validation guardrail test and the live
+OpenAI test run through this target.
 
 ## Alternatives to ACT
 
