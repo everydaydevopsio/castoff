@@ -30,8 +30,13 @@ See [`castoff/README.md`](castoff/README.md) for full input/output documentation
 
 ## Development
 
-Prerequisites: Bash, Make, curl, and nvm (including Homebrew-installed nvm).
-`make deps` uses Homebrew on macOS or sudo on Linux to install `act` if needed.
+Prerequisites: Bash, Make, curl, and [nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+(including Homebrew-installed nvm). After installing nvm, reload your shell.
+If ACT is absent, `make deps` automatically installs ACT v0.2.89 on Linux or
+macOS from its release archive, verified against checked-in SHA-256 checksums.
+This requires tar, sudo, and either sha256sum or shasum; sudo is used only to
+install the verified binary in `/usr/local/bin`. Existing ACT installations are
+preserved. Docker is required to run the E2E workflow.
 
 ```bash
 make setup         # run make deps, nvm install, Corepack setup, and pnpm install

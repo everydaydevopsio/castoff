@@ -13,7 +13,7 @@ const verification = workflow
 describe('E2E release notes verification', () => {
   it.each([
     [
-      '## Highlights\n- Keep `printf BACKTICK_EXECUTED` and $(printf SUBSTITUTION_EXECUTED) literal.\n- Quotes: "text"',
+      '## Highlights\n- Keep `printf BACKTICK_EXECUTED` and $(printf SUBSTITUTION_EXECUTED) literal.\n- Quotes: "text"\n::error::literal annotation\n::add-mask::literal mask',
       0
     ],
     ['', 1],
@@ -33,7 +33,11 @@ describe('E2E release notes verification', () => {
 
       expect(result.error).toBeUndefined();
       expect(result.status).toBe(status);
-      expect(result.stdout).toContain(`Generated notes:\n${notes}\n`);
+      const marker = result.stdout.match(/::stop-commands::([a-f0-9-]+)\n/);
+      expect(marker).not.toBeNull();
+      expect(result.stdout).toContain(
+        `::stop-commands::${marker[1]}\n${notes}\n::${marker[1]}::\n`
+      );
       expect(result.stderr).toBe('');
     }
   );

@@ -7,10 +7,8 @@ ACTION_DIR := castoff
 deps:
 	@if command -v act >/dev/null 2>&1; then \
 		echo "act already installed: $$(act --version)"; \
-	elif [ "$$(uname)" = "Darwin" ]; then \
-		brew install act; \
 	else \
-		curl -s https://raw.githubusercontent.com/nektos/act/master/install.sh | sudo bash -s -- -b /usr/local/bin; \
+		bash scripts/install-act.sh; \
 	fi
 
 setup: deps
@@ -19,7 +17,9 @@ setup: deps
 	export NVM_DIR="$${NVM_DIR:-$$HOME/.nvm}"; \
 	nvm_script="$$NVM_DIR/nvm.sh"; \
 	if [ ! -s "$$nvm_script" ] && command -v brew >/dev/null 2>&1; then \
-		nvm_script="$$(brew --prefix nvm)/nvm.sh"; \
+		if nvm_prefix="$$(brew --prefix nvm 2>/dev/null)"; then \
+			nvm_script="$$nvm_prefix/nvm.sh"; \
+		fi; \
 	fi; \
 	if [ ! -s "$$nvm_script" ]; then \
 		echo "nvm not found. Install nvm or set NVM_DIR, then rerun make setup." >&2; \
