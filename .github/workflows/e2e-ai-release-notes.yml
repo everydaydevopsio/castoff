@@ -59,7 +59,7 @@ jobs:
           RELEASE_NOTES: ${{ steps.ai_notes.outputs.release_notes }}
         run: |
           echo "Generated notes:"
-          command_marker="$(cat /proc/sys/kernel/random/uuid)"
+          command_marker="$(node -e 'console.log(require("node:crypto").randomUUID())')"
           printf '::stop-commands::%s\n' "$command_marker"
           printf '%s\n' "$RELEASE_NOTES"
           printf '::%s::\n' "$command_marker"

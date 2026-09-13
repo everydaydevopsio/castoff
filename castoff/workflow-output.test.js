@@ -21,10 +21,15 @@ describe('E2E release notes verification', () => {
   ])(
     'treats notes as data and validates their structure: %s',
     (notes, status) => {
-      const script = verification.replaceAll(
-        '${{ steps.ai_notes.outputs.release_notes }}',
-        notes
-      );
+      // Simulate a host without Linux's /proc filesystem (for example macOS).
+      const portableHost =
+        'cat() { case "$*" in /proc/*) return 1 ;; *) command cat "$@" ;; esac; };\n';
+      const script =
+        portableHost +
+        verification.replaceAll(
+          '${{ steps.ai_notes.outputs.release_notes }}',
+          notes
+        );
       const result = spawnSync('bash', ['-e', '-c', script], {
         env: { ...process.env, RELEASE_NOTES: notes },
         encoding: 'utf8',
