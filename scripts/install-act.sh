@@ -47,5 +47,6 @@ curl --fail --silent --show-error --location \
   printf '%s  %s\n' "$checksum" "$archive" | "${checksum_command[@]}"
 )
 tar -xzf "$download_dir/$archive" -C "$download_dir" act
+sudo install -d -m 0755 /usr/local/bin
 sudo install -m 0755 "$download_dir/act" /usr/local/bin/act
 echo "Installed ACT v${ACT_VERSION} to /usr/local/bin/act."
