@@ -30,13 +30,24 @@ See [`castoff/README.md`](castoff/README.md) for full input/output documentation
 
 ## Development
 
+Prerequisites: Bash, Make, curl, and nvm (including Homebrew-installed nvm).
+`make deps` uses Homebrew on macOS or sudo on Linux to install `act` if needed.
+
 ```bash
-make install       # install dependencies
+make setup         # run make deps, nvm install, Corepack setup, and pnpm install
+# Run the activation command printed by setup in your current terminal.
 make test          # run tests
 make test-coverage # run tests with coverage
 make lint          # lint
 make build         # compile dist/
 ```
+
+Setup installs the Node version from `.nvmrc`, installs Corepack if missing for
+that Node version, enables pnpm 9 to match CI, and installs dependencies from the
+lockfile in `castoff/`. It loads nvm from `NVM_DIR`, the standard nvm directories,
+or Homebrew. Make cannot change the environment of your current terminal, so
+setup prints the command to load nvm and run `nvm use` there. Use `make install`
+to refresh dependencies once your terminal is configured.
 
 ## License
 
