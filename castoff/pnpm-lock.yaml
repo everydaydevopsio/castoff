@@ -12,8 +12,8 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1
       openai:
-        specifier: ^7.8.0
-        version: 7.8.0(undici@6.28.0)
+        specifier: ^7.14.0
+        version: 7.14.0(undici@6.28.0)
     devDependencies:
       '@eslint/js':
         specifier: ^10.0.1
@@ -1379,8 +1379,8 @@ packages:
     resolution: {integrity: sha512-kbpaSSGJTWdAY5KPVeMOKXSrPtr8C8C7wodJbcsd51jRnmD+GZu8Y0VoU6Dm5Z4vWr0Ig/1NKuWRKf7j5aaYSg==}
     engines: {node: '>=6'}
 
-  openai@7.8.0:
-    resolution: {integrity: sha512-/2g9JzdnXNcjX1W/UlSNu+OdSFDAaAVt0n9Onom0kPenH54o59G2WrX/xjTnr26UHNSh6hxcAf58doGYRme2rw==}
+  openai@7.14.0:
+    resolution: {integrity: sha512-usG+A+hWTqCc+Y7o6tEq5UCsYAQcbM/FqenqYn8bKwdBIDW1yuOf5rc9z4wyq6Ssi3i6/YKpgSbsBLQ0HCAkHA==}
     engines: {node: '>=22.0.0'}
     peerDependencies:
       '@aws-sdk/credential-provider-node': '>=3.972.0 <4'
@@ -3230,7 +3230,7 @@ snapshots:
     dependencies:
       mimic-fn: 2.1.0
 
-  openai@7.8.0(undici@6.28.0):
+  openai@7.14.0(undici@6.28.0):
     optionalDependencies:
       undici: 6.28.0
 
