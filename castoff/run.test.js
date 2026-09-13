@@ -43,6 +43,43 @@ describe('run', () => {
     ({ run } = await import('./index.js'));
   });
 
+  it.each([
+    ['', undefined, 'gpt-6-astra'],
+    ['', '', 'gpt-6-astra'],
+    ['', 'gpt-5.6-sol', 'gpt-5.6-sol'],
+    ['gpt-6-astra', 'gpt-5.6-sol', 'gpt-6-astra']
+  ])(
+    'selects model from input %s and environment %s',
+    async (input, envModel, expected) => {
+      const previous = process.env.OPENAI_MODEL;
+      if (envModel === undefined) delete process.env.OPENAI_MODEL;
+      else process.env.OPENAI_MODEL = envModel;
+      try {
+        coreMock.getInput.mockImplementation(
+          (name) =>
+            ({
+              openai_api_key: 'test-key',
+              model: input,
+              tag: 'v1.0.0',
+              max_commits: '10'
+            })[name] || ''
+        );
+        execFileSyncMock.mockReturnValue('abc123 Update');
+        createCompletionMock.mockResolvedValue({
+          choices: [{ message: { content: '## Highlights\n- Update' } }]
+        });
+        await run();
+        expect(coreMock.setFailed).not.toHaveBeenCalled();
+        const request = createCompletionMock.mock.calls[0][0];
+        expect(request.model).toBe(expected);
+        expect(request).not.toHaveProperty('temperature');
+      } finally {
+        if (previous === undefined) delete process.env.OPENAI_MODEL;
+        else process.env.OPENAI_MODEL = previous;
+      }
+    }
+  );
+
   it('handles missing previous tag and still sets release notes output', async () => {
     coreMock.getInput.mockImplementation((name) => {
       if (name === 'openai_api_key') return 'test-key';

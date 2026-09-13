@@ -12,7 +12,7 @@ suitable for GitHub Releases.
 ## Inputs
 
 - `openai_api_key` (required) – your OpenAI API key
-- `model` (optional) – default: `gpt-4.1-mini`
+- `model` (optional) – overrides `OPENAI_MODEL`; defaults to `gpt-6-astra` when neither is set
 - `tag` (required) – new release tag (e.g. `v1.2.3`)
 - `max_commits` (optional) – default: 200 (must be an integer between 1 and 1000)
 

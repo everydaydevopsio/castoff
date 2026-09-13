@@ -32,6 +32,11 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Require OpenAI API key
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: bash scripts/require-openai-key.sh
+
       - uses: pnpm/action-setup@v6
         with:
           version: 9
@@ -65,6 +70,15 @@ jobs:
         run: pnpm build
         working-directory: castoff
 
+      - name: Generate AI release notes
+        id: release_notes
+        uses: ./castoff
+        env:
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+        with:
+          openai_api_key: ${{ secrets.OPENAI_API_KEY }}
+          tag: ${{ steps.bump.outputs.tag }}
+
       - name: Configure git
         run: |
           git config user.name "github-actions[bot]"
@@ -84,18 +98,10 @@ jobs:
           git push origin "${{ steps.bump.outputs.tag }}"
           git push origin "${{ steps.bump.outputs.major_tag }}" --force
 
-      - name: Generate AI release notes
-        id: release_notes
-        uses: ./castoff
-        with:
-          openai_api_key: ${{ secrets.OPENAI_API_KEY }}
-          tag: ${{ steps.bump.outputs.tag }}
-        continue-on-error: true
-
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ steps.bump.outputs.tag }}
           name: ${{ steps.bump.outputs.tag }}
-          body: ${{ steps.release_notes.outputs.release_notes || '' }}
-          generate_release_notes: ${{ steps.release_notes.outputs.release_notes == '' }}
+          body: ${{ steps.release_notes.outputs.release_notes }}
+          generate_release_notes: false

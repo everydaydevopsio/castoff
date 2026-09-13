@@ -30,11 +30,28 @@ act workflow_dispatch -n
 
 ## Secrets
 
-`make e2e-act` requires an exported, nonempty `OPENAI_API_KEY` environment
-variable. If it is unset or empty, the command stops with an error before
-starting ACT. The key is passed to ACT from the environment; no `.secrets`
-file is read or created. Both the validation guardrail test and the live
+`make e2e-act` passes the exported `OPENAI_API_KEY` environment variable to
+ACT; no `.secrets` file is read or created. If the variable is unset or empty,
+the launcher passes an empty secret without prompting, and the workflow's
+key validation step fails. Both the validation guardrail test and the live
 OpenAI test run through this target.
+
+## Model
+
+The default model is `gpt-6-astra`. Override it for local E2E runs with:
+
+```bash
+export OPENAI_MODEL="gpt-5.6-sol"
+make e2e-act
+```
+
+The live E2E matrix always tests the default `gpt-6-astra` with no model override
+and `gpt-5.6-sol` via the action's `OPENAI_MODEL` environment variable. If you
+export `OPENAI_MODEL`, an additional case tests that configured override.
+The launcher passes it as ACT's `OPENAI_MODEL` workflow variable. For
+GitHub-hosted E2E and release runs, set the repository Actions variable
+`OPENAI_MODEL`. Action model selection is: explicit `model` input, then
+nonempty `OPENAI_MODEL`, then `gpt-6-astra`.
 
 ## Alternatives to ACT
 

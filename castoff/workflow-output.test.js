@@ -17,7 +17,8 @@ describe('E2E release notes verification', () => {
       0
     ],
     ['', 1],
-    ['Unexpected output', 1]
+    ['Unexpected output', 1],
+    ['# Release v1.0.0\n\n_Auto-generated notes unavailable._', 1]
   ])(
     'treats notes as data and validates their structure: %s',
     (notes, status) => {

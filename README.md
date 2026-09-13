@@ -24,6 +24,12 @@ A GitHub Action that generates AI-powered release notes using OpenAI ChatGPT mod
     body: ${{ steps.ai_notes.outputs.release_notes }}
 ```
 
+The default model is `gpt-6-astra`. Set the action's `model` input or its
+`OPENAI_MODEL` environment variable to override it; the explicit input takes
+precedence. For example, `OPENAI_MODEL=gpt-5.6-sol make e2e-act` runs the local
+E2E suite with an additional configured-model case. See the
+[ACT guide](.github/workflows/README-ACT.md) for key setup and model coverage.
+
 ## Action Reference
 
 See [`castoff/README.md`](castoff/README.md) for full input/output documentation.

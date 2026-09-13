@@ -10,9 +10,8 @@ inputs:
     description: 'OpenAI API key'
     required: true
   model:
-    description: 'OpenAI model to use'
+    description: 'OpenAI model (model input, then OPENAI_MODEL environment variable, then gpt-6-astra)'
     required: false
-    default: 'gpt-4.1-mini'
   tag:
     description: 'Release tag (e.g. v1.2.3)'
     required: true

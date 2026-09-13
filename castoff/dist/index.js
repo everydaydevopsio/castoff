@@ -51599,10 +51599,12 @@ function parseMaxCommits(value) {
 async function run() {
   try {
     const apiKey = getInput('openai_api_key', { required: true });
-    const model = getInput('model') || 'gpt-4.1-mini';
+    const model =
+      getInput('model') || process.env.OPENAI_MODEL?.trim() || 'gpt-6-astra';
     const tag = getInput('tag', { required: true });
     const maxCommits = parseMaxCommits(getInput('max_commits'));
 
+    info(`Generating release notes with model: ${model}`);
     const client = new OpenAI({ apiKey });
 
     let previousTag = '';
@@ -51635,8 +51637,7 @@ async function run() {
             'You are an expert technical writer who crafts concise, high-quality release notes.'
         },
         { role: 'user', content: prompt }
-      ],
-      temperature: 0.4
+      ]
     });
 
     const notes = extractNotes(completion, tag);
