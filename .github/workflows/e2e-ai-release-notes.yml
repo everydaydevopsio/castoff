@@ -21,12 +21,40 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Reject missing API key in workflow preflight
+        id: missing_key_preflight
+        continue-on-error: true
+        env:
+          OPENAI_API_KEY: ""
+        run: bash scripts/require-openai-key.sh
+
+      - name: Run action without API key (expected failure)
+        id: missing_key_action
+        continue-on-error: true
+        uses: ./castoff
+        with:
+          openai_api_key: ""
+          tag: ${{ inputs.tag || 'v0.0.0-e2e-test' }}
+
+      - name: Verify missing API key causes failure
+        run: |
+          if [ "${{ steps.missing_key_preflight.outcome }}" != "failure" ] ||
+             [ "${{ steps.missing_key_action.outcome }}" != "failure" ]; then
+            echo "ERROR: preflight and action must both fail without an API key"
+            exit 1
+          fi
+
+      - name: Require OpenAI API key
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: bash scripts/require-openai-key.sh
+
       - name: Run action with invalid max_commits (expected failure)
         id: invalid_commits
         continue-on-error: true
         uses: ./castoff
         with:
-          openai_api_key: "dummy-key"
+          openai_api_key: ${{ secrets.OPENAI_API_KEY }}
           tag: ${{ inputs.tag || 'v0.0.0-e2e-test' }}
           max_commits: "abc"
 
@@ -39,6 +67,17 @@ jobs:
           echo "✓ Guardrail test passed"
 
   test-action-live:
+    name: Live OpenAI - ${{ matrix.case }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - case: default-astra
+            model: ""
+          - case: sol-env-override
+            model: gpt-5.6-sol
+          - case: configured-env-override
+            model: ${{ vars.OPENAI_MODEL }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -46,7 +85,15 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Require OpenAI API key
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: bash scripts/require-openai-key.sh
+
       - name: Generate AI release notes (e2e)
+        if: matrix.case != 'configured-env-override' || matrix.model != ''
+        env:
+          OPENAI_MODEL: ${{ matrix.model }}
         id: ai_notes
         uses: ./castoff
         with:
@@ -55,19 +102,26 @@ jobs:
           max_commits: "10"
 
       - name: Verify output
+        if: matrix.case != 'configured-env-override' || matrix.model != ''
         env:
           RELEASE_NOTES: ${{ steps.ai_notes.outputs.release_notes }}
+          RESOLVED_MODEL: ${{ steps.ai_notes.outputs.model }}
+          EXPECTED_MODEL: ${{ matrix.model || 'gpt-6-astra' }}
         run: |
           echo "Generated notes:"
           command_marker="$(node -e 'console.log(require("node:crypto").randomUUID())')"
           printf '::stop-commands::%s\n' "$command_marker"
           printf '%s\n' "$RELEASE_NOTES"
           printf '::%s::\n' "$command_marker"
+          if [ "$RESOLVED_MODEL" != "$EXPECTED_MODEL" ]; then
+            echo "ERROR: selected model does not match expected model"
+            exit 1
+          fi
           if [ -z "$RELEASE_NOTES" ]; then
             echo "ERROR: release_notes output is empty"
             exit 1
           fi
-          if ! printf '%s\n' "$RELEASE_NOTES" | grep -Eq "^## (Highlights|Fixes|Changes)|^# Release "; then
+          if ! printf '%s\n' "$RELEASE_NOTES" | grep -Eq "^## (Highlights|Fixes|Changes)"; then
             echo "ERROR: release_notes output did not match expected structure"
             exit 1
           fi
