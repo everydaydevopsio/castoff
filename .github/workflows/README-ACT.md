@@ -17,18 +17,12 @@ npm install -g @nektos/act
 From the repo root:
 
 ```bash
-# Recommended wrappers
+# Run validation guardrails and the live OpenAI test
+export OPENAI_API_KEY="your-openai-api-key"
 make e2e-act
-OPENAI_API_KEY=sk-your-key-here make e2e-act-live
 
 # List available workflows
 act -l
-
-# Run guardrail E2E only (no OpenAI key needed)
-act -W .github/workflows/e2e-ai-release-notes.yml workflow_dispatch
-
-# Run live OpenAI E2E as well
-act -W .github/workflows/e2e-ai-release-notes.yml workflow_dispatch -s OPENAI_API_KEY=sk-your-key-here
 
 # Dry run (see what would run without executing)
 act workflow_dispatch -n
@@ -36,16 +30,11 @@ act workflow_dispatch -n
 
 ## Secrets
 
-ACT reads secrets from:
-
-1. **CLI flag**: `-s SECRET_NAME=value`
-2. **`.secrets` file** in repo root (gitignored):
-
-   ```
-   OPENAI_API_KEY=sk-your-key-here
-   ```
-
-3. **Environment**: `export OPENAI_API_KEY=sk-...` then run `act`
+`make e2e-act` requires an exported, nonempty `OPENAI_API_KEY` environment
+variable. If it is unset or empty, the command stops with an error before
+starting ACT. The key is passed to ACT from the environment; no `.secrets`
+file is read or created. Both the validation guardrail test and the live
+OpenAI test run through this target.
 
 ## Alternatives to ACT
 

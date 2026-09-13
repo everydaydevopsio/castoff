@@ -30,13 +30,29 @@ See [`castoff/README.md`](castoff/README.md) for full input/output documentation
 
 ## Development
 
+Prerequisites: Bash, Make, curl, and [nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+(including Homebrew-installed nvm). After installing nvm, reload your shell.
+If ACT is absent, `make deps` automatically installs ACT v0.2.89 on Linux or
+macOS from its release archive, verified against checked-in SHA-256 checksums.
+This requires tar, sudo, and either sha256sum or shasum; sudo is used only to
+install the verified binary in `/usr/local/bin`. Existing ACT installations are
+preserved. Docker is required to run the E2E workflow.
+
 ```bash
-make install       # install dependencies
+make setup         # run make deps, nvm install, Corepack setup, and pnpm install
+# Run the activation command printed by setup in your current terminal.
 make test          # run tests
 make test-coverage # run tests with coverage
 make lint          # lint
 make build         # compile dist/
 ```
+
+Setup installs the Node version from `.nvmrc`, installs Corepack if missing for
+that Node version, enables pnpm 9 to match CI, and installs dependencies from the
+lockfile in `castoff/`. It loads nvm from `NVM_DIR`, the standard nvm directories,
+or Homebrew. Make cannot change the environment of your current terminal, so
+setup prints the command to load nvm and run `nvm use` there. Use `make install`
+to refresh dependencies once your terminal is configured.
 
 ## License
 

@@ -6,7 +6,7 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "build": "ncc build index.js -o dist --license licenses.txt",
+    "build": "ncc build main.js -o dist --license licenses.txt",
     "prepare": "git -C .. config core.hooksPath .husky 2>/dev/null || git config core.hooksPath .husky",
     "test": "NODE_OPTIONS='--experimental-vm-modules' jest",
     "test:coverage": "NODE_OPTIONS='--experimental-vm-modules' jest --coverage",
