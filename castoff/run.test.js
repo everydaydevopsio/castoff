@@ -72,6 +72,7 @@ describe('run', () => {
         expect(coreMock.setFailed).not.toHaveBeenCalled();
         const request = createCompletionMock.mock.calls[0][0];
         expect(request.model).toBe(expected);
+        expect(coreMock.setOutput).toHaveBeenCalledWith('model', expected);
         expect(request).not.toHaveProperty('temperature');
       } finally {
         if (previous === undefined) delete process.env.OPENAI_MODEL;

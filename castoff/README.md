@@ -18,6 +18,8 @@ suitable for GitHub Releases.
 
 ## Outputs
 
+- `model` – resolved model name sent to OpenAI
+
 - `release_notes` – AI-generated Markdown text
 
 ## Example Usage

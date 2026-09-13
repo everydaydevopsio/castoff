@@ -21,6 +21,8 @@ inputs:
     default: '200'
 
 outputs:
+  model:
+    description: 'Resolved model name sent to OpenAI'
   release_notes:
     description: 'AI-generated release notes in Markdown'
 

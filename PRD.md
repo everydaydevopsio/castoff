@@ -44,6 +44,7 @@ Engineering teams spend time manually writing release notes from commit history.
 - `max_commits` (optional, default `200`): Max number of commits read from git log.
 
 ### 7.2 Output
+- `model`: Resolved model name sent to OpenAI.
 - `release_notes`: Markdown string suitable for use as GitHub Release body.
 
 ### 7.3 Commit Range and Collection
@@ -145,15 +146,15 @@ Or by exact version for pinning:
 uses: everydaydevopsio/castoff/castoff@v0.1.0
 ```
 
+### 15.5 Live E2E Workflow
+- Test the default `gpt-6-astra` without model configuration and `gpt-5.6-sol` via `OPENAI_MODEL`, both using the `OPENAI_API_KEY` Actions secret.
+- Test an additional configured model when the repository/ACT `OPENAI_MODEL` variable is nonempty.
+- Verify missing-key failures and reject placeholder fallback notes as live-test success.
+- The local ACT launcher forwards environment configuration; missing keys fail inside the workflow.
+
 ## 16. Future Enhancements (Post-v1)
 - Configurable prompt templates and section headings.
 - Optional inclusion of PR titles, labels, or conventional-commit grouping.
 - Built-in retry/backoff on transient API errors.
 - Optional style profiles (short, detailed, user-facing, technical).
 - Repository-specific instructions input for tone and structure.
-
-### 15.4 Live E2E Workflow
-- Test the default `gpt-6-astra` without model configuration and `gpt-5.6-sol` via `OPENAI_MODEL`, both using the `OPENAI_API_KEY` Actions secret.
-- Test an additional configured model when the repository/ACT `OPENAI_MODEL` variable is nonempty.
-- Verify missing-key failures and reject placeholder fallback notes as live-test success.
-- The local ACT launcher forwards environment configuration; missing keys fail inside the workflow.

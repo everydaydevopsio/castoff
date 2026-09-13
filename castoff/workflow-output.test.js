@@ -32,7 +32,12 @@ describe('E2E release notes verification', () => {
           notes
         );
       const result = spawnSync('bash', ['-e', '-c', script], {
-        env: { ...process.env, RELEASE_NOTES: notes },
+        env: {
+          ...process.env,
+          RELEASE_NOTES: notes,
+          RESOLVED_MODEL: 'gpt-6-astra',
+          EXPECTED_MODEL: 'gpt-6-astra'
+        },
         encoding: 'utf8',
         timeout: 10000
       });
@@ -46,5 +51,22 @@ describe('E2E release notes verification', () => {
       );
       expect(result.stderr).toBe('');
     }
+  );
+});
+
+it('rejects a live model that differs from the expected matrix model', () => {
+  const result = spawnSync('bash', ['-e', '-c', verification], {
+    env: {
+      ...process.env,
+      RELEASE_NOTES: '## Highlights\n- Update',
+      RESOLVED_MODEL: 'gpt-6-astra',
+      EXPECTED_MODEL: 'gpt-5.6-sol'
+    },
+    encoding: 'utf8',
+    timeout: 10000
+  });
+  expect(result.status).toBe(1);
+  expect(result.stdout).toContain(
+    'ERROR: selected model does not match expected model'
   );
 });

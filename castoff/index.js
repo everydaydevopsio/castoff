@@ -115,6 +115,7 @@ async function run() {
     const notes = extractNotes(completion, tag);
 
     setOutput('release_notes', notes);
+    setOutput('model', model);
     info('AI release notes generated successfully.');
   } catch (error) {
     setFailed(error.message);
