@@ -1,7 +1,27 @@
 import { spawnSync } from 'node:child_process';
+import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 describe('packaged action entry point', () => {
+  it('declares a runtime supported by the installed OpenAI SDK', () => {
+    const action = readFileSync(
+      new URL('./action.yml', import.meta.url),
+      'utf8'
+    );
+    const sdk = JSON.parse(
+      readFileSync(
+        new URL('./node_modules/openai/package.json', import.meta.url),
+        'utf8'
+      )
+    );
+    const runtime = action.match(/using: ['"]?node(\d+)/);
+    const minimum = sdk.engines.node.match(/^>=(\d+)\.0\.0$/);
+
+    expect(runtime).not.toBeNull();
+    expect(minimum).not.toBeNull();
+    expect(Number(runtime[1])).toBeGreaterThanOrEqual(Number(minimum[1]));
+  });
+
   it.each([
     [
       'invalid max_commits',

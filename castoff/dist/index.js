@@ -28196,7 +28196,7 @@ module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("util");
 
 /***/ }),
 
-/***/ 383:
+/***/ 4574:
 /***/ ((module, exports, __nccwpck_require__) => {
 
 /* module decorator */ module = __nccwpck_require__.nmd(module);
@@ -28239,7 +28239,7 @@ exports.findX509Credential = WeakMap.prototype.get.bind(approvedX509Credentials)
 
 /***/ }),
 
-/***/ 5541:
+/***/ 4651:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __nccwpck_require__) => {
 
 
@@ -28250,7 +28250,7 @@ __nccwpck_require__.d(__webpack_exports__, {
 
 // UNUSED EXPORTS: buildPrompt, extractNotes, formatCommits, parseMaxCommits
 
-// NAMESPACE OBJECT: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/auth/x509-transport-state-browser.mjs
+// NAMESPACE OBJECT: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/auth/x509-transport-state-browser.mjs
 var x509_transport_state_browser_namespaceObject = {};
 __nccwpck_require__.r(x509_transport_state_browser_namespaceObject);
 __nccwpck_require__.d(x509_transport_state_browser_namespaceObject, {
@@ -31213,7 +31213,7 @@ function getIDToken(aud) {
  */
 
 //# sourceMappingURL=core.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/tslib.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/tslib.mjs
 function __classPrivateFieldSet(receiver, state, value, kind, f) {
     if (kind === "m")
         throw new TypeError("Private method is not writable");
@@ -31237,7 +31237,7 @@ function __classPrivateFieldIn(state, receiver) {
 }
 
 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/utils/uuid.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/utils/uuid.mjs
 /**
  * https://stackoverflow.com/a/2117523
  */
@@ -31252,7 +31252,7 @@ let uuid4 = function () {
     return '10000000-1000-4000-8000-100000000000'.replace(/[018]/g, (c) => (+c ^ (randomByte() & (15 >> (+c / 4)))).toString(16));
 };
 //# sourceMappingURL=uuid.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/errors.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/errors.mjs
 function isAbortError(err) {
     return (typeof err === 'object' &&
         err !== null &&
@@ -31267,12 +31267,13 @@ const castToError = (err) => {
     if (typeof err === 'object' && err !== null) {
         try {
             if (Object.prototype.toString.call(err) === '[object Error]') {
+                const hasCause = 'cause' in err;
                 // @ts-ignore - not all envs have native support for cause yet
-                const error = new Error(err.message, err.cause ? { cause: err.cause } : {});
+                const error = new Error(err.message, hasCause ? { cause: err.cause } : {});
                 if (err.stack)
                     error.stack = err.stack;
                 // @ts-ignore - not all envs have native support for cause yet
-                if (err.cause && !error.cause)
+                if (hasCause && !Object.prototype.hasOwnProperty.call(error, 'cause'))
                     error.cause = err.cause;
                 if (err.name)
                     error.name = err.name;
@@ -31288,7 +31289,7 @@ const castToError = (err) => {
     return new Error(err);
 };
 //# sourceMappingURL=errors.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/core/error.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/core/error.mjs
 
 class error_OpenAIError extends Error {
 }
@@ -31437,7 +31438,7 @@ class SubjectTokenProviderError extends error_OpenAIError {
     }
 }
 //# sourceMappingURL=error.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/utils/values.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/utils/values.mjs
 
 // https://url.spec.whatwg.org/#url-scheme-string
 const startsWithSchemeRegexp = /^[a-z][a-z0-9+.-]*:/i;
@@ -31531,10 +31532,10 @@ const safeJSON = (text) => {
     }
 };
 //# sourceMappingURL=values.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/utils/sleep.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/utils/sleep.mjs
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 //# sourceMappingURL=sleep.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/shims.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/shims.mjs
 /**
  * This module provides internal shims and utility functions for environments where certain Node.js or global types may not be available.
  *
@@ -31625,7 +31626,7 @@ async function CancelReadableStream(stream) {
     await cancelPromise;
 }
 //# sourceMappingURL=shims.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/utils/bytes.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/utils/bytes.mjs
 /** Copies byte arrays into one contiguous `Uint8Array` while preserving their order. */
 function concatBytes(buffers) {
     let length = 0;
@@ -31655,7 +31656,7 @@ function decodeUTF8(bytes) {
         ((decoder = new globalThis.TextDecoder()), (decodeUTF8_ = decoder.decode.bind(decoder))))(bytes);
 }
 //# sourceMappingURL=bytes.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/decoders/line.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/decoders/line.mjs
 var _LineDecoder_instances, _LineDecoder_buffer, _LineDecoder_start, _LineDecoder_end, _LineDecoder_searchIndex, _LineDecoder_skipLeadingLF, _LineDecoder_append;
 
 
@@ -31849,7 +31850,7 @@ function lineEndingLength(buffer, index) {
     return 0;
 }
 //# sourceMappingURL=line.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/utils/log.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/utils/log.mjs
 
 const levelNumbers = {
     off: 0,
@@ -31989,8 +31990,8 @@ const formatRequestDetails = (details) => {
     return details;
 };
 //# sourceMappingURL=log.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/core/streaming.mjs
-var _Stream_client;
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/core/streaming.mjs
+var _Stream_instances, _Stream_client, _Stream_isTeeBranch, _Stream_cancelIterator;
 
 
 
@@ -31998,15 +31999,24 @@ var _Stream_client;
 
 
 
+function isTransportAbortError(error) {
+    return !(error instanceof APIError) && isAbortError(error);
+}
 function createStreamTeeQueue() {
     let entries = [];
     let head = 0;
+    let canceled = false;
     return {
         get length() {
             return entries.length - head;
         },
+        get canceled() {
+            return canceled;
+        },
         enqueue(value) {
-            entries.push(value);
+            if (!canceled) {
+                entries.push(value);
+            }
         },
         dequeue() {
             if (head === entries.length) {
@@ -32025,6 +32035,11 @@ function createStreamTeeQueue() {
             }
             return value;
         },
+        cancel() {
+            canceled = true;
+            entries.length = 0;
+            head = 0;
+        },
     };
 }
 /**
@@ -32037,7 +32052,9 @@ function createStreamTeeQueue() {
 class Stream {
     /** Wraps an asynchronous event iterator and the controller that owns its request. */
     constructor(iterator, controller, client) {
+        _Stream_instances.add(this);
         _Stream_client.set(this, void 0);
+        _Stream_isTeeBranch.set(this, false);
         this.iterator = iterator;
         this.controller = controller;
         __classPrivateFieldSet(this, _Stream_client, client, "f");
@@ -32059,8 +32076,17 @@ class Stream {
             consumed = true;
             let done = false;
             let receivedCompletionSentinel = false;
+            const messages = _iterSSEMessages(response, controller);
+            const closeMessages = messages.return.bind(messages);
+            messages.return = (value) => {
+                // Abort before nested iterator cleanup can wait on the response body's cancellation.
+                if (!receivedCompletionSentinel) {
+                    controller.abort();
+                }
+                return closeMessages(value);
+            };
             try {
-                for await (const sse of _iterSSEMessages(response, controller)) {
+                for await (const sse of messages) {
                     if (sse.data === '[DONE]') {
                         receivedCompletionSentinel = true;
                         break;
@@ -32101,7 +32127,7 @@ class Stream {
             catch (e) {
                 // Abort errors and cleanup failures after the completion sentinel are non-fatal.
                 if (receivedCompletionSentinel ||
-                    isAbortError(e) ||
+                    isTransportAbortError(e) ||
                     (controller.signal.aborted && e === controller.signal.reason)) {
                     return;
                 }
@@ -32179,9 +32205,6 @@ class Stream {
             let done = false;
             try {
                 for await (const line of iterLines()) {
-                    if (done) {
-                        continue;
-                    }
                     if (line) {
                         let data;
                         try {
@@ -32215,19 +32238,29 @@ class Stream {
         return new Stream(iterator, controller, client);
     }
     /** Starts consuming this stream; attempting to consume it again throws. */
-    [(_Stream_client = new WeakMap(), Symbol.asyncIterator)]() {
+    [(_Stream_client = new WeakMap(), _Stream_isTeeBranch = new WeakMap(), _Stream_instances = new WeakSet(), Symbol.asyncIterator)]() {
         return this.iterator();
     }
     /**
      * Splits the stream into two streams which can be
      * independently read from at different speeds.
+     * Closing a branch discards its buffered events without stopping its sibling.
+     * Future reads on that branch finish immediately; previously issued `next()`
+     * promises remain shared with its sibling and may still resolve with events.
+     * Closing both branches invokes the source iterator's `return()` when available.
+     * For {@link Stream.fromReadableStream}, closing both branches before iteration
+     * starts does not cancel the supplied readable; cancel that readable directly.
      */
     tee() {
+        const { controller } = this;
         const left = createStreamTeeQueue();
         const right = createStreamTeeQueue();
         const iterator = this.iterator();
         const teeIterator = (queue) => ({
             next: () => {
+                if (queue.canceled) {
+                    return Promise.resolve({ value: undefined, done: true });
+                }
                 if (queue.length === 0) {
                     const result = iterator.next();
                     left.enqueue(result);
@@ -32235,18 +32268,32 @@ class Stream {
                 }
                 return queue.dequeue();
             },
+            return: async () => {
+                if (!queue.canceled) {
+                    queue.cancel();
+                    if (left.canceled && right.canceled) {
+                        await __classPrivateFieldGet(this, _Stream_instances, "m", _Stream_cancelIterator).call(this, iterator, controller);
+                    }
+                }
+                return { value: undefined, done: true };
+            },
         });
-        return [
-            new Stream(() => teeIterator(left), this.controller, __classPrivateFieldGet(this, _Stream_client, "f")),
-            new Stream(() => teeIterator(right), this.controller, __classPrivateFieldGet(this, _Stream_client, "f")),
-        ];
+        const branch = (queue) => {
+            const stream = new Stream(() => teeIterator(queue), controller, __classPrivateFieldGet(this, _Stream_client, "f"));
+            __classPrivateFieldSet(stream, _Stream_isTeeBranch, true, "f");
+            return stream;
+        };
+        return [branch(left), branch(right)];
     }
     /**
      * Converts this stream to a newline-separated ReadableStream of
      * JSON stringified values in the stream
      * which can be turned back into a Stream with `Stream.fromReadableStream()`.
+     * Canceling a response-backed readable aborts its request. Canceling a tee
+     * branch discards its buffered events and leaves sibling consumers running.
      */
     toReadableStream() {
+        const { controller } = this;
         let iter;
         return makeReadableStream({
             start: async () => {
@@ -32265,12 +32312,19 @@ class Stream {
                     ctrl.error(err);
                 }
             },
-            async cancel() {
-                await iter.return?.();
-            },
+            cancel: () => __classPrivateFieldGet(this, _Stream_instances, "m", _Stream_cancelIterator).call(this, iter, controller),
         });
     }
 }
+_Stream_cancelIterator = async function _Stream_cancelIterator(iterator, controller) {
+    const returnMethod = iterator.return;
+    if (returnMethod) {
+        if (!__classPrivateFieldGet(this, _Stream_isTeeBranch, "f")) {
+            controller.abort();
+        }
+        await Reflect.apply(returnMethod, iterator, []);
+    }
+};
 function createAbortableSSESource(body, signal) {
     const reader = typeof body.getReader === 'function' ? body.getReader() : undefined;
     const source = reader
@@ -32563,7 +32617,7 @@ function partition(str, delimiter) {
     return [str, '', ''];
 }
 //# sourceMappingURL=streaming.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/parse.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/parse.mjs
 
 
 
@@ -32587,7 +32641,7 @@ async function defaultParseResponse(client, props) {
             return response;
         }
         const contentType = response.headers.get('content-type');
-        const mediaType = contentType?.split(';')[0]?.trim();
+        const mediaType = contentType?.split(';')[0]?.trim().toLowerCase();
         const isJSON = mediaType?.includes('application/json') || mediaType?.endsWith('+json');
         if (isJSON) {
             const contentLength = response.headers.get('content-length');
@@ -32640,11 +32694,11 @@ function addRequestID(value, response) {
     });
 }
 //# sourceMappingURL=parse.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/version.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/version.mjs
 /** Version of the installed OpenAI SDK package. */
-const VERSION = '7.8.0'; // x-release-please-version
+const VERSION = '7.14.0'; // x-release-please-version
 //# sourceMappingURL=version.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/detect-platform.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/detect-platform.mjs
 
 const isRunningInBrowser = () => {
     return (
@@ -32689,7 +32743,7 @@ const getPlatformProperties = () => {
             'X-Stainless-OS': 'Unknown',
             'X-Stainless-Arch': `other:${EdgeRuntime}`,
             'X-Stainless-Runtime': 'edge',
-            'X-Stainless-Runtime-Version': globalThis.process.version,
+            'X-Stainless-Runtime-Version': globalThis.process?.version ?? 'unknown',
         };
     }
     // Check if Node.js
@@ -32731,7 +32785,7 @@ function getBrowserInfo() {
     }
     // NOTE: The order matters here!
     const browserPatterns = [
-        { key: 'edge', pattern: /Edge(?:\W+(\d+)\.(\d+)(?:\.(\d+))?)?/ },
+        { key: 'edge', pattern: /\bEdg(?:e|A|iOS)?\b(?:\W+(\d+)\.(\d+)(?:\.(\d+))?)?/ },
         { key: 'ie', pattern: /MSIE(?:\W+(\d+)\.(\d+)(?:\.(\d+))?)?/ },
         { key: 'ie', pattern: /Trident(?:.*rv\:(\d+)\.(\d+)(?:\.(\d+))?)?/ },
         { key: 'chrome', pattern: /Chrome(?:\W+(\d+)\.(\d+)(?:\.(\d+))?)?/ },
@@ -32801,7 +32855,7 @@ const getPlatformHeaders = () => {
     return (_platformHeaders ?? (_platformHeaders = getPlatformProperties()));
 };
 //# sourceMappingURL=detect-platform.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/request-options.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/request-options.mjs
 const jsonRequestBodyObservers = new WeakMap();
 /** Observes values produced by the actual JSON request serializer without changing them. */
 function observeJSONRequestBody(body, observer) {
@@ -32852,7 +32906,7 @@ const FallbackEncoder = ({ headers, body }) => {
     };
 };
 //# sourceMappingURL=request-options.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/qs/formats.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/qs/formats.mjs
 const default_format = 'RFC3986';
 const default_formatter = String;
 const formatters = {
@@ -32862,7 +32916,7 @@ const formatters = {
 const RFC1738 = 'RFC1738';
 const RFC3986 = 'RFC3986';
 //# sourceMappingURL=formats.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/qs/utils.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/qs/utils.mjs
 
 
 let cachedHas;
@@ -33386,7 +33440,7 @@ function maybe_map(val, fn) {
     return fn(val);
 }
 //# sourceMappingURL=utils.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/qs/stringify.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/qs/stringify.mjs
 
 
 
@@ -33667,13 +33721,13 @@ function stringify(object, opts = {}) {
     return joined.length > 0 ? prefix + joined : '';
 }
 //# sourceMappingURL=stringify.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/utils/query.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/utils/query.mjs
 
 function stringifyQuery(query) {
     return stringify(query, { arrayFormat: 'brackets' });
 }
 //# sourceMappingURL=query.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/data-residency.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/data-residency.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -33704,7 +33758,7 @@ function assertNoDataResidency(dataResidency, clientName) {
     }
 }
 //# sourceMappingURL=data-residency.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/core/api-promise.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/core/api-promise.mjs
 var _APIPromise_client;
 
 
@@ -33776,7 +33830,7 @@ class APIPromise extends Promise {
 }
 _APIPromise_client = new WeakMap();
 //# sourceMappingURL=api-promise.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/core/pagination.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/core/pagination.mjs
 var _AbstractPage_client;
 
 
@@ -33937,7 +33991,7 @@ class NextCursorPage extends AbstractPage {
         if (this.has_more === false) {
             return false;
         }
-        return super.hasNextPage();
+        return this.nextPageRequestOptions() != null;
     }
     nextPageRequestOptions() {
         const cursor = this.next;
@@ -33954,7 +34008,7 @@ class NextCursorPage extends AbstractPage {
     }
 }
 //# sourceMappingURL=pagination.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/auth/workload-identity-auth.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/auth/workload-identity-auth.mjs
 
 
 const SUBJECT_TOKEN_TYPES = {
@@ -33965,9 +34019,24 @@ const TOKEN_EXCHANGE_GRANT_TYPE = 'urn:ietf:params:oauth:grant-type:token-exchan
 // Cap the refresh buffer at half the actual token lifetime, matching the X.509
 // workload-identity path, so short-lived tokens keep a usable cache window.
 const MAX_REFRESH_BUFFER_FRACTION = 0.5;
-function calculateRefreshAt(expiresAt, now, refreshBufferSeconds) {
+function calculateExpiresAt(expiresIn, exchangeStartedAt) {
+    if (typeof expiresIn !== 'number' || !Number.isFinite(expiresIn) || expiresIn <= 0) {
+        throw new error_OpenAIError("Token exchange response has invalid 'expires_in' field");
+    }
+    const now = Date.now();
+    const fullLifetimeDeadline = now + expiresIn * 1000;
+    if (!Number.isSafeInteger(fullLifetimeDeadline) || fullLifetimeDeadline <= now) {
+        throw new error_OpenAIError("Token exchange response has invalid 'expires_in' field");
+    }
+    const expiresAt = fullLifetimeDeadline - (performance.now() - exchangeStartedAt);
+    if (expiresAt <= now) {
+        throw new error_OpenAIError('Workload identity token expired before its exchange completed.');
+    }
+    return expiresAt;
+}
+function calculateRefreshAt(expiresAt, lifetimeSeconds, refreshBufferSeconds) {
     const configuredBufferMs = (refreshBufferSeconds ?? 1200) * 1000;
-    const effectiveBufferMs = Math.min(configuredBufferMs, (expiresAt - now) * MAX_REFRESH_BUFFER_FRACTION);
+    const effectiveBufferMs = Math.min(configuredBufferMs, lifetimeSeconds * 1000 * MAX_REFRESH_BUFFER_FRACTION);
     return expiresAt - effectiveBufferMs;
 }
 const NATIVE_RESPONSE_PROTOTYPE = Response.prototype;
@@ -34124,6 +34193,8 @@ class WorkloadIdentityAuth {
         if (this.config.clientId) {
             body['client_id'] = this.config.clientId;
         }
+        // Exclude provider acquisition and measure delivery time independently of wall-clock changes.
+        const exchangeStartedAt = performance.now();
         const response = await this.fetch(this.tokenExchangeUrl, {
             method: 'POST',
             headers: {
@@ -34156,19 +34227,12 @@ class WorkloadIdentityAuth {
             throw new error_OpenAIError("Token exchange response missing 'access_token' field");
         }
         const expiresIn = tokenResponse.expires_in ?? 3600;
-        if (typeof expiresIn !== 'number' || !Number.isFinite(expiresIn) || expiresIn <= 0) {
-            throw new error_OpenAIError("Token exchange response has invalid 'expires_in' field");
-        }
-        const now = Date.now();
-        const expiresAt = now + expiresIn * 1000;
-        if (!Number.isSafeInteger(expiresAt) || expiresAt <= now) {
-            throw new error_OpenAIError("Token exchange response has invalid 'expires_in' field");
-        }
+        const expiresAt = calculateExpiresAt(expiresIn, exchangeStartedAt);
         if (this.tokenGeneration === generation) {
             this.cachedToken = {
                 token: accessToken,
                 expiresAt,
-                refreshAt: calculateRefreshAt(expiresAt, now, this.config.refreshBufferSeconds),
+                refreshAt: calculateRefreshAt(expiresAt, expiresIn, this.config.refreshBufferSeconds),
             };
         }
         return accessToken;
@@ -34187,7 +34251,7 @@ class WorkloadIdentityAuth {
     }
 }
 //# sourceMappingURL=workload-identity-auth.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/auth/x509-api-origin.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/auth/x509-api-origin.mjs
 
 
 /** Sole API authority approved for OpenAI X.509 workload-identity federation. */
@@ -34212,7 +34276,7 @@ function assertX509APIOrigin(value) {
     return target;
 }
 //# sourceMappingURL=x509-api-origin.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/headers.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/headers.mjs
 
 const brand_privateNullableHeaders = /* @__PURE__ */ Symbol('brand.privateNullableHeaders');
 const httpTokenHeaderName = /^[!#$%&'*+\-.^_`|~0-9A-Za-z]+$/;
@@ -34229,11 +34293,10 @@ function* iterateHeaders(headers) {
     }
     let shouldClear = false;
     let iter;
-    if (headers instanceof Headers) {
-        iter = headers.entries();
-    }
-    else if (isReadonlyArray(headers)) {
-        iter = headers;
+    // Snapshot the iterable protocol across realms without rereading a caller-controlled getter.
+    const iterator = Symbol.iterator in headers ? headers[Symbol.iterator] : undefined;
+    if (typeof iterator === 'function') {
+        iter = { [Symbol.iterator]: () => iterator.call(headers) };
     }
     else {
         shouldClear = true;
@@ -34290,7 +34353,7 @@ const isEmptyHeaders = (headers) => {
     return true;
 };
 //# sourceMappingURL=headers.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/auth/x509-transport-state-browser.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/auth/x509-transport-state-browser.mjs
 /** Browser-safe capability state keeps CommonJS outside the ordinary SDK ESM graph. */
 const registeredX509Transports = new WeakMap();
 const transientX509ConnectionErrors = new WeakSet();
@@ -34323,10 +34386,10 @@ const rememberX509Credential = WeakMap.prototype.set.bind(approvedX509Credential
 /** Resolves only credentials registered by the optional Node authentication helper. */
 const findX509Credential = WeakMap.prototype.get.bind(approvedX509Credentials);
 //# sourceMappingURL=x509-transport-state-browser.mjs.map
-// EXTERNAL MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/auth/x509-transport-state.js
-var x509_transport_state = __nccwpck_require__(383);
+// EXTERNAL MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/auth/x509-transport-state.js
+var x509_transport_state = __nccwpck_require__(4574);
 var x509_transport_state_namespaceObject = /*#__PURE__*/__nccwpck_require__.t(x509_transport_state, 2);
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/auth/x509-transport-state.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/auth/x509-transport-state.mjs
 
 
 
@@ -34347,7 +34410,7 @@ const {
   findX509Credential: x509_transport_state_findX509Credential,
 } = state;
 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/auth/x509-transport-registry.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/auth/x509-transport-registry.mjs
 
 
 const transientX509TransportCodes = new Set([
@@ -34396,7 +34459,7 @@ function resolveX509Transport(value) {
     return registered;
 }
 //# sourceMappingURL=x509-transport-registry.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/auth/x509-workload-identity-auth.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/auth/x509-workload-identity-auth.mjs
 var _X509WorkloadIdentityAuth_instances, _a, _X509WorkloadIdentityAuth_identityProviderId, _X509WorkloadIdentityAuth_serviceAccountId, _X509WorkloadIdentityAuth_configuredRefreshBufferMs, _X509WorkloadIdentityAuth_configuredRefreshBufferSeconds, _X509WorkloadIdentityAuth_organization, _X509WorkloadIdentityAuth_project, _X509WorkloadIdentityAuth_transport, _X509WorkloadIdentityAuth_refreshBufferMs, _X509WorkloadIdentityAuth_cachedToken, _X509WorkloadIdentityAuth_refresh, _X509WorkloadIdentityAuth_tokenGeneration, _X509WorkloadIdentityAuth_cancelRequestBody, _X509WorkloadIdentityAuth_assignToken, _X509WorkloadIdentityAuth_recoverRefreshFailure, _X509WorkloadIdentityAuth_fallbackToken, _X509WorkloadIdentityAuth_retireRefresh, _X509WorkloadIdentityAuth_beginRefresh, _X509WorkloadIdentityAuth_refreshToken, _X509WorkloadIdentityAuth_preflight, _X509WorkloadIdentityAuth_scope, _X509WorkloadIdentityAuth_assertTenantHeaders;
 
 
@@ -35164,7 +35227,7 @@ _a = X509WorkloadIdentityAuth, _X509WorkloadIdentityAuth_identityProviderId = ne
     }
 };
 //# sourceMappingURL=x509-workload-identity-auth.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/auth/x509-credential-options.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/auth/x509-credential-options.mjs
 
 
 
@@ -35283,7 +35346,7 @@ function prepareX509ClientClone(inherited, overrides, credential, currentlyX509)
     return { credential: nextCredential, provider: prepareProviderClone(inherited, overrides) };
 }
 //# sourceMappingURL=x509-credential-options.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/uploads.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/uploads.mjs
 
 
 
@@ -35381,6 +35444,16 @@ function normalizeFilenamePath(value) {
         throw new TypeError('Upload file name must be a safe relative path without parent directory segments');
     }
     return normalized;
+}
+const arrayBufferByteLengthGetter = Object.getOwnPropertyDescriptor(ArrayBuffer.prototype, 'byteLength')?.get;
+/** Recognizes native ArrayBuffers across realms without trusting their prototype or string tag. */
+function isArrayBuffer(value) {
+    try {
+        return arrayBufferByteLengthGetter?.call(value) !== undefined;
+    }
+    catch {
+        return false;
+    }
 }
 /** Identifies objects that expose a callable `Symbol.asyncIterator` method. */
 const isAsyncIterable = (value) => value != null && typeof value === 'object' && typeof value[Symbol.asyncIterator] === 'function';
@@ -35640,7 +35713,7 @@ async function* iterateBytes(value) {
     else if (ArrayBuffer.isView(value)) {
         yield new Uint8Array(value.buffer, value.byteOffset, value.byteLength);
     }
-    else if (value instanceof ArrayBuffer) {
+    else if (isArrayBuffer(value)) {
         yield new Uint8Array(value);
     }
     else if (value instanceof Response) {
@@ -35727,7 +35800,7 @@ const addFormValue = async (form, key, value, options) => {
     }
 };
 //# sourceMappingURL=uploads.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/to-file.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/to-file.mjs
 
 /**
  * This check adds the arrayBuffer() method type because it is available and used at runtime
@@ -35762,7 +35835,8 @@ const canReuseNativeFile = (value, name, options) => (name == null || name === v
  * filename and metadata are unchanged. Renamed native files reuse the original
  * file contents without buffering and retain their MIME type and modification
  * time unless explicitly overridden. Other filenames are inferred from response
- * URLs or input metadata when omitted, falling back to `unknown_file`. Responses,
+ * URLs or input metadata when omitted or null, falling back to `unknown_file`.
+ * An explicit empty filename is preserved. Responses,
  * native or compatible `Blob` values, and compatible non-native files supply
  * their MIME type unless `options.type` provides an explicit override.
  *
@@ -35794,12 +35868,12 @@ async function toFile(value, name, options) {
     }
     if (isResponseLike(value)) {
         const blob = await value.blob();
-        name || (name = getName(value));
+        name ?? (name = getName(value));
         const responseOptions = options?.type === undefined && blob.type ? { ...options, type: blob.type } : options;
         return makeFile(await getBytes(blob), name, responseOptions);
     }
     const parts = await getBytes(value);
-    name || (name = getName(value));
+    name ?? (name = getName(value));
     if (options?.type === undefined) {
         const typedPart = parts.find((part) => typeof part === 'object' && 'type' in part && !!part.type);
         if (typedPart) {
@@ -35812,7 +35886,7 @@ async function getBytes(value) {
     const parts = [];
     if (typeof value === 'string' ||
         ArrayBuffer.isView(value) || // includes Uint8Array, Buffer, etc.
-        value instanceof ArrayBuffer) {
+        isArrayBuffer(value)) {
         parts.push(value);
     }
     else if (isBlobLike(value)) {
@@ -35838,18 +35912,18 @@ function propsForError(value) {
     return `; props: [${props.map((p) => `"${p}"`).join(', ')}]`;
 }
 //# sourceMappingURL=to-file.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/core/uploads.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/core/uploads.mjs
 
 
 //# sourceMappingURL=uploads.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/core/resource.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/core/resource.mjs
 class APIResource {
     constructor(client) {
         this._client = client;
     }
 }
 //# sourceMappingURL=resource.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/utils/path.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/utils/path.mjs
 
 /**
  * Percent-encodes a single URI path parameter while preserving RFC 3986 path characters.
@@ -35942,7 +36016,7 @@ const createPathTagFunction = (pathEncoder = encodeURIPath) => function path(sta
  */
 const path_path = /* @__PURE__ */ createPathTagFunction(encodeURIPath);
 //# sourceMappingURL=path.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/chat/completions/messages.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/chat/completions/messages.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -35970,11 +36044,11 @@ class Messages extends APIResource {
     }
 }
 //# sourceMappingURL=messages.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/error.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/error.mjs
 /** @deprecated Import from ./core/error instead */
 
 //# sourceMappingURL=error.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/lib/parser.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/lib/parser.mjs
 
 /** Returns whether an optional chat completion tool contains a function-tool definition. */
 function isChatCompletionFunctionTool(tool) {
@@ -36063,7 +36137,7 @@ function parseResponseFormatContent(format, content) {
     }
 }
 /** Copies a function tool and attaches non-enumerable parsing and callback metadata. */
-function makeParseableTool(tool, { parser, callback, }) {
+function makeParseableTool(tool, { parser, callback }) {
     const obj = { ...tool };
     Object.defineProperties(obj, {
         $brand: {
@@ -36222,7 +36296,7 @@ function validateInputTools(tools) {
     }
 }
 //# sourceMappingURL=parser.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/lib/chatCompletionUtils.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/lib/chatCompletionUtils.mjs
 /** Returns whether a conversation message was produced by the assistant. */
 const isAssistantMessage = (message) => message?.role === 'assistant';
 /** Returns whether a conversation message contains the result of a tool call. */
@@ -36232,8 +36306,8 @@ function isPresent(obj) {
     return obj != null;
 }
 //# sourceMappingURL=chatCompletionUtils.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/lib/EventStream.mjs
-var _EventStream_instances, _EventStream_connectedPromise, _EventStream_resolveConnectedPromise, _EventStream_rejectConnectedPromise, _EventStream_endPromise, _EventStream_resolveEndPromise, _EventStream_rejectEndPromise, _EventStream_listeners, _EventStream_abortListeners, _EventStream_emittedListenerRegistrations, _EventStream_pendingListenerCleanup, _EventStream_pendingBufferedEventChecks, _EventStream_listenerDispatchDepth, _EventStream_ended, _EventStream_errored, _EventStream_aborted, _EventStream_catchingPromiseCreated, _EventStream_removeAbortListeners, _EventStream_onceForEmitted, _EventStream_removeEmittedListener, _EventStream_cleanupEmittedListeners, _EventStream_handleError;
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/lib/EventStream.mjs
+var _EventStream_instances, _EventStream_connectedPromise, _EventStream_resolveConnectedPromise, _EventStream_rejectConnectedPromise, _EventStream_endPromise, _EventStream_resolveEndPromise, _EventStream_rejectEndPromise, _EventStream_listeners, _EventStream_abortListeners, _EventStream_emittedListenerRegistrations, _EventStream_pendingListenerCleanup, _EventStream_pendingBufferedEventChecks, _EventStream_listenerDispatchDepth, _EventStream_ended, _EventStream_errored, _EventStream_aborted, _EventStream_catchingPromiseCreated, _EventStream_terminalFailure, _EventStream_removeAbortListeners, _EventStream_onceForEmitted, _EventStream_removeEmittedListener, _EventStream_cleanupEmittedListeners, _EventStream_handleError, _EventStream_settleTerminalEvent;
 
 
 const MAX_BUFFERED_ITERATOR_EVENTS = 4096;
@@ -36250,7 +36324,7 @@ const typedArrayLengthGetter = Object.getOwnPropertyDescriptor(Object.getPrototy
 const dataViewBufferGetter = Object.getOwnPropertyDescriptor(DataView.prototype, 'buffer')?.get;
 const symbolDescriptionGetter = Object.getOwnPropertyDescriptor(Symbol.prototype, 'description')?.get;
 const dateTimestampGetter = Date.prototype.getTime;
-const arrayBufferByteLengthGetter = Object.getOwnPropertyDescriptor(ArrayBuffer.prototype, 'byteLength')?.get;
+const EventStream_arrayBufferByteLengthGetter = Object.getOwnPropertyDescriptor(ArrayBuffer.prototype, 'byteLength')?.get;
 const sharedArrayBufferByteLengthGetter = typeof SharedArrayBuffer === 'function'
     ? Object.getOwnPropertyDescriptor(SharedArrayBuffer.prototype, 'byteLength')?.get
     : undefined;
@@ -36656,7 +36730,7 @@ function estimateRetainedBufferBytes(current, visit, depth) {
     const kind = 'buffer';
     switch (brand) {
         case 'ArrayBuffer': {
-            getter = arrayBufferByteLengthGetter;
+            getter = EventStream_arrayBufferByteLengthGetter;
             break;
         }
         case 'SharedArrayBuffer': {
@@ -37227,6 +37301,10 @@ class EventStream {
         _EventStream_errored.set(this, false);
         _EventStream_aborted.set(this, false);
         _EventStream_catchingPromiseCreated.set(this, false);
+        // Terminal failure recorded during settlement, before `end` is emitted, so
+        // iterators can surface it even when a throwing user listener prevented
+        // their internal failure listeners from running.
+        _EventStream_terminalFailure.set(this, void 0);
         __classPrivateFieldSet(this, _EventStream_connectedPromise, new Promise((resolve, reject) => {
             __classPrivateFieldSet(this, _EventStream_resolveConnectedPromise, resolve, "f");
             __classPrivateFieldSet(this, _EventStream_rejectConnectedPromise, reject, "f");
@@ -37300,6 +37378,9 @@ class EventStream {
         }
         if (signal.aborted) {
             this.controller.abort();
+            return;
+        }
+        if (__classPrivateFieldGet(this, _EventStream_abortListeners, "f").some((registration) => registration.signal === signal)) {
             return;
         }
         const listener = () => this.controller.abort();
@@ -37542,8 +37623,24 @@ class EventStream {
                 rejectReader();
             }
         };
+        // A throwing user listener registered before this iterator stops dispatch
+        // before onFailure runs; adopt the failure the stream recorded during
+        // settlement so terminal errors are never converted into clean completion.
+        const adoptTerminalFailure = () => {
+            if (failure) {
+                return;
+            }
+            const terminal = __classPrivateFieldGet(this, _EventStream_terminalFailure, "f");
+            if (!terminal) {
+                return;
+            }
+            if (terminal.kind === 'error' ? rejectOnError : rejectOnAbort) {
+                failure = terminal.error;
+            }
+        };
         const onEnd = () => {
             ended = true;
+            adoptTerminalFailure();
             cleanup();
             if (!pushQueue.length) {
                 rejectReader();
@@ -37575,6 +37672,9 @@ class EventStream {
                     bufferedLedger.release(entry.retention);
                     return Promise.resolve({ value, done: false });
                 }
+                if (ended || this.ended) {
+                    adoptTerminalFailure();
+                }
                 if (failure && !failureDelivered) {
                     failureDelivered = true;
                     return Promise.reject(failure);
@@ -37588,6 +37688,9 @@ class EventStream {
             },
             return: () => {
                 ended = true;
+                // The consumer walked away; terminal failures recorded later must not
+                // resurface through this iterator.
+                failureDelivered = true;
                 while (bufferedEventSizes.length) {
                     deactivateBufferedEvent(bufferedEventSizes.dequeue());
                 }
@@ -37631,59 +37734,54 @@ class EventStream {
             __classPrivateFieldGet(this, _EventStream_resolveEndPromise, "f").call(this);
         }
         const listeners = __classPrivateFieldGet(this, _EventStream_listeners, "f")[event];
-        if (listeners) {
-            __classPrivateFieldGet(this, _EventStream_listeners, "f")[event] = listeners.filter((listener) => {
-                if (listener.once) {
-                    listener.detached = true;
-                }
-                return !listener.once && !listener.removed;
-            });
-            __classPrivateFieldSet(this, _EventStream_listenerDispatchDepth, __classPrivateFieldGet(this, _EventStream_listenerDispatchDepth, "f") + 1, "f");
-            try {
-                for (const registration of listeners) {
-                    if (!registration.removed) {
-                        registration.listener(...args);
+        let dispatchError;
+        let dispatchThrew = false;
+        try {
+            if (listeners) {
+                __classPrivateFieldGet(this, _EventStream_listeners, "f")[event] = listeners.filter((listener) => {
+                    if (listener.once) {
+                        listener.detached = true;
+                    }
+                    return !listener.once && !listener.removed;
+                });
+                __classPrivateFieldSet(this, _EventStream_listenerDispatchDepth, __classPrivateFieldGet(this, _EventStream_listenerDispatchDepth, "f") + 1, "f");
+                try {
+                    for (const registration of listeners) {
+                        if (!registration.removed) {
+                            const { listener } = registration;
+                            listener(...args);
+                        }
                     }
                 }
-            }
-            finally {
-                __classPrivateFieldSet(this, _EventStream_listenerDispatchDepth, __classPrivateFieldGet(this, _EventStream_listenerDispatchDepth, "f") - 1, "f");
-                if (__classPrivateFieldGet(this, _EventStream_listenerDispatchDepth, "f") === 0) {
-                    __classPrivateFieldGet(this, _EventStream_instances, "m", _EventStream_cleanupEmittedListeners).call(this);
-                    for (const check of __classPrivateFieldGet(this, _EventStream_pendingBufferedEventChecks, "f")) {
-                        __classPrivateFieldGet(this, _EventStream_pendingBufferedEventChecks, "f").delete(check);
-                        if (!__classPrivateFieldGet(this, _EventStream_ended, "f")) {
-                            check();
+                finally {
+                    __classPrivateFieldSet(this, _EventStream_listenerDispatchDepth, __classPrivateFieldGet(this, _EventStream_listenerDispatchDepth, "f") - 1, "f");
+                    if (__classPrivateFieldGet(this, _EventStream_listenerDispatchDepth, "f") === 0) {
+                        __classPrivateFieldGet(this, _EventStream_instances, "m", _EventStream_cleanupEmittedListeners).call(this);
+                        for (const check of __classPrivateFieldGet(this, _EventStream_pendingBufferedEventChecks, "f")) {
+                            __classPrivateFieldGet(this, _EventStream_pendingBufferedEventChecks, "f").delete(check);
+                            if (!__classPrivateFieldGet(this, _EventStream_ended, "f")) {
+                                check();
+                            }
                         }
                     }
                 }
             }
         }
-        if (event === 'abort') {
-            const error = args[0];
-            if (!__classPrivateFieldGet(this, _EventStream_catchingPromiseCreated, "f") && !listeners?.length) {
-                Promise.reject(error);
-            }
-            __classPrivateFieldGet(this, _EventStream_rejectConnectedPromise, "f").call(this, error);
-            __classPrivateFieldGet(this, _EventStream_rejectEndPromise, "f").call(this, error);
-            this._emit('end');
-            return;
+        catch (error) {
+            dispatchError = error;
+            dispatchThrew = true;
         }
-        if (event === 'error') {
-            // NOTE: _emit('error', error) should only be called from #handleError().
-            const error = args[0];
-            if (!__classPrivateFieldGet(this, _EventStream_catchingPromiseCreated, "f") && !listeners?.length) {
-                // Trigger an unhandled rejection if the user hasn't registered any error handlers.
-                // If you are seeing stack traces here, make sure to handle errors via either:
-                // - runner.on('error', () => ...)
-                // - await runner.done()
-                // - await runner.finalChatCompletion()
-                // - etc.
-                Promise.reject(error);
+        try {
+            __classPrivateFieldGet(this, _EventStream_instances, "m", _EventStream_settleTerminalEvent).call(this, event, args, Boolean(listeners?.length));
+        }
+        catch (error) {
+            if (!dispatchThrew) {
+                dispatchError = error;
+                dispatchThrew = true;
             }
-            __classPrivateFieldGet(this, _EventStream_rejectConnectedPromise, "f").call(this, error);
-            __classPrivateFieldGet(this, _EventStream_rejectEndPromise, "f").call(this, error);
-            this._emit('end');
+        }
+        if (dispatchThrew) {
+            throw dispatchError;
         }
     }
     // oxlint-disable-next-line class-methods-use-this -- Subclasses override this instance hook.
@@ -37691,7 +37789,7 @@ class EventStream {
         // Hook for subclasses.
     }
 }
-_EventStream_connectedPromise = new WeakMap(), _EventStream_resolveConnectedPromise = new WeakMap(), _EventStream_rejectConnectedPromise = new WeakMap(), _EventStream_endPromise = new WeakMap(), _EventStream_resolveEndPromise = new WeakMap(), _EventStream_rejectEndPromise = new WeakMap(), _EventStream_listeners = new WeakMap(), _EventStream_abortListeners = new WeakMap(), _EventStream_emittedListenerRegistrations = new WeakMap(), _EventStream_pendingListenerCleanup = new WeakMap(), _EventStream_pendingBufferedEventChecks = new WeakMap(), _EventStream_listenerDispatchDepth = new WeakMap(), _EventStream_ended = new WeakMap(), _EventStream_errored = new WeakMap(), _EventStream_aborted = new WeakMap(), _EventStream_catchingPromiseCreated = new WeakMap(), _EventStream_instances = new WeakSet(), _EventStream_removeAbortListeners = function _EventStream_removeAbortListeners() {
+_EventStream_connectedPromise = new WeakMap(), _EventStream_resolveConnectedPromise = new WeakMap(), _EventStream_rejectConnectedPromise = new WeakMap(), _EventStream_endPromise = new WeakMap(), _EventStream_resolveEndPromise = new WeakMap(), _EventStream_rejectEndPromise = new WeakMap(), _EventStream_listeners = new WeakMap(), _EventStream_abortListeners = new WeakMap(), _EventStream_emittedListenerRegistrations = new WeakMap(), _EventStream_pendingListenerCleanup = new WeakMap(), _EventStream_pendingBufferedEventChecks = new WeakMap(), _EventStream_listenerDispatchDepth = new WeakMap(), _EventStream_ended = new WeakMap(), _EventStream_errored = new WeakMap(), _EventStream_aborted = new WeakMap(), _EventStream_catchingPromiseCreated = new WeakMap(), _EventStream_terminalFailure = new WeakMap(), _EventStream_instances = new WeakSet(), _EventStream_removeAbortListeners = function _EventStream_removeAbortListeners() {
     for (const { signal, listener } of __classPrivateFieldGet(this, _EventStream_abortListeners, "f").splice(0)) {
         signal.removeEventListener('abort', listener);
     }
@@ -37745,9 +37843,38 @@ _EventStream_connectedPromise = new WeakMap(), _EventStream_resolveConnectedProm
         return this._emit('error', openAIError);
     }
     return this._emit('error', new error_OpenAIError(String(error)));
+}, _EventStream_settleTerminalEvent = function _EventStream_settleTerminalEvent(event, args, hasListeners) {
+    if (event === 'abort') {
+        const error = args[0];
+        __classPrivateFieldSet(this, _EventStream_terminalFailure, __classPrivateFieldGet(this, _EventStream_terminalFailure, "f") ?? { kind: 'abort', error }, "f");
+        if (!__classPrivateFieldGet(this, _EventStream_catchingPromiseCreated, "f") && !hasListeners) {
+            Promise.reject(error);
+        }
+        __classPrivateFieldGet(this, _EventStream_rejectConnectedPromise, "f").call(this, error);
+        __classPrivateFieldGet(this, _EventStream_rejectEndPromise, "f").call(this, error);
+        this._emit('end');
+        return;
+    }
+    if (event === 'error') {
+        // NOTE: _emit('error', error) should only be called from #handleError().
+        const error = args[0];
+        __classPrivateFieldSet(this, _EventStream_terminalFailure, __classPrivateFieldGet(this, _EventStream_terminalFailure, "f") ?? { kind: 'error', error }, "f");
+        if (!__classPrivateFieldGet(this, _EventStream_catchingPromiseCreated, "f") && !hasListeners) {
+            // Trigger an unhandled rejection if the user hasn't registered any error handlers.
+            // If you are seeing stack traces here, make sure to handle errors via either:
+            // - runner.on('error', () => ...)
+            // - await runner.done()
+            // - await runner.finalChatCompletion()
+            // - etc.
+            Promise.reject(error);
+        }
+        __classPrivateFieldGet(this, _EventStream_rejectConnectedPromise, "f").call(this, error);
+        __classPrivateFieldGet(this, _EventStream_rejectEndPromise, "f").call(this, error);
+        this._emit('end');
+    }
 };
 //# sourceMappingURL=EventStream.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/lib/RunnableFunction.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/lib/RunnableFunction.mjs
 /** Returns whether a runnable function provides a parser for its raw argument string. */
 function isRunnableFunctionWithParse(fn) {
     return typeof fn.parse === 'function';
@@ -37765,8 +37892,8 @@ class ParsingToolFunction {
     }
 }
 //# sourceMappingURL=RunnableFunction.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/lib/AbstractChatCompletionRunner.mjs
-var _AbstractChatCompletionRunner_instances, AbstractChatCompletionRunner_a, _AbstractChatCompletionRunner_completionArrivedBeforeAbort, _AbstractChatCompletionRunner_getFinalContent, _AbstractChatCompletionRunner_getFinalMessage, _AbstractChatCompletionRunner_getFinalFunctionToolCall, _AbstractChatCompletionRunner_getFinalFunctionToolCallResult, _AbstractChatCompletionRunner_calculateTotalUsage, _AbstractChatCompletionRunner_validateParams, _AbstractChatCompletionRunner_stringifyFunctionCallResult;
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/lib/AbstractChatCompletionRunner.mjs
+var _AbstractChatCompletionRunner_instances, AbstractChatCompletionRunner_a, _AbstractChatCompletionRunner_completionArrivedBeforeAbort, _AbstractChatCompletionRunner_afterCompletionInvoked, _AbstractChatCompletionRunner_getFinalContent, _AbstractChatCompletionRunner_getFinalMessage, _AbstractChatCompletionRunner_getFinalFunctionToolCall, _AbstractChatCompletionRunner_getFinalFunctionToolCallResult, _AbstractChatCompletionRunner_calculateTotalUsage, _AbstractChatCompletionRunner_throwIfAborted, _AbstractChatCompletionRunner_validateParams, _AbstractChatCompletionRunner_stringifyFunctionCallResult;
 
 
 
@@ -37842,6 +37969,7 @@ class AbstractChatCompletionRunner extends EventStream {
         _AbstractChatCompletionRunner_instances.add(this);
         this._chatCompletions = [];
         _AbstractChatCompletionRunner_completionArrivedBeforeAbort.set(this, false);
+        _AbstractChatCompletionRunner_afterCompletionInvoked.set(this, false);
         /** Mutable conversation history, including initial input, assistant replies, and tool results. */
         this.messages = [];
     }
@@ -37856,8 +37984,8 @@ class AbstractChatCompletionRunner extends EventStream {
         }
         return chatCompletion;
     }
-    _addMessage(message, emit = true) {
-        if (!('content' in message)) {
+    _addMessage(message, emit = true, normalizeContent = true) {
+        if (normalizeContent && !('content' in message)) {
             message.content = null;
         }
         this.messages.push(message);
@@ -37927,6 +38055,9 @@ class AbstractChatCompletionRunner extends EventStream {
         return [...this._chatCompletions];
     }
     _emitFinal() {
+        if (__classPrivateFieldGet(this, _AbstractChatCompletionRunner_afterCompletionInvoked, "f")) {
+            __classPrivateFieldGet(this, _AbstractChatCompletionRunner_instances, "m", _AbstractChatCompletionRunner_throwIfAborted).call(this);
+        }
         const completion = this._chatCompletions[this._chatCompletions.length - 1];
         if (completion) {
             this._emit('finalChatCompletion', completion);
@@ -37960,7 +38091,7 @@ class AbstractChatCompletionRunner extends EventStream {
     }
     async _runChatCompletion(client, params, options) {
         for (const message of params.messages) {
-            this._addMessage(message, false);
+            this._addMessage(message, false, false);
         }
         return await this._createChatCompletion(client, params, options);
     }
@@ -37970,6 +38101,14 @@ class AbstractChatCompletionRunner extends EventStream {
         const toolContext = inputToolContext;
         const singleFunctionToCall = typeof tool_choice !== 'string' && tool_choice.type === 'function' && tool_choice?.function?.name;
         const { maxChatCompletions = DEFAULT_MAX_CHAT_COMPLETIONS, afterCompletion } = options || {};
+        const runAfterCompletion = async (completion) => {
+            if (afterCompletion == null) {
+                return;
+            }
+            __classPrivateFieldSet(this, _AbstractChatCompletionRunner_afterCompletionInvoked, true, "f");
+            await afterCompletion(completion, runner);
+            __classPrivateFieldGet(this, _AbstractChatCompletionRunner_instances, "m", _AbstractChatCompletionRunner_throwIfAborted).call(this);
+        };
         // Normalize tool definitions before invoking callbacks.
         const inputTools = params.tools.map((tool) => {
             if (isAutoParsableTool(tool)) {
@@ -38010,7 +38149,7 @@ class AbstractChatCompletionRunner extends EventStream {
                 : t)
             : undefined;
         for (const message of params.messages) {
-            this._addMessage(message, false);
+            this._addMessage(message, false, false);
         }
         let allowBufferedToolCall = false;
         const runToolCall = async (toolCall) => {
@@ -38074,7 +38213,7 @@ class AbstractChatCompletionRunner extends EventStream {
                 throw new error_OpenAIError(`missing message in ChatCompletion response`);
             }
             if (!message.tool_calls?.length) {
-                await afterCompletion?.(chatCompletion, runner);
+                await runAfterCompletion(chatCompletion);
                 return;
             }
             if (singleFunctionToCall || params.parallel_tool_calls === false) {
@@ -38087,7 +38226,7 @@ class AbstractChatCompletionRunner extends EventStream {
                         throw new APIUserAbortError();
                     }
                     if (singleFunctionToCall && result.functionCalled) {
-                        await afterCompletion?.(chatCompletion, runner);
+                        await runAfterCompletion(chatCompletion);
                         return;
                     }
                 }
@@ -38114,11 +38253,11 @@ class AbstractChatCompletionRunner extends EventStream {
                     throw new APIUserAbortError();
                 }
             }
-            await afterCompletion?.(chatCompletion, runner);
+            await runAfterCompletion(chatCompletion);
         }
     }
 }
-AbstractChatCompletionRunner_a = AbstractChatCompletionRunner, _AbstractChatCompletionRunner_completionArrivedBeforeAbort = new WeakMap(), _AbstractChatCompletionRunner_instances = new WeakSet(), _AbstractChatCompletionRunner_getFinalContent = function _AbstractChatCompletionRunner_getFinalContent() {
+AbstractChatCompletionRunner_a = AbstractChatCompletionRunner, _AbstractChatCompletionRunner_completionArrivedBeforeAbort = new WeakMap(), _AbstractChatCompletionRunner_afterCompletionInvoked = new WeakMap(), _AbstractChatCompletionRunner_instances = new WeakSet(), _AbstractChatCompletionRunner_getFinalContent = function _AbstractChatCompletionRunner_getFinalContent() {
     return __classPrivateFieldGet(this, _AbstractChatCompletionRunner_instances, "m", _AbstractChatCompletionRunner_getFinalMessage).call(this).content ?? null;
 }, _AbstractChatCompletionRunner_getFinalMessage = function _AbstractChatCompletionRunner_getFinalMessage() {
     let i = this.messages.length;
@@ -38174,6 +38313,16 @@ AbstractChatCompletionRunner_a = AbstractChatCompletionRunner, _AbstractChatComp
         }
     }
     return total;
+}, _AbstractChatCompletionRunner_throwIfAborted = function _AbstractChatCompletionRunner_throwIfAborted() {
+    if (this.controller.signal.aborted) {
+        const error = new APIUserAbortError();
+        Object.defineProperty(error, 'cause', {
+            value: this.controller.signal.reason,
+            writable: true,
+            configurable: true,
+        });
+        throw error;
+    }
 }, _AbstractChatCompletionRunner_validateParams = function _AbstractChatCompletionRunner_validateParams(params) {
     if (params.n != null && params.n > 1) {
         throw new error_OpenAIError('ChatCompletion convenience helpers only support n=1 at this time. To use n>1, please use chat.completions.create() directly.');
@@ -38188,7 +38337,7 @@ AbstractChatCompletionRunner_a = AbstractChatCompletionRunner, _AbstractChatComp
     return JSON.stringify(rawContent);
 };
 //# sourceMappingURL=AbstractChatCompletionRunner.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/lib/ChatCompletionRunner.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/lib/ChatCompletionRunner.mjs
 
 
 /** Executes function tools and follows up with non-streaming chat completion requests. */
@@ -38203,16 +38352,19 @@ class ChatCompletionRunner extends AbstractChatCompletionRunner {
         runner._run(() => runner._runTools(client, params, runner, opts));
         return runner;
     }
-    /** Appends a conversation message and emits text content for assistant replies. */
-    _addMessage(message, emit = true) {
-        super._addMessage(message, emit);
-        if (isAssistantMessage(message) && message.content) {
+    /**
+     * Appends a conversation message and emits text content for assistant replies.
+     * @param normalizeContent Defaults to true; initial history passes false to preserve caller-owned messages.
+     */
+    _addMessage(message, emit = true, normalizeContent = true) {
+        super._addMessage(message, emit, normalizeContent);
+        if (emit && isAssistantMessage(message) && message.content) {
             this._emit('content', message.content);
         }
     }
 }
 //# sourceMappingURL=ChatCompletionRunner.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/_vendor/partial-json-parser/parser.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/_vendor/partial-json-parser/parser.mjs
 const STR = 1;
 const NUM = 2;
 const ARR = 4;
@@ -38444,15 +38596,16 @@ const _parseJSON = (jsonString, allow) => {
         if (index === length && !(Allow.NUM & allow)) {
             markPartialJSON('Unterminated number literal');
         }
+        const number = jsonString.substring(start, index);
         try {
-            return JSON.parse(jsonString.substring(start, index));
+            return JSON.parse(number);
         }
         catch {
-            if (jsonString.substring(start, index) === '-' && Allow.NUM & allow) {
+            if (number === '-' && Allow.NUM & allow) {
                 markPartialJSON("Not sure what '-' is");
             }
             try {
-                return JSON.parse(jsonString.substring(start, jsonString.lastIndexOf('e')));
+                return JSON.parse(number.substring(0, number.lastIndexOf('e')));
             }
             catch (e) {
                 throwMalformedError(String(e));
@@ -38470,11 +38623,11 @@ const _parseJSON = (jsonString, allow) => {
 const partialParse = (input) => parseJSON(input, Allow.ALL ^ Allow.NUM);
 
 //# sourceMappingURL=parser.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/streaming.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/streaming.mjs
 /** @deprecated Import from ./core/streaming instead */
 
 //# sourceMappingURL=streaming.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/lib/ChatCompletionStream.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/lib/ChatCompletionStream.mjs
 var _ChatCompletionStream_instances, _ChatCompletionStream_params, _ChatCompletionStream_audioDoneChoiceIndexes, _ChatCompletionStream_choiceEventStates, _ChatCompletionStream_currentChatCompletionSnapshot, _ChatCompletionStream_hasAutoParseableTool, _ChatCompletionStream_partialJSONParseBudget, _ChatCompletionStream_beginRequest, _ChatCompletionStream_getChoiceEventState, _ChatCompletionStream_addChunk, _ChatCompletionStream_emitToolCallDoneEvent, _ChatCompletionStream_emitContentDoneEvents, _ChatCompletionStream_validateStructuredSnapshots, _ChatCompletionStream_endRequest, _ChatCompletionStream_accumulateChatCompletion;
 
 
@@ -39330,6 +39483,9 @@ class ChatCompletionStream extends AbstractChatCompletionRunner {
         const stream = Stream.fromReadableStream(readableStream, this.controller);
         let chatId;
         for await (const item of stream) {
+            if ('error' in item && hasOwn(item, 'error') && typeof item.error === 'object' && item.error !== null) {
+                throw new APIError(undefined, item.error, undefined, undefined);
+            }
             if (isChatCompletionReadableStreamMessage(item)) {
                 const message = getChatCompletionReadableStreamMessage(item);
                 if (__classPrivateFieldGet(this, _ChatCompletionStream_currentChatCompletionSnapshot, "f")) {
@@ -39535,6 +39691,9 @@ class ChatCompletionStream extends AbstractChatCompletionRunner {
             }
             else if (inputTool?.function.strict) {
                 parsedArguments = parseResponseFormatContent({ type: 'json_schema', $parseRaw: undefined }, validateStructuredJSONSnapshot(argumentsSnapshot));
+            }
+            if (choiceSnapshot.finish_reason) {
+                state.done_tool_calls.add(toolCallIndex);
             }
             this._emit('tool_calls.function.arguments.done', {
                 name: toolCallSnapshot.function.name,
@@ -40142,7 +40301,7 @@ function assertNever(_x) {
     return _x;
 }
 //# sourceMappingURL=ChatCompletionStream.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/lib/ChatCompletionStreamingRunner.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/lib/ChatCompletionStreamingRunner.mjs
 
 
 
@@ -40174,6 +40333,7 @@ class ChatCompletionStreamingRunner extends ChatCompletionStream {
                         throw new error_OpenAIError('cannot serialize a tool message before receiving any chunks');
                     }
                     push(makeChatCompletionReadableStreamMessageChunk(lastChunk, message, toolCallIds));
+                    toolCallIds = undefined;
                 }
             };
             this.on('chunk', onChunk);
@@ -40200,7 +40360,7 @@ class ChatCompletionStreamingRunner extends ChatCompletionStream {
     }
 }
 //# sourceMappingURL=ChatCompletionStreamingRunner.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/chat/completions/completions.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/chat/completions/completions.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -40326,7 +40486,7 @@ class Completions extends APIResource {
 
 Completions.Messages = Messages;
 //# sourceMappingURL=completions.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/chat/chat.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/chat/chat.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -40339,18 +40499,18 @@ class Chat extends APIResource {
 }
 Chat.Completions = Completions;
 //# sourceMappingURL=chat.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/chat/completions/index.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/chat/completions/index.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 //# sourceMappingURL=index.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/chat/index.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/chat/index.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 //# sourceMappingURL=index.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/admin-api-keys.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/admin-api-keys.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -40428,7 +40588,7 @@ class AdminAPIKeys extends APIResource {
     }
 }
 //# sourceMappingURL=admin-api-keys.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/audit-logs.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/audit-logs.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -40456,7 +40616,7 @@ class AuditLogs extends APIResource {
     }
 }
 //# sourceMappingURL=audit-logs.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/certificates.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/certificates.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -40597,7 +40757,7 @@ class Certificates extends APIResource {
     }
 }
 //# sourceMappingURL=certificates.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/data-retention.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/data-retention.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 class DataRetention extends APIResource {
@@ -40636,7 +40796,7 @@ class DataRetention extends APIResource {
     }
 }
 //# sourceMappingURL=data-retention.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/invites.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/invites.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -40716,7 +40876,7 @@ class Invites extends APIResource {
     }
 }
 //# sourceMappingURL=invites.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/roles.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/roles.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -40809,7 +40969,7 @@ class Roles extends APIResource {
     }
 }
 //# sourceMappingURL=roles.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/spend-alerts.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/spend-alerts.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -40916,7 +41076,7 @@ class SpendAlerts extends APIResource {
     }
 }
 //# sourceMappingURL=spend-alerts.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/spend-limit.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/spend-limit.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 class SpendLimit extends APIResource {
@@ -40972,7 +41132,7 @@ class SpendLimit extends APIResource {
     }
 }
 //# sourceMappingURL=spend-limit.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/usage.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/usage.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 class Usage extends APIResource {
@@ -41176,7 +41336,7 @@ class Usage extends APIResource {
     }
 }
 //# sourceMappingURL=usage.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/groups/roles.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/groups/roles.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -41257,7 +41417,7 @@ class roles_Roles extends APIResource {
     }
 }
 //# sourceMappingURL=roles.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/groups/users.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/groups/users.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -41338,7 +41498,7 @@ class Users extends APIResource {
     }
 }
 //# sourceMappingURL=users.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/groups/groups.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/groups/groups.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -41443,7 +41603,7 @@ class Groups extends APIResource {
 Groups.Users = Users;
 Groups.Roles = roles_Roles;
 //# sourceMappingURL=groups.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/api-keys.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/api-keys.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -41508,7 +41668,7 @@ class APIKeys extends APIResource {
     }
 }
 //# sourceMappingURL=api-keys.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/certificates.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/certificates.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -41569,7 +41729,7 @@ class certificates_Certificates extends APIResource {
     }
 }
 //# sourceMappingURL=certificates.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/data-retention.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/data-retention.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -41612,7 +41772,7 @@ class data_retention_DataRetention extends APIResource {
     }
 }
 //# sourceMappingURL=data-retention.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/hosted-tool-permissions.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/hosted-tool-permissions.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -41654,7 +41814,7 @@ class HostedToolPermissions extends APIResource {
     }
 }
 //# sourceMappingURL=hosted-tool-permissions.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/model-permissions.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/model-permissions.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -41714,7 +41874,7 @@ class ModelPermissions extends APIResource {
     }
 }
 //# sourceMappingURL=model-permissions.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/rate-limits.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/rate-limits.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -41758,7 +41918,7 @@ class RateLimits extends APIResource {
     }
 }
 //# sourceMappingURL=rate-limits.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/roles.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/roles.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -41863,7 +42023,7 @@ class projects_roles_Roles extends APIResource {
     }
 }
 //# sourceMappingURL=roles.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/spend-alerts.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/spend-alerts.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -41981,7 +42141,7 @@ class spend_alerts_SpendAlerts extends APIResource {
     }
 }
 //# sourceMappingURL=spend-alerts.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/spend-limit.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/spend-limit.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -42045,7 +42205,7 @@ class spend_limit_SpendLimit extends APIResource {
     }
 }
 //# sourceMappingURL=spend-limit.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/groups/roles.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/groups/roles.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -42129,7 +42289,7 @@ class groups_roles_Roles extends APIResource {
     }
 }
 //# sourceMappingURL=roles.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/groups/groups.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/groups/groups.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -42218,7 +42378,7 @@ class groups_Groups extends APIResource {
 }
 groups_Groups.Roles = groups_roles_Roles;
 //# sourceMappingURL=groups.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/service-accounts/api-keys.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/service-accounts/api-keys.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -42241,7 +42401,7 @@ class api_keys_APIKeys extends APIResource {
     }
 }
 //# sourceMappingURL=api-keys.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/service-accounts/service-accounts.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/service-accounts/service-accounts.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -42346,7 +42506,7 @@ class ServiceAccounts extends APIResource {
 }
 ServiceAccounts.APIKeys = api_keys_APIKeys;
 //# sourceMappingURL=service-accounts.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/users/roles.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/users/roles.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -42430,7 +42590,7 @@ class users_roles_Roles extends APIResource {
     }
 }
 //# sourceMappingURL=roles.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/users/users.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/users/users.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -42542,7 +42702,7 @@ class users_Users extends APIResource {
 }
 users_Users.Roles = users_roles_Roles;
 //# sourceMappingURL=users.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/projects.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/projects.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -42691,7 +42851,7 @@ Projects.SpendLimit = spend_limit_SpendLimit;
 Projects.SpendAlerts = spend_alerts_SpendAlerts;
 Projects.Certificates = certificates_Certificates;
 //# sourceMappingURL=projects.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/users/roles.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/users/roles.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -42772,7 +42932,7 @@ class organization_users_roles_Roles extends APIResource {
     }
 }
 //# sourceMappingURL=roles.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/users/users.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/users/users.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -42852,7 +43012,7 @@ class users_users_Users extends APIResource {
 }
 users_users_Users.Roles = organization_users_roles_Roles;
 //# sourceMappingURL=users.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/organization/organization.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/organization/organization.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -42909,7 +43069,7 @@ Organization.SpendAlerts = SpendAlerts;
 Organization.Certificates = Certificates;
 Organization.Projects = Projects;
 //# sourceMappingURL=organization.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/admin/admin.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/admin/admin.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -42922,7 +43082,7 @@ class Admin extends APIResource {
 }
 Admin.Organization = Organization;
 //# sourceMappingURL=admin.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/audio/speech.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/audio/speech.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -42958,7 +43118,7 @@ class Speech extends APIResource {
     }
 }
 //# sourceMappingURL=speech.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/audio/transcriptions.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/audio/transcriptions.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -42977,7 +43137,7 @@ class Transcriptions extends APIResource {
     }
 }
 //# sourceMappingURL=transcriptions.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/audio/translations.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/audio/translations.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -42990,7 +43150,7 @@ class Translations extends APIResource {
     }
 }
 //# sourceMappingURL=translations.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/audio/audio.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/audio/audio.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -43011,7 +43171,7 @@ Audio.Transcriptions = Transcriptions;
 Audio.Translations = Translations;
 Audio.Speech = Speech;
 //# sourceMappingURL=audio.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/batches.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/batches.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -43055,7 +43215,7 @@ class Batches extends APIResource {
     }
 }
 //# sourceMappingURL=batches.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/beta/assistants.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/beta/assistants.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -43130,7 +43290,7 @@ class Assistants extends APIResource {
     }
 }
 //# sourceMappingURL=assistants.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/beta/realtime/sessions.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/beta/realtime/sessions.mjs
 
 
 class Sessions extends APIResource {
@@ -43159,7 +43319,7 @@ class Sessions extends APIResource {
     }
 }
 //# sourceMappingURL=sessions.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/beta/realtime/transcription-sessions.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/beta/realtime/transcription-sessions.mjs
 
 
 class TranscriptionSessions extends APIResource {
@@ -43188,7 +43348,7 @@ class TranscriptionSessions extends APIResource {
     }
 }
 //# sourceMappingURL=transcription-sessions.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/beta/realtime/realtime.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/beta/realtime/realtime.mjs
 
 
 
@@ -43207,7 +43367,7 @@ class Realtime extends APIResource {
 Realtime.Sessions = Sessions;
 Realtime.TranscriptionSessions = TranscriptionSessions;
 //# sourceMappingURL=realtime.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/beta/chatkit/sessions.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/beta/chatkit/sessions.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -43253,7 +43413,7 @@ class sessions_Sessions extends APIResource {
     }
 }
 //# sourceMappingURL=sessions.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/beta/chatkit/threads.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/beta/chatkit/threads.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -43335,7 +43495,7 @@ class Threads extends APIResource {
     }
 }
 //# sourceMappingURL=threads.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/beta/chatkit/chatkit.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/beta/chatkit/chatkit.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -43352,7 +43512,7 @@ class ChatKit extends APIResource {
 ChatKit.Sessions = sessions_Sessions;
 ChatKit.Threads = Threads;
 //# sourceMappingURL=chatkit.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/beta/responses/input-items.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/beta/responses/input-items.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -43386,7 +43546,7 @@ class InputItems extends APIResource {
     }
 }
 //# sourceMappingURL=input-items.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/beta/responses/input-tokens.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/beta/responses/input-tokens.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -43417,7 +43577,7 @@ class InputTokens extends APIResource {
     }
 }
 //# sourceMappingURL=input-tokens.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/beta/responses/responses.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/beta/responses/responses.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -43482,7 +43642,7 @@ class Responses extends APIResource {
     /**
      * Cancels a model response with the given ID. Only responses created with the
      * `background` parameter set to `true` can be cancelled.
-     * [Learn more](https://platform.openai.com/docs/guides/background).
+     * [Learn more](https://developers.openai.com/api/docs/guides/background).
      *
      * @example
      * ```ts
@@ -43506,15 +43666,15 @@ class Responses extends APIResource {
      * Compact a conversation. Returns a compacted response object.
      *
      * Learn when and how to compact long-running conversations in the
-     * [conversation state guide](https://platform.openai.com/docs/guides/conversation-state#managing-the-context-window).
+     * [conversation state guide](https://developers.openai.com/api/docs/guides/conversation-state#managing-the-context-window).
      * For ZDR-compatible compaction details, see
-     * [Compaction (advanced)](https://platform.openai.com/docs/guides/conversation-state#compaction-advanced).
+     * [Compaction (advanced)](https://developers.openai.com/api/docs/guides/conversation-state#compaction-advanced).
      *
      * @example
      * ```ts
      * const betaCompactedResponse =
      *   await client.beta.responses.compact({
-     *     model: 'gpt-5.6-sol',
+     *     model: 'gpt-6-astra',
      *   });
      * ```
      */
@@ -43534,7 +43694,7 @@ class Responses extends APIResource {
 Responses.InputItems = InputItems;
 Responses.InputTokens = InputTokens;
 //# sourceMappingURL=responses.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/beta/threads/messages.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/beta/threads/messages.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -43614,7 +43774,7 @@ class messages_Messages extends APIResource {
     }
 }
 //# sourceMappingURL=messages.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/beta/threads/runs/steps.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/beta/threads/runs/steps.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -43656,7 +43816,7 @@ class Steps extends APIResource {
     }
 }
 //# sourceMappingURL=steps.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/utils/base64.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/utils/base64.mjs
 
 
 const toBase64 = (data) => {
@@ -43697,6 +43857,9 @@ const toFloat32Array = (base64Str) => {
     if (typeof Buffer !== 'undefined') {
         // for Node.js environment
         const buf = Buffer.from(base64Str, 'base64');
+        if (buf.length % Float32Array.BYTES_PER_ELEMENT !== 0) {
+            throw new RangeError('Invalid base64-encoded float32 array: byte length must be a multiple of 4');
+        }
         return Array.from(new Float32Array(buf.buffer, buf.byteOffset, buf.length / Float32Array.BYTES_PER_ELEMENT));
     }
     else {
@@ -43711,7 +43874,7 @@ const toFloat32Array = (base64Str) => {
     }
 };
 //# sourceMappingURL=base64.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/utils/env.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/utils/env.mjs
 /**
  * Read an environment variable.
  *
@@ -43734,7 +43897,7 @@ const env_readEnv = (env) => {
     return undefined;
 };
 //# sourceMappingURL=env.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/utils.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/utils.mjs
 
 
 
@@ -43743,7 +43906,7 @@ const env_readEnv = (env) => {
 
 
 //# sourceMappingURL=utils.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/assistant-stream-delta.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/assistant-stream-delta.mjs
 
 
 const MAX_ASSISTANT_STREAM_ARRAY_GROWTH = 1024;
@@ -44045,7 +44208,7 @@ function createAssistantStreamArrayDeltaCommit(accumulator, delta, kind, cacheAr
     return () => commitAssistantStreamArrayProjection(projection);
 }
 //# sourceMappingURL=assistant-stream-delta.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/lib/AssistantStream.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/lib/AssistantStream.mjs
 var _AssistantStream_instances, _AssistantStream_runStepSnapshots, _AssistantStream_runStepIDOwners, _AssistantStream_activeRunStepID, _AssistantStream_messageSnapshots, _AssistantStream_messageIDOwners, _AssistantStream_messageSnapshot, _AssistantStream_activeMessageID, _AssistantStream_finalRun, _AssistantStream_currentContentIndex, _AssistantStream_currentContent, _AssistantStream_currentToolCallIndex, _AssistantStream_currentToolCall, _AssistantStream_currentEvent, _AssistantStream_currentRunSnapshot, _AssistantStream_currentRunStepSnapshot, _AssistantStream_addEvent, _AssistantStream_endRequest, _AssistantStream_validateRunStepEvent, _AssistantStream_reserveRunStepAlias, _AssistantStream_validateMessageEvent, _AssistantStream_reserveMessageAlias, _AssistantStream_handleMessage, _AssistantStream_handleRunStep, _AssistantStream_emitExposed, _AssistantStream_handleEvent, _AssistantStream_accumulateRunStep, _AssistantStream_accumulateMessage, _AssistantStream_accumulateContent, _AssistantStream_handleRun;
 
 
@@ -44218,7 +44381,10 @@ class AssistantStream extends EventStream {
         await this.done();
         return Object.values(__classPrivateFieldGet(this, _AssistantStream_runStepSnapshots, "f"));
     }
-    /** Waits for successful completion and returns the final snapshot of every observed message. */
+    /**
+     * Waits for successful completion and returns the final snapshot of every observed message.
+     * Terminal message events replace accumulated snapshots without mutating earlier snapshots.
+     */
     async finalMessages() {
         await this.done();
         return Object.values(__classPrivateFieldGet(this, _AssistantStream_messageSnapshots, "f"));
@@ -44365,6 +44531,9 @@ _AssistantStream_addEvent = function _AssistantStream_addEvent(event) {
         case 'thread.message.delta':
         case 'thread.message.completed':
         case 'thread.message.incomplete': {
+            if (messageID !== undefined && __classPrivateFieldGet(this, _AssistantStream_messageSnapshot, "f")) {
+                __classPrivateFieldGet(this, _AssistantStream_instances, "m", _AssistantStream_reserveMessageAlias).call(this, __classPrivateFieldGet(this, _AssistantStream_messageSnapshot, "f"), messageID);
+            }
             __classPrivateFieldGet(this, _AssistantStream_instances, "m", _AssistantStream_handleMessage).call(this, stableEvent);
             if (messageID !== undefined) {
                 __classPrivateFieldGet(this, _AssistantStream_instances, "m", _AssistantStream_reserveMessageAlias).call(this, stableEvent.data, messageID);
@@ -44376,8 +44545,7 @@ _AssistantStream_addEvent = function _AssistantStream_addEvent(event) {
             break;
         }
         case 'error': {
-            //This is included for completeness, but errors are processed in the SSE event processing so this should not occur
-            throw new Error('Encountered an error event in event processing - errors should be processed earlier');
+            throw new APIError(undefined, stableEvent.data, undefined, undefined);
         }
         default: {
             AssistantStream_assertNever(stableEvent);
@@ -44396,6 +44564,12 @@ _AssistantStream_addEvent = function _AssistantStream_addEvent(event) {
     const runStepID = descriptor && 'value' in descriptor ? descriptor.value : undefined;
     if (typeof runStepID !== 'string' || runStepID.length === 0) {
         throw new error_OpenAIError('Received assistant run-step event with an invalid run-step ID');
+    }
+    if (event.event === 'thread.run.step.delta') {
+        const delta = event.data.delta;
+        if (delta && hasOwn(delta, 'id')) {
+            throw new error_OpenAIError('Run-step deltas must not contain an id field');
+        }
     }
     if (event.event === 'thread.run.step.created') {
         if (__classPrivateFieldGet(this, _AssistantStream_activeRunStepID, "f") !== undefined) {
@@ -44637,9 +44811,13 @@ _AssistantStream_addEvent = function _AssistantStream_addEvent(event) {
             if (!snapshot) {
                 throw new Error('Received a RunStepDelta before creation of a snapshot');
             }
-            const data = event.data;
-            if (data.delta) {
-                const accumulated = accumulateAssistantStreamDelta(snapshot, data.delta, true);
+            const delta = event.data.delta;
+            if (delta) {
+                // Raw-event listeners can replace or modify the delta after initial validation.
+                if (hasOwn(delta, 'id')) {
+                    throw new error_OpenAIError('Run-step deltas must not contain an id field');
+                }
+                const accumulated = accumulateAssistantStreamDelta(snapshot, delta, true);
                 __classPrivateFieldGet(this, _AssistantStream_runStepSnapshots, "f")[runStepID] = accumulated;
             }
             return __classPrivateFieldGet(this, _AssistantStream_runStepSnapshots, "f")[runStepID];
@@ -44692,9 +44870,9 @@ _AssistantStream_addEvent = function _AssistantStream_addEvent(event) {
         case 'thread.message.in_progress':
         case 'thread.message.completed':
         case 'thread.message.incomplete': {
-            //No changes on other thread events
+            //Terminal events provide the authoritative message snapshot.
             if (snapshot) {
-                return [snapshot, newContent];
+                return [event.event === 'thread.message.in_progress' ? snapshot : event.data, newContent];
             }
             throw new Error('Received thread message event with no existing snapshot');
         }
@@ -44737,7 +44915,7 @@ function AssistantStream_assertNever(_x) {
     return _x;
 }
 //# sourceMappingURL=AssistantStream.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/lib/polling.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/lib/polling.mjs
 
 
 
@@ -44821,8 +44999,8 @@ function sleepUntilAborted(milliseconds, signal) {
 }
 /**
  * Repeatedly retrieves a lifecycle resource using the existing polling-helper
- * headers. Intermediate states wait for the explicit interval, server interval,
- * or five-second default; terminal states return the same parsed object.
+ * headers. Intermediate states wait for the explicit interval (including zero),
+ * the server interval, or five-second default; terminal states return the same parsed object.
  * The caller's signal interrupts intermediate waits, unknown states retry
  * immediately, and retrieval errors propagate unchanged.
  *
@@ -44842,8 +45020,9 @@ async function pollWithResponse(retrieve, intermediateStatuses, terminalStatuses
         const { status } = data;
         if (intermediateStatuses.includes(status)) {
             let sleepInterval = 5000;
-            if (options?.pollIntervalMs) {
-                sleepInterval = options.pollIntervalMs;
+            const pollIntervalMs = options?.pollIntervalMs;
+            if (pollIntervalMs || pollIntervalMs === 0) {
+                sleepInterval = pollIntervalMs;
             }
             else {
                 const headerInterval = response.headers.get('openai-poll-after-ms');
@@ -44865,7 +45044,7 @@ async function pollWithResponse(retrieve, intermediateStatuses, terminalStatuses
     }
 }
 //# sourceMappingURL=polling.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/lib/assistant-run-polling.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/lib/assistant-run-polling.mjs
 
 /**
  * Polls an assistant run through the resource's retrieve method, preserving the
@@ -44880,7 +45059,7 @@ function pollAssistantRun(resource, runID, params, options) {
     }), ['queued', 'in_progress', 'cancelling'], ['requires_action', 'incomplete', 'cancelled', 'completed', 'failed', 'expired'], options);
 }
 //# sourceMappingURL=assistant-run-polling.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/beta/threads/runs/runs.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/beta/threads/runs/runs.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -45027,7 +45206,7 @@ class Runs extends APIResource {
 }
 Runs.Steps = Steps;
 //# sourceMappingURL=runs.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/beta/threads/threads.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/beta/threads/threads.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -45127,7 +45306,7 @@ class threads_Threads extends APIResource {
 threads_Threads.Runs = Runs;
 threads_Threads.Messages = messages_Messages;
 //# sourceMappingURL=threads.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/beta/beta.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/beta/beta.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -45156,7 +45335,7 @@ Beta.ChatKit = ChatKit;
 Beta.Assistants = Assistants;
 Beta.Threads = threads_Threads;
 //# sourceMappingURL=beta.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/completions.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/completions.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 /**
@@ -45173,7 +45352,7 @@ class completions_Completions extends APIResource {
     }
 }
 //# sourceMappingURL=completions.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/containers/files/content.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/containers/files/content.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -45193,7 +45372,7 @@ class Content extends APIResource {
     }
 }
 //# sourceMappingURL=content.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/containers/files/files.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/containers/files/files.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -45250,7 +45429,7 @@ class Files extends APIResource {
 }
 Files.Content = Content;
 //# sourceMappingURL=files.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/containers/containers.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/containers/containers.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -45301,14 +45480,14 @@ class Containers extends APIResource {
 }
 Containers.Files = Files;
 //# sourceMappingURL=containers.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/content-provenance-checks.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/content-provenance-checks.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 class ContentProvenanceChecks extends APIResource {
     /**
      * Check whether an image or audio file contains known OpenAI provenance signals.
-     * [Learn more about content provenance](/api/docs/guides/content-provenance).
+     * [Learn more about content provenance](https://developers.openai.com/api/docs/guides/content-provenance).
      *
      * If `not_detected`, it means the tool did not find supported signals in the
      * uploaded file. The content could still have been generated by OpenAI if the
@@ -45322,7 +45501,7 @@ class ContentProvenanceChecks extends APIResource {
     }
 }
 //# sourceMappingURL=content-provenance-checks.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/conversations/items.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/conversations/items.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -45372,7 +45551,7 @@ class Items extends APIResource {
     }
 }
 //# sourceMappingURL=items.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/conversations/conversations.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/conversations/conversations.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -45423,7 +45602,7 @@ class Conversations extends APIResource {
 }
 Conversations.Items = Items;
 //# sourceMappingURL=conversations.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/lib/embeddings.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/lib/embeddings.mjs
 
 /**
  * Sends the optimized embeddings request while preserving explicit encodings and
@@ -45439,31 +45618,37 @@ function createEmbedding(client, body, options) {
     if (hasUserProvidedEncodingFormat) {
         loggerFor(client).debug('embeddings/user defined encoding_format:', body.encoding_format);
     }
-    const response = client.post('/embeddings', {
-        body: {
-            ...body,
-            encoding_format: encodingFormat,
-        },
+    const optimizedBody = { ...body, encoding_format: encodingFormat };
+    const requestOptions = {
+        body: optimizedBody,
         ...options,
         __security: { bearerAuth: true },
-    });
+    };
+    const response = client.post('/embeddings', requestOptions);
     // Explicit encodings return the original response promise unchanged.
     if (hasUserProvidedEncodingFormat) {
         return response;
     }
-    // The default request uses base64 on the wire, but returns the API's default
-    // numeric embedding representation to the caller.
+    // Preserve numeric output for default requests, including body overrides that
+    // change the encoding used on the wire.
     loggerFor(client).debug('embeddings/decoding base64 embeddings from base64');
     return response._thenUnwrap((data) => {
-        if (data && data.data) {
-            const embeddings = data.data;
+        const embeddings = data?.data;
+        if (embeddings !== undefined) {
+            if (!Array.isArray(embeddings)) {
+                throw new TypeError('Expected embeddings response data to be an array');
+            }
             const { length } = embeddings;
             // Preserve the original iteration length and skip sparse-array holes.
             for (let index = 0; index < length; index += 1) {
                 if (index in embeddings) {
                     const embeddingBase64Obj = embeddings[index];
-                    const embeddingBase64Str = embeddingBase64Obj.embedding;
-                    embeddingBase64Obj.embedding = toFloat32Array(embeddingBase64Str);
+                    const { embedding } = embeddingBase64Obj;
+                    // Request hooks and serialization can also select float embeddings.
+                    if (Array.isArray(embedding)) {
+                        continue;
+                    }
+                    embeddingBase64Obj.embedding = toFloat32Array(embedding);
                 }
             }
         }
@@ -45471,7 +45656,7 @@ function createEmbedding(client, body, options) {
     });
 }
 //# sourceMappingURL=embeddings.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/embeddings.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/embeddings.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -45484,7 +45669,7 @@ class Embeddings extends APIResource {
     }
 }
 //# sourceMappingURL=embeddings.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/evals/runs/output-items.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/evals/runs/output-items.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -45512,7 +45697,7 @@ class OutputItems extends APIResource {
     }
 }
 //# sourceMappingURL=output-items.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/evals/runs/runs.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/evals/runs/runs.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -45582,7 +45767,7 @@ class runs_Runs extends APIResource {
 }
 runs_Runs.OutputItems = OutputItems;
 //# sourceMappingURL=runs.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/evals/evals.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/evals/evals.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -45603,7 +45788,7 @@ class Evals extends APIResource {
      * data source, which dictates the schema of the data used in the evaluation. After
      * creating an evaluation, you can run it on different models and model parameters.
      * We support several types of graders and datasources. For more information, see
-     * the [Evals guide](https://platform.openai.com/docs/guides/evals).
+     * the [Evals guide](https://developers.openai.com/api/docs/guides/evals).
      */
     create(body, options) {
         return this._client.post('/evals', { body, ...options, __security: { bearerAuth: true } });
@@ -45639,26 +45824,27 @@ class Evals extends APIResource {
 }
 Evals.Runs = runs_Runs;
 //# sourceMappingURL=evals.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/lib/file-processing.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/lib/file-processing.mjs
 
 
 /**
- * Waits for file processing through the resource's retrieve method. The timeout
- * is checked after each subsequent retrieval, preserving the existing behavior
+ * Waits for file processing through the resource's retrieve method. Elapsed time
+ * uses a monotonic clock so system clock changes do not affect the timeout,
+ * which is checked after each subsequent retrieval, preserving the existing behavior
  * for an initially terminal file and for a terminal response received too late.
  *
  * @internal
  */
 async function waitForFileProcessing(resource, id, pollInterval, maxWait) {
     const terminalStates = new Set(['processed', 'error', 'deleted']);
-    const start = Date.now();
+    const start = performance.now();
     let file = await resource.retrieve(id);
     while (!file.status || !terminalStates.has(file.status)) {
         // oxlint-disable-next-line no-await-in-loop -- Wait before issuing the next processing-status request.
         await sleep(pollInterval);
         // oxlint-disable-next-line no-await-in-loop -- The timeout and next iteration depend on this response.
         file = await resource.retrieve(id);
-        if (Date.now() - start > maxWait) {
+        if (performance.now() - start > maxWait) {
             throw new APIConnectionTimeoutError({
                 message: `Giving up on waiting for file ${id} to finish processing after ${maxWait} milliseconds.`,
             });
@@ -45667,7 +45853,7 @@ async function waitForFileProcessing(resource, id, pollInterval, maxWait) {
     return file;
 }
 //# sourceMappingURL=file-processing.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/files.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/files.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -45687,20 +45873,20 @@ class files_Files extends APIResource {
      *
      * - The Assistants API supports files up to 2 million tokens and of specific file
      *   types. See the
-     *   [Assistants Tools guide](https://platform.openai.com/docs/assistants/tools)
+     *   [Assistants Tools guide](https://developers.openai.com/api/docs/guides/tools)
      *   for details.
      * - The Fine-tuning API only supports `.jsonl` files. The input also has certain
      *   required formats for fine-tuning
-     *   [chat](https://platform.openai.com/docs/api-reference/fine-tuning/chat-input)
+     *   [chat](https://developers.openai.com/api/docs/guides/supervised-fine-tuning#formatting-your-data)
      *   or
-     *   [completions](https://platform.openai.com/docs/api-reference/fine-tuning/completions-input)
+     *   [completions](https://developers.openai.com/api/docs/guides/supervised-fine-tuning#formatting-your-data)
      *   models.
      * - The Batch API only supports `.jsonl` files up to 200 MB in size. The input
      *   also has a specific required
-     *   [format](https://platform.openai.com/docs/api-reference/batch/request-input).
+     *   [format](https://developers.openai.com/api/docs/guides/batch#1-prepare-your-batch-file).
      * - For Retrieval or `file_search` ingestion, upload files here first. If you need
      *   to attach multiple uploaded files to the same vector store, use
-     *   [`/vector_stores/{vector_store_id}/file_batches`](https://platform.openai.com/docs/api-reference/vector-stores-file-batches/createBatch)
+     *   [`/vector_stores/{vector_store_id}/file_batches`](https://developers.openai.com/api/reference/resources/vector_stores/subresources/file_batches/methods/create)
      *   instead of attaching them one by one. Vector store attachment has separate
      *   limits from file upload, including 2,000 attached files per minute per
      *   organization.
@@ -45752,13 +45938,13 @@ class files_Files extends APIResource {
     }
 }
 //# sourceMappingURL=files.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/methods.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/methods.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 class Methods extends APIResource {
 }
 //# sourceMappingURL=methods.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/alpha/graders.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/alpha/graders.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 /**
@@ -45815,7 +46001,7 @@ class Graders extends APIResource {
     }
 }
 //# sourceMappingURL=graders.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/alpha/alpha.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/alpha/alpha.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -45828,7 +46014,7 @@ class Alpha extends APIResource {
 }
 Alpha.Graders = Graders;
 //# sourceMappingURL=alpha.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/checkpoints/permissions.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/checkpoints/permissions.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -45838,7 +46024,8 @@ Alpha.Graders = Graders;
  */
 class Permissions extends APIResource {
     /**
-     * **NOTE:** Calling this endpoint requires an [admin API key](../admin-api-keys).
+     * **NOTE:** Calling this endpoint requires an
+     * [admin API key](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/admin_api_keys).
      *
      * This enables organization owners to share fine-tuned models with other projects
      * in their organization.
@@ -45858,7 +46045,8 @@ class Permissions extends APIResource {
         return this._client.getAPIList(path_path `/fine_tuning/checkpoints/${fineTunedModelCheckpoint}/permissions`, (Page), { body, method: 'post', ...options, __security: { adminAPIKeyAuth: true } });
     }
     /**
-     * **NOTE:** This endpoint requires an [admin API key](../admin-api-keys).
+     * **NOTE:** This endpoint requires an
+     * [admin API key](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/admin_api_keys).
      *
      * Organization owners can use this endpoint to view all permissions for a
      * fine-tuned model checkpoint.
@@ -45873,7 +46061,8 @@ class Permissions extends APIResource {
         });
     }
     /**
-     * **NOTE:** This endpoint requires an [admin API key](../admin-api-keys).
+     * **NOTE:** This endpoint requires an
+     * [admin API key](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/admin_api_keys).
      *
      * Organization owners can use this endpoint to view all permissions for a
      * fine-tuned model checkpoint.
@@ -45892,7 +46081,8 @@ class Permissions extends APIResource {
         return this._client.getAPIList(path_path `/fine_tuning/checkpoints/${fineTunedModelCheckpoint}/permissions`, (ConversationCursorPage), { query, ...options, __security: { adminAPIKeyAuth: true } });
     }
     /**
-     * **NOTE:** This endpoint requires an [admin API key](../admin-api-keys).
+     * **NOTE:** This endpoint requires an
+     * [admin API key](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/admin_api_keys).
      *
      * Organization owners can use this endpoint to delete a permission for a
      * fine-tuned model checkpoint.
@@ -45915,7 +46105,7 @@ class Permissions extends APIResource {
     }
 }
 //# sourceMappingURL=permissions.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/checkpoints/checkpoints.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/checkpoints/checkpoints.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -45928,7 +46118,7 @@ class Checkpoints extends APIResource {
 }
 Checkpoints.Permissions = Permissions;
 //# sourceMappingURL=checkpoints.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/jobs/checkpoints.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/jobs/checkpoints.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -45955,7 +46145,7 @@ class checkpoints_Checkpoints extends APIResource {
     }
 }
 //# sourceMappingURL=checkpoints.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/jobs/jobs.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/jobs/jobs.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -45977,7 +46167,7 @@ class Jobs extends APIResource {
      * Response includes details of the enqueued job including job status and the name
      * of the fine-tuned models once complete.
      *
-     * [Learn more about fine-tuning](https://platform.openai.com/docs/guides/model-optimization)
+     * [Learn more about fine-tuning](https://developers.openai.com/api/docs/guides/model-optimization)
      *
      * @example
      * ```ts
@@ -45993,7 +46183,7 @@ class Jobs extends APIResource {
     /**
      * Get info about a fine-tuning job.
      *
-     * [Learn more about fine-tuning](https://platform.openai.com/docs/guides/model-optimization)
+     * [Learn more about fine-tuning](https://developers.openai.com/api/docs/guides/model-optimization)
      *
      * @example
      * ```ts
@@ -46093,7 +46283,7 @@ class Jobs extends APIResource {
 }
 Jobs.Checkpoints = checkpoints_Checkpoints;
 //# sourceMappingURL=jobs.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/fine-tuning.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/fine-tuning.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -46118,13 +46308,13 @@ FineTuning.Jobs = Jobs;
 FineTuning.Checkpoints = Checkpoints;
 FineTuning.Alpha = Alpha;
 //# sourceMappingURL=fine-tuning.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/graders/grader-models.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/graders/grader-models.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 class GraderModels extends APIResource {
 }
 //# sourceMappingURL=grader-models.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/graders/graders.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/graders/graders.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -46137,7 +46327,7 @@ class graders_Graders extends APIResource {
 }
 graders_Graders.GraderModels = GraderModels;
 //# sourceMappingURL=graders.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/images.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/images.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -46177,7 +46367,170 @@ class Images extends APIResource {
     }
 }
 //# sourceMappingURL=images.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/models.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/live/sessions.mjs
+// File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
+
+
+
+class live_sessions_Sessions extends APIResource {
+    /**
+     * Accept an incoming SIP call with Live startup configuration.
+     *
+     * @example
+     * ```ts
+     * await client.live.sessions.accept('session_id', {
+     *   session: { model: 'gpt-live-1', type: 'live' },
+     * });
+     * ```
+     */
+    accept(sessionID, body, options) {
+        return this._client.post(path_path `/live/sessions/${sessionID}/accept`, {
+            body,
+            ...options,
+            headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
+            __security: { bearerAuth: true },
+        });
+    }
+    /**
+     * Get Live session content
+     *
+     * @example
+     * ```ts
+     * const response =
+     *   await client.live.sessions.downloadRecording('live_SQ');
+     *
+     * const content = await response.blob();
+     * console.log(content);
+     * ```
+     */
+    downloadRecording(sessionID, options) {
+        return this._client.get(path_path `/live/sessions/${sessionID}/content`, {
+            ...options,
+            headers: buildHeaders([{ Accept: 'application/binary' }, options?.headers]),
+            __security: { bearerAuth: true },
+            __binaryResponse: true,
+        });
+    }
+    /**
+     * Fork a stored Live session onto a new WebRTC connection.
+     *
+     * @example
+     * ```ts
+     * const response = await client.live.sessions.fork(
+     *   'session_id',
+     *   { transport: { sdp: 'x', type: 'webrtc' } },
+     * );
+     * ```
+     */
+    fork(sessionID, body, options) {
+        return this._client.post(path_path `/live/sessions/${sessionID}/fork`, {
+            body,
+            ...options,
+            __security: { bearerAuth: true },
+        });
+    }
+    /**
+     * Hang up a Live session.
+     *
+     * @example
+     * ```ts
+     * await client.live.sessions.hangup('session_id');
+     * ```
+     */
+    hangup(sessionID, options) {
+        return this._client.post(path_path `/live/sessions/${sessionID}/hangup`, {
+            ...options,
+            headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
+            __security: { bearerAuth: true },
+        });
+    }
+    /**
+     * Transfer a Live SIP call to another destination.
+     *
+     * @example
+     * ```ts
+     * await client.live.sessions.refer('session_id', {
+     *   target_uri: 'tel:+14155550123',
+     * });
+     * ```
+     */
+    refer(sessionID, body, options) {
+        return this._client.post(path_path `/live/sessions/${sessionID}/refer`, {
+            body,
+            ...options,
+            headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
+            __security: { bearerAuth: true },
+        });
+    }
+    /**
+     * Reject an incoming SIP call.
+     *
+     * @example
+     * ```ts
+     * await client.live.sessions.reject('session_id', {
+     *   status_code: 486,
+     * });
+     * ```
+     */
+    reject(sessionID, body, options) {
+        return this._client.post(path_path `/live/sessions/${sessionID}/reject`, {
+            body,
+            ...options,
+            headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
+            __security: { bearerAuth: true },
+        });
+    }
+}
+//# sourceMappingURL=sessions.mjs.map
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/live/forks/forks.mjs
+// File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
+
+class Forks extends APIResource {
+}
+//# sourceMappingURL=forks.mjs.map
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/live/sideband/sideband.mjs
+// File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
+
+class Sideband extends APIResource {
+}
+//# sourceMappingURL=sideband.mjs.map
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/live/live.mjs
+// File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
+
+
+
+
+
+
+
+class Live extends APIResource {
+    constructor() {
+        super(...arguments);
+        this.sideband = new Sideband(this._client);
+        this.forks = new Forks(this._client);
+        this.sessions = new live_sessions_Sessions(this._client);
+    }
+    /**
+     * Create a Live WebRTC session. Start with the
+     * [Live prompting guide](https://developers.openai.com/api/docs/guides/live-prompting).
+     *
+     * @example
+     * ```ts
+     * const live = await client.live.create({
+     *   session: { model: 'gpt-live-1' },
+     *   transport: { sdp: 'x', type: 'webrtc' },
+     * });
+     * ```
+     */
+    create(body, options) {
+        return this._client.post('/live/sessions', { body, ...options, __security: { bearerAuth: true } });
+    }
+}
+Live.Sideband = Sideband;
+Live.Forks = Forks;
+Live.Sessions = live_sessions_Sessions;
+//# sourceMappingURL=live.mjs.map
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/models.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -46209,7 +46562,7 @@ class Models extends APIResource {
     }
 }
 //# sourceMappingURL=models.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/moderations.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/moderations.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 /**
@@ -46218,14 +46571,15 @@ class Models extends APIResource {
 class Moderations extends APIResource {
     /**
      * Classifies if text and/or image inputs are potentially harmful. Learn more in
-     * the [moderation guide](https://platform.openai.com/docs/guides/moderation).
+     * the
+     * [moderation guide](https://developers.openai.com/api/docs/guides/moderation).
      */
     create(body, options) {
         return this._client.post('/moderations', { body, ...options, __security: { bearerAuth: true } });
     }
 }
 //# sourceMappingURL=moderations.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/multipart-encoding.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/multipart-encoding.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -46274,7 +46628,7 @@ async function encodedMultipartFormRequestOptions(options, client, encodings, ra
     };
 }
 //# sourceMappingURL=multipart-encoding.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/realtime/calls.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/realtime/calls.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -46374,7 +46728,7 @@ class Calls extends APIResource {
     }
 }
 //# sourceMappingURL=calls.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/realtime/client-secrets.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/realtime/client-secrets.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 class ClientSecrets extends APIResource {
@@ -46390,7 +46744,7 @@ class ClientSecrets extends APIResource {
      * will be applied to any sessions created using that client secret, but these can
      * also be overridden by the client connection.
      *
-     * [Learn more about authentication with client secrets over WebRTC](https://platform.openai.com/docs/guides/realtime-webrtc).
+     * [Learn more about authentication with client secrets over WebRTC](https://developers.openai.com/api/docs/guides/realtime-webrtc).
      *
      * Returns the created client secret and the effective session object. The client
      * secret is a string that looks like `ek_1234`.
@@ -46410,7 +46764,7 @@ class ClientSecrets extends APIResource {
     }
 }
 //# sourceMappingURL=client-secrets.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/realtime/realtime.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/realtime/realtime.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -46427,7 +46781,7 @@ class realtime_Realtime extends APIResource {
 realtime_Realtime.ClientSecrets = ClientSecrets;
 realtime_Realtime.Calls = Calls;
 //# sourceMappingURL=realtime.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/lib/ResponsesParser.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/lib/ResponsesParser.mjs
 
 
 /**
@@ -46466,7 +46820,8 @@ function maybeParseResponse(response, params) {
     return parseResponse(response, params);
 }
 /**
- * Parses completed response text and strict function-tool arguments.
+ * Parses completed response text and strict function-tool arguments, matching
+ * namespaced functions by both namespace and name.
  *
  * Incomplete or nonterminal responses keep their parsed values as `null`, and
  * `output_parsed` returns the first successfully parsed output-text item.
@@ -46525,7 +46880,10 @@ function ResponsesParser_hasAutoParseableInput(params) {
         return true;
     }
     return (Array.isArray(params.tools) &&
-        params.tools.some((tool) => ResponsesParser_isAutoParsableTool(tool) || (tool.type === 'function' && tool.strict === true)));
+        params.tools.some((tool) => ResponsesParser_isAutoParsableTool(tool) ||
+            (tool.type === 'function' && tool.strict === true) ||
+            (tool.type === 'namespace' &&
+                tool.tools.some((nested) => nested.type === 'function' && (ResponsesParser_isAutoParsableTool(nested) || nested.strict === true)))));
 }
 /** Copies a Responses API function tool and attaches non-enumerable parser and callback metadata. */
 function makeParseableResponseTool(tool, { parser, callback, }) {
@@ -46550,11 +46908,21 @@ function makeParseableResponseTool(tool, { parser, callback, }) {
 function ResponsesParser_isAutoParsableTool(tool) {
     return tool?.['$brand'] === 'auto-parseable-tool';
 }
-function getInputToolByName(input_tools, name) {
-    return input_tools.find((tool) => tool.type === 'function' && tool.name === name);
+function getInputToolByName(input_tools, name, namespace) {
+    for (const tool of input_tools) {
+        if (namespace == null) {
+            if (tool.type === 'function' && tool.name === name) {
+                return tool;
+            }
+        }
+        else if (tool.type === 'namespace' && tool.name === namespace) {
+            return tool.tools.find((nested) => nested.type === 'function' && nested.name === name);
+        }
+    }
+    return undefined;
 }
 function ResponsesParser_parseToolCall(params, toolCall) {
-    const inputTool = getInputToolByName(params.tools ?? [], toolCall.name);
+    const inputTool = getInputToolByName(params.tools ?? [], toolCall.name, toolCall.namespace);
     let parsedArguments = null;
     if (ResponsesParser_isAutoParsableTool(inputTool)) {
         parsedArguments = inputTool.$parseRaw(toolCall.arguments);
@@ -46567,12 +46935,12 @@ function ResponsesParser_parseToolCall(params, toolCall) {
         parsed_arguments: parsedArguments,
     };
 }
-/** Returns whether a response function call matches a strict or auto-parseable request tool. */
+/** Matches a response function call to a strict or auto-parseable tool by namespace and name. */
 function ResponsesParser_shouldParseToolCall(params, toolCall) {
     if (!params) {
         return false;
     }
-    const inputTool = getInputToolByName(params.tools ?? [], toolCall.name);
+    const inputTool = getInputToolByName(params.tools ?? [], toolCall.name, toolCall.namespace);
     return ResponsesParser_isAutoParsableTool(inputTool) || inputTool?.strict || false;
 }
 /**
@@ -46609,7 +46977,7 @@ function addOutputText(rsp) {
     rsp.output_text = texts.join('');
 }
 //# sourceMappingURL=ResponsesParser.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/responses/output-text-index.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/responses/output-text-index.mjs
 /**
  * Stores output text lengths in a complete binary segment tree.
  *
@@ -46683,7 +47051,7 @@ class OutputTextIndex {
     }
 }
 //# sourceMappingURL=output-text-index.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/responses/canonical-output-text.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/responses/canonical-output-text.mjs
 
 function createCanonicalResponseContext() {
     return {
@@ -46799,13 +47167,14 @@ function updateOutputText(context, snapshot, outputIndex, previousText, nextText
             snapshot.output_text.slice(offset + previousText.length);
 }
 //# sourceMappingURL=canonical-output-text.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/responses/response-accumulator.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/responses/response-accumulator.mjs
 
 
 
 const responseOutputIdentityIndexes = new WeakMap();
 function validateArrayIndex(collection, index, kind, allowAppend = false) {
-    if (!Number.isSafeInteger(index) ||
+    if (!Array.isArray(collection) ||
+        !Number.isSafeInteger(index) ||
         index < 0 ||
         index > collection.length ||
         (index === collection.length ? !allowAppend || index in collection : !hasOwn(collection, index))) {
@@ -47721,7 +48090,7 @@ function accumulateResponseWithContext(event, snapshot, context, rejectInvalidSh
     return response_accumulator_assertNever(dispatchEvent);
 }
 //# sourceMappingURL=response-accumulator.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/lib/responses/ResponseStream.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/lib/responses/ResponseStream.mjs
 var _ResponseStream_instances, _ResponseStream_params, _ResponseStream_currentResponseSnapshot, _ResponseStream_finalResponse, _ResponseStream_accumulatorContext, _ResponseStream_beginRequest, _ResponseStream_addEvent, _ResponseStream_endRequest;
 
 
@@ -47905,7 +48274,7 @@ function finalizeResponse(snapshot, params) {
     return maybeParseResponse(snapshot, params);
 }
 //# sourceMappingURL=ResponseStream.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/responses/input-items.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/responses/input-items.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -47929,7 +48298,7 @@ class input_items_InputItems extends APIResource {
     }
 }
 //# sourceMappingURL=input-items.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/responses/input-tokens.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/responses/input-tokens.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 class input_tokens_InputTokens extends APIResource {
@@ -47953,7 +48322,7 @@ class input_tokens_InputTokens extends APIResource {
     }
 }
 //# sourceMappingURL=input-tokens.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/responses/responses.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/responses/responses.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -48027,7 +48396,7 @@ class responses_Responses extends APIResource {
     /**
      * Cancels a model response with the given ID. Only responses created with the
      * `background` parameter set to `true` can be cancelled.
-     * [Learn more](https://platform.openai.com/docs/guides/background).
+     * [Learn more](https://developers.openai.com/api/docs/guides/background).
      *
      * @example
      * ```ts
@@ -48046,14 +48415,14 @@ class responses_Responses extends APIResource {
      * Compact a conversation. Returns a compacted response object.
      *
      * Learn when and how to compact long-running conversations in the
-     * [conversation state guide](https://platform.openai.com/docs/guides/conversation-state#managing-the-context-window).
+     * [conversation state guide](https://developers.openai.com/api/docs/guides/conversation-state#managing-the-context-window).
      * For ZDR-compatible compaction details, see
-     * [Compaction (advanced)](https://platform.openai.com/docs/guides/conversation-state#compaction-advanced).
+     * [Compaction (advanced)](https://developers.openai.com/api/docs/guides/conversation-state#compaction-advanced).
      *
      * @example
      * ```ts
      * const compactedResponse = await client.responses.compact({
-     *   model: 'gpt-5.6-sol',
+     *   model: 'gpt-6-astra',
      * });
      * ```
      */
@@ -48064,7 +48433,33 @@ class responses_Responses extends APIResource {
 responses_Responses.InputItems = input_items_InputItems;
 responses_Responses.InputTokens = input_tokens_InputTokens;
 //# sourceMappingURL=responses.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/skills/content.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/safety/alerts.mjs
+// File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
+
+
+class Alerts extends APIResource {
+    /**
+     * Get a safety alert belonging to the authenticated API project.
+     */
+    retrieve(id, options) {
+        return this._client.get(path_path `/safety/alerts/${id}`, { ...options, __security: { bearerAuth: true } });
+    }
+}
+//# sourceMappingURL=alerts.mjs.map
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/safety/safety.mjs
+// File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
+
+
+
+class Safety extends APIResource {
+    constructor() {
+        super(...arguments);
+        this.alerts = new Alerts(this._client);
+    }
+}
+Safety.Alerts = Alerts;
+//# sourceMappingURL=safety.mjs.map
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/skills/content.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -48083,7 +48478,7 @@ class content_Content extends APIResource {
     }
 }
 //# sourceMappingURL=content.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/skills/versions/content.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/skills/versions/content.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -48103,7 +48498,7 @@ class versions_content_Content extends APIResource {
     }
 }
 //# sourceMappingURL=content.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/skills/versions/versions.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/skills/versions/versions.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -48157,7 +48552,7 @@ class Versions extends APIResource {
 }
 Versions.Content = versions_content_Content;
 //# sourceMappingURL=versions.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/skills/skills.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/skills/skills.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -48217,7 +48612,7 @@ class Skills extends APIResource {
 Skills.Content = content_Content;
 Skills.Versions = Versions;
 //# sourceMappingURL=skills.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/uploads/parts.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/uploads/parts.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -48228,23 +48623,24 @@ Skills.Versions = Versions;
 class Parts extends APIResource {
     /**
      * Adds a
-     * [Part](https://platform.openai.com/docs/api-reference/uploads/part-object) to an
-     * [Upload](https://platform.openai.com/docs/api-reference/uploads/object) object.
-     * A Part represents a chunk of bytes from the file you are trying to upload.
+     * [Part](https://developers.openai.com/api/reference/resources/uploads/subresources/parts)
+     * to an [Upload](https://developers.openai.com/api/reference/resources/uploads)
+     * object. A Part represents a chunk of bytes from the file you are trying to
+     * upload.
      *
      * Each Part can be at most 64 MB, and you can add Parts until you hit the Upload
      * maximum of 8 GB.
      *
      * It is possible to add multiple Parts in parallel. You can decide the intended
      * order of the Parts when you
-     * [complete the Upload](https://platform.openai.com/docs/api-reference/uploads/complete).
+     * [complete the Upload](https://developers.openai.com/api/reference/resources/uploads/methods/complete).
      */
     create(uploadID, body, options) {
         return this._client.post(path_path `/uploads/${uploadID}/parts`, multipartFormRequestOptions({ body, ...options, __security: { bearerAuth: true } }, this._client));
     }
 }
 //# sourceMappingURL=parts.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/uploads/uploads.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/uploads/uploads.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -48260,24 +48656,24 @@ class Uploads extends APIResource {
     }
     /**
      * Creates an intermediate
-     * [Upload](https://platform.openai.com/docs/api-reference/uploads/object) object
+     * [Upload](https://developers.openai.com/api/reference/resources/uploads) object
      * that you can add
-     * [Parts](https://platform.openai.com/docs/api-reference/uploads/part-object) to.
-     * Currently, an Upload can accept at most 8 GB in total and expires after an hour
-     * after you create it.
+     * [Parts](https://developers.openai.com/api/reference/resources/uploads/subresources/parts)
+     * to. Currently, an Upload can accept at most 8 GB in total and expires after an
+     * hour after you create it.
      *
      * Once you complete the Upload, we will create a
-     * [File](https://platform.openai.com/docs/api-reference/files/object) object that
+     * [File](https://developers.openai.com/api/reference/resources/files) object that
      * contains all the parts you uploaded. This File is usable in the rest of our
      * platform as a regular File object.
      *
      * For certain `purpose` values, the correct `mime_type` must be specified. Please
      * refer to documentation for the
-     * [supported MIME types for your use case](https://platform.openai.com/docs/assistants/tools/file-search#supported-files).
+     * [supported MIME types for your use case](https://developers.openai.com/api/docs/guides/tools-file-search#supported-files).
      *
      * For guidance on the proper filename extensions for each purpose, please follow
      * the documentation on
-     * [creating a File](https://platform.openai.com/docs/api-reference/files/create).
+     * [creating a File](https://developers.openai.com/api/reference/resources/files/methods/create).
      *
      * Returns the Upload object with status `pending`.
      */
@@ -48297,10 +48693,10 @@ class Uploads extends APIResource {
     }
     /**
      * Completes the
-     * [Upload](https://platform.openai.com/docs/api-reference/uploads/object).
+     * [Upload](https://developers.openai.com/api/reference/resources/uploads).
      *
      * Within the returned Upload object, there is a nested
-     * [File](https://platform.openai.com/docs/api-reference/files/object) object that
+     * [File](https://developers.openai.com/api/reference/resources/files) object that
      * is ready to use in the rest of the platform.
      *
      * You can specify the order of the Parts by passing in an ordered list of the Part
@@ -48322,16 +48718,16 @@ class Uploads extends APIResource {
 }
 Uploads.Parts = Parts;
 //# sourceMappingURL=uploads.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/lib/vector-store-polling.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/lib/vector-store-polling.mjs
 
 /**
- * Polls an attached file through the resource's retrieve method. Failed files are
- * returned to the caller, and cancelled files retain their existing retry behavior.
+ * Polls an attached file through the resource's retrieve method until it completes,
+ * fails, or is cancelled. Retrieval errors are propagated unchanged.
  *
  * @internal
  */
 function pollVectorStoreFile(resource, vectorStoreID, fileID, options) {
-    return pollWithResponse((headers) => resource.retrieve(fileID, { vector_store_id: vectorStoreID }, { ...options, headers }), ['in_progress'], ['failed', 'completed'], options);
+    return pollWithResponse((headers) => resource.retrieve(fileID, { vector_store_id: vectorStoreID }, { ...options, headers }), ['in_progress'], ['failed', 'cancelled', 'completed'], options);
 }
 /**
  * Polls a file batch through the resource's retrieve method until it completes,
@@ -48343,7 +48739,7 @@ function pollVectorStoreFileBatch(resource, vectorStoreID, batchID, options) {
     return pollWithResponse((headers) => resource.retrieve(batchID, { vector_store_id: vectorStoreID }, { ...options, headers }), ['in_progress'], ['failed', 'cancelled', 'completed'], options);
 }
 //# sourceMappingURL=vector-store-polling.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/lib/Util.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/lib/Util.mjs
 /**
  * Like `Promise.allSettled()` but throws an error if any promises are rejected.
  * Rejection reasons remain available on the thrown error's non-enumerable `rejections`
@@ -48369,11 +48765,12 @@ const allSettledWithThrow = async (promises) => {
     return values;
 };
 //# sourceMappingURL=Util.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/lib/vector-store-upload.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/lib/vector-store-upload.mjs
 
 /**
  * Uploads files with a shared iterator, then creates and polls the batch. Every
- * worker settles before upload failures are propagated.
+ * worker settles before upload failures are propagated. Zero concurrency is
+ * rejected before any upload or batch-creation request.
  *
  * @internal
  */
@@ -48383,6 +48780,9 @@ async function uploadAndPollVectorStoreFileBatch(resource, client, vectorStoreId
     }
     const configuredConcurrency = options?.maxConcurrency ?? 5;
     const concurrencyLimit = Math.min(configuredConcurrency, files.length);
+    if (concurrencyLimit === 0) {
+        throw new RangeError('maxConcurrency must be greater than 0');
+    }
     const fileIterator = files.values();
     const allFileIds = [...fileIds];
     // This code is based on this design. The libraries don't accommodate our environment limits.
@@ -48404,7 +48804,7 @@ async function uploadAndPollVectorStoreFileBatch(resource, client, vectorStoreId
     return await resource.createAndPoll(vectorStoreId, { file_ids: allFileIds }, options);
 }
 //# sourceMappingURL=vector-store-upload.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/vector-stores/file-batches.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/vector-stores/file-batches.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -48485,7 +48885,7 @@ class FileBatches extends APIResource {
     }
 }
 //# sourceMappingURL=file-batches.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/vector-stores/files.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/vector-stores/files.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -48495,8 +48895,8 @@ class FileBatches extends APIResource {
 class vector_stores_files_Files extends APIResource {
     /**
      * Create a vector store file by attaching a
-     * [File](https://platform.openai.com/docs/api-reference/files) to a
-     * [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object).
+     * [File](https://developers.openai.com/api/reference/resources/files) to a
+     * [vector store](https://developers.openai.com/api/reference/resources/vector_stores).
      */
     create(vectorStoreID, body, options) {
         return this._client.post(path_path `/vector_stores/${vectorStoreID}/files`, {
@@ -48543,7 +48943,7 @@ class vector_stores_files_Files extends APIResource {
     /**
      * Delete a vector store file. This will remove the file from the vector store but
      * the file itself will not be deleted. To delete the file, use the
-     * [delete file](https://platform.openai.com/docs/api-reference/files/delete)
+     * [delete file](https://developers.openai.com/api/reference/resources/files/methods/delete)
      * endpoint.
      */
     delete(fileID, params, options) {
@@ -48600,7 +49000,7 @@ class vector_stores_files_Files extends APIResource {
     }
 }
 //# sourceMappingURL=files.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/vector-stores/vector-stores.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/vector-stores/vector-stores.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -48686,7 +49086,7 @@ class VectorStores extends APIResource {
 VectorStores.Files = vector_stores_files_Files;
 VectorStores.FileBatches = FileBatches;
 //# sourceMappingURL=vector-stores.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/videos.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/videos.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -48795,7 +49195,7 @@ class Videos extends APIResource {
     }
 }
 //# sourceMappingURL=videos.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/lib/webhook-signature.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/lib/webhook-signature.mjs
 
 
 
@@ -48917,7 +49317,7 @@ async function verifyWebhookSignature(payload, signatureHeader, timestamp, webho
     throw new InvalidWebhookSignatureError('The given webhook signature does not match the expected signature');
 }
 //# sourceMappingURL=webhook-signature.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/webhooks/webhooks.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/webhooks/webhooks.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 var _Webhooks_instances, _Webhooks_validateSecret, _Webhooks_getRequiredHeader;
 
@@ -48978,15 +49378,15 @@ _Webhooks_instances = new WeakSet(), _Webhooks_validateSecret = function _Webhoo
     return value;
 };
 //# sourceMappingURL=webhooks.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/webhooks/index.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/webhooks/index.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 //# sourceMappingURL=index.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/webhooks.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/webhooks.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 //# sourceMappingURL=webhooks.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/resources/index.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/resources/index.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -49013,8 +49413,10 @@ _Webhooks_instances = new WeakSet(), _Webhooks_validateSecret = function _Webhoo
 
 
 
+
+
 //# sourceMappingURL=index.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/provider.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/provider.mjs
 /**
  * A provider factory such as `bedrock(options)` captures configuration in a
  * definition, while every OpenAI client receives a fresh runtime from
@@ -49058,9 +49460,11 @@ function configureProvider(provider) {
     return definition.configure();
 }
 //# sourceMappingURL=provider.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/client.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/client.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 var _OpenAI_instances, client_a, _OpenAI_encoder, _OpenAI_x509Authentication, _OpenAI_x509Credential, _OpenAI_x509Fetch, _OpenAI_explicitDataResidency, _OpenAI_responseAttempts, _OpenAI_baseURLOverridden;
+
+
 
 
 
@@ -49193,6 +49597,7 @@ class OpenAI {
         this.fineTuning = new FineTuning(this);
         this.graders = new graders_Graders(this);
         this.vectorStores = new VectorStores(this);
+        this.safety = new Safety(this);
         this.webhooks = new Webhooks(this);
         this.beta = new Beta(this);
         /**
@@ -49205,6 +49610,7 @@ class OpenAI {
         this.uploads = new Uploads(this);
         this.admin = new Admin(this);
         this.responses = new responses_Responses(this);
+        this.live = new Live(this);
         this.realtime = new realtime_Realtime(this);
         /**
          * Manage conversations and conversation items.
@@ -49468,12 +49874,24 @@ class OpenAI {
         const normalizedError = error && typeof error === 'object' && error.error == null ? { error } : error;
         return APIError.generate(status, normalizedError, message, headers);
     }
-    async _callApiKey() {
-        if (this._provider)
+    /**
+     * Resolves a function-based API key and retains the resolved value on this client.
+     * Returns whether a provider was invoked. Internal callers can capture this
+     * invocation's key before another request updates the shared `apiKey` property.
+     * Overrides should forward `capture` or invoke it with their own resolved key
+     * to preserve connection-local credentials in concurrent Realtime factories.
+     * @internal
+     */
+    async _callApiKey(capture) {
+        if (this._provider) {
+            capture?.(this.apiKey);
             return false;
+        }
         const apiKey = this._options.apiKey;
-        if (typeof apiKey !== 'function')
+        if (typeof apiKey !== 'function') {
+            capture?.(this.apiKey);
             return false;
+        }
         let token;
         try {
             token = await apiKey();
@@ -49489,6 +49907,7 @@ class OpenAI {
             throw new error_OpenAIError(`Expected 'apiKey' function argument to return a string but it returned ${token}`);
         }
         this.apiKey = token;
+        capture?.(this.apiKey);
         return true;
     }
     buildURL(path, query, defaultBaseURL) {
@@ -49992,7 +50411,7 @@ class OpenAI {
         if (this._workloadIdentityAuth && !__classPrivateFieldGet(this, _OpenAI_x509Fetch, "f") && schemes.bearerAuth) {
             const headers = init.headers;
             const authHeader = headers.get('Authorization');
-            if (!authHeader || authHeader === `Bearer ${WORKLOAD_IDENTITY_API_KEY_PLACEHOLDER}`) {
+            if (authHeader === `Bearer ${WORKLOAD_IDENTITY_API_KEY_PLACEHOLDER}`) {
                 const token = await this._workloadIdentityAuth.getToken();
                 headers.set('Authorization', `Bearer ${token}`);
             }
@@ -50322,12 +50741,14 @@ OpenAI.Models = Models;
 OpenAI.FineTuning = FineTuning;
 OpenAI.Graders = graders_Graders;
 OpenAI.VectorStores = VectorStores;
+OpenAI.Safety = Safety;
 OpenAI.Webhooks = Webhooks;
 OpenAI.Beta = Beta;
 OpenAI.Batches = Batches;
 OpenAI.Uploads = Uploads;
 OpenAI.Admin = Admin;
 OpenAI.Responses = responses_Responses;
+OpenAI.Live = Live;
 OpenAI.Realtime = realtime_Realtime;
 OpenAI.Conversations = Conversations;
 OpenAI.Evals = Evals;
@@ -50379,7 +50800,7 @@ function isUndiciDispatcherVersionMismatchError(error) {
     return false;
 }
 //# sourceMappingURL=client.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/azure.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/azure.mjs
 
 
 
@@ -50449,7 +50870,21 @@ class AzureOpenAI extends OpenAI {
     }
     /** Clones this client with Azure options; OpenAI data residency remains unsupported. */
     withOptions(options) {
-        return super.withOptions(options);
+        // `OpenAI.withOptions` rebuilds the clone from `this._options`, which never holds the
+        // Azure-only construction options, so they are re-injected here the same way the Bedrock
+        // client re-injects its own subclass-only field.
+        const azureOptions = {
+            apiVersion: this.apiVersion,
+            deployment: this.deploymentName,
+            ...options,
+        };
+        // The inherited base URL is always carried into the clone, so an `endpoint` override would
+        // otherwise collide with it; let the endpoint rebuild the base URL instead. Both tests read
+        // own properties, so an option bag that passed neither field keeps the inherited base URL.
+        if (hasOwn(options, 'endpoint') && options.endpoint !== undefined && !hasOwn(options, 'baseURL')) {
+            azureOptions.baseURL = undefined;
+        }
+        return super.withOptions(azureOptions);
     }
     /** Builds an Azure request and inserts its deployment into model-scoped endpoint paths. */
     async buildRequest(options, props = {}) {
@@ -50458,7 +50893,7 @@ class AzureOpenAI extends OpenAI {
                 throw new Error('Expected request body to be an object');
             }
             const model = this.deploymentName || options.body['model'] || options.__metadata?.['model'];
-            if (model !== undefined && !this.baseURL.includes('/deployments')) {
+            if (model !== undefined && !hasDeploymentPathSegment(this.baseURL)) {
                 options.path = path_path `/deployments/${model}` + options.path;
             }
         }
@@ -50482,6 +50917,21 @@ class AzureOpenAI extends OpenAI {
         return super.authHeaders(opts, security);
     }
 }
+/**
+ * Reports whether the base URL already routes through a `/deployments` path segment, so the
+ * deployment must not be inserted again. A substring test would also match an unrelated segment
+ * such as `/deployments-proxy/`, or a host like `deployments.example.com`.
+ */
+function hasDeploymentPathSegment(baseURL) {
+    try {
+        return new URL(baseURL).pathname.split('/').includes('deployments');
+    }
+    catch {
+        // A base URL that is not an absolute URL has no path segments to read. Report none, the way
+        // the previous substring test did, and let joining the request path reject it as it did before.
+        return false;
+    }
+}
 const _deployments_endpoints = new Set([
     '/completions',
     '/chat/completions',
@@ -50494,7 +50944,7 @@ const _deployments_endpoints = new Set([
     '/images/edits',
 ]);
 //# sourceMappingURL=azure.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/internal/bedrock.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/internal/bedrock.mjs
 
 
 /** Identifies legacy Bedrock clients without importing the client class into WebSocket modules. */
@@ -50690,7 +51140,7 @@ function removeBedrockAbortListener(signal, listener) {
         // A nonstandard AbortSignal must not replace the actual request outcome.
     }
 }
-function resolveAbortableBedrockBearerToken(tokenProvider, signals, failure) {
+function resolveAbortableBedrockAuth(operation, signals, failure) {
     // oxlint-disable-next-line promise/avoid-new -- AbortSignal events require a Promise callback bridge.
     return new Promise((resolve, reject) => {
         let settled = false;
@@ -50709,8 +51159,8 @@ function resolveAbortableBedrockBearerToken(tokenProvider, signals, failure) {
                 return;
             }
             settled = true;
-            if ('token' in result) {
-                resolve(result.token);
+            if ('value' in result) {
+                resolve(result.value);
             }
             else {
                 removeListeners();
@@ -50768,25 +51218,67 @@ function resolveAbortableBedrockBearerToken(tokenProvider, signals, failure) {
                 return;
             }
         }
-        let token;
+        let pending;
         try {
-            token = tokenProvider();
+            pending = operation();
         }
         catch (error) {
             settle({ error });
             return;
         }
-        const observeToken = async () => {
+        const observeResult = async () => {
             try {
-                settle({ token: await token });
+                settle({ value: await pending });
             }
             catch (error) {
                 settle({ error });
             }
         };
         // Observe the result even if the provider synchronously triggered cancellation.
-        void observeToken();
+        void observeResult();
     });
+}
+/**
+ * Resolves Bedrock authentication work with caller cancellation, then applies
+ * its result synchronously after the final cancellation checks.
+ *
+ * @internal
+ */
+async function prepareBedrockAuth(request, context, operation) {
+    const signals = [];
+    for (const signal of [context.options.signal, request.signal]) {
+        if (signal != null && !signals.includes(signal)) {
+            signals.push(signal);
+        }
+    }
+    const signalFailure = {};
+    let value;
+    try {
+        try {
+            value =
+                signals.length > 0
+                    ? await resolveAbortableBedrockAuth(operation.resolve, signals, signalFailure)
+                    : await operation.resolve();
+        }
+        catch (cause) {
+            if (signalFailure.error && Object.is(cause, signalFailure.error.value)) {
+                throw cause;
+            }
+            throw errorWithCause(operation.failureMessage, cause);
+        }
+        if (signalFailure.error) {
+            throw signalFailure.error.value;
+        }
+        for (const signal of signals) {
+            if (signal.aborted) {
+                throw createBedrockUserAbortError(signal);
+            }
+        }
+    }
+    finally {
+        signalFailure.removeListeners?.();
+    }
+    operation.apply(value);
 }
 class BedrockBearerAuth {
     constructor(tokenProvider) {
@@ -50795,55 +51287,28 @@ class BedrockBearerAuth {
     async prepareRequest(request, context) {
         const headers = new Headers(request.headers);
         assertProviderOwnsAuthorization(headers);
-        const signals = [];
-        for (const signal of [context.options.signal, request.signal]) {
-            if (signal != null && !signals.includes(signal)) {
-                signals.push(signal);
-            }
-        }
-        const signalFailure = {};
-        let token;
-        try {
-            try {
-                token =
-                    signals.length > 0
-                        ? await resolveAbortableBedrockBearerToken(() => this.tokenProvider(), signals, signalFailure)
-                        : await this.tokenProvider();
-            }
-            catch (cause) {
-                if (signalFailure.error && Object.is(cause, signalFailure.error.value)) {
-                    throw cause;
+        await prepareBedrockAuth(request, context, {
+            resolve: () => this.tokenProvider(),
+            failureMessage: 'Failed to resolve a bearer credential for Bedrock.',
+            apply: (token) => {
+                if (typeof token !== 'string' || !token.trim()) {
+                    throw new Errors.OpenAIError('The Bedrock bearer credential provider must return a non-empty string.');
                 }
-                throw errorWithCause('Failed to resolve a bearer credential for Bedrock.', cause);
-            }
-            if (signalFailure.error) {
-                throw signalFailure.error.value;
-            }
-            for (const signal of signals) {
-                if (signal.aborted) {
-                    throw createBedrockUserAbortError(signal);
+                assertValidBedrockBearerCredential(token);
+                try {
+                    headers.set('authorization', `Bearer ${token}`);
                 }
-            }
-        }
-        finally {
-            signalFailure.removeListeners?.();
-        }
-        if (typeof token !== 'string' || !token.trim()) {
-            throw new Errors.OpenAIError('The Bedrock bearer credential provider must return a non-empty string.');
-        }
-        assertValidBedrockBearerCredential(token);
-        try {
-            headers.set('authorization', `Bearer ${token}`);
-        }
-        catch (error) {
-            if (error instanceof TypeError) {
-                // oxlint-disable-next-line eslint/preserve-caught-error -- The original error contains the bearer credential.
-                throw new TypeError('Bedrock bearer credential contains an invalid HTTP header value.');
-            }
-            throw error;
-        }
-        request.redirect = 'manual';
-        request.headers = headers;
+                catch (error) {
+                    if (error instanceof TypeError) {
+                        // oxlint-disable-next-line eslint/preserve-caught-error -- The original error contains the bearer credential.
+                        throw new TypeError('Bedrock bearer credential contains an invalid HTTP header value.');
+                    }
+                    throw error;
+                }
+                request.redirect = 'manual';
+                request.headers = headers;
+            },
+        });
     }
 }
 /**
@@ -50888,7 +51353,7 @@ function resolveBedrockBearerAuth(options, { allowEnvironment = true, } = {}) {
     return { factory: undefined, explicit: false };
 }
 //# sourceMappingURL=bedrock.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/bedrock.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/bedrock.mjs
 var bedrock_a;
 
 
@@ -51050,7 +51515,7 @@ class BedrockOpenAI extends OpenAI {
 }
 bedrock_a = brand_privateBedrockClient;
 //# sourceMappingURL=bedrock.mjs.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.8.0_undici@6.28.0/node_modules/openai/index.mjs
+;// CONCATENATED MODULE: ./node_modules/.pnpm/openai@7.14.0_undici@6.28.0/node_modules/openai/index.mjs
 
 
 
@@ -51192,7 +51657,7 @@ async function run() {
 /***/ ((__webpack_module__, __unused_webpack___webpack_exports__, __nccwpck_require__) => {
 
 __nccwpck_require__.a(__webpack_module__, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
-/* harmony import */ var _index_js__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(5541);
+/* harmony import */ var _index_js__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(4651);
 
 
 await (0,_index_js__WEBPACK_IMPORTED_MODULE_0__/* .run */ .eF)();

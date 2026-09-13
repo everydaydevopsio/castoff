@@ -26,5 +26,5 @@ outputs:
     description: 'AI-generated release notes in Markdown'
 
 runs:
-  using: 'node20'
+  using: 'node24'
   main: 'dist/index.js'
