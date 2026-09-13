@@ -52,5 +52,5 @@ lint:
 lint-fix:
 	cd $(ACTION_DIR) && pnpm lint:fix
 
-e2e-act:
+e2e-act: build
 	./scripts/e2e-act.sh
