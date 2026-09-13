@@ -124,8 +124,8 @@ Engineering teams spend time manually writing release notes from commit history.
   1. Require a nonempty `OPENAI_API_KEY` Actions secret, then run the full test suite. Fail before release changes if either check fails.
   2. Bump `package.json` version via `npm version <level> --no-git-tag-version`.
   3. Compile `dist/index.js` via `pnpm build` (ncc).
-  4. Generate AI release notes using the action and `OPENAI_MODEL` repository variable if configured. API failures stop the workflow before publishing.
-  5. Commit `package.json` and `dist/` with message `chore: release vX.Y.Z`.
+  4. Commit `package.json` and `dist/` locally with message `chore: release vX.Y.Z`.
+  5. Generate AI release notes using the action and `OPENAI_MODEL` repository variable if configured. The local release commit keeps the previous-tag lookup correct; API failures stop the workflow before publishing.
   6. Create an exact version tag (`vX.Y.Z`) and update the floating major tag (`vN`) in place.
   7. Push all tags and the commit to `main`.
   8. Create a GitHub Release for `vX.Y.Z` with the action output; do not fall back to GitHub-generated notes.

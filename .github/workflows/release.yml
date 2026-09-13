@@ -70,15 +70,6 @@ jobs:
         run: pnpm build
         working-directory: castoff
 
-      - name: Generate AI release notes
-        id: release_notes
-        uses: ./castoff
-        env:
-          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
-        with:
-          openai_api_key: ${{ secrets.OPENAI_API_KEY }}
-          tag: ${{ steps.bump.outputs.tag }}
-
       - name: Configure git
         run: |
           git config user.name "github-actions[bot]"
@@ -89,6 +80,15 @@ jobs:
           git add castoff/package.json
           git add castoff/dist/
           git commit -m "chore: release ${{ steps.bump.outputs.tag }}"
+
+      - name: Generate AI release notes
+        id: release_notes
+        uses: ./castoff
+        env:
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+        with:
+          openai_api_key: ${{ secrets.OPENAI_API_KEY }}
+          tag: ${{ steps.bump.outputs.tag }}
 
       - name: Tag and push
         run: |
