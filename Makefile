@@ -2,7 +2,7 @@ SHELL := /bin/bash
 
 ACTION_DIR := castoff
 
-.PHONY: setup deps install build test test-coverage lint lint-fix e2e-act e2e-act-live
+.PHONY: setup deps install build test test-coverage lint lint-fix e2e-act
 
 deps:
 	@if command -v act >/dev/null 2>&1; then \
@@ -54,6 +54,3 @@ lint-fix:
 
 e2e-act:
 	./scripts/e2e-act.sh
-
-e2e-act-live:
-	./scripts/e2e-act.sh --live
