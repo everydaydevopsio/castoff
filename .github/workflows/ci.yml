@@ -36,6 +36,9 @@ jobs:
         run: pnpm build
         working-directory: castoff
 
+      - name: Verify committed action bundle
+        run: git diff --exit-code -- castoff/dist/
+
       - name: Run tests with coverage
         run: pnpm test:coverage
         working-directory: castoff
