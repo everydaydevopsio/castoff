@@ -149,6 +149,10 @@ uses: everydaydevopsio/castoff/castoff@v0.1.0
 ```
 
 ### 15.5 Live E2E Workflow
+- Automatically run after `CI` (`ci.yml`) completes successfully for a push to `main`; skip automatic jobs for failed/cancelled CI or pull-request CI.
+- Check out the triggering CI run's exact head commit, even when `main` advances before E2E starts.
+- Keep manual `workflow_dispatch` runs and their optional tag input available.
+- Isolate E2E concurrency by run ID so a later merge or manual run cannot cancel or replace another run. Only commits whose CI completes successfully qualify; CI runs cancelled by newer pushes do not qualify.
 - Test the default `gpt-6-astra` without model configuration and `gpt-5.6-sol` via `OPENAI_MODEL`, both using the `OPENAI_API_KEY` Actions secret.
 - Test an additional configured model when the repository/ACT `OPENAI_MODEL` variable is nonempty.
 - Verify missing-key failures and reject placeholder fallback notes as live-test success.

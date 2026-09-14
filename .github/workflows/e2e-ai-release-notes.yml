@@ -1,6 +1,10 @@
 name: E2E - AI Release Notes Action
 
 on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
     inputs:
       tag:
@@ -8,17 +12,27 @@ on:
         required: false
         default: "v0.0.0-e2e-test"
 
+permissions:
+  contents: read
+
+# Every qualifying CI completion gets its own E2E run, even during rapid merges.
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.run_id }}
+  cancel-in-progress: false
 
 jobs:
   test-validation-guardrails:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.event == 'push' &&
+       github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v7
         with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
           fetch-depth: 0
 
       - name: Reject missing API key in workflow preflight
@@ -67,6 +81,11 @@ jobs:
           echo "✓ Guardrail test passed"
 
   test-action-live:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.event == 'push' &&
+       github.event.workflow_run.head_branch == 'main')
     name: Live OpenAI - ${{ matrix.case }}
     strategy:
       fail-fast: false
@@ -83,6 +102,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
         with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
           fetch-depth: 0
 
       - name: Require OpenAI API key

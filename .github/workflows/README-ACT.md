@@ -14,6 +14,16 @@ npm install -g @nektos/act
 
 ## Run the E2E Workflow
 
+On GitHub, E2E runs automatically after the `CI` workflow in `ci.yml` completes
+successfully for a push to `main`, including merges. Both E2E jobs check out the
+exact commit that passed CI. Failed, cancelled and pull-request CI runs do not
+launch the E2E jobs. Separate E2E runs do not cancel each other; if CI itself is
+cancelled by a newer push, that commit does not qualify for automatic E2E.
+
+Manual runs remain available through **Run workflow** or
+`gh workflow run e2e-ai-release-notes.yml --ref main`. The automatic trigger takes
+effect once the workflow change is merged to the default branch.
+
 From the repo root:
 
 ```bash
