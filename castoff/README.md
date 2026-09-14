@@ -45,6 +45,33 @@ Then pass the notes to a GitHub Release step:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
+## Development
+
+The action and tests are written in TypeScript. Run `make setup` in the repository
+root to install the development Node.js version from `.nvmrc` and pnpm 9.
+CI also validates the action on its declared runtime, Node.js 24.
+
+```sh
+pnpm install --frozen-lockfile
+pnpm typecheck
+pnpm build
+pnpm test:coverage
+pnpm lint
+pnpm prettier
+```
+
+Run these commands from `castoff/`. `index.ts` contains the action logic and
+`main.ts` invokes it. The build checks source and test types, then bundles the
+entrypoint and dependencies with ncc into `dist/index.js`. Commit the generated
+`dist/` files whenever the action changes; CI verifies they match the source.
+GitHub runs this JavaScript bundle through `action.yml` without installing
+dependencies or compiling TypeScript. Workflow definitions remain YAML.
+
+Jest transforms the TypeScript tests with ts-jest. ESM source imports retain
+`.js` extensions, which TypeScript, ncc and Jest resolve to the `.ts` source.
+Git hooks check staged TypeScript, lint and formatting before commit, then build
+and run tests before push.
+
 ## License
 
 MIT License - see [LICENSE](../LICENSE) file for details.

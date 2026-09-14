@@ -59,7 +59,7 @@ nonempty `OPENAI_MODEL`, then `gpt-6-astra`.
 |------|----------|
 | **ACT** | Run full workflows locally; best for debugging action + runner behavior |
 | **@actions/github-script** | Inline JS in workflows for quick checks |
-| **Manual `node index.js`** | Test action logic in isolation (your `index.test.js` unit tests) |
+| **`pnpm test` in `castoff/`** | Test TypeScript action logic in isolation (`index.test.ts` and `run.test.ts`) |
 | **GitHub Local Actions** (VS Code) | ACT integration inside the editor |
 | **Self-hosted runner** | True GitHub env; overkill for most action dev |
 

@@ -1,1 +1,1 @@
-cd castoff && pnpm test
+cd castoff && pnpm build && pnpm test

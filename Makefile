@@ -2,7 +2,7 @@ SHELL := /bin/bash
 
 ACTION_DIR := castoff
 
-.PHONY: setup deps install build test test-coverage lint lint-fix e2e-act
+.PHONY: setup deps install build typecheck test test-coverage lint lint-fix e2e-act
 
 deps:
 	@if command -v act >/dev/null 2>&1; then \
@@ -39,6 +39,9 @@ install:
 
 build:
 	cd $(ACTION_DIR) && pnpm build
+
+typecheck:
+	cd $(ACTION_DIR) && pnpm typecheck
 
 test:
 	cd $(ACTION_DIR) && pnpm test
