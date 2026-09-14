@@ -24,7 +24,7 @@ outputs:
   model:
     description: 'Resolved model name sent to OpenAI'
   release_notes:
-    description: 'AI-generated release notes in Markdown'
+    description: 'Markdown release notes with Castoff attribution and the resolved model'
 
 runs:
   using: 'node24'

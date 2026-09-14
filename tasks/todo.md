@@ -1,31 +1,30 @@
-# Task: Run E2E after successful main CI
+# Task: Release-note attribution (#21)
 
 ## Context
 - Date: 2026-09-14
-- Mode: Autonomous within the user's explicit authorization for the workflow change
-- PRD: Section 15.5
+- Mode: Autonomous within the user’s authorization to implement issue #21 and create a PR.
+- PRD Section: 7.2.1
 
 ## Scope and Acceptance Criteria
-- Trigger E2E on successful CI completion for pushes to main, including merges.
-- Skip failed/cancelled CI and pull-request CI; retain manual dispatch.
-- Test the exact upstream SHA and preserve separate E2E runs during rapid merges.
+- Append one deterministic Castoff attribution footer to the action output, including fallback notes.
+- Match the resolved request model, preserving input/environment/default precedence and note sections.
+- Replace existing trailing attribution footers to avoid duplicates.
 
 ## Execution Checklist
-- [x] Update PRD and define plan.
-- [x] Add regression tests and confirm they fail on the previous workflow.
-- [x] Implement trigger, job guards, checkout refs and concurrency.
-- [x] Update docs and complete independent review.
-- [x] Validate tests, types, lint, formatting and actionlint.
+- [x] Review issue and update PRD.
+- [x] Prove regression tests fail before implementation.
+- [x] Implement footer and update documentation and bundle.
+- [x] Validate full suite, coverage, types, lint and formatting.
 
-## Verification
-- All 10 new tests failed before implementation because trigger, guards, checkout refs and concurrency isolation were absent; all pass afterward.
-- Full suite: 58 tests pass, 100% coverage on Node 24.18.0.
-- Passed: pnpm typecheck, pnpm lint, pnpm prettier, actionlint .github/workflows/e2e-ai-release-notes.yml.
-- Independent review found no blockers.
-- Automatic workflow_run chaining can only be observed once the workflow is merged onto the default branch. The existing CI can cancel superseded main runs; only successful completions qualify for E2E.
+## Test Strategy
+- Test full output, duplicate/stale footers, fallback notes, and model precedence.
+- Existing error tests cover API/input failures.
 
-## Rollback
-- Revert this change to restore manual-only E2E; no secrets or action code were changed.
+## Rollback Strategy
+- Revert this change and its generated bundle; verify the previous output with the full suite.
 
 ## Outcome
-- Ready for PR CI and Copilot review; design recorded in ADR-002.
+- Eight output regression cases failed before implementation; the footer-only response test also caught a boundary case before correction.
+- Full suite: 65 tests, 100% coverage. Build/typecheck, ESLint and Prettier pass.
+- PRD 7.2.1 documents output behavior; ADR-003 records the decision.
+- Ready for PR CI and Copilot review. PR will close #21.
