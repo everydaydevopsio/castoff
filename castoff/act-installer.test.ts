@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { mkdtempSync, writeFileSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -10,7 +11,7 @@ describe('pinned ACT installer', () => {
     (valid) => {
       const directory = mkdtempSync(join(tmpdir(), 'castoff-installer-'));
       const log = join(directory, 'calls');
-      const mock = (name, body) =>
+      const mock = (name: string, body: string) =>
         writeFileSync(join(directory, name), `#!/bin/bash\n${body}\n`, {
           mode: 0o755
         });

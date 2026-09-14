@@ -1,23 +1,38 @@
-import { jest } from '@jest/globals';
+import { beforeEach, describe, expect, it, jest } from '@jest/globals';
+import type * as core from '@actions/core';
+import type { ExecFileSyncOptionsWithStringEncoding } from 'node:child_process';
+import type { ChatCompletionCreateParamsNonStreaming } from 'openai/resources/chat/completions';
+
+type Completion = Parameters<typeof import('./index.js').extractNotes>[0];
+type ExecGit = (
+  command: string,
+  args: readonly string[],
+  options: ExecFileSyncOptionsWithStringEncoding
+) => string;
+type CreateCompletion = (
+  request: ChatCompletionCreateParamsNonStreaming
+) => Promise<Completion>;
 
 describe('run', () => {
-  let coreMock;
-  let execFileSyncMock;
-  let createCompletionMock;
-  let run;
+  let coreMock: jest.Mocked<
+    Pick<typeof core, 'getInput' | 'info' | 'setOutput' | 'setFailed'>
+  >;
+  let execFileSyncMock: jest.Mock<ExecGit>;
+  let createCompletionMock: jest.Mock<CreateCompletion>;
+  let run: typeof import('./index.js').run;
 
   beforeEach(async () => {
     jest.resetModules();
 
     coreMock = {
-      getInput: jest.fn(),
-      info: jest.fn(),
-      setOutput: jest.fn(),
-      setFailed: jest.fn()
+      getInput: jest.fn<typeof core.getInput>(),
+      info: jest.fn<typeof core.info>(),
+      setOutput: jest.fn<typeof core.setOutput>(),
+      setFailed: jest.fn<typeof core.setFailed>()
     };
 
-    execFileSyncMock = jest.fn();
-    createCompletionMock = jest.fn();
+    execFileSyncMock = jest.fn<ExecGit>();
+    createCompletionMock = jest.fn<CreateCompletion>();
 
     jest.unstable_mockModule('@actions/core', () => ({
       getInput: coreMock.getInput,
@@ -55,15 +70,13 @@ describe('run', () => {
       if (envModel === undefined) delete process.env.OPENAI_MODEL;
       else process.env.OPENAI_MODEL = envModel;
       try {
-        coreMock.getInput.mockImplementation(
-          (name) =>
-            ({
-              openai_api_key: 'test-key',
-              model: input,
-              tag: 'v1.0.0',
-              max_commits: '10'
-            })[name] || ''
-        );
+        const inputs: Record<string, string> = {
+          openai_api_key: 'test-key',
+          model: input,
+          tag: 'v1.0.0',
+          max_commits: '10'
+        };
+        coreMock.getInput.mockImplementation((name) => inputs[name] || '');
         execFileSyncMock.mockReturnValue('abc123 Update');
         createCompletionMock.mockResolvedValue({
           choices: [{ message: { content: '## Highlights\n- Update' } }]
@@ -192,5 +205,17 @@ describe('run', () => {
     await run();
 
     expect(coreMock.setFailed).toHaveBeenCalledWith('OpenAI unavailable');
+  });
+
+  it('reports non-Error exceptions as action failures', async () => {
+    coreMock.getInput.mockImplementation(() => {
+      throw 'unexpected input failure';
+    });
+
+    await run();
+
+    expect(coreMock.setFailed).toHaveBeenCalledWith('unexpected input failure');
+    expect(execFileSyncMock).not.toHaveBeenCalled();
+    expect(createCompletionMock).not.toHaveBeenCalled();
   });
 });

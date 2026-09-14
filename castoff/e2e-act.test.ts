@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { spawnSync } from 'node:child_process';
 import { mkdtempSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';

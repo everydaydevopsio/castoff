@@ -7,7 +7,7 @@ import OpenAI from 'openai';
  * @param {string} rawCommits - Output from `git log --pretty=format:'%h %s'`
  * @returns {string} Bullet list of commits
  */
-function formatCommits(rawCommits) {
+function formatCommits(rawCommits: string): string {
   return rawCommits
     .split('\n')
     .filter((line) => line.trim().length > 0)
@@ -22,7 +22,11 @@ function formatCommits(rawCommits) {
  * @param {string} commitsList - Formatted commits list
  * @returns {string} The prompt text
  */
-function buildPrompt(tag, previousTag, commitsList) {
+function buildPrompt(
+  tag: string,
+  previousTag: string,
+  commitsList: string
+): string {
   return `
 Generate excellent GitHub release notes in Markdown.
 
@@ -40,13 +44,14 @@ Requirements:
 `;
 }
 
-/**
- * Extract release notes from OpenAI completion response, with fallback.
- * @param {object} completion - OpenAI chat completion response
- * @param {string} tag - Release tag for fallback
- * @returns {string} Release notes
- */
-function extractNotes(completion, tag) {
+type NotesCompletion = {
+  choices?: Array<{
+    message?: { content?: string | null };
+  }>;
+};
+
+/** Extract release notes, falling back when response content is missing. */
+function extractNotes(completion: NotesCompletion, tag: string): string {
   return (
     completion.choices?.[0]?.message?.content?.trim() ||
     `# Release ${tag}\n\n_Auto-generated notes unavailable._`
@@ -58,7 +63,7 @@ function extractNotes(completion, tag) {
  * @param {string} value - Raw max_commits input
  * @returns {number} Parsed positive integer in allowed bounds
  */
-function parseMaxCommits(value) {
+function parseMaxCommits(value: string): number {
   const parsed = Number.parseInt(value || '200', 10);
   if (!Number.isInteger(parsed) || parsed < 1 || parsed > 1000) {
     throw new Error(
@@ -68,7 +73,7 @@ function parseMaxCommits(value) {
   return parsed;
 }
 
-async function run() {
+async function run(): Promise<void> {
   try {
     const apiKey = getInput('openai_api_key', { required: true });
     const model =
@@ -118,7 +123,7 @@ async function run() {
     setOutput('model', model);
     info('AI release notes generated successfully.');
   } catch (error) {
-    setFailed(error.message);
+    setFailed(error instanceof Error ? error.message : String(error));
   }
 }
 

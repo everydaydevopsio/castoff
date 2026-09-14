@@ -50,7 +50,8 @@ make setup         # run make deps, nvm install, Corepack setup, and pnpm instal
 make test          # run tests
 make test-coverage # run tests with coverage
 make lint          # lint
-make build         # compile dist/
+make typecheck     # check TypeScript source and tests
+make build         # type-check and bundle JavaScript into dist/
 ```
 
 Setup installs the Node version from `.nvmrc`, installs Corepack if missing for

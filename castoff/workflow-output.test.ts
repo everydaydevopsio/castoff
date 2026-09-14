@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { readFileSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 
@@ -47,7 +48,7 @@ describe('E2E release notes verification', () => {
       const marker = result.stdout.match(/::stop-commands::([a-f0-9-]+)\n/);
       expect(marker).not.toBeNull();
       expect(result.stdout).toContain(
-        `::stop-commands::${marker[1]}\n${notes}\n::${marker[1]}::\n`
+        `::stop-commands::${marker?.[1]}\n${notes}\n::${marker?.[1]}::\n`
       );
       expect(result.stderr).toBe('');
     }

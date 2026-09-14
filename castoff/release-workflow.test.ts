@@ -1,3 +1,4 @@
+import { expect, it } from '@jest/globals';
 import { readFileSync } from 'node:fs';
 
 it('generates notes after the local release commit but before publishing tags', () => {

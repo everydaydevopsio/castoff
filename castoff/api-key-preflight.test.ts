@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
@@ -22,7 +23,7 @@ describe('release and E2E API key preflight', () => {
   });
 });
 
-function runPreflight(env) {
+function runPreflight(env: NodeJS.ProcessEnv) {
   return spawnSync(
     'bash',
     [

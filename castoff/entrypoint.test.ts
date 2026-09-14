@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { spawnSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -13,13 +14,13 @@ describe('packaged action entry point', () => {
         new URL('./node_modules/openai/package.json', import.meta.url),
         'utf8'
       )
-    );
+    ) as { engines: { node: string } };
     const runtime = action.match(/using: ['"]?node(\d+)/);
     const minimum = sdk.engines.node.match(/^>=(\d+)\.0\.0$/);
 
     expect(runtime).not.toBeNull();
     expect(minimum).not.toBeNull();
-    expect(Number(runtime[1])).toBeGreaterThanOrEqual(Number(minimum[1]));
+    expect(Number(runtime?.[1])).toBeGreaterThanOrEqual(Number(minimum?.[1]));
   });
 
   it.each([

@@ -67,10 +67,10 @@ Engineering teams spend time manually writing release notes from commit history.
 - On successful completion, action sets `release_notes` output and logs success message.
 - If OpenAI response content is empty/missing, action returns fallback heading `# Release <tag>`.
 - If OpenAI response content is empty/missing, action returns fallback text `_Auto-generated notes unavailable._`.
-- On runtime error (input issues, git failure, API failure, etc.), action fails using `core.setFailed(error.message)`.
+- On runtime error (input issues, git failure, API failure, etc.), action fails using `core.setFailed(error.message)` for an `Error`, or the string representation of a non-Error exception.
 
 ## 8. Non-Functional Requirements
-- Runtime compatibility: GitHub Actions Node.js 20.
+- Runtime compatibility: GitHub Actions Node.js 24, as declared in `castoff/action.yml`.
 - Reliability: Must fail fast with clear error on unrecoverable runtime exceptions.
 - Security: OpenAI key provided via Actions secrets; action must not print key.
 - Performance: Should complete within typical workflow step timeouts for <=200 commits.
@@ -115,7 +115,9 @@ Engineering teams spend time manually writing release notes from commit history.
 ## 15. Deployment Pipeline
 
 ### 15.1 Artifact Model
-- Action is distributed as a bundled `dist/index.js` compiled by `@vercel/ncc`.
+- Action source and tests are authored in TypeScript with strict type checking.
+- `pnpm typecheck` validates source and tests; `pnpm build` type-checks before bundling `main.ts` with `@vercel/ncc` into `dist/index.js`.
+- The TypeScript migration preserves existing action inputs, outputs, prompts, and commit collection behavior.
 - `action.yml` references `dist/index.js` (not `index.js`) so consumers do not need `node_modules/`.
 - `dist/` is committed into git as part of each release commit.
 
@@ -133,7 +135,7 @@ Engineering teams spend time manually writing release notes from commit history.
 
 ### 15.3 CI Workflow (`.github/workflows/ci.yml`)
 - Triggered on push and pull requests to `main`.
-- Jobs: `test` (jest with coverage ≥ 75%) and `lint` (ESLint + Prettier check).
+- Jobs: `test` (strict TypeScript check, bundle build and freshness check, Jest with coverage ≥ 75%) and `lint` (TypeScript-aware ESLint + Prettier check).
 - Uses concurrency cancel-in-progress to avoid redundant runs.
 
 ### 15.4 Consumer Usage
