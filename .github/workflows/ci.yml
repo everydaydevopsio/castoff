@@ -30,14 +30,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Type-check and build action bundle
-        run: pnpm --filter castoff build
+      - name: Type-check and build action bundles
+        run: pnpm build
 
-      - name: Verify committed action bundle
-        run: git diff --exit-code -- castoff/dist/
+      - name: Verify committed action bundles
+        run: git diff --exit-code -- castoff/dist/ changelog/dist/
 
       - name: Run tests with coverage
-        run: pnpm --filter castoff test:coverage
+        run: pnpm test:coverage
 
   lint:
     name: Lint
@@ -58,7 +58,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Lint
-        run: pnpm --filter castoff lint
+        run: pnpm lint
 
       # Formatting is checked for the whole repository, not just the action.
       - name: Prettier check

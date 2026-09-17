@@ -1,4 +1,4 @@
-pnpm --filter castoff build
+pnpm -r build
 # CI rejects a stale bundle; surface that here instead of after the push.
-git diff --exit-code -- castoff/dist/
-pnpm --filter castoff test
+git diff --exit-code -- castoff/dist/ changelog/dist/
+pnpm -r test

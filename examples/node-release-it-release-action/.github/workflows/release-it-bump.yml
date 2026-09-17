@@ -71,6 +71,7 @@ jobs:
 
           NEW_TAG=$(git describe --tags --abbrev=0)
           echo "tag=$NEW_TAG" >> "$GITHUB_OUTPUT"
+          echo "version=${NEW_TAG#v}" >> "$GITHUB_OUTPUT"
 
       - name: Push commit and tags
         run: |
@@ -105,26 +106,19 @@ jobs:
 
       # The release tag is already pushed, so the entry lands as a follow-up
       # commit rather than being amended into the tagged commit.
-      - name: Checkout Castoff changelog helper
-        if: inputs.update_changelog == true && steps.ai_notes.outcome == 'success'
-        uses: actions/checkout@v4
-        with:
-          repository: everydaydevopsio/castoff
-          ref: v2
-          path: .castoff
-
       - name: Update CHANGELOG.md
+        id: changelog
         if: inputs.update_changelog == true && steps.ai_notes.outcome == 'success'
+        uses: everydaydevopsio/castoff/changelog@v2
+        with:
+          version: ${{ steps.release_it.outputs.version }}
+          entry: ${{ steps.ai_notes.outputs.changelog_entry }}
+
+      - name: Commit the changelog
+        if: steps.changelog.outputs.updated == 'true'
         env:
-          CHANGELOG_ENTRY: ${{ steps.ai_notes.outputs.changelog_entry }}
           TAG: ${{ steps.release_it.outputs.tag }}
         run: |
-          printf '%s\n' "$CHANGELOG_ENTRY" |
-            bash .castoff/scripts/update-changelog.sh "${TAG#v}"
           git add CHANGELOG.md
-          if git diff --quiet --cached; then
-            echo "CHANGELOG.md already documents $TAG; nothing to commit."
-            exit 0
-          fi
           git commit -m "docs: update changelog for $TAG"
           git push origin HEAD

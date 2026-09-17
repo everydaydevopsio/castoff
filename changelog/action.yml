@@ -1,0 +1,28 @@
+name: 'Changelog Entry Writer'
+description: 'Insert a release entry into a Keep a Changelog file'
+author: 'everydaydevopsio'
+branding:
+  icon: 'file-text'
+  color: 'blue'
+
+inputs:
+  version:
+    description: 'Release version without a leading v (for example 1.2.3)'
+    required: true
+  entry:
+    description: 'Markdown entry, such as the castoff action changelog_entry output'
+    required: true
+  file:
+    description: 'Changelog path, created with a Keep a Changelog header when absent'
+    required: false
+    default: 'CHANGELOG.md'
+
+outputs:
+  updated:
+    description: 'true when the entry was inserted, false when the version was already documented'
+  file:
+    description: 'Path of the changelog file'
+
+runs:
+  using: 'node24'
+  main: 'dist/index.js'

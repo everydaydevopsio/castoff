@@ -52,35 +52,37 @@ The action also returns a `changelog_entry` output: the same notes as a
 `## [<version>] - <YYYY-MM-DD>`, with note sections demoted one level and the
 attribution footer removed so it is not repeated once per release.
 
-Maintain [CHANGELOG.md](CHANGELOG.md) by piping that output into
-[`scripts/update-changelog.sh`](scripts/update-changelog.sh), which creates the
-file when absent, inserts the entry above existing releases but below an
-`## [Unreleased]` section, and does nothing when the version is already
-documented, so rerunning a failed release is safe:
+A second action writes it into [CHANGELOG.md](CHANGELOG.md):
 
 ```yaml
 - name: Update CHANGELOG.md
-  env:
-    CHANGELOG_ENTRY: ${{ steps.ai_notes.outputs.changelog_entry }}
-  run: |
-    printf '%s\n' "$CHANGELOG_ENTRY" |
-      bash scripts/update-changelog.sh "${{ steps.bump.outputs.version }}"
-    git add CHANGELOG.md
-    git commit --amend --no-edit
+  id: changelog
+  uses: everydaydevopsio/castoff/changelog@v2
+  with:
+    version: ${{ steps.bump.outputs.version }}
+    entry: ${{ steps.ai_notes.outputs.changelog_entry }}
 ```
 
-This repository's release workflow runs that step between note generation and
-tagging, amending the release commit so the tag carries its own changelog. Pass
-the entry through the environment rather than inline interpolation: generated
-notes are data.
+It creates the file when absent, inserts the entry above existing releases but
+below an `## [Unreleased]` section, and does nothing when the version is already
+documented, so rerunning a failed release is safe. See
+[`changelog/README.md`](changelog/README.md) for full documentation.
 
-Workflows that tag and push before generating notes cannot amend, so they record
-the entry as a follow-up commit instead. The reusable workflows under
-[`examples/`](examples) take that approach behind an `update_changelog` input.
+Neither action touches git. This repository's release workflow runs the writer
+between note generation and tagging, then amends the release commit so the tag
+carries its own changelog. Workflows that tag and push before generating notes
+cannot amend, so they record the entry as a follow-up commit instead; the
+reusable workflows under [`examples/`](examples) take that approach behind an
+`update_changelog` input.
 
 ## Action Reference
 
-See [`castoff/README.md`](castoff/README.md) for full input/output documentation.
+This repository publishes two actions:
+
+- [`castoff/README.md`](castoff/README.md) — generates release notes and a
+  changelog entry. Writes no files.
+- [`changelog/README.md`](changelog/README.md) — inserts a changelog entry into a
+  Keep a Changelog file.
 
 ## Development
 

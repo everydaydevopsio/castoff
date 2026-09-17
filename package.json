@@ -6,12 +6,12 @@
   "packageManager": "pnpm@10.34.5",
   "scripts": {
     "prepare": "husky",
-    "build": "pnpm --filter castoff build",
-    "typecheck": "pnpm --filter castoff typecheck",
-    "test": "pnpm --filter castoff test",
-    "test:coverage": "pnpm --filter castoff test:coverage",
-    "lint": "pnpm --filter castoff lint",
-    "lint:fix": "pnpm --filter castoff lint:fix",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "test:coverage": "pnpm -r test:coverage",
+    "lint": "pnpm -r lint",
+    "lint:fix": "pnpm -r lint:fix",
     "prettier": "prettier . --check",
     "prettier:fix": "prettier . --write"
   },
@@ -27,14 +27,13 @@
     ]
   },
   "lint-staged": {
-    "**/*.ts": [
-      "pnpm --filter castoff exec tsc-files --noEmit",
+    "castoff/**/*.{ts,js}": [
       "prettier --write",
       "pnpm --filter castoff exec eslint --fix"
     ],
-    "**/*.js": [
+    "changelog/**/*.{ts,js}": [
       "prettier --write",
-      "pnpm --filter castoff exec eslint --fix"
+      "pnpm --filter castoff-changelog exec eslint --fix"
     ],
     "**/*.{json,md,yaml,yml}": [
       "prettier --write"
