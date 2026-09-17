@@ -228,4 +228,39 @@ describe('run', () => {
     expect(execFileSyncMock).not.toHaveBeenCalled();
     expect(createCompletionMock).not.toHaveBeenCalled();
   });
+
+  it('sets a changelog entry output dated today with demoted sections', async () => {
+    coreMock.getInput.mockImplementation((name) => {
+      if (name === 'openai_api_key') return 'test-key';
+      if (name === 'model') return 'gpt-4.1-mini';
+      if (name === 'tag') return 'v3.1.0';
+      if (name === 'max_commits') return '10';
+      return '';
+    });
+
+    execFileSyncMock.mockImplementation((_cmd, args) => {
+      if (args[0] === 'describe') return 'v3.0.0';
+      if (args[0] === 'log') return 'abc123 feat: add changelog output';
+      throw new Error('unexpected git args');
+    });
+
+    createCompletionMock.mockResolvedValue({
+      choices: [{ message: { content: '## Highlights\n\n- Changelog output' } }]
+    });
+
+    const startedOn = new Date().toISOString().slice(0, 10);
+    await run();
+    const finishedOn = new Date().toISOString().slice(0, 10);
+
+    // Accept either date: the run can straddle a UTC midnight boundary.
+    const dates = [...new Set([startedOn, finishedOn])];
+    const entry = coreMock.setOutput.mock.calls.find(
+      ([name]) => name === 'changelog_entry'
+    )?.[1];
+    expect(dates.map((date) => `## [3.1.0] - ${date}`)).toContain(
+      String(entry).split('\n')[0]
+    );
+    expect(entry).toContain('\n\n### Highlights\n\n- Changelog output');
+    expect(coreMock.setFailed).not.toHaveBeenCalled();
+  });
 });

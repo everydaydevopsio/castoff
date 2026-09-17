@@ -22,6 +22,8 @@ suitable for GitHub Releases.
 
 - `release_notes` – AI-generated Markdown text
 
+- `changelog_entry` – the same notes as a Keep a Changelog entry
+
 Every `release_notes` output ends with a deterministic attribution footer:
 
 <!-- prettier-ignore -->
@@ -59,6 +61,23 @@ Then pass the notes to a GitHub Release step:
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
+
+## Changelog Entries
+
+`changelog_entry` reformats the generated notes for a `CHANGELOG.md` file:
+
+- Heads the entry with `## [<version>] - <YYYY-MM-DD>`, where the version is the
+  `tag` input without a leading `v` and the date is the release date in UTC.
+- Demotes note headings one level so `## Highlights` nests as `### Highlights`.
+  Headings inside fenced code blocks are content and stay as written.
+- Omits the attribution footer, which belongs on the release rather than on every
+  entry in a file that accumulates them.
+
+Commits matching `chore: release <version>` are excluded from the prompt, so the
+release workflow's own commit does not appear in either output.
+
+The repository ships [`scripts/update-changelog.sh`](../scripts/update-changelog.sh)
+to insert an entry; see the [root README](../README.md#changelog) for workflow usage.
 
 ## Development
 
