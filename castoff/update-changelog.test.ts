@@ -133,6 +133,34 @@ describe('update-changelog.sh', () => {
     );
   });
 
+  it('inserts below an Unreleased section and above older releases', () => {
+    writeFileSync(
+      changelog,
+      `${HEADER}\n## [Unreleased]\n\n- Pending work\n\n## [1.0.0] - 2026-09-17\n\n- First release\n`
+    );
+
+    const result = run('1.1.0', '## [1.1.0] - 2026-09-18\n\n- Second release');
+
+    expect(result.status).toBe(0);
+    expect(readFileSync(changelog, 'utf8')).toBe(
+      `${HEADER}\n## [Unreleased]\n\n- Pending work\n\n` +
+        '## [1.1.0] - 2026-09-18\n\n- Second release\n\n' +
+        '## [1.0.0] - 2026-09-17\n\n- First release\n'
+    );
+  });
+
+  it('appends below an Unreleased section when no releases exist', () => {
+    writeFileSync(changelog, `${HEADER}\n## Unreleased\n\n- Pending work\n`);
+
+    const result = run('1.0.0', '## [1.0.0] - 2026-09-17\n\n- First release');
+
+    expect(result.status).toBe(0);
+    expect(readFileSync(changelog, 'utf8')).toBe(
+      `${HEADER}\n## Unreleased\n\n- Pending work\n\n` +
+        '## [1.0.0] - 2026-09-17\n\n- First release\n'
+    );
+  });
+
   it('preserves the changelog file mode when replacing it', () => {
     run('1.0.0', '## [1.0.0] - 2026-09-17\n\n- First release');
     chmodSync(changelog, 0o640);
@@ -151,14 +179,29 @@ describe('update-changelog.sh', () => {
   });
 
   it.each([
-    ['', 'semantic version'],
-    ['v1.0.0', 'semantic version'],
-    ['1.0', 'semantic version']
-  ])('rejects invalid version %s', (version, message) => {
+    [''],
+    ['v1.0.0'],
+    ['1.0'],
+    ['1.2.3+build+more'],
+    ['1.2.3-'],
+    ['1.2.3+']
+  ])('rejects the non-semantic version %s', (version) => {
     const result = run(version, '## [1.0.0] - 2026-09-17\n\n- Entry');
 
     expect(result.status).toBe(1);
-    expect(result.stderr).toContain(message);
+    expect(result.stderr).toContain('semantic version');
+  });
+
+  it.each([
+    ['1.2.3'],
+    ['1.2.3-rc.1'],
+    ['1.2.3+build.5'],
+    ['1.2.3-rc.1+build.5']
+  ])('accepts the semantic version %s', (version) => {
+    const result = run(version, `## [${version}] - 2026-09-17\n\n- Entry`);
+
+    expect(result.status).toBe(0);
+    expect(readFileSync(changelog, 'utf8')).toContain(`## [${version}]`);
   });
 
   it('rejects an empty entry on stdin', () => {

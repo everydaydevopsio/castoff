@@ -6,7 +6,8 @@ set -euo pipefail
 version="${1:-}"
 changelog="${2:-CHANGELOG.md}"
 
-if [[ ! "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+([-+][0-9A-Za-z.-]+)*$ ]]; then
+# SemVer 2.0.0: at most one prerelease component, then at most one build one.
+if [[ ! "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?([+][0-9A-Za-z.-]+)?$ ]]; then
   echo "::error::update-changelog.sh requires a semantic version without a leading v (for example 1.2.3)." >&2
   exit 1
 fi
@@ -43,7 +44,9 @@ cp -p "$changelog" "$inserted"
 
 # Read the entry from the environment so awk never parses it as syntax.
 ENTRY="$entry" awk '
-  !done && /^## / { printf "%s\n\n", ENVIRON["ENTRY"]; done = 1 }
+  # Keep a Changelog puts Unreleased first; releases go below it.
+  function unreleased(line) { return tolower(line) ~ /^## +\[?unreleased\]?/ }
+  !done && /^## / && !unreleased($0) { printf "%s\n\n", ENVIRON["ENTRY"]; done = 1 }
   { print }
   END { if (!done) printf "\n%s\n", ENVIRON["ENTRY"] }
 ' "$changelog" > "$inserted"
