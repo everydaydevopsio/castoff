@@ -6,8 +6,14 @@ set -euo pipefail
 version="${1:-}"
 changelog="${2:-CHANGELOG.md}"
 
-# SemVer 2.0.0: at most one prerelease component, then at most one build one.
-if [[ ! "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?([+][0-9A-Za-z.-]+)?$ ]]; then
+# The SemVer 2.0.0 grammar from semver.org, as a POSIX ERE: no leading zeros
+# in the numeric parts, and no empty or leading-dot prerelease/build identifiers.
+semver_identifier='(0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*)'
+semver="^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)"
+semver+="(-${semver_identifier}(\.${semver_identifier})*)?"
+semver+="([+][0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?$"
+
+if [[ ! "$version" =~ $semver ]]; then
   echo "::error::update-changelog.sh requires a semantic version without a leading v (for example 1.2.3)." >&2
   exit 1
 fi

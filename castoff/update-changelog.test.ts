@@ -184,7 +184,13 @@ describe('update-changelog.sh', () => {
     ['1.0'],
     ['1.2.3+build+more'],
     ['1.2.3-'],
-    ['1.2.3+']
+    ['1.2.3+'],
+    ['01.2.3'],
+    ['1.02.3'],
+    ['1.2.3-.rc'],
+    ['1.2.3-rc.'],
+    ['1.2.3+.build'],
+    ['1.2.3-01']
   ])('rejects the non-semantic version %s', (version) => {
     const result = run(version, '## [1.0.0] - 2026-09-17\n\n- Entry');
 
@@ -194,8 +200,12 @@ describe('update-changelog.sh', () => {
 
   it.each([
     ['1.2.3'],
+    ['0.0.0'],
     ['1.2.3-rc.1'],
+    ['1.2.3-0.3.7'],
+    ['1.2.3-x-y-z.0'],
     ['1.2.3+build.5'],
+    ['1.2.3+21AF26D'],
     ['1.2.3-rc.1+build.5']
   ])('accepts the semantic version %s', (version) => {
     const result = run(version, `## [${version}] - 2026-09-17\n\n- Entry`);
