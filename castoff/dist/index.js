@@ -51357,11 +51357,13 @@ function demoteHeadings(notes) {
     return notes
         .split('\n')
         .map((line) => {
-        const delimiter = /^ {0,3}(`{3,}|~{3,})/.exec(line)?.[1][0];
-        if (delimiter) {
+        const marker = /^ {0,3}(`{3,}|~{3,})/.exec(line)?.[1];
+        if (marker) {
+            // CommonMark: a closing fence repeats the opening character and is at
+            // least as long, so a shorter inner fence stays part of the content.
             if (!fence)
-                fence = delimiter;
-            else if (delimiter === fence)
+                fence = marker;
+            else if (marker[0] === fence[0] && marker.length >= fence.length)
                 fence = '';
             return line;
         }

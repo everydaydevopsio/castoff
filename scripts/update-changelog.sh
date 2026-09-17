@@ -35,8 +35,11 @@ if awk -v heading="## [$version]" 'index($0, heading) == 1 { found = 1 }
   exit 0
 fi
 
-inserted="$(mktemp)"
+# Stage beside the target so the replace below is an atomic same-filesystem
+# rename: an interrupted run leaves the existing changelog intact.
+inserted="$(mktemp "${changelog}.XXXXXX")"
 trap 'rm -f "$inserted"' EXIT
+cp -p "$changelog" "$inserted"
 
 # Read the entry from the environment so awk never parses it as syntax.
 ENTRY="$entry" awk '
@@ -45,5 +48,5 @@ ENTRY="$entry" awk '
   END { if (!done) printf "\n%s\n", ENVIRON["ENTRY"] }
 ' "$changelog" > "$inserted"
 
-cat "$inserted" > "$changelog"
+mv -f "$inserted" "$changelog"
 echo "Added $version to $changelog."

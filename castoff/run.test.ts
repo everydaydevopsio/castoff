@@ -248,13 +248,19 @@ describe('run', () => {
       choices: [{ message: { content: '## Highlights\n\n- Changelog output' } }]
     });
 
+    const startedOn = new Date().toISOString().slice(0, 10);
     await run();
+    const finishedOn = new Date().toISOString().slice(0, 10);
 
-    const today = new Date().toISOString().slice(0, 10);
-    expect(coreMock.setOutput).toHaveBeenCalledWith(
-      'changelog_entry',
-      `## [3.1.0] - ${today}\n\n### Highlights\n\n- Changelog output`
+    // Accept either date: the run can straddle a UTC midnight boundary.
+    const dates = [...new Set([startedOn, finishedOn])];
+    const entry = coreMock.setOutput.mock.calls.find(
+      ([name]) => name === 'changelog_entry'
+    )?.[1];
+    expect(dates.map((date) => `## [3.1.0] - ${date}`)).toContain(
+      String(entry).split('\n')[0]
     );
+    expect(entry).toContain('\n\n### Highlights\n\n- Changelog output');
     expect(coreMock.setFailed).not.toHaveBeenCalled();
   });
 });

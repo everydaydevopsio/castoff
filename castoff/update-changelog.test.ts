@@ -1,6 +1,14 @@
 import { afterEach, beforeEach, describe, expect, it } from '@jest/globals';
 import { spawnSync } from 'node:child_process';
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import {
+  chmodSync,
+  mkdtempSync,
+  readFileSync,
+  readdirSync,
+  rmSync,
+  statSync,
+  writeFileSync
+} from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -123,6 +131,23 @@ describe('update-changelog.sh', () => {
     expect(readFileSync(changelog, 'utf8')).toBe(
       `${HEADER}\n## [1.0.0] - 2026-09-17\n\n- First release\n`
     );
+  });
+
+  it('preserves the changelog file mode when replacing it', () => {
+    run('1.0.0', '## [1.0.0] - 2026-09-17\n\n- First release');
+    chmodSync(changelog, 0o640);
+
+    const result = run('1.1.0', '## [1.1.0] - 2026-09-18\n\n- Second release');
+
+    expect(result.status).toBe(0);
+    expect(statSync(changelog).mode & 0o777).toBe(0o640);
+  });
+
+  it('leaves no staging files behind', () => {
+    run('1.0.0', '## [1.0.0] - 2026-09-17\n\n- First release');
+    run('1.1.0', '## [1.1.0] - 2026-09-18\n\n- Second release');
+
+    expect(readdirSync(workdir)).toEqual(['CHANGELOG.md']);
   });
 
   it.each([

@@ -260,6 +260,18 @@ describe('demoteHeadings', () => {
     const notes = '```\n~~~\n# kept\n```\n\n## Fixes';
     expect(demoteHeadings(notes)).toBe('```\n~~~\n# kept\n```\n\n### Fixes');
   });
+
+  it('keeps a long fence open across a shorter inner fence', () => {
+    const notes = '````\n```\n# kept\n```\n# also kept\n````\n\n## Fixes';
+    expect(demoteHeadings(notes)).toBe(
+      '````\n```\n# kept\n```\n# also kept\n````\n\n### Fixes'
+    );
+  });
+
+  it('closes a fence with a longer run of the same character', () => {
+    const notes = '```\n# kept\n````\n\n## Fixes';
+    expect(demoteHeadings(notes)).toBe('```\n# kept\n````\n\n### Fixes');
+  });
 });
 
 describe('formatReleaseDate', () => {
