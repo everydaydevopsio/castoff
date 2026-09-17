@@ -154,10 +154,11 @@ Engineering teams spend time manually writing release notes from commit history.
 ### 15.3 Changelog File (`CHANGELOG.md`)
 - `scripts/update-changelog.sh` takes a semantic version and an entry on standard input.
 - It creates `CHANGELOG.md` with a Keep a Changelog header when the file is absent.
-- It inserts the entry above the newest existing entry, or after the header when no entries exist.
+- It inserts the entry above the newest existing entry, below an `## [Unreleased]` heading when one is present, or at the end of the file when it holds no releases.
 - It exits successfully without changes when the version already has a heading, so reruns of a failed release are safe.
-- It rejects a version with a leading `v`, a non-semantic version, and an empty entry.
+- It rejects an empty entry, and any version outside the SemVer 2.0.0 grammar: a leading `v`, leading zeros in the numeric parts, and empty or leading-dot prerelease or build identifiers.
 - Entry text is passed to `awk` through the environment so it is never parsed as syntax.
+- It stages the rewritten file beside the target and renames it into place, so an interrupted run leaves the existing changelog intact. The staging copy inherits the target's mode, which the rename would otherwise replace.
 
 ### 15.4 CI Workflow (`.github/workflows/ci.yml`)
 - Triggered on push and pull requests to `main`.
@@ -165,14 +166,19 @@ Engineering teams spend time manually writing release notes from commit history.
 - Uses concurrency cancel-in-progress to avoid redundant runs.
 
 ### 15.5 Consumer Usage
-Users reference the action by major version tag:
+Users reference the action by major version tag, which the release workflow
+moves to each release in that major series:
 ```yaml
-uses: everydaydevopsio/castoff/castoff@v0
+uses: everydaydevopsio/castoff/castoff@v2
 ```
 Or by exact version for pinning:
 ```yaml
-uses: everydaydevopsio/castoff/castoff@v0.1.0
+uses: everydaydevopsio/castoff/castoff@v2.0.0
 ```
+The reusable workflows under `examples/` are referenced by the same major tag and
+expose `use_ai_release_notes` and `update_changelog` inputs. They push the release
+tag before generating notes, so they record the changelog as a follow-up commit
+rather than amending the tagged commit.
 
 ### 15.6 Live E2E Workflow
 - Automatically run after `CI` (`ci.yml`) completes successfully for a push to `main`; skip automatic jobs for failed/cancelled CI or pull-request CI.
@@ -182,7 +188,7 @@ uses: everydaydevopsio/castoff/castoff@v0.1.0
 - Test the default `gpt-6-astra` without model configuration and `gpt-5.6-sol` via `OPENAI_MODEL`, both using the `OPENAI_API_KEY` Actions secret.
 - Test an additional configured model when the repository/ACT `OPENAI_MODEL` variable is nonempty.
 - Verify missing-key failures and reject placeholder fallback notes as live-test success.
-- Verify the `changelog_entry` output is headed by the release version and an ISO date and carries no attribution footer.
+- Verify the `changelog_entry` output is headed by the release version and an ISO date, and carries no canonical attribution footer line. Match that line exactly: entry content may legitimately discuss the footer.
 - The local ACT launcher forwards environment configuration; missing keys fail inside the workflow.
 
 ## 16. Future Enhancements (Post-v1)
