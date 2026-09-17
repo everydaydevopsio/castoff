@@ -37,23 +37,20 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: bash scripts/require-openai-key.sh
 
+      # Version comes from the root package.json packageManager field.
       - uses: pnpm/action-setup@v6
-        with:
-          version: 9
 
       - uses: actions/setup-node@v7
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
-          cache-dependency-path: 'castoff/pnpm-lock.yaml'
+          cache-dependency-path: 'pnpm-lock.yaml'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-        working-directory: castoff
 
       - name: Run tests
-        run: pnpm test
-        working-directory: castoff
+        run: pnpm --filter castoff test
 
       - name: Bump version
         id: bump
@@ -67,8 +64,7 @@ jobs:
           echo "major_tag=v${MAJOR}" >> "$GITHUB_OUTPUT"
 
       - name: Build dist
-        run: pnpm build
-        working-directory: castoff
+        run: pnpm --filter castoff build
 
       - name: Configure git
         run: |

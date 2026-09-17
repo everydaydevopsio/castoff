@@ -1,8 +1,6 @@
 SHELL := /bin/bash
 
-ACTION_DIR := castoff
-
-.PHONY: setup deps install build typecheck test test-coverage lint lint-fix e2e-act
+.PHONY: setup deps install build typecheck test test-coverage lint lint-fix format e2e-act
 
 deps:
 	@if command -v act >/dev/null 2>&1; then \
@@ -29,31 +27,33 @@ setup: deps
 	nvm install; \
 	if [ ! -x "$$NVM_BIN/corepack" ]; then npm install --global corepack; fi; \
 	"$$NVM_BIN/corepack" enable pnpm; \
-	"$$NVM_BIN/corepack" install --global pnpm@9; \
-	(cd "$(ACTION_DIR)" && COREPACK_ENABLE_AUTO_PIN=0 pnpm install --frozen-lockfile); \
+	COREPACK_ENABLE_DOWNLOAD_PROMPT=0 pnpm install --frozen-lockfile; \
 	echo "Setup complete. Activate Node in your current terminal, then run make test:"; \
 	printf 'export NVM_DIR=%q; . %q; nvm use\n' "$$NVM_DIR" "$$nvm_script"
 
 install:
-	cd $(ACTION_DIR) && pnpm install
+	pnpm install
 
 build:
-	cd $(ACTION_DIR) && pnpm build
+	pnpm --filter castoff build
 
 typecheck:
-	cd $(ACTION_DIR) && pnpm typecheck
+	pnpm --filter castoff typecheck
 
 test:
-	cd $(ACTION_DIR) && pnpm test
+	pnpm --filter castoff test
 
 test-coverage:
-	cd $(ACTION_DIR) && pnpm test:coverage
+	pnpm --filter castoff test:coverage
 
 lint:
-	cd $(ACTION_DIR) && pnpm lint
+	pnpm --filter castoff lint
 
 lint-fix:
-	cd $(ACTION_DIR) && pnpm lint:fix
+	pnpm --filter castoff lint:fix
+
+format:
+	pnpm prettier:fix
 
 e2e-act: build
 	./scripts/e2e-act.sh

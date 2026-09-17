@@ -1,0 +1,43 @@
+{
+  "name": "castoff-workspace",
+  "private": true,
+  "description": "Workspace root: git hooks, formatting, and shared tooling for the Castoff action",
+  "license": "MIT",
+  "packageManager": "pnpm@10.34.5",
+  "scripts": {
+    "prepare": "husky",
+    "build": "pnpm --filter castoff build",
+    "typecheck": "pnpm --filter castoff typecheck",
+    "test": "pnpm --filter castoff test",
+    "test:coverage": "pnpm --filter castoff test:coverage",
+    "lint": "pnpm --filter castoff lint",
+    "lint:fix": "pnpm --filter castoff lint:fix",
+    "prettier": "prettier . --check",
+    "prettier:fix": "prettier . --write"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^17.5.1",
+    "prettier": "^3.9.6"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "unrs-resolver"
+    ]
+  },
+  "lint-staged": {
+    "**/*.ts": [
+      "pnpm --filter castoff exec tsc-files --noEmit",
+      "prettier --write",
+      "pnpm --filter castoff exec eslint --fix"
+    ],
+    "**/*.js": [
+      "prettier --write",
+      "pnpm --filter castoff exec eslint --fix"
+    ],
+    "**/*.{json,md,yaml,yml}": [
+      "prettier --write"
+    ]
+  }
+}

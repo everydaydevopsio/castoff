@@ -12,14 +12,16 @@ Suggested facts to record:
 
 - Canonical GitHub repo: `everydaydevopsio/castoff`
 - Default branch: `main`
-- Primary package manager: `pnpm` (v9; lockfile at `castoff/pnpm-lock.yaml`)
+- Primary package manager: `pnpm` (v10, pinned by the root `package.json` `packageManager` field; single lockfile at `pnpm-lock.yaml`)
+- pnpm workspace: root holds git hooks and formatting; `castoff/` holds the action. Run scripts from the root, for example `pnpm --filter castoff build`
 - Version-file locations agents should check first: `.nvmrc`
-- Canonical config files: `castoff/package.json`, `castoff/eslint.config.js`, `castoff/jest.config.js`
+- Canonical config files: `package.json` (workspace root), `pnpm-workspace.yaml`, `castoff/package.json`, `castoff/eslint.config.js`, `castoff/jest.config.js`
 - Primary CI workflows: `.github/workflows/ci.yml`
 - Primary release/publish workflows: `.github/workflows/release.yml`
-- Preferred build/test/lint/format/coverage commands: `make build`, `make test`, `make test-coverage`, `make lint`
+- Preferred build/test/lint/format/coverage commands: `make build`, `make test`, `make test-coverage`, `make lint`, `make format`
 - Coverage threshold: 75% (lines, functions, branches, statements)
-- Generated or protected paths agents should avoid editing directly: `.ballast/`, `castoff/dist/`
+- Generated or protected paths agents should avoid editing directly: `.ballast/`, `castoff/dist/`, `.husky/_/`
+- Git hooks: husky, installed by the root `prepare` script; `core.hooksPath` is `.husky/_`
 
 Update this section when those facts change. If live runtime state is required, discover it separately instead of treating it as a durable repo fact.
 
