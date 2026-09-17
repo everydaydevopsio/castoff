@@ -45,16 +45,16 @@ on:
   workflow_dispatch:
     inputs:
       level:
-        description: "Version bump level"
+        description: 'Version bump level'
         type: choice
         default: patch
         options: [patch, minor, major]
       use_ai_release_notes:
-        description: "Use AI (OpenAI) to generate release notes"
+        description: 'Use AI (OpenAI) to generate release notes'
         type: boolean
         default: false
       update_changelog:
-        description: "Record the release in CHANGELOG.md"
+        description: 'Record the release in CHANGELOG.md'
         type: boolean
         default: false
 
