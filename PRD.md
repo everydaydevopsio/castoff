@@ -77,7 +77,8 @@ Engineering teams spend time manually writing release notes from commit history.
 
 ### 7.3 Commit Range and Collection
 
-- Action attempts to detect previous tag via `git describe --tags --abbrev=0 HEAD^`.
+- Action attempts to detect previous tag via `git describe --tags --abbrev=0 HEAD^`, excluding floating major tags (`v0`-`v99`) so the exact version tag is reported. Release workflows move a floating major tag onto each release, where it sits on the same commit as the version tag and `git describe` reports it instead.
+- If that lookup finds nothing, the action repeats it without exclusions, so repositories using other tag conventions and git versions without `--exclude` keep their previous behavior. Both lookups yield the same commit range when a floating tag is all that remains.
 - If previous tag exists, commit range is `<previousTag>..HEAD`.
 - If no previous tag is found, range is `HEAD` and action logs informational message.
 - Commit messages are read using `git log --pretty=format:'%h %s' ... -n <max_commits>`.

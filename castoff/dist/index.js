@@ -51388,6 +51388,23 @@ function buildChangelogEntry(notes, tag, date) {
     return `## [${version}] - ${date}\n\n${body || '_No release notes were generated._'}`;
 }
 /**
+ * Floating major tags (v1, v2, ... v99) that release workflows move onto each
+ * release in a major series. They sit on the same commit as the exact version
+ * tag, so `git describe` can report them in its place.
+ */
+const FLOATING_MAJOR_TAGS = ['v[0-9]', 'v[0-9][0-9]'];
+/**
+ * Read the nearest tag before HEAD.
+ * @param {boolean} exact - Skip floating major tags in favour of version tags
+ * @returns {string} Tag name
+ */
+function describePreviousTag(exact) {
+    const excludes = exact
+        ? FLOATING_MAJOR_TAGS.flatMap((pattern) => ['--exclude', pattern])
+        : [];
+    return (0,external_child_process_namespaceObject.execFileSync)('git', ['describe', '--tags', '--abbrev=0', ...excludes, 'HEAD^'], { encoding: 'utf8' }).trim();
+}
+/**
  * Parse and validate max_commits input from workflow config.
  * @param {string} value - Raw max_commits input
  * @returns {number} Parsed positive integer in allowed bounds
@@ -51409,10 +51426,18 @@ async function run() {
         const client = new OpenAI({ apiKey });
         let previousTag = '';
         try {
-            previousTag = (0,external_child_process_namespaceObject.execFileSync)('git', ['describe', '--tags', '--abbrev=0', 'HEAD^'], { encoding: 'utf8' }).trim();
+            previousTag = describePreviousTag(true);
         }
         catch {
-            info('No previous tag found (first release).');
+            // Fall back for repositories that tag releases some other way, and for
+            // git versions without --exclude. Both ranges cover the same commits
+            // when a floating major tag is all that is left to find.
+            try {
+                previousTag = describePreviousTag(false);
+            }
+            catch {
+                info('No previous tag found (first release).');
+            }
         }
         const logRange = previousTag ? `${previousTag}..HEAD` : 'HEAD';
         const rawCommits = (0,external_child_process_namespaceObject.execFileSync)('git', ['log', '--pretty=format:%h %s', logRange, '-n', String(maxCommits)], { encoding: 'utf8' }).trim();
