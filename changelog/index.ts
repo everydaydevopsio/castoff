@@ -33,15 +33,19 @@ function parseVersion(version: string): string {
 
 /**
  * Validate a changelog entry.
+ * Drops surrounding blank lines only. Indentation on the first content line and
+ * trailing spaces on the last are Markdown, so they are written as given.
  * @param {string} entry - Markdown entry for one release
  * @returns {string} The entry without surrounding blank lines
  */
 function parseEntry(entry: string): string {
-  const trimmed = entry.trim();
-  if (!trimmed) {
+  if (!entry.trim()) {
     throw new Error("Input 'entry' must not be empty.");
   }
-  return trimmed;
+  const lines = entry.split('\n');
+  while (!lines[0].trim()) lines.shift();
+  while (!lines[lines.length - 1].trim()) lines.pop();
+  return lines.join('\n');
 }
 
 /** Keep a Changelog puts an Unreleased section above released versions. */

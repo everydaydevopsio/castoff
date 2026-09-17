@@ -15,6 +15,20 @@ it('generates notes after the local release commit but before publishing tags', 
   expect(workflow.slice(notes, publish)).not.toContain('continue-on-error');
 });
 
+it('commits both action bundles it rebuilt for the release', () => {
+  const workflow = readFileSync(
+    new URL('../.github/workflows/release.yml', import.meta.url),
+    'utf8'
+  );
+  const build = workflow.indexOf('- name: Build dist');
+  const commit = workflow.indexOf('- name: Commit release artifacts');
+  const step = workflow.slice(commit, workflow.indexOf('- name: Generate AI'));
+  expect(commit).toBeGreaterThan(build);
+  // A bundle left unstaged would publish stale output under the new tag.
+  expect(step).toContain('git add castoff/dist/ changelog/dist/');
+  expect(step).toContain('git add castoff/package.json changelog/package.json');
+});
+
 it('updates the changelog into the release commit before publishing tags', () => {
   const workflow = readFileSync(
     new URL('../.github/workflows/release.yml', import.meta.url),

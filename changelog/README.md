@@ -62,8 +62,9 @@ workflow, where they belong.
 - Replaces the file through a rename, so an interrupted run leaves the existing
   changelog intact. The staging copy inherits the target's mode.
 
-Entry text is written literally. It is never interpreted as shell, formatting or
-pattern syntax.
+Entry text is written literally: it is never interpreted as shell, formatting or
+pattern syntax. Only blank lines around the entry are dropped, so indentation on
+the first content line and trailing spaces marking a hard line break survive.
 
 ## Development
 

@@ -170,9 +170,9 @@ Engineering teams spend time manually writing release notes from commit history.
 - Triggered manually via `workflow_dispatch` with `level` input (`patch` | `minor` | `major`).
 - Steps in order:
   1. Require a nonempty `OPENAI_API_KEY` Actions secret, then run the full test suite. Fail before release changes if either check fails.
-  2. Bump `package.json` version via `npm version <level> --no-git-tag-version`.
+  2. Bump both package versions via `npm version <level> --no-git-tag-version`; one tag covers both actions.
   3. Compile `dist/index.js` via `pnpm --filter castoff build` (ncc).
-  4. Commit `package.json` and `dist/` locally with message `chore: release vX.Y.Z`.
+  4. Commit both `package.json` files and both `dist/` bundles locally with message `chore: release vX.Y.Z`.
   5. Generate AI release notes using the action and `OPENAI_MODEL` repository variable if configured. The local release commit keeps the previous-tag lookup correct; API failures stop the workflow before publishing.
   6. Insert the `changelog_entry` output into `CHANGELOG.md` via the changelog action, then amend the release commit so the tag carries its own changelog. Amend only when the action reports `updated: true`.
   7. Create an exact version tag (`vX.Y.Z`) and update the floating major tag (`vN`) in place.
@@ -186,7 +186,7 @@ Engineering teams spend time manually writing release notes from commit history.
 - It inserts the entry above the newest existing entry, below an `## [Unreleased]` heading when one is present, or at the end of the file when it holds no releases.
 - It reports `updated: false` and leaves the file untouched when the version already has a heading, so reruns of a failed release are safe and commit nothing.
 - It rejects an empty entry, and any version outside the SemVer 2.0.0 grammar: a leading `v`, leading zeros in the numeric parts, and empty or leading-dot prerelease or build identifiers.
-- Entry text is written literally; it is never interpreted as shell, formatting or pattern syntax.
+- Entry text is written literally; it is never interpreted as shell, formatting or pattern syntax. Only blank lines surrounding the entry are dropped, preserving indentation on the first content line and trailing spaces marking a hard line break.
 - It replaces the file through a rename, so an interrupted run leaves the existing changelog intact. The staging copy inherits the target's mode, which the rename would otherwise replace.
 - It performs no git operations. Staging, committing and pushing stay in the calling workflow.
 

@@ -42,9 +42,28 @@ describe('parseVersion', () => {
 });
 
 describe('parseEntry', () => {
-  it('trims surrounding blank lines', () => {
+  it('drops surrounding blank lines', () => {
     expect(parseEntry('\n\n## [1.0.0] - 2026-09-17\n\n- Entry\n\n')).toBe(
       '## [1.0.0] - 2026-09-17\n\n- Entry'
+    );
+  });
+
+  it('drops blank lines that carry whitespace', () => {
+    expect(parseEntry('  \n\t\n- Entry\n   \n')).toBe('- Entry');
+  });
+
+  it('preserves indentation on the first content line', () => {
+    // An indented first line can open a code block or a nested list item.
+    expect(parseEntry('\n    indented\n- Entry')).toBe('    indented\n- Entry');
+  });
+
+  it('preserves trailing spaces that mark a hard line break', () => {
+    expect(parseEntry('- Entry  \n- Next  \n\n')).toBe('- Entry  \n- Next  ');
+  });
+
+  it('preserves blank lines inside the entry', () => {
+    expect(parseEntry('## [1.0.0]\n\n\n- Entry')).toBe(
+      '## [1.0.0]\n\n\n- Entry'
     );
   });
 
