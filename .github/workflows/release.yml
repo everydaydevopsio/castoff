@@ -90,6 +90,16 @@ jobs:
           openai_api_key: ${{ secrets.OPENAI_API_KEY }}
           tag: ${{ steps.bump.outputs.tag }}
 
+      - name: Update CHANGELOG.md
+        env:
+          CHANGELOG_ENTRY: ${{ steps.release_notes.outputs.changelog_entry }}
+        run: |
+          printf '%s\n' "$CHANGELOG_ENTRY" |
+            bash scripts/update-changelog.sh "${{ steps.bump.outputs.version }}"
+          git add CHANGELOG.md
+          # Fold the changelog into the release commit so the tag carries it.
+          git commit --amend --no-edit
+
       - name: Tag and push
         run: |
           git tag "${{ steps.bump.outputs.tag }}"

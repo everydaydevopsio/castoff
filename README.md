@@ -44,6 +44,34 @@ fallback notes, and replaces existing trailing Castoff attribution footers to
 avoid duplicates. Release-note content and sections are preserved. Passing
 `release_notes` to your release step includes the attribution automatically.
 
+## Changelog
+
+The action also returns a `changelog_entry` output: the same notes as a
+[Keep a Changelog](https://keepachangelog.com/en/1.1.0/) entry, headed by
+`## [<version>] - <YYYY-MM-DD>`, with note sections demoted one level and the
+attribution footer removed so it is not repeated once per release.
+
+Maintain [CHANGELOG.md](CHANGELOG.md) by piping that output into
+[`scripts/update-changelog.sh`](scripts/update-changelog.sh), which creates the
+file when absent, inserts the entry above existing releases, and does nothing
+when the version is already documented:
+
+```yaml
+- name: Update CHANGELOG.md
+  env:
+    CHANGELOG_ENTRY: ${{ steps.ai_notes.outputs.changelog_entry }}
+  run: |
+    printf '%s\n' "$CHANGELOG_ENTRY" |
+      bash scripts/update-changelog.sh "${{ steps.bump.outputs.version }}"
+    git add CHANGELOG.md
+    git commit --amend --no-edit
+```
+
+This repository's release workflow runs that step between note generation and
+tagging, amending the release commit so the tag carries its own changelog. Pass
+the entry through the environment rather than inline interpolation: generated
+notes are data.
+
 ## Action Reference
 
 See [`castoff/README.md`](castoff/README.md) for full input/output documentation.

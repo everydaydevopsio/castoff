@@ -25,6 +25,8 @@ outputs:
     description: 'Resolved model name sent to OpenAI'
   release_notes:
     description: 'Markdown release notes with Castoff attribution and the resolved model'
+  changelog_entry:
+    description: 'Keep a Changelog entry for the tag: dated version heading, demoted sections, no attribution footer'
 
 runs:
   using: 'node24'
