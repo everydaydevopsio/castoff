@@ -1,30 +1,29 @@
-# Task: Changelog usage across documentation and examples
+# Task: Resolve the previous tag to an exact version
 
 ## Context
 - Date: 2026-09-17
-- Mode: Autonomous within the user's authorization to update documentation and this repo's usage of the changelog feature, then open a PR.
-- PRD Sections: 15.3, 15.5, 15.6
+- Mode: Autonomous within the user's authorization to fix the defect found while reviewing the v2.1.0 release run, then open a PR.
+- PRD Section: 7.3
 
 ## Scope and Acceptance Criteria
-- Bring PRD 15.3 and 15.6 in line with the behavior merged in #25 (Unreleased ordering, SemVer grammar, atomic replace, canonical footer match).
-- Correct stale action references: `@v1` in both READMEs and both examples, `@v0`/`@v0.1.0` in PRD 15.5.
-- Add an opt-in `update_changelog` input to both reusable example workflows.
-- Document the follow-up-commit limitation, which the examples cannot avoid because they push the tag before generating notes.
+- Report the exact previous version tag rather than the floating major tag the release workflow moves onto each release.
+- Preserve current behavior for repositories using other tag conventions and for git versions without `--exclude`.
+- Leave the generated commit range unchanged: both lookups already covered the same commits.
 
 ## Execution Checklist
-- [x] Audit documentation against merged behavior and find stale references.
-- [x] Confirm the examples' approach with the user before rewriting published workflows.
-- [x] Wire the changelog into both examples and document it in their READMEs.
-- [x] Prove the example step end to end, including a rerun.
-- [x] Validate full suite, coverage, types, lint and formatting.
+- [x] Reproduce the defect from the v2.1.0 run and confirm it predates the changelog work.
+- [x] Prove regression tests fail before implementation.
+- [x] Implement the exclusion with a fallback, and record the decision in ADR-005.
+- [x] Validate full suite, coverage, types, lint, formatting and bundle.
 
 ## Test Strategy
-- Parse both example workflows and assert the input default, step order, opt-in condition, pinned refs, and environment passing.
-- Simulate the example step in a scratch git repository to confirm it commits once and no-ops on rerun.
+- Assert the exclusion arguments, the resulting log range, and the prompt's previous-tag line.
+- Assert the fallback path when the filtered lookup finds nothing, standing in for other tag conventions and for git without `--exclude`.
+- Reproduce in a scratch repository with `v2` and `v2.0.0` on one commit.
 
 ## Rollback Strategy
-- Revert this change; the action and this repository's release workflow are unaffected.
+- Revert this change and its generated bundle; the previous lookup returns.
 
 ## Outcome
-- 133 tests pass with `index.ts` at 100% coverage; no action or bundle changes.
-- The examples require Castoff v2.1.0, which the next release will publish; noted in both example READMEs.
+- Scratch repository confirms the fix: plain lookup returns `v2`, excluded lookup returns `v2.0.0`, both producing the same two-commit range.
+- Full suite: 135 tests, `index.ts` at 100% coverage.
