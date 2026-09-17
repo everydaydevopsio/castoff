@@ -7,3 +7,4 @@
 | [003: Append release-note attribution after generation](003-release-attribution.md)                    | Accepted |
 | [004: Emit a changelog entry output and write the file in the workflow](004-changelog-entry-output.md) | Accepted |
 | [006: Manage tooling from a pnpm workspace root](006-pnpm-workspace-husky-root.md)                     | Accepted |
+| [007: Publish the changelog writer as a second action](007-changelog-action.md)                        | Accepted |

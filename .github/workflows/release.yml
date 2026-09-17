@@ -50,7 +50,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Run tests
-        run: pnpm --filter castoff test
+        run: pnpm test
 
       - name: Bump version
         id: bump
@@ -64,7 +64,7 @@ jobs:
           echo "major_tag=v${MAJOR}" >> "$GITHUB_OUTPUT"
 
       - name: Build dist
-        run: pnpm --filter castoff build
+        run: pnpm build
 
       - name: Configure git
         run: |
@@ -87,13 +87,17 @@ jobs:
           tag: ${{ steps.bump.outputs.tag }}
 
       - name: Update CHANGELOG.md
-        env:
-          CHANGELOG_ENTRY: ${{ steps.release_notes.outputs.changelog_entry }}
+        id: changelog
+        uses: ./changelog
+        with:
+          version: ${{ steps.bump.outputs.version }}
+          entry: ${{ steps.release_notes.outputs.changelog_entry }}
+
+      - name: Fold the changelog into the release commit
+        if: steps.changelog.outputs.updated == 'true'
         run: |
-          printf '%s\n' "$CHANGELOG_ENTRY" |
-            bash scripts/update-changelog.sh "${{ steps.bump.outputs.version }}"
           git add CHANGELOG.md
-          # Fold the changelog into the release commit so the tag carries it.
+          # Amend so the tag created below carries its own changelog.
           git commit --amend --no-edit
 
       - name: Tag and push

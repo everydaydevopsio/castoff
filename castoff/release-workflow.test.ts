@@ -22,16 +22,22 @@ it('updates the changelog into the release commit before publishing tags', () =>
   );
   const notes = workflow.indexOf('- name: Generate AI release notes');
   const changelog = workflow.indexOf('- name: Update CHANGELOG.md');
+  const amend = workflow.indexOf(
+    '- name: Fold the changelog into the release commit'
+  );
   const publish = workflow.indexOf('- name: Tag and push');
   expect(changelog).toBeGreaterThan(notes);
-  expect(publish).toBeGreaterThan(changelog);
+  expect(amend).toBeGreaterThan(changelog);
+  expect(publish).toBeGreaterThan(amend);
 
-  const step = workflow.slice(changelog, publish);
-  // Pass the generated entry through the environment so note content is data.
-  expect(step).toContain(
-    'CHANGELOG_ENTRY: ${{ steps.release_notes.outputs.changelog_entry }}'
+  const steps = workflow.slice(changelog, publish);
+  expect(steps).toContain('uses: ./changelog');
+  expect(steps).toContain('version: ${{ steps.bump.outputs.version }}');
+  expect(steps).toContain(
+    'entry: ${{ steps.release_notes.outputs.changelog_entry }}'
   );
-  expect(step).toContain('scripts/update-changelog.sh');
-  expect(step).toContain('git commit --amend --no-edit');
-  expect(step).not.toContain('continue-on-error');
+  // Amending an unchanged tree would rewrite the release commit for nothing.
+  expect(steps).toContain("if: steps.changelog.outputs.updated == 'true'");
+  expect(steps).toContain('git commit --amend --no-edit');
+  expect(steps).not.toContain('continue-on-error');
 });

@@ -58,9 +58,9 @@ version_pattern = "MAJOR.MINOR.PATCH"
 ## Changelog entries
 
 Set `update_changelog: true` (with `use_ai_release_notes: true`) to record each
-release in `CHANGELOG.md`. The workflow checks out Castoff's
-`scripts/update-changelog.sh`, pipes the action's `changelog_entry` output into
-it, and pushes the result.
+release in `CHANGELOG.md`. The workflow passes the action's `changelog_entry`
+output to the [changelog action](https://github.com/everydaydevopsio/castoff/blob/main/changelog/README.md),
+then commits the result.
 
 Two things to know:
 
@@ -69,11 +69,11 @@ Two things to know:
   does not contain the entry. Castoff's own
   [release workflow](https://github.com/everydaydevopsio/castoff/blob/main/.github/workflows/release.yml)
   generates notes before tagging, so it can amend instead.
-- The script creates `CHANGELOG.md` when it is absent, inserts each entry below
-  an `## [Unreleased]` section when one exists, and does nothing when the version
-  is already documented, so rerunning a release is safe.
+- The changelog action creates `CHANGELOG.md` when it is absent, inserts each
+  entry below an `## [Unreleased]` section when one exists, and reports
+  `updated: false` when the version is already documented, so rerunning a release
+  is safe and commits nothing.
 
-This requires Castoff v2.1.0 or later; `changelog_entry` and the script were
-added after v2.0.0.
+This requires Castoff v2.2.0 or later, which publishes the changelog action.
 
 After pushing this repo, tag it (e.g. `v2`) and refer to that tag in callers.

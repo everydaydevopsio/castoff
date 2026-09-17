@@ -35,22 +35,22 @@ install:
 	pnpm install
 
 build:
-	pnpm --filter castoff build
+	pnpm build
 
 typecheck:
-	pnpm --filter castoff typecheck
+	pnpm typecheck
 
 test:
-	pnpm --filter castoff test
+	pnpm test
 
 test-coverage:
-	pnpm --filter castoff test:coverage
+	pnpm test:coverage
 
 lint:
-	pnpm --filter castoff lint
+	pnpm lint
 
 lint-fix:
-	pnpm --filter castoff lint:fix
+	pnpm lint:fix
 
 format:
 	pnpm prettier:fix

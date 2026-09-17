@@ -78,8 +78,8 @@ Then pass the notes to a GitHub Release step:
 Commits matching `chore: release <version>` are excluded from the prompt, so the
 release workflow's own commit does not appear in either output.
 
-The repository ships [`scripts/update-changelog.sh`](../scripts/update-changelog.sh)
-to insert an entry; see the [root README](../README.md#changelog) for workflow usage.
+The [changelog action](../changelog/README.md) writes an entry into a changelog
+file; see the [root README](../README.md#changelog) for workflow usage.
 
 ## Development
 

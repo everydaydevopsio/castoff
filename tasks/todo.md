@@ -1,36 +1,37 @@
-# Task: pnpm 10, workspace root, and working git hooks
+# Task: Publish the changelog writer as a TypeScript action
 
 ## Context
 
 - Date: 2026-09-17
-- Mode: Autonomous within the user's authorization to move to pnpm 10, pin the package manager, and relocate husky to the repository root.
-- PRD Section: 15.1
+- Mode: Autonomous within the user's authorization to move `scripts/update-changelog.sh` into TypeScript as a second action.
+- PRD Section: 15.3
 
 ## Scope and Acceptance Criteria
 
-- Pin pnpm 10 through the root `packageManager` field so Corepack, CI and the release workflow agree.
-- Make the repository a pnpm workspace with one lockfile at the root.
-- Let husky install hooks properly, and widen lint-staged to the whole repository.
-- Verify the committed bundle in `pre-push`, matching the check CI performs.
+- Port the shell script to TypeScript with identical behavior, as a second action under `changelog/`.
+- Remove the repository checkout from the examples: consumers reference the action by tag.
+- Report whether the file changed, so workflows skip an empty commit or a pointless amend.
+- Delete the script and its bash-spawning tests once the port covers the same cases.
 
 ## Execution Checklist
 
-- [x] Reproduce the hook failure and confirm the unpinned package manager causes it.
-- [x] Prove the hook scope gap by staging a root file and observing lint-staged skip it.
-- [x] Create the workspace root, move the lockfile, and rewire CI, release and Makefile.
-- [x] Format the repository backlog as its own commit.
-- [x] Validate install, build, test, lint, formatting and both hooks under pnpm 10.
+- [x] Scaffold the package in the workspace and port the logic.
+- [x] Port every shell test case, plus mode preservation and staging cleanup.
+- [x] Rewire the release workflow, the examples and their tests.
+- [x] Exercise the built bundle directly, including a rerun.
+- [x] Validate build, tests, coverage, lint and formatting across both packages.
 
 ## Test Strategy
 
-- Run the full toolchain from the root under pnpm 10, including `--frozen-lockfile`.
-- Exercise both hooks by committing and pushing this branch without `--no-verify`.
+- Unit tests for validation, Unreleased detection, version matching and insertion.
+- Run tests against a temporary directory for creation, ordering, idempotency, literal content, file mode, staging cleanup and failure paths.
+- Workflow tests assert the examples no longer check out this repository.
 
 ## Rollback Strategy
 
-- Restore the per-package lockfile and the hand-rolled `prepare`; delete the root package and workspace files.
+- Restore the script and its tests; revert the release workflow and examples.
 
 ## Outcome
 
-- Husky now sets `core.hooksPath` to `.husky/_` and manages the hooks it is credited with.
-- Thirty-seven previously unformatted files were brought under Prettier.
+- 155 tests across both packages; the changelog package covers 100% of lines.
+- ADR-007 records the decision and supersedes the script half of ADR-004.
