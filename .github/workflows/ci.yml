@@ -17,31 +17,27 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
+      # Version comes from the root package.json packageManager field.
       - uses: pnpm/action-setup@v6
-        with:
-          version: 9
 
       - uses: actions/setup-node@v7
         with:
           # Test on the same runtime declared by castoff/action.yml.
           node-version: '24'
           cache: 'pnpm'
-          cache-dependency-path: 'castoff/pnpm-lock.yaml'
+          cache-dependency-path: 'pnpm-lock.yaml'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-        working-directory: castoff
 
       - name: Type-check and build action bundle
-        run: pnpm build
-        working-directory: castoff
+        run: pnpm --filter castoff build
 
       - name: Verify committed action bundle
         run: git diff --exit-code -- castoff/dist/
 
       - name: Run tests with coverage
-        run: pnpm test:coverage
-        working-directory: castoff
+        run: pnpm --filter castoff test:coverage
 
   lint:
     name: Lint
@@ -49,24 +45,21 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
+      # Version comes from the root package.json packageManager field.
       - uses: pnpm/action-setup@v6
-        with:
-          version: 9
 
       - uses: actions/setup-node@v7
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
-          cache-dependency-path: 'castoff/pnpm-lock.yaml'
+          cache-dependency-path: 'pnpm-lock.yaml'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-        working-directory: castoff
 
       - name: Lint
-        run: pnpm lint
-        working-directory: castoff
+        run: pnpm --filter castoff lint
 
+      # Formatting is checked for the whole repository, not just the action.
       - name: Prettier check
         run: pnpm prettier
-        working-directory: castoff

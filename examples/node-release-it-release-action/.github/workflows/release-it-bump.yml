@@ -4,17 +4,17 @@ on:
   workflow_call:
     inputs:
       level:
-        description: "Version bump: patch, minor, major"
+        description: 'Version bump: patch, minor, major'
         required: true
         type: string
         default: patch
       use_ai_release_notes:
-        description: "Use AI to generate release notes"
+        description: 'Use AI to generate release notes'
         required: false
         type: boolean
         default: false
       update_changelog:
-        description: "Insert the generated notes into CHANGELOG.md (requires AI notes)"
+        description: 'Insert the generated notes into CHANGELOG.md (requires AI notes)'
         required: false
         type: boolean
         default: false
@@ -37,7 +37,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: '20'
 
       - name: Install dependencies
         run: |

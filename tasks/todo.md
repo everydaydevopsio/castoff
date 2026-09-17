@@ -1,29 +1,36 @@
-# Task: Resolve the previous tag to an exact version
+# Task: pnpm 10, workspace root, and working git hooks
 
 ## Context
+
 - Date: 2026-09-17
-- Mode: Autonomous within the user's authorization to fix the defect found while reviewing the v2.1.0 release run, then open a PR.
-- PRD Section: 7.3
+- Mode: Autonomous within the user's authorization to move to pnpm 10, pin the package manager, and relocate husky to the repository root.
+- PRD Section: 15.1
 
 ## Scope and Acceptance Criteria
-- Report the exact previous version tag rather than the floating major tag the release workflow moves onto each release.
-- Preserve current behavior for repositories using other tag conventions and for git versions without `--exclude`.
-- Leave the generated commit range unchanged: both lookups already covered the same commits.
+
+- Pin pnpm 10 through the root `packageManager` field so Corepack, CI and the release workflow agree.
+- Make the repository a pnpm workspace with one lockfile at the root.
+- Let husky install hooks properly, and widen lint-staged to the whole repository.
+- Verify the committed bundle in `pre-push`, matching the check CI performs.
 
 ## Execution Checklist
-- [x] Reproduce the defect from the v2.1.0 run and confirm it predates the changelog work.
-- [x] Prove regression tests fail before implementation.
-- [x] Implement the exclusion with a fallback, and record the decision in ADR-005.
-- [x] Validate full suite, coverage, types, lint, formatting and bundle.
+
+- [x] Reproduce the hook failure and confirm the unpinned package manager causes it.
+- [x] Prove the hook scope gap by staging a root file and observing lint-staged skip it.
+- [x] Create the workspace root, move the lockfile, and rewire CI, release and Makefile.
+- [x] Format the repository backlog as its own commit.
+- [x] Validate install, build, test, lint, formatting and both hooks under pnpm 10.
 
 ## Test Strategy
-- Assert the exclusion arguments, the resulting log range, and the prompt's previous-tag line.
-- Assert the fallback path when the filtered lookup finds nothing, standing in for other tag conventions and for git without `--exclude`.
-- Reproduce in a scratch repository with `v2` and `v2.0.0` on one commit.
+
+- Run the full toolchain from the root under pnpm 10, including `--frozen-lockfile`.
+- Exercise both hooks by committing and pushing this branch without `--no-verify`.
 
 ## Rollback Strategy
-- Revert this change and its generated bundle; the previous lookup returns.
+
+- Restore the per-package lockfile and the hand-rolled `prepare`; delete the root package and workspace files.
 
 ## Outcome
-- Scratch repository confirms the fix: plain lookup returns `v2`, excluded lookup returns `v2.0.0`, both producing the same two-commit range.
-- Full suite: 135 tests, `index.ts` at 100% coverage.
+
+- Husky now sets `core.hooksPath` to `.husky/_` and manages the hooks it is credited with.
+- Thirty-seven previously unformatted files were brought under Prettier.

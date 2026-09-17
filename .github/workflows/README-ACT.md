@@ -65,12 +65,12 @@ nonempty `OPENAI_MODEL`, then `gpt-6-astra`.
 
 ## Alternatives to ACT
 
-| Tool | Use case |
-|------|----------|
-| **ACT** | Run full workflows locally; best for debugging action + runner behavior |
-| **@actions/github-script** | Inline JS in workflows for quick checks |
-| **`pnpm test` in `castoff/`** | Test TypeScript action logic in isolation (`index.test.ts` and `run.test.ts`) |
-| **GitHub Local Actions** (VS Code) | ACT integration inside the editor |
-| **Self-hosted runner** | True GitHub env; overkill for most action dev |
+| Tool                               | Use case                                                                      |
+| ---------------------------------- | ----------------------------------------------------------------------------- |
+| **ACT**                            | Run full workflows locally; best for debugging action + runner behavior       |
+| **@actions/github-script**         | Inline JS in workflows for quick checks                                       |
+| **`pnpm test` in `castoff/`**      | Test TypeScript action logic in isolation (`index.test.ts` and `run.test.ts`) |
+| **GitHub Local Actions** (VS Code) | ACT integration inside the editor                                             |
+| **Self-hosted runner**             | True GitHub env; overkill for most action dev                                 |
 
 **Note**: Your example workflows use `workflow_call` and ACT has some [limitations](https://github.com/nektos/act/issues/826) (e.g. boolean inputs as strings). The e2e workflow here runs the action directly to avoid those issues.

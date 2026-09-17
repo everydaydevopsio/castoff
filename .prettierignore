@@ -1,0 +1,11 @@
+node_modules
+castoff/dist
+coverage
+*.lock
+pnpm-lock.yaml
+.ballast
+
+# Ballast-generated agent rules and skills
+.claude
+.codex
+.rulesrc.json

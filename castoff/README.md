@@ -84,19 +84,21 @@ to insert an entry; see the [root README](../README.md#changelog) for workflow u
 ## Development
 
 The action and tests are written in TypeScript. Run `make setup` in the repository
-root to install the development Node.js version from `.nvmrc` and pnpm 9.
+root to install the development Node.js version from `.nvmrc` and the pnpm version
+pinned by the root `packageManager` field.
 CI also validates the action on its declared runtime, Node.js 24.
 
 ```sh
 pnpm install --frozen-lockfile
-pnpm typecheck
-pnpm build
-pnpm test:coverage
-pnpm lint
+pnpm --filter castoff typecheck
+pnpm --filter castoff build
+pnpm --filter castoff test:coverage
+pnpm --filter castoff lint
 pnpm prettier
 ```
 
-Run these commands from `castoff/`. `index.ts` contains the action logic and
+Run these commands from the repository root: this is a pnpm workspace with a
+single lockfile, and `pnpm prettier` checks the whole repository. `index.ts` contains the action logic and
 `main.ts` invokes it. The build checks source and test types, then bundles the
 entrypoint and dependencies with ncc into `dist/index.js`. Commit the generated
 `dist/` files whenever the action changes; CI verifies they match the source.
