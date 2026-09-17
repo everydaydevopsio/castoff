@@ -263,4 +263,86 @@ describe('run', () => {
     expect(entry).toContain('\n\n### Highlights\n\n- Changelog output');
     expect(coreMock.setFailed).not.toHaveBeenCalled();
   });
+
+  const EXCLUDE_FLOATING = [
+    'describe',
+    '--tags',
+    '--abbrev=0',
+    '--exclude',
+    'v[0-9]',
+    '--exclude',
+    'v[0-9][0-9]',
+    'HEAD^'
+  ];
+
+  function releaseInputs(name: string) {
+    const inputs: Record<string, string> = {
+      openai_api_key: 'test-key',
+      model: 'gpt-4.1-mini',
+      tag: 'v2.1.0',
+      max_commits: '10'
+    };
+    return inputs[name] ?? '';
+  }
+
+  it('prefers the exact version tag over a floating major tag', async () => {
+    coreMock.getInput.mockImplementation(releaseInputs);
+    execFileSyncMock.mockImplementation((_cmd, args) => {
+      if (args[0] === 'describe') return 'v2.0.0';
+      if (args[0] === 'log') return 'abc123 feat: add something';
+      throw new Error('unexpected git args');
+    });
+    createCompletionMock.mockResolvedValue({
+      choices: [{ message: { content: '## Highlights\n\n- Something' } }]
+    });
+
+    await run();
+
+    expect(execFileSyncMock).toHaveBeenCalledWith('git', EXCLUDE_FLOATING, {
+      encoding: 'utf8'
+    });
+    expect(execFileSyncMock).toHaveBeenCalledWith(
+      'git',
+      ['log', '--pretty=format:%h %s', 'v2.0.0..HEAD', '-n', '10'],
+      { encoding: 'utf8' }
+    );
+    expect(createCompletionMock.mock.calls[0][0].messages[1].content).toContain(
+      'Previous tag: v2.0.0'
+    );
+    expect(coreMock.setFailed).not.toHaveBeenCalled();
+  });
+
+  it('falls back to an unfiltered lookup when no version tag is found', async () => {
+    coreMock.getInput.mockImplementation(releaseInputs);
+    execFileSyncMock.mockImplementation((_cmd, args) => {
+      if (args[0] === 'describe') {
+        // Stands in for a repository whose only tags are excluded, and for a
+        // git too old to understand --exclude.
+        if (args.includes('--exclude')) throw new Error('no names found');
+        return 'release-7';
+      }
+      if (args[0] === 'log') return 'abc123 feat: add something';
+      throw new Error('unexpected git args');
+    });
+    createCompletionMock.mockResolvedValue({
+      choices: [{ message: { content: '## Highlights\n\n- Something' } }]
+    });
+
+    await run();
+
+    expect(execFileSyncMock).toHaveBeenCalledWith(
+      'git',
+      ['describe', '--tags', '--abbrev=0', 'HEAD^'],
+      { encoding: 'utf8' }
+    );
+    expect(execFileSyncMock).toHaveBeenCalledWith(
+      'git',
+      ['log', '--pretty=format:%h %s', 'release-7..HEAD', '-n', '10'],
+      { encoding: 'utf8' }
+    );
+    expect(coreMock.info).not.toHaveBeenCalledWith(
+      'No previous tag found (first release).'
+    );
+    expect(coreMock.setFailed).not.toHaveBeenCalled();
+  });
 });
