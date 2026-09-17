@@ -101,6 +101,18 @@ describe('documentsVersion', () => {
     expect(documentsVersion(content, '1.0.0-rc.1')).toBe(false);
   });
 
+  it.each([
+    ['1.0.0', '## [1.0.0-rc.1] - 2026-09-18'],
+    ['1.0.0', '## [1.0.0+build.5] - 2026-09-18'],
+    ['1.0.1', '## [1.0.10] - 2026-09-18']
+  ])(
+    'does not treat %s as documented by the longer version in %s',
+    (version, line) => {
+      // The closing bracket is the boundary: a longer version cannot match.
+      expect(documentsVersion(`${HEADER}\n${line}\n`, version)).toBe(false);
+    }
+  );
+
   it('does not match a version mentioned inside entry text', () => {
     expect(documentsVersion(`${content}\n- Mentions ## [2.0.0]`, '2.0.0')).toBe(
       false
