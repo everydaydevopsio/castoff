@@ -44,7 +44,7 @@ avoid duplicates. Release-note content and sections are preserved. Passing
 ```yaml
 - name: AI Release Notes
   id: ai_notes
-  uses: everydaydevopsio/castoff/castoff@v1
+  uses: everydaydevopsio/castoff/castoff@v2
   with:
     openai_api_key: ${{ secrets.OPENAI_API_KEY }}
     tag: ${{ steps.bump.outputs.tag }}
@@ -69,7 +69,9 @@ Then pass the notes to a GitHub Release step:
 - Heads the entry with `## [<version>] - <YYYY-MM-DD>`, where the version is the
   `tag` input without a leading `v` and the date is the release date in UTC.
 - Demotes note headings one level so `## Highlights` nests as `### Highlights`.
-  Headings inside fenced code blocks are content and stay as written.
+  Headings inside fenced code blocks are content and stay as written; fences
+  follow CommonMark, so a closing fence repeats the opening character and is at
+  least as long.
 - Omits the attribution footer, which belongs on the release rather than on every
   entry in a file that accumulates them.
 

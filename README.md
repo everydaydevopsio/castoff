@@ -12,7 +12,7 @@ A GitHub Action that generates AI-powered release notes using OpenAI ChatGPT mod
 ```yaml
 - name: Generate AI Release Notes
   id: ai_notes
-  uses: everydaydevopsio/castoff/castoff@v1
+  uses: everydaydevopsio/castoff/castoff@v2
   with:
     openai_api_key: ${{ secrets.OPENAI_API_KEY }}
     tag: ${{ steps.bump.outputs.tag }}
@@ -53,8 +53,9 @@ attribution footer removed so it is not repeated once per release.
 
 Maintain [CHANGELOG.md](CHANGELOG.md) by piping that output into
 [`scripts/update-changelog.sh`](scripts/update-changelog.sh), which creates the
-file when absent, inserts the entry above existing releases, and does nothing
-when the version is already documented:
+file when absent, inserts the entry above existing releases but below an
+`## [Unreleased]` section, and does nothing when the version is already
+documented, so rerunning a failed release is safe:
 
 ```yaml
 - name: Update CHANGELOG.md
@@ -71,6 +72,10 @@ This repository's release workflow runs that step between note generation and
 tagging, amending the release commit so the tag carries its own changelog. Pass
 the entry through the environment rather than inline interpolation: generated
 notes are data.
+
+Workflows that tag and push before generating notes cannot amend, so they record
+the entry as a follow-up commit instead. The reusable workflows under
+[`examples/`](examples) take that approach behind an `update_changelog` input.
 
 ## Action Reference
 

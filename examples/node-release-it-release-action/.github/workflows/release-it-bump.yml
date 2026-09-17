@@ -13,6 +13,11 @@ on:
         required: false
         type: boolean
         default: false
+      update_changelog:
+        description: "Insert the generated notes into CHANGELOG.md (requires AI notes)"
+        required: false
+        type: boolean
+        default: false
     secrets:
       OPENAI_API_KEY:
         required: false
@@ -75,7 +80,7 @@ jobs:
       - name: Generate AI release notes
         id: ai_notes
         if: inputs.use_ai_release_notes == true
-        uses: everydaydevopsio/castoff/castoff@v1
+        uses: everydaydevopsio/castoff/castoff@v2
         with:
           openai_api_key: ${{ secrets.OPENAI_API_KEY }}
           tag: ${{ steps.release_it.outputs.tag }}
@@ -97,3 +102,29 @@ jobs:
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # The release tag is already pushed, so the entry lands as a follow-up
+      # commit rather than being amended into the tagged commit.
+      - name: Checkout Castoff changelog helper
+        if: inputs.update_changelog == true && steps.ai_notes.outcome == 'success'
+        uses: actions/checkout@v4
+        with:
+          repository: everydaydevopsio/castoff
+          ref: v2
+          path: .castoff
+
+      - name: Update CHANGELOG.md
+        if: inputs.update_changelog == true && steps.ai_notes.outcome == 'success'
+        env:
+          CHANGELOG_ENTRY: ${{ steps.ai_notes.outputs.changelog_entry }}
+          TAG: ${{ steps.release_it.outputs.tag }}
+        run: |
+          printf '%s\n' "$CHANGELOG_ENTRY" |
+            bash .castoff/scripts/update-changelog.sh "${TAG#v}"
+          git add CHANGELOG.md
+          if git diff --quiet --cached; then
+            echo "CHANGELOG.md already documents $TAG; nothing to commit."
+            exit 0
+          fi
+          git commit -m "docs: update changelog for $TAG"
+          git push origin HEAD
