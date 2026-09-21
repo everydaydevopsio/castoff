@@ -106,7 +106,7 @@ Engineering teams spend time manually writing release notes from commit history.
 
 - Runtime compatibility: GitHub Actions Node.js 24, as declared in `castoff/action.yml`.
 - Reliability: Must fail fast with clear error on unrecoverable runtime exceptions.
-- Security: OpenAI key provided via Actions secrets; action must not print key.
+- Security: OpenAI key provided via Actions secrets; action must not print key. The preflight names the secret and its location without echoing its value.
 - Performance: Should complete within typical workflow step timeouts for <=200 commits.
 - Maintainability: Core logic remains testable via exported pure helpers (`formatCommits`, `buildPrompt`, `extractNotes`).
 
@@ -169,7 +169,7 @@ Engineering teams spend time manually writing release notes from commit history.
 
 - Triggered manually via `workflow_dispatch` with `level` input (`patch` | `minor` | `major`).
 - Steps in order:
-  1. Require a nonempty `OPENAI_API_KEY` Actions secret, then run the full test suite. Fail before release changes if either check fails.
+  1. Require a nonempty `OPENAI_API_KEY` Actions secret, then run the full test suite. Fail before release changes if either check fails. The key preflight reports why the run stopped, how to set the secret, and that nothing was changed, as both an `::error` annotation and a run-summary entry, so a blocked release is self-explaining.
   2. Bump both package versions via `npm version <level> --no-git-tag-version`; one tag covers both actions.
   3. Compile `dist/index.js` via `pnpm --filter castoff build` (ncc).
   4. Commit both `package.json` files and both `dist/` bundles locally with message `chore: release vX.Y.Z`.

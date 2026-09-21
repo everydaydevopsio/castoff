@@ -11,7 +11,10 @@ suitable for GitHub Releases.
 
 ## Inputs
 
-- `openai_api_key` (required) – your OpenAI API key
+- `openai_api_key` (required) – your OpenAI API key. Without it the action
+  fails; this repository's release and E2E workflows reject a missing key up
+  front, before any release change. See
+  [OpenAI API key](../README.md#openai-api-key).
 - `model` (optional) – overrides `OPENAI_MODEL`; defaults to `gpt-6-astra` when neither is set
 - `tag` (required) – new release tag (e.g. `v1.2.3`)
 - `max_commits` (optional) – default: 200 (must be an integer between 1 and 1000)

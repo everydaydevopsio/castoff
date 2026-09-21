@@ -75,6 +75,61 @@ cannot amend, so they record the entry as a follow-up commit instead; the
 reusable workflows under [`examples/`](examples) take that approach behind an
 `update_changelog` input.
 
+## OpenAI API key
+
+The action calls OpenAI, so it needs a key. It reads the key from the
+`openai_api_key` input, never from the environment, so the secret behind that
+input can carry any name you like. `OPENAI_API_KEY` is the conventional one:
+
+```yaml
+with:
+  openai_api_key: ${{ secrets.MY_OPENAI_KEY }}
+```
+
+Add the secret under **Settings → Secrets and variables → Actions → New
+repository secret**, or grant an existing organization secret to the repository.
+
+The name does matter in two places, both of them workflows rather than the
+action:
+
+- This repository's own release and E2E workflows read
+  `secrets.OPENAI_API_KEY`, so a fork running them needs that exact name.
+- The reusable workflows under [`examples/`](examples) declare an
+  `OPENAI_API_KEY` secret in their `workflow_call` interface. Callers map any
+  secret onto it: `secrets: { OPENAI_API_KEY: ${{ secrets.MY_OPENAI_KEY }} }`.
+
+### Why your release failed
+
+A missing key does not fail quietly, and it does not fail late. This
+repository's release and E2E workflows run
+[`scripts/require-openai-key.sh`](scripts/require-openai-key.sh) as their first
+step, before the version bump, the build, the commit, the tag and the release.
+When the secret is unset, empty, or only whitespace, the run stops there with:
+
+<!-- prettier-ignore -->
+> **Missing OPENAI_API_KEY**
+> OPENAI_API_KEY is not available to this workflow, so release notes cannot be
+> generated. Add it under Settings > Secrets and variables > Actions as a
+> repository secret named OPENAI_API_KEY, or grant the organization secret to
+> this repository. For local E2E runs, export OPENAI_API_KEY before make
+> e2e-act. Nothing has been changed: no version bump, commit, tag or release.
+> Re-run this workflow once the secret is set.
+
+The same text appears on the run summary page, so you do not have to read the
+log to find it. Because the check runs before anything is written, a failed run
+leaves no partial release to clean up: set the secret and run the workflow
+again.
+
+Two cases that look like a missing secret but are not:
+
+- **Pull requests from forks** receive no secrets, by design. Release runs from
+  `main` in this repository, so this affects forked E2E runs only.
+- **A key that exists but is rejected by OpenAI** (revoked, out of quota) passes
+  this check and fails later, in the action's own step, with the API error.
+
+For local E2E runs, `export OPENAI_API_KEY=...` before `make e2e-act`; see the
+[ACT guide](.github/workflows/README-ACT.md).
+
 ## Action Reference
 
 This repository publishes two actions:
