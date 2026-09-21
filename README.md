@@ -75,6 +75,51 @@ cannot amend, so they record the entry as a follow-up commit instead; the
 reusable workflows under [`examples/`](examples) take that approach behind an
 `update_changelog` input.
 
+## OpenAI API key
+
+The action calls OpenAI, so it needs a key. Pass it as `openai_api_key`, from a
+secret named `OPENAI_API_KEY`:
+
+```yaml
+with:
+  openai_api_key: ${{ secrets.OPENAI_API_KEY }}
+```
+
+Add the secret under **Settings → Secrets and variables → Actions → New
+repository secret**, or grant an existing organization secret to the repository.
+
+### Why your release failed
+
+A missing key does not fail quietly, and it does not fail late. The release and
+E2E workflows run
+[`scripts/require-openai-key.sh`](scripts/require-openai-key.sh) as their first
+step, before the version bump, the build, the commit, the tag and the release.
+When the secret is unset, empty, or only whitespace, the run stops there with:
+
+<!-- prettier-ignore -->
+> **Missing OPENAI_API_KEY**
+> OPENAI_API_KEY is not available to this workflow, so release notes cannot be
+> generated. Add it under Settings > Secrets and variables > Actions as a
+> repository secret named OPENAI_API_KEY, or grant the organization secret to
+> this repository. For local E2E runs, export OPENAI_API_KEY before make
+> e2e-act. Nothing has been changed: no version bump, commit, tag or release.
+> Re-run this workflow once the secret is set.
+
+The same text appears on the run summary page, so you do not have to read the
+log to find it. Because the check runs before anything is written, a failed run
+leaves no partial release to clean up: set the secret and run the workflow
+again.
+
+Two cases that look like a missing secret but are not:
+
+- **Pull requests from forks** receive no secrets, by design. Release runs from
+  `main` in this repository, so this affects forked E2E runs only.
+- **A key that exists but is rejected by OpenAI** (revoked, out of quota) passes
+  this check and fails later, in the action's own step, with the API error.
+
+For local E2E runs, `export OPENAI_API_KEY=...` before `make e2e-act`; see the
+[ACT guide](.github/workflows/README-ACT.md).
+
 ## Action Reference
 
 This repository publishes two actions:

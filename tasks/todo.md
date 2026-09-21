@@ -1,48 +1,49 @@
-# Task: Align Node and TypeScript versions and unblock Dependabot
+# Task: Make a missing OpenAI key explain itself
 
 ## Context
 
 - Date: 2026-09-21
-- Mode: Autonomous within the user's request to pin TypeScript 6, move Node
-  tooling onto one Node major, and stop Dependabot proposing majors for those
-  two. Review settled that major on 24, not the 25 first requested.
-- Trigger: all three open Dependabot PRs failed CI in under 30s.
+- Mode: Autonomous within the user's request to document the key guard so a
+  blocked release pipeline is self-explaining.
+- The guard already existed (`scripts/require-openai-key.sh`, four workflow
+  steps, unit tests). What was missing: the failure said what was wrong but not
+  where to fix it, and no document told a maintainer why a release stopped.
 
 ## Scope and Acceptance Criteria
 
-- Dependabot updates the root `pnpm-lock.yaml` alongside every manifest, so its
-  PRs can pass `pnpm install --frozen-lockfile`.
-- Dependabot never proposes a major bump of `typescript` or `@types/node`.
-- TypeScript is 6.x; `@types/node` matches the runtime the actions declare.
-- CI installs the Node version from `.nvmrc` rather than a hardcoded one.
-- `.nvmrc`, `@types/node` and `runs.using` all name the same Node major.
+- A maintainer reading only the failed step learns the secret name, where to set
+  it, and that the run changed nothing.
+- The explanation also reaches the run summary page, not just the log.
+- A successful preflight stays silent and never echoes the key.
+- The root README explains the failure, the fix, and the two cases that look
+  like a missing secret but are not.
 
 ## Execution Checklist
 
-- [x] Point the npm ecosystem at `/` and add major-version ignores.
-- [x] Bump `typescript` to ^6.0.3 and `@types/node` to ^24.13.6 in both packages.
-- [x] Fold in the `openai` 7.20.0 bump that PR #30 proposed.
-- [x] Replace CI's hardcoded `node-version: '24'` with `.nvmrc`.
-- [x] Move `.nvmrc` from v25 to v24 after review: Node 25 reached end-of-life
-      on 2026-06-01, and 24 is the runtime the actions declare.
-- [x] Rebuild the bundles and validate typecheck, tests, coverage, lint, format.
-- [ ] Close the superseded Dependabot PRs (#30, #31, #32).
+- [x] Rewrite the annotation with a title, the secret location, and a
+      no-changes-made statement; mirror it to `GITHUB_STEP_SUMMARY`.
+- [x] Extend the preflight tests: message content, summary output, silence and
+      non-disclosure on success.
+- [x] Add an `OpenAI API key` section to the root README; link it from
+      `castoff/README.md`.
+- [x] Record the behavior in the PRD (section 8 and section 15.2 step 1).
+- [x] Validate typecheck, tests, coverage, lint and formatting.
 
 ## Test Strategy
 
-- `pnpm typecheck`, `pnpm build`, `pnpm test:coverage`, `pnpm lint`,
-  `pnpm prettier` across both packages.
-- Confirm the committed bundles match a fresh build, as CI does.
+- `castoff/api-key-preflight.test.ts` spawns the script for unset, empty and
+  whitespace keys, asserts the guidance text, asserts the summary file contents,
+  and asserts a valid key produces no output and no summary entry.
+- Workflow behavior is unchanged, so the existing E2E assertion that the
+  preflight fails without a key still covers the wiring.
 
 ## Rollback Strategy
 
-- Revert the branch; the prior lockfile and 5.9/24.x manifests restore cleanly.
+- Revert the branch. The guard's pass/fail contract is unchanged, so no workflow
+  depends on the new text.
 
 ## Notes
 
-- `runs.using` in both `action.yml` files stays `node24`: the runner supports
-  only `node20` and `node24`. Rather than document a toolchain/runtime split,
-  `.nvmrc` now names the same version, so one Node major covers development,
-  CI and consumers. Node 24 is Active LTS until 2028-04-30; Node 25 is dead.
-- Revisit when a `node26` runtime ships: Node 26 becomes LTS on 2026-10-28,
-  but moving before the runner supports it would reopen the same mismatch.
+- The script stays a shell script rather than moving into the action: it must
+  run before `pnpm install`, and both the release and E2E workflows call it
+  before any Node tooling exists.
