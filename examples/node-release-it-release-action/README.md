@@ -90,4 +90,91 @@ Two things to know:
 
 This requires Castoff v2.2.0 or later, which publishes the changelog action.
 
+## Publishing to npm
+
+This workflow bumps, tags and releases; it does not publish. `release-it` is
+configured with `"npm": { "publish": false }` above, so publishing stays a step
+in your own caller workflow, after this one succeeds:
+
+```yaml
+jobs:
+  release:
+    uses: everydaydevopsio/castoff/examples/node-release-it-release-action/.github/workflows/release-it-bump.yml@v2
+    with:
+      level: ${{ github.event.inputs.level }}
+      use_ai_release_notes: true
+    secrets:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+  publish:
+    needs: release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # npm provenance
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # The release job pushed a commit and a tag; check out the tag so the
+          # published version matches the release rather than a later main.
+          ref: ${{ needs.release.outputs.tag }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+      # Mirror the reusable workflow's install: it supports projects without a
+      # lockfile, and `npm ci` requires one.
+      - run: |
+          if [ -f package-lock.json ]; then npm ci; else npm install; fi
+      - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+```
+
+Two things this ordering buys you: a failed publish leaves a real release to
+retry against rather than a half-published version, and `--provenance` can
+attest the tag it was built from. Provenance needs all three of `id-token:
+write`, npm 9.5 or later, and a public package on the npm registry; drop the
+flag if any of those does not hold. If you would rather publish from within the
+reusable workflow, fork it — keeping publish credentials out of a shared
+workflow is deliberate.
+
+The workflow exposes `tag` and `version` outputs for exactly this, so
+`needs.release.outputs.tag` resolves without forking anything.
+
+## Monorepos
+
+This example is single-package by construction: it checks out the repository,
+runs `release-it` at the root and reads one version out of it. A reusable
+workflow cannot be redirected from the caller either — `working-directory` is
+not something a caller can set on a `uses:` job — so there is no matrix you can
+write that makes this workflow release `packages/core` and `packages/cli`
+separately. Both iterations would bump the same root version.
+
+Releasing per package means forking this workflow and adding an interface for
+it. What that fork needs:
+
+- **A `working_directory` input**, applied to the install step and the
+  `release-it` step, so each call operates inside one package.
+- **A per-package tag name**, set in that package's `release-it` config as
+  `"tagName": "core-v${version}"`, or every package tags `v1.2.3` and the
+  releases overwrite each other.
+- **A package-scoped changelog path**, passing `file: packages/core/CHANGELOG.md`
+  to the changelog action, which otherwise writes the repository root's file for
+  every package.
+- **Serialized runs.** Releases push commits and tags to the same branch, so run
+  the matrix with `max-parallel: 1` rather than racing on the push.
+
+Two limits survive the fork and are worth knowing before you start:
+
+- **Prefixed tags do not work with `update_changelog`.** The version is derived
+  by stripping a leading `v` from the tag, so `core-v1.2.3` stays
+  `core-v1.2.3`, and the changelog action rejects anything that is not bare
+  SemVer. A fork wanting both must derive the package version separately from
+  the tag rather than out of it.
+- **Notes are repository-wide.** Castoff summarizes `git log` between two tags;
+  it does not filter by path. A package's notes will mention commits that
+  touched its siblings. Until that is configurable, either accept it or generate
+  notes once for the repository rather than once per package.
+
 After pushing this repo, tag it (e.g. `v2`) and use that tag in callers.

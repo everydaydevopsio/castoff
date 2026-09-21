@@ -6,6 +6,7 @@ type Step = {
   name?: string;
   id?: string;
   if?: string;
+  'continue-on-error'?: boolean;
   uses?: string;
   run?: string;
   env?: Record<string, string>;
@@ -15,10 +16,14 @@ type Step = {
 type Example = {
   on: {
     workflow_call: {
-      inputs: Record<string, { type: string; default?: boolean | string }>;
+      inputs: Record<
+        string,
+        { type: string; required?: boolean; default?: boolean | string }
+      >;
+      outputs?: Record<string, { value: string }>;
     };
   };
-  jobs: Record<string, { steps: Step[] }>;
+  jobs: Record<string, { outputs?: Record<string, string>; steps: Step[] }>;
 };
 
 const EXAMPLES = [
@@ -51,10 +56,41 @@ describe.each(EXAMPLES)(
   (_label, directory, file, bumpStep) => {
     const { example, steps, index } = load(directory, file);
 
+    it('lets a caller omit the bump level and take the default', () => {
+      // A required input never falls back to its default, so declaring both
+      // made `level: patch` unreachable. actionlint catches this.
+      const input = example.on.workflow_call.inputs.level;
+      expect(input.default).toBe('patch');
+      expect(input.required ?? false).toBe(false);
+    });
+
     it('exposes an optional changelog input that defaults to off', () => {
       const input = example.on.workflow_call.inputs.update_changelog;
       expect(input.type).toBe('boolean');
       expect(input.default).toBe(false);
+    });
+
+    it('keeps a failed notes step from sinking the release', () => {
+      const notes = steps.find((s) => s.uses?.includes('castoff/castoff@'));
+      const fallback = steps[index('Create GitHub Release (fallback)')];
+      // The tag is pushed before notes are generated. Without this, a bad key
+      // or an API outage fails the job and no release is ever created, though
+      // the fallback step is written as though it would run.
+      expect(notes?.['continue-on-error']).toBe(true);
+      expect(fallback.if).toContain("steps.ai_notes.outcome != 'success'");
+    });
+
+    it('publishes the tag and version a caller needs to publish from', () => {
+      // Documented in each example README's publish flow: a later job checks
+      // out the released tag rather than whatever main has moved on to.
+      const outputs = example.on.workflow_call.outputs ?? {};
+      expect(Object.keys(outputs).sort()).toEqual(['tag', 'version']);
+
+      const [job] = Object.values(example.jobs);
+      expect(job.outputs?.tag).toBe(`\${{ steps.${bumpStep}.outputs.tag }}`);
+      expect(job.outputs?.version).toBe(
+        `\${{ steps.${bumpStep}.outputs.version }}`
+      );
     });
 
     it('pins both actions to the same major tag', () => {
@@ -113,3 +149,25 @@ describe.each(EXAMPLES)(
     });
   }
 );
+
+describe('workflow validation', () => {
+  const ci = readFileSync(
+    new URL('../.github/workflows/ci.yml', import.meta.url),
+    'utf8'
+  );
+
+  it('validates workflow definitions on every CI run', () => {
+    expect(ci).toContain('run: bash scripts/lint-workflows.sh');
+  });
+
+  it('lints the example workflows, not just this repository’s own', () => {
+    const linter = readFileSync(
+      new URL('../scripts/lint-workflows.sh', import.meta.url),
+      'utf8'
+    );
+    // actionlint only discovers .github/workflows at the repository root, so
+    // the example workflows have to be passed in explicitly.
+    expect(linter).toContain('examples');
+    expect(linter).toContain("-path '*/workflows/*'");
+  });
+});

@@ -195,7 +195,7 @@ Engineering teams spend time manually writing release notes from commit history.
 ### 15.4 CI Workflow (`.github/workflows/ci.yml`)
 
 - Triggered on push and pull requests to `main`.
-- Jobs: `test` (strict TypeScript check, bundle build and freshness check, Jest with coverage ≥ 75%) and `lint` (TypeScript-aware ESLint, plus a Prettier check covering the whole repository).
+- Jobs: `test` (strict TypeScript check, bundle build and freshness check, Jest with coverage ≥ 75%), `lint` (TypeScript-aware ESLint, plus a Prettier check covering the whole repository) and `workflows` (actionlint over every workflow in the repository, including the reusable workflows under `examples/`, which it would not otherwise discover). actionlint is pinned and verified against checked-in checksums, like ACT, so no third-party action runs in CI.
 - Uses concurrency cancel-in-progress to avoid redundant runs.
 
 ### 15.5 Consumer Usage

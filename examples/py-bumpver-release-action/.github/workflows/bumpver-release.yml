@@ -5,7 +5,7 @@ on:
     inputs:
       level:
         description: 'Version bump: patch, minor, major'
-        required: true
+        required: false
         type: string
         default: patch
       use_ai_release_notes:
@@ -21,12 +21,30 @@ on:
     secrets:
       OPENAI_API_KEY:
         required: false
+    outputs:
+      tag:
+        description: 'Tag created for this release'
+        value: ${{ jobs.bump-and-release.outputs.tag }}
+      version:
+        description: 'Version released, without a leading v'
+        value: ${{ jobs.bump-and-release.outputs.version }}
+
+# A release bumps, commits and pushes tags on the caller's branch. Two runs at
+# once bump from the same version and race on the push, so queue them instead
+# of cancelling: a cancelled release can leave a tag without a release.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   bump-and-release:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    # Exposed so a caller can publish from the released tag in a later job.
+    outputs:
+      tag: ${{ steps.bump.outputs.tag }}
+      version: ${{ steps.bump.outputs.version }}
 
     steps:
       - uses: actions/checkout@v4
@@ -68,6 +86,11 @@ jobs:
       - name: Generate AI release notes
         id: ai_notes
         if: inputs.use_ai_release_notes == true
+        # The fallback release step below keys on this step's outcome, so a bad
+        # key, an exhausted quota or an API outage must not end the job here.
+        # The tag is already pushed; without this the release would never be
+        # created at all.
+        continue-on-error: true
         uses: everydaydevopsio/castoff/castoff@v2
         with:
           openai_api_key: ${{ secrets.OPENAI_API_KEY }}
