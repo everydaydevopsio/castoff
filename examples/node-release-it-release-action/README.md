@@ -90,4 +90,87 @@ Two things to know:
 
 This requires Castoff v2.2.0 or later, which publishes the changelog action.
 
+## Publishing to npm
+
+This workflow bumps, tags and releases; it does not publish. `release-it` is
+configured with `"npm": { "publish": false }` above, so publishing stays a step
+in your own caller workflow, after this one succeeds:
+
+```yaml
+jobs:
+  release:
+    uses: everydaydevopsio/castoff/examples/node-release-it-release-action/.github/workflows/release-it-bump.yml@v2
+    with:
+      level: ${{ github.event.inputs.level }}
+      use_ai_release_notes: true
+    secrets:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+  publish:
+    needs: release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # npm provenance
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # The release job pushed a commit and a tag; check out the tag so the
+          # published version matches the release rather than a later main.
+          ref: ${{ needs.release.outputs.tag }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm ci
+      - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+```
+
+Two things this ordering buys you: a failed publish leaves a real release to
+retry against rather than a half-published version, and `--provenance` can
+attest the tag it was built from. If you would rather publish from within the
+reusable workflow, fork it — keeping publish credentials out of a shared
+workflow is deliberate.
+
+The workflow exposes `tag` and `version` outputs for exactly this, so
+`needs.release.outputs.tag` resolves without forking anything.
+
+## Monorepos
+
+The workflow bumps one package: it runs `release-it` at the repository root and
+reads one version. For a monorepo, call it once per publishable package from a
+matrix, with a working directory per package:
+
+```yaml
+jobs:
+  release:
+    strategy:
+      # Releases push commits and tags; running them together races on the
+      # branch. One at a time keeps the history linear.
+      max-parallel: 1
+      matrix:
+        package: [packages/core, packages/cli]
+    uses: ./.github/workflows/release-it-bump.yml
+    with:
+      level: ${{ github.event.inputs.level }}
+      use_ai_release_notes: true
+    secrets:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+```
+
+Two caveats before you copy this:
+
+- **Tag names collide.** Every package would tag `v1.2.3`. Give each package a
+  prefix in its `release-it` config — `"tagName": "core-v${version}"` — and pass
+  that tag to the notes step, or releases overwrite each other.
+- **Notes cover the whole repository.** Castoff reads `git log` between tags, not
+  per-directory history, so a package's notes will mention commits from its
+  siblings. Until per-path filtering exists, either accept that or run the
+  generator once for the repository rather than once per package.
+
+A single-package repository needs neither workaround, which is why this example
+stays simple.
+
 After pushing this repo, tag it (e.g. `v2`) and use that tag in callers.

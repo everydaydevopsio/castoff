@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-.PHONY: setup deps install build typecheck test test-coverage lint lint-fix format e2e-act
+.PHONY: setup deps install build typecheck test test-coverage lint lint-fix lint-workflows format e2e-act
 
 deps:
 	@if command -v act >/dev/null 2>&1; then \
@@ -51,6 +51,9 @@ lint:
 
 lint-fix:
 	pnpm lint:fix
+
+lint-workflows:
+	./scripts/lint-workflows.sh
 
 format:
 	pnpm prettier:fix

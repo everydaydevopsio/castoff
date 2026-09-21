@@ -176,6 +176,7 @@ make test          # run tests
 make test-coverage # run tests with coverage
 make lint          # lint
 make lint-fix      # lint and apply fixable rules
+make lint-workflows # validate every workflow with actionlint
 make format        # format the whole repository with Prettier
 make typecheck     # check TypeScript source and tests
 make build         # type-check and bundle JavaScript into dist/

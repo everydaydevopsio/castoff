@@ -40,6 +40,17 @@ jobs:
       - name: Run tests with coverage
         run: pnpm test:coverage
 
+  workflows:
+    name: Workflows
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      # Pinned and checksum-verified, like the ACT installer, so no third-party
+      # action runs here. Covers examples/ too, which actionlint would not find.
+      - name: Lint workflow definitions
+        run: bash scripts/lint-workflows.sh
+
   lint:
     name: Lint
     runs-on: ubuntu-latest

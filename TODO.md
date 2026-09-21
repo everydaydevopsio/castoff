@@ -12,10 +12,10 @@
 
 ## examples/node-release-it-release-action
 
-- [ ] Add actionlint CI for workflow validation
-- [ ] Add more README examples (npm publish integration, monorepos)
+- [x] Add actionlint CI for workflow validation
+- [x] Add more README examples (npm publish integration, monorepos)
 
 ## examples/py-bumpver-release-action
 
-- [ ] Add actionlint workflow to validate YAML
-- [ ] Add more examples to README (AI vs non-AI)
+- [x] Add actionlint workflow to validate YAML
+- [x] Add more examples to README (AI vs non-AI)
