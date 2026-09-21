@@ -104,6 +104,40 @@ function demoteHeadings(notes: string): string {
     .join('\n');
 }
 
+/**
+ * Drop a leading title that only restates the release, such as `# v1.2.3` or
+ * `# Release v1.2.3`. A changelog entry supplies its own version heading, so
+ * demoting that title would head the entry with the version twice.
+ * @param {string} notes - Markdown note body
+ * @param {string} version - Release version without a leading v
+ * @returns {string} Notes without a redundant leading title
+ */
+function stripRedundantTitle(notes: string, version: string): string {
+  const lines = notes.split('\n');
+  const first = lines.findIndex((line) => line.trim() !== '');
+  if (first === -1) return notes;
+
+  // CommonMark: a closing sequence of `#` must be preceded by whitespace, so
+  // the final hash in `# v1.2.3#` is title text rather than a closing run.
+  const title = /^ {0,3}#[ \t]+(.+?)(?:[ \t]+#+)?[ \t]*$/.exec(
+    lines[first]
+  )?.[1];
+  if (title === undefined) return notes;
+
+  const restated = new Set(
+    [version, `v${version}`].flatMap((form) => [
+      form.toLowerCase(),
+      `release ${form.toLowerCase()}`
+    ])
+  );
+  if (!restated.has(title.trim().toLowerCase())) return notes;
+
+  // Drop the title and the blank lines that separated it from the body.
+  let next = first + 1;
+  while (next < lines.length && lines[next].trim() === '') next += 1;
+  return lines.slice(next).join('\n');
+}
+
 /** Format a date as an ISO calendar date in UTC, as Keep a Changelog expects. */
 function formatReleaseDate(date: Date): string {
   return date.toISOString().slice(0, 10);
@@ -118,7 +152,8 @@ function formatReleaseDate(date: Date): string {
  */
 function buildChangelogEntry(notes: string, tag: string, date: string): string {
   const version = tag.replace(/^v/, '');
-  const body = demoteHeadings(stripAttribution(notes)).trim();
+  const titled = stripRedundantTitle(stripAttribution(notes), version);
+  const body = demoteHeadings(titled).trim();
   return `## [${version}] - ${date}\n\n${body || '_No release notes were generated._'}`;
 }
 

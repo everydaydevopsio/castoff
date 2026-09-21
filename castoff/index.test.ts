@@ -310,4 +310,84 @@ describe('buildChangelogEntry', () => {
       '## [1.2.3] - 2026-09-17\n\n_No release notes were generated._'
     );
   });
+
+  // Models routinely title their notes with the release. Demoting that title
+  // would head the entry with the version twice, as v2.2.0 did in CHANGELOG.md.
+  it.each([
+    '# v1.2.3',
+    '# 1.2.3',
+    '# Release v1.2.3',
+    '# Release 1.2.3',
+    '# RELEASE V1.2.3',
+    '# v1.2.3 #'
+  ])('drops a leading title that only restates the release (%s)', (title) => {
+    expect(
+      buildChangelogEntry(`${title}\n\n${notes}`, 'v1.2.3', '2026-09-17')
+    ).toBe(buildChangelogEntry(notes, 'v1.2.3', '2026-09-17'));
+  });
+
+  it.each([
+    // CommonMark: a closing `#` run needs whitespace before it, so these
+    // trailing hashes are title text and the titles are not restatements.
+    ['# v1.2.3#', '## v1.2.3#'],
+    ['# v1.2.3 ##', undefined],
+    ['#v1.2.3', '#v1.2.3']
+  ])('reads closing hash sequences as CommonMark does (%s)', (title, kept) => {
+    const entry = buildChangelogEntry(
+      `${title}\n\n${notes}`,
+      'v1.2.3',
+      '2026-09-17'
+    );
+    if (kept === undefined) {
+      expect(entry).toBe(buildChangelogEntry(notes, 'v1.2.3', '2026-09-17'));
+    } else {
+      expect(entry).toContain(kept);
+    }
+  });
+
+  it('keeps a title that says something the version heading does not', () => {
+    const entry = buildChangelogEntry(
+      `# Security release\n\n${notes}`,
+      'v1.2.3',
+      '2026-09-17'
+    );
+    expect(entry).toContain('## Security release');
+  });
+
+  it('keeps a restated title that belongs to another release', () => {
+    const entry = buildChangelogEntry(
+      `# v9.9.9\n\n${notes}`,
+      'v1.2.3',
+      '2026-09-17'
+    );
+    expect(entry).toContain('## v9.9.9');
+  });
+
+  it('leaves notes that do not open with a heading untouched', () => {
+    const entry = buildChangelogEntry(
+      `A summary line.\n\n${notes}`,
+      'v1.2.3',
+      '2026-09-17'
+    );
+    expect(entry).toContain('A summary line.');
+  });
+
+  it('records a placeholder when the notes are only a restated title', () => {
+    expect(buildChangelogEntry('# v1.2.3\n\n', 'v1.2.3', '2026-09-17')).toBe(
+      '## [1.2.3] - 2026-09-17\n\n_No release notes were generated._'
+    );
+  });
+
+  it('records a placeholder when the notes are blank', () => {
+    expect(buildChangelogEntry('   \n\n  ', 'v1.2.3', '2026-09-17')).toBe(
+      '## [1.2.3] - 2026-09-17\n\n_No release notes were generated._'
+    );
+  });
+
+  it('leaves the release notes themselves titled', () => {
+    // Only the changelog entry supplies its own version heading; a GitHub
+    // Release body keeps whatever title the model wrote.
+    const titled = `# v1.2.3\n\n${notes}`;
+    expect(appendAttribution(titled, 'gpt-6-astra')).toContain('# v1.2.3');
+  });
 });

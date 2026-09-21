@@ -12,8 +12,6 @@ v2.0.0 predate this file; their notes remain on the
 
 ## [2.2.0] - 2026-09-21
 
-## v2.2.0
-
 ### Highlights
 
 - **Changelog writer available as a TypeScript action**, making it reusable in GitHub Actions workflows. (#29)

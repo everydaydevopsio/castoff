@@ -71,6 +71,10 @@ Then pass the notes to a GitHub Release step:
 
 - Heads the entry with `## [<version>] - <YYYY-MM-DD>`, where the version is the
   `tag` input without a leading `v` and the date is the release date in UTC.
+- Drops a leading title that only restates the release, such as `# v1.2.3` or
+  `# Release v1.2.3`. The entry already carries a version heading, so demoting
+  that title would state the version twice. A title saying anything else is
+  kept, and the `release_notes` output keeps its title either way.
 - Demotes note headings one level so `## Highlights` nests as `### Highlights`.
   Headings inside fenced code blocks are content and stay as written; fences
   follow CommonMark, so a closing fence repeats the opening character and is at
