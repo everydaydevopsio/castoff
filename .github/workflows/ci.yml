@@ -22,8 +22,9 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          # Test on the same runtime declared by castoff/action.yml.
-          node-version: '24'
+          # Same Node as local development; the published actions declare the
+          # newest runtime the runner offers (node24) in their action.yml.
+          node-version-file: '.nvmrc'
           cache: 'pnpm'
           cache-dependency-path: 'pnpm-lock.yaml'
 

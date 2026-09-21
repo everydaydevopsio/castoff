@@ -1,22 +1,38 @@
 version: 2
 updates:
+  # One lockfile lives at the workspace root, so Dependabot must run there:
+  # updating a package manifest without pnpm-lock.yaml fails CI's
+  # `pnpm install --frozen-lockfile`. From the root it also covers the root
+  # dev tooling, castoff/ and changelog/.
   - package-ecosystem: 'npm'
-    directory: '/castoff'
+    directory: '/'
     schedule:
       interval: 'weekly'
     open-pull-requests-limit: 10
+    ignore:
+      # TypeScript majors are language upgrades, not dependency bumps; stay on 6.x.
+      - dependency-name: 'typescript'
+        update-types: ['version-update:semver-major']
+      # Node typings track .nvmrc (v25); a major bump would type against a
+      # runtime this repository does not run.
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
     groups:
       testing:
         patterns:
           - 'jest'
           - '@jest/*'
+          - 'ts-jest'
       dev-tooling:
         dependency-type: 'development'
         patterns:
           - 'eslint*'
           - '@eslint/*'
+          - 'typescript-eslint'
           - 'prettier'
           - 'globals'
+          - 'husky'
+          - 'lint-staged'
           - '@vercel/ncc'
       production-dependencies:
         dependency-type: 'production'
