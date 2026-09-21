@@ -133,7 +133,9 @@ jobs:
 
 Two things this ordering buys you: a failed publish leaves a real release to
 retry against rather than a half-published version, and `--provenance` can
-attest the tag it was built from. If you would rather publish from within the
+attest the tag it was built from. Provenance needs all three of `id-token:
+write`, npm 9.5 or later, and a public package on the npm registry; drop the
+flag if any of those does not hold. If you would rather publish from within the
 reusable workflow, fork it — keeping publish credentials out of a shared
 workflow is deliberate.
 
