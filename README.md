@@ -152,18 +152,24 @@ preserved. Docker is required to run the E2E workflow.
 ```bash
 make setup         # run make deps, nvm install, Corepack setup, and pnpm install
 # Run the activation command printed by setup in your current terminal.
+make deps          # install ACT if it is missing
+make install       # refresh dependencies from the lockfile
 make test          # run tests
 make test-coverage # run tests with coverage
 make lint          # lint
+make lint-fix      # lint and apply fixable rules
 make format        # format the whole repository with Prettier
 make typecheck     # check TypeScript source and tests
 make build         # type-check and bundle JavaScript into dist/
+make e2e-act       # build, then run the E2E workflow locally under ACT
 ```
 
-This is a pnpm workspace. The root holds git hooks, formatting and shared
-tooling; the action lives in `castoff/`. Run package scripts from the root, for
-example `pnpm --filter castoff build`. The pnpm version is pinned by the root
-`packageManager` field, so Corepack uses the same version as CI.
+This is a pnpm workspace with one lockfile at the root. The root holds git
+hooks, formatting and shared tooling; `castoff/` holds the release-notes action
+and `changelog/` the changelog action. Run scripts from the root: `pnpm build`
+covers both packages, `pnpm --filter castoff build` just one. The pnpm version
+is pinned by the root `packageManager` field, so Corepack uses the same version
+as CI, and `.nvmrc` pins the Node major the actions declare in `action.yml`.
 
 Husky installs the hooks through the root `prepare` script. `pre-commit` runs
 lint-staged across the repository, and `pre-push` builds the bundle, verifies it
