@@ -9,3 +9,4 @@
 | [005: Resolve the previous tag to an exact version](005-previous-exact-tag.md)                         | Accepted |
 | [006: Manage tooling from a pnpm workspace root](006-pnpm-workspace-husky-root.md)                     | Accepted |
 | [007: Publish the changelog writer as a second action](007-changelog-action.md)                        | Accepted |
+| [008: Move a floating minor tag alongside the major](008-floating-minor-tag.md)                        | Accepted |

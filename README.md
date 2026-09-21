@@ -130,6 +130,24 @@ Two cases that look like a missing secret but are not:
 For local E2E runs, `export OPENAI_API_KEY=...` before `make e2e-act`; see the
 [ACT guide](.github/workflows/README-ACT.md).
 
+## Versions
+
+Both actions ship from one tag. Pick how much movement you want:
+
+| Reference | Moves to                                                | Use when                                 |
+| --------- | ------------------------------------------------------- | ---------------------------------------- |
+| `@v2`     | every release in the major line, including new behavior | you want fixes and features as they ship |
+| `@v2.2`   | patches within the minor line only                      | you want fixes without behavior changes  |
+| `@v2.2.1` | nothing                                                 | you pin exactly and upgrade deliberately |
+
+```yaml
+uses: everydaydevopsio/castoff/castoff@v2.2
+uses: everydaydevopsio/castoff/changelog@v2.2
+```
+
+The release workflow force-moves `vN` and `vN.M` onto each release, so both
+floating tags always name a real published version.
+
 ## Action Reference
 
 This repository publishes two actions:

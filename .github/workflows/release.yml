@@ -62,7 +62,9 @@ jobs:
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
           echo "tag=v${VERSION}" >> "$GITHUB_OUTPUT"
           MAJOR=$(echo "${VERSION}" | cut -d. -f1)
+          MINOR=$(echo "${VERSION}" | cut -d. -f2)
           echo "major_tag=v${MAJOR}" >> "$GITHUB_OUTPUT"
+          echo "minor_tag=v${MAJOR}.${MINOR}" >> "$GITHUB_OUTPUT"
 
       - name: Build dist
         run: pnpm build
@@ -104,10 +106,16 @@ jobs:
       - name: Tag and push
         run: |
           git tag "${{ steps.bump.outputs.tag }}"
+          # Floating tags follow the newest release in their series, so
+          # `@v2` and `@v2.2` both resolve to this patch. They are recreated
+          # rather than moved when the series is new, which -f covers too.
           git tag -f "${{ steps.bump.outputs.major_tag }}"
+          git tag -f "${{ steps.bump.outputs.minor_tag }}"
           git push origin HEAD:main
           git push origin "${{ steps.bump.outputs.tag }}"
-          git push origin "${{ steps.bump.outputs.major_tag }}" --force
+          git push origin --force \
+            "${{ steps.bump.outputs.major_tag }}" \
+            "${{ steps.bump.outputs.minor_tag }}"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v3

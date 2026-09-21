@@ -6,7 +6,7 @@ AI Release Notes GitHub Action (`castoff`)
 
 ## Status
 
-Accepted. Describes the shipped behavior of both actions as of v2.2.0; sections
+Accepted. Describes the shipped behavior of both actions as of v2.2.1; sections
 16 and later remain forward-looking.
 
 ## 1. Problem Statement
@@ -79,7 +79,7 @@ Engineering teams spend time manually writing release notes from commit history.
 
 ### 7.3 Commit Range and Collection
 
-- Action attempts to detect previous tag via `git describe --tags --abbrev=0 HEAD^`, excluding floating major tags (`v0`-`v99`) so the exact version tag is reported. Release workflows move a floating major tag onto each release, where it sits on the same commit as the version tag and `git describe` reports it instead.
+- Action attempts to detect previous tag via `git describe --tags --abbrev=0 HEAD^`, excluding floating tags so the exact version tag is reported: major (`v0`-`v99`) and minor (`v0.0`-`v99.99`). Release workflows move both onto each release, where they sit on the same commit as the version tag and `git describe` reports one of them instead.
 - If that lookup finds nothing, the action repeats it without exclusions, so repositories using other tag conventions and git versions without `--exclude` keep their previous behavior. Both lookups yield the same commit range when a floating tag is all that remains.
 - If previous tag exists, commit range is `<previousTag>..HEAD`.
 - If no previous tag is found, range is `HEAD` and action logs informational message.
@@ -177,7 +177,7 @@ Engineering teams spend time manually writing release notes from commit history.
   4. Commit both `package.json` files and both `dist/` bundles locally with message `chore: release vX.Y.Z`.
   5. Generate AI release notes using the action and `OPENAI_MODEL` repository variable if configured. The local release commit keeps the previous-tag lookup correct; API failures stop the workflow before publishing.
   6. Insert the `changelog_entry` output into `CHANGELOG.md` via the changelog action, then amend the release commit so the tag carries its own changelog. Amend only when the action reports `updated: true`.
-  7. Create an exact version tag (`vX.Y.Z`) and update the floating major tag (`vN`) in place.
+  7. Create an exact version tag (`vX.Y.Z`) and update the floating major (`vN`) and minor (`vN.M`) tags in place. Both are forced, so a new series creates them and an existing one moves them.
   8. Push all tags and the commit to `main`.
   9. Create a GitHub Release for `vX.Y.Z` with the action output; do not fall back to GitHub-generated notes.
 
@@ -200,20 +200,28 @@ Engineering teams spend time manually writing release notes from commit history.
 
 ### 15.5 Consumer Usage
 
-Users reference the action by major version tag, which the release workflow
-moves to each release in that major series:
+Users reference the action by a floating tag, which the release workflow moves
+to each release in its series. The major tag takes every release in the major
+line:
 
 ```yaml
 uses: everydaydevopsio/castoff/castoff@v2
 ```
 
-Or by exact version for pinning:
+The minor tag takes patches only, so a minor release cannot change behavior
+under a caller that pinned it:
 
 ```yaml
-uses: everydaydevopsio/castoff/castoff@v2.0.0
+uses: everydaydevopsio/castoff/castoff@v2.2
 ```
 
-Both actions are referenced by the same major tag:
+Or by exact version, which never moves:
+
+```yaml
+uses: everydaydevopsio/castoff/castoff@v2.2.1
+```
+
+Both actions are referenced by the same tags:
 
 ```yaml
 uses: everydaydevopsio/castoff/changelog@v2

@@ -1,42 +1,43 @@
-# Task: Correct repository documentation drift
+# Task: Move a floating minor tag beside the major
 
 ## Context
 
 - Date: 2026-09-21
-- Trigger: a repository review found documentation describing the pre-v2.1.0
-  single-action layout, and config that never learned about `changelog/`.
+- Trigger: after the v2.2.1 release, `v2` pointed at v2.2.1 correctly, but no
+  `v2.2` existed, so consumers had no way to take patches without also taking
+  the next minor release.
 
 ## Scope and Acceptance Criteria
 
-- The README describes a two-package workspace, not one action.
-- The Make target list matches the Makefile.
-- The PRD status reflects shipped behavior rather than a draft.
-- `.rulesrc.json` lists both TypeScript packages, so agent tooling sees
-  `changelog/`.
+- Each release creates or moves `vN` and `vN.M` onto the release commit.
+- The scheme generalizes: v2.3 and v3 need no further change.
+- The previous-tag lookup keeps reporting the exact version tag, now that a
+  second floating shape shares the release commit.
+- `v2.2` exists and points at v2.2.1.
 
 ## Execution Checklist
 
-- [x] Rewrite the workspace paragraph: both packages, one lockfile, `.nvmrc`.
-- [x] Add the missing Make targets: `deps`, `install`, `lint-fix`, `e2e-act`.
-- [x] Replace the PRD's `Draft v1` status with its shipped scope.
-- [x] Add `changelog` to `.rulesrc.json` `paths.typescript`.
-- [x] Validate formatting and the full test suite.
+- [x] Compute `minor_tag` in the bump step; force and push both floating tags.
+- [x] Extend the lookup exclusions to the four `vN.M` digit shapes.
+- [x] Assert the exclusion arguments and the workflow's tag handling.
+- [x] Record the decision in ADR-008 and update the PRD (7.3, 15.2, 15.5).
+- [x] Document the three pinning choices in the READMEs.
+- [ ] Create `v2.2` on v2.2.1 once this merges.
 
 ## Test Strategy
 
-- Documentation only; `pnpm prettier` and the full suite guard against
-  formatting drift and accidental source edits.
-- Cross-checked every documented Make target against the Makefile.
+- `run.test.ts` asserts the full `git describe` argument list, so a missing or
+  reordered exclusion fails.
+- `release-workflow.test.ts` asserts both tags are computed, both are forced,
+  and the exact version tag is created once and never forced.
 
 ## Rollback Strategy
 
-- Revert the branch; no behavior depends on these files.
+- Revert the branch and the bundle, then delete the `vN.M` tags. Consumers on
+  `@v2` or an exact version are unaffected.
 
 ## Notes
 
-- `CLAUDE.md` lists rule files in `.claude/rules/`, which does not exist: only
-  `.codex/rules/` was generated (30 tracked files against 10 for claude, none
-  of them rules). `ballast doctor` reports the `ballast-typescript` backend and
-  `.ballast/` state missing, so regenerating needs a CLI install and would add
-  about 21 generated files. Left for a deliberate decision rather than folded
-  into a documentation PR.
+- ADR-005 rejected `--match 'v[0-9]*.[0-9]*.[0-9]*'` because it can widen the
+  range in a repository mixing tag schemes; the exclusion list is extended
+  rather than replaced for that reason.
