@@ -72,6 +72,7 @@ Engineering teams spend time manually writing release notes from commit history.
 - Emit a `changelog_entry` output derived from the same generated notes, including fallback notes.
 - Head the entry with `## [<version>] - <YYYY-MM-DD>`, using the `tag` input without a leading `v` and the release date in UTC.
 - Demote ATX headings one level so note sections nest under the version heading; leave level-six headings and headings inside fenced code blocks unchanged.
+- Drop a leading title that only restates the release (`# v1.2.3`, `# 1.2.3`, `# Release v1.2.3`, in any case, with or without a closing sequence of `#`) before demoting, so the entry does not head itself with the version twice. Leave any other title, including one naming a different version, and leave the `release_notes` output titled.
 - Omit the attribution footer so a file accumulating entries does not repeat it.
 - Emit `_No release notes were generated._` as the body when the notes carry no content.
 
