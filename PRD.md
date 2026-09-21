@@ -6,7 +6,8 @@ AI Release Notes GitHub Action (`castoff`)
 
 ## Status
 
-Draft v1 (based on current README + code behavior)
+Accepted. Describes the shipped behavior of both actions as of v2.2.0; sections
+16 and later remain forward-looking.
 
 ## 1. Problem Statement
 
