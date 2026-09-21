@@ -10,6 +10,27 @@ the `changelog_entry` output of the Castoff action. Releases up to and including
 v2.0.0 predate this file; their notes remain on the
 [releases page](https://github.com/everydaydevopsio/castoff/releases).
 
+## [2.2.0] - 2026-09-21
+
+## v2.2.0
+
+### Highlights
+
+- **Changelog writer available as a TypeScript action**, making it reusable in GitHub Actions workflows. (#29)
+
+### Fixes
+
+- Resolve the previous release tag to an exact version for accurate release comparisons. (#27)
+- Stage both bundles during release preparation and preserve whitespace in changelog entries. (#29)
+- Add regression coverage for changelog heading boundaries. (#29)
+
+### Changes
+
+- Move to a pnpm 10 workspace and use Husky to manage Git hooks. (#28)
+- Apply formatting to files previously missed by the hooks. (#28)
+
+**Full changelog:** [v2.1.0 → v2.2.0](../../compare/v2.1.0...v2.2.0)
+
 ## [2.1.0] - 2026-09-17
 
 ### Highlights
