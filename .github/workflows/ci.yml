@@ -22,8 +22,8 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          # Same Node as local development; the published actions declare the
-          # newest runtime the runner offers (node24) in their action.yml.
+          # .nvmrc is the runtime the actions declare in action.yml, so tests
+          # exercise the version consumers get.
           node-version-file: '.nvmrc'
           cache: 'pnpm'
           cache-dependency-path: 'pnpm-lock.yaml'

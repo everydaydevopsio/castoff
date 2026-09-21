@@ -86,7 +86,8 @@ file; see the [root README](../README.md#changelog) for workflow usage.
 The action and tests are written in TypeScript. Run `make setup` in the repository
 root to install the development Node.js version from `.nvmrc` and the pnpm version
 pinned by the root `packageManager` field.
-CI also validates the action on its declared runtime, Node.js 24.
+`.nvmrc` pins Node.js 24, the runtime this action declares in `action.yml`, so
+local development, CI and consumers all run the same major version.
 
 ```sh
 pnpm install --frozen-lockfile

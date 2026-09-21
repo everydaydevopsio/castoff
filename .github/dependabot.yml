@@ -13,8 +13,8 @@ updates:
       # TypeScript majors are language upgrades, not dependency bumps; stay on 6.x.
       - dependency-name: 'typescript'
         update-types: ['version-update:semver-major']
-      # Node typings track .nvmrc (v25); a major bump would type against a
-      # runtime this repository does not run.
+      # Node typings track the runtime: .nvmrc and the actions' node24. A major
+      # bump would type against APIs the published actions cannot call.
       - dependency-name: '@types/node'
         update-types: ['version-update:semver-major']
     groups:
