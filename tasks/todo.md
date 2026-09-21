@@ -1,43 +1,42 @@
-# Task: Stop changelog entries restating the version
+# Task: Correct repository documentation drift
 
 ## Context
 
 - Date: 2026-09-21
-- Trigger: the v2.2.0 release wrote `## [2.2.0] - 2026-09-21` immediately
-  followed by `## v2.2.0` into CHANGELOG.md.
-- Cause: the model titled its notes `# v2.2.0`, and heading demotion turned
-  that title into a second version heading under the entry's own.
+- Trigger: a repository review found documentation describing the pre-v2.1.0
+  single-action layout, and config that never learned about `changelog/`.
 
 ## Scope and Acceptance Criteria
 
-- A leading title that only restates the release is dropped before demotion.
-- Any other title survives, including one naming a different version.
-- `release_notes` keeps its title: only the changelog entry supplies its own
-  version heading.
-- The v2.2.0 entry already in CHANGELOG.md is corrected.
+- The README describes a two-package workspace, not one action.
+- The Make target list matches the Makefile.
+- The PRD status reflects shipped behavior rather than a draft.
+- `.rulesrc.json` lists both TypeScript packages, so agent tooling sees
+  `changelog/`.
 
 ## Execution Checklist
 
-- [x] Add `stripRedundantTitle` and call it from `buildChangelogEntry`.
-- [x] Cover the restated forms, the titles that must survive, and the
-      blank-notes paths.
-- [x] Remove the duplicate heading from the v2.2.0 entry.
-- [x] Document the rule in the PRD (7.2.2) and `castoff/README.md`.
-- [x] Rebuild the bundle and validate tests, coverage, lint and formatting.
+- [x] Rewrite the workspace paragraph: both packages, one lockfile, `.nvmrc`.
+- [x] Add the missing Make targets: `deps`, `install`, `lint-fix`, `e2e-act`.
+- [x] Replace the PRD's `Draft v1` status with its shipped scope.
+- [x] Add `changelog` to `.rulesrc.json` `paths.typescript`.
+- [x] Validate formatting and the full test suite.
 
 ## Test Strategy
 
-- Table-driven cases through `buildChangelogEntry` for `# v1.2.3`, `# 1.2.3`,
-  `# Release v1.2.3`, `# Release 1.2.3`, mixed case and a closed ATX heading.
-- Negative cases: a descriptive title, a different version, notes opening with
-  prose, notes that are only a title, and blank notes.
+- Documentation only; `pnpm prettier` and the full suite guard against
+  formatting drift and accidental source edits.
+- Cross-checked every documented Make target against the Makefile.
 
 ## Rollback Strategy
 
-- Revert the branch; entries return to carrying the duplicate heading, which is
-  cosmetic and correctable by hand.
+- Revert the branch; no behavior depends on these files.
 
 ## Notes
 
-- Kept `stripRedundantTitle` module-private: it is exercised through
-  `buildChangelogEntry`, so the action's exported helper surface is unchanged.
+- `CLAUDE.md` lists rule files in `.claude/rules/`, which does not exist: only
+  `.codex/rules/` was generated (30 tracked files against 10 for claude, none
+  of them rules). `ballast doctor` reports the `ballast-typescript` backend and
+  `.ballast/` state missing, so regenerating needs a CLI install and would add
+  about 21 generated files. Left for a deliberate decision rather than folded
+  into a documentation PR.
