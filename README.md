@@ -77,21 +77,31 @@ reusable workflows under [`examples/`](examples) take that approach behind an
 
 ## OpenAI API key
 
-The action calls OpenAI, so it needs a key. Pass it as `openai_api_key`, from a
-secret named `OPENAI_API_KEY`:
+The action calls OpenAI, so it needs a key. It reads the key from the
+`openai_api_key` input, never from the environment, so the secret behind that
+input can carry any name you like. `OPENAI_API_KEY` is the conventional one:
 
 ```yaml
 with:
-  openai_api_key: ${{ secrets.OPENAI_API_KEY }}
+  openai_api_key: ${{ secrets.MY_OPENAI_KEY }}
 ```
 
 Add the secret under **Settings → Secrets and variables → Actions → New
 repository secret**, or grant an existing organization secret to the repository.
 
+The name does matter in two places, both of them workflows rather than the
+action:
+
+- This repository's own release and E2E workflows read
+  `secrets.OPENAI_API_KEY`, so a fork running them needs that exact name.
+- The reusable workflows under [`examples/`](examples) declare an
+  `OPENAI_API_KEY` secret in their `workflow_call` interface. Callers map any
+  secret onto it: `secrets: { OPENAI_API_KEY: ${{ secrets.MY_OPENAI_KEY }} }`.
+
 ### Why your release failed
 
-A missing key does not fail quietly, and it does not fail late. The release and
-E2E workflows run
+A missing key does not fail quietly, and it does not fail late. This
+repository's release and E2E workflows run
 [`scripts/require-openai-key.sh`](scripts/require-openai-key.sh) as their first
 step, before the version bump, the build, the commit, the tag and the release.
 When the secret is unset, empty, or only whitespace, the run stops there with:
