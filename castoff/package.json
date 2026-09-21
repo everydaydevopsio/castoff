@@ -1,6 +1,6 @@
 {
   "name": "castoff",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "GitHub Action that generates release notes using OpenAI",
   "main": "dist/index.js",
   "type": "module",

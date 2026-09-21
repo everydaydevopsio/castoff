@@ -1,6 +1,6 @@
 {
   "name": "castoff-changelog",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "GitHub Action that inserts a release entry into a Keep a Changelog file",
   "main": "dist/index.js",
   "type": "module",

@@ -10,6 +10,26 @@ the `changelog_entry` output of the Castoff action. Releases up to and including
 v2.0.0 predate this file; their notes remain on the
 [releases page](https://github.com/everydaydevopsio/castoff/releases).
 
+## [2.2.1] - 2026-09-21
+
+### Highlights
+
+- Improved changelog output by removing redundant release-version text and aligning closing-hash parsing with CommonMark.
+- Aligned the toolchain with Node.js 24, the runtime declared by the actions.
+
+### Fixes
+
+- Prevented changelog entries from repeating the release version in their titles.
+- Corrected handling of closing hash sequences in Markdown headings to follow CommonMark rules.
+- Fixed Dependabot configuration.
+
+### Changes
+
+- Pinned TypeScript 6 and updated Node.js type definitions to version 25.
+- Revised repository documentation to accurately describe the workspace.
+- Clarified the distinction between the action’s API-key input and the secret name used by workflows.
+- Documented where the release process stops when `OPENAI_API_KEY` is missing.
+
 ## [2.2.0] - 2026-09-21
 
 ### Highlights
