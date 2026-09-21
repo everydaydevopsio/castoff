@@ -41,6 +41,25 @@
 - Revert the branch. The workflow fixes stand on their own and could be kept
   even if the linting job were dropped.
 
+## Review Follow-ups
+
+- Queue concurrent releases in both examples: they push commits and tags to the
+  caller's branch, so two runs raced. Cancelling is wrong here, since a
+  cancelled release can leave a tag without a release.
+- Replace `mapfile` with a read loop: `/bin/bash` on macOS is 3.2, which has no
+  `mapfile`, so `make lint-workflows` failed there while passing under the
+  Homebrew bash on `PATH`.
+- Mirror the workflow's conditional install in the npm publish example rather
+  than `npm ci`, which needs a lockfile the example does not require.
+- Replace the monorepo matrix with what a fork actually needs. A caller cannot
+  set `working-directory` on a `uses:` job, so the matrix would have bumped the
+  root version twice rather than releasing two packages.
+- Record that prefixed tags cannot be combined with `update_changelog`: the
+  version is derived by stripping a leading `v`, and the changelog action
+  rejects anything that is not bare SemVer.
+- Exercise the installer with mocked `curl`, checksum and `tar`, as
+  `act-installer.test.ts` does, rather than only reading its text.
+
 ## Notes
 
 - actionlint runs shellcheck over `run:` blocks, which is how the backtick

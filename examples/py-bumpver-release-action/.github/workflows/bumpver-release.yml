@@ -29,6 +29,13 @@ on:
         description: 'Version released, without a leading v'
         value: ${{ jobs.bump-and-release.outputs.version }}
 
+# A release bumps, commits and pushes tags on the caller's branch. Two runs at
+# once bump from the same version and race on the push, so queue them instead
+# of cancelling: a cancelled release can leave a tag without a release.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   bump-and-release:
     runs-on: ubuntu-latest

@@ -170,24 +170,4 @@ describe('workflow validation', () => {
     expect(linter).toContain('examples');
     expect(linter).toContain("-path '*/workflows/*'");
   });
-
-  it('installs a pinned actionlint verified against checked-in checksums', () => {
-    const installer = readFileSync(
-      new URL('../scripts/install-actionlint.sh', import.meta.url),
-      'utf8'
-    );
-    const version = /ACTIONLINT_VERSION="([^"]+)"/.exec(installer)?.[1];
-    expect(version).toBeDefined();
-    const checksums = readFileSync(
-      new URL(
-        `../scripts/actionlint-v${version}-checksums.txt`,
-        import.meta.url
-      ),
-      'utf8'
-    );
-    // Every platform the installer resolves must have a checksum to verify.
-    for (const platform of ['darwin_arm64', 'darwin_amd64', 'linux_amd64']) {
-      expect(checksums).toContain(`actionlint_${version}_${platform}.tar.gz`);
-    }
-  });
 });

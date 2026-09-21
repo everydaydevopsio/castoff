@@ -122,7 +122,10 @@ jobs:
         with:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org'
-      - run: npm ci
+      # Mirror the reusable workflow's install: it supports projects without a
+      # lockfile, and `npm ci` requires one.
+      - run: |
+          if [ -f package-lock.json ]; then npm ci; else npm install; fi
       - run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -139,38 +142,37 @@ The workflow exposes `tag` and `version` outputs for exactly this, so
 
 ## Monorepos
 
-The workflow bumps one package: it runs `release-it` at the repository root and
-reads one version. For a monorepo, call it once per publishable package from a
-matrix, with a working directory per package:
+This example is single-package by construction: it checks out the repository,
+runs `release-it` at the root and reads one version out of it. A reusable
+workflow cannot be redirected from the caller either — `working-directory` is
+not something a caller can set on a `uses:` job — so there is no matrix you can
+write that makes this workflow release `packages/core` and `packages/cli`
+separately. Both iterations would bump the same root version.
 
-```yaml
-jobs:
-  release:
-    strategy:
-      # Releases push commits and tags; running them together races on the
-      # branch. One at a time keeps the history linear.
-      max-parallel: 1
-      matrix:
-        package: [packages/core, packages/cli]
-    uses: ./.github/workflows/release-it-bump.yml
-    with:
-      level: ${{ github.event.inputs.level }}
-      use_ai_release_notes: true
-    secrets:
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-```
+Releasing per package means forking this workflow and adding an interface for
+it. What that fork needs:
 
-Two caveats before you copy this:
+- **A `working_directory` input**, applied to the install step and the
+  `release-it` step, so each call operates inside one package.
+- **A per-package tag name**, set in that package's `release-it` config as
+  `"tagName": "core-v${version}"`, or every package tags `v1.2.3` and the
+  releases overwrite each other.
+- **A package-scoped changelog path**, passing `file: packages/core/CHANGELOG.md`
+  to the changelog action, which otherwise writes the repository root's file for
+  every package.
+- **Serialized runs.** Releases push commits and tags to the same branch, so run
+  the matrix with `max-parallel: 1` rather than racing on the push.
 
-- **Tag names collide.** Every package would tag `v1.2.3`. Give each package a
-  prefix in its `release-it` config — `"tagName": "core-v${version}"` — and pass
-  that tag to the notes step, or releases overwrite each other.
-- **Notes cover the whole repository.** Castoff reads `git log` between tags, not
-  per-directory history, so a package's notes will mention commits from its
-  siblings. Until per-path filtering exists, either accept that or run the
-  generator once for the repository rather than once per package.
+Two limits survive the fork and are worth knowing before you start:
 
-A single-package repository needs neither workaround, which is why this example
-stays simple.
+- **Prefixed tags do not work with `update_changelog`.** The version is derived
+  by stripping a leading `v` from the tag, so `core-v1.2.3` stays
+  `core-v1.2.3`, and the changelog action rejects anything that is not bare
+  SemVer. A fork wanting both must derive the package version separately from
+  the tag rather than out of it.
+- **Notes are repository-wide.** Castoff summarizes `git log` between two tags;
+  it does not filter by path. A package's notes will mention commits that
+  touched its siblings. Until that is configurable, either accept it or generate
+  notes once for the repository rather than once per package.
 
 After pushing this repo, tag it (e.g. `v2`) and use that tag in callers.

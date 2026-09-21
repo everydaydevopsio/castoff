@@ -16,7 +16,12 @@ else
   fi
 fi
 
-mapfile -t workflows < <(
+# Read into an array with a loop rather than mapfile: macOS ships bash 3.2,
+# where mapfile does not exist, and the Makefile runs this through /bin/bash.
+workflows=()
+while IFS= read -r workflow; do
+  workflows+=("$workflow")
+done < <(
   find "$REPO_ROOT/.github/workflows" "$REPO_ROOT/examples" \
     -type f \( -name '*.yml' -o -name '*.yaml' \) \
     -path '*/workflows/*' | sort
