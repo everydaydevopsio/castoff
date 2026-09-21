@@ -326,6 +326,25 @@ describe('buildChangelogEntry', () => {
     ).toBe(buildChangelogEntry(notes, 'v1.2.3', '2026-09-17'));
   });
 
+  it.each([
+    // CommonMark: a closing `#` run needs whitespace before it, so these
+    // trailing hashes are title text and the titles are not restatements.
+    ['# v1.2.3#', '## v1.2.3#'],
+    ['# v1.2.3 ##', undefined],
+    ['#v1.2.3', '#v1.2.3']
+  ])('reads closing hash sequences as CommonMark does (%s)', (title, kept) => {
+    const entry = buildChangelogEntry(
+      `${title}\n\n${notes}`,
+      'v1.2.3',
+      '2026-09-17'
+    );
+    if (kept === undefined) {
+      expect(entry).toBe(buildChangelogEntry(notes, 'v1.2.3', '2026-09-17'));
+    } else {
+      expect(entry).toContain(kept);
+    }
+  });
+
   it('keeps a title that says something the version heading does not', () => {
     const entry = buildChangelogEntry(
       `# Security release\n\n${notes}`,

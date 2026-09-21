@@ -56277,7 +56277,9 @@ function stripRedundantTitle(notes, version) {
     const first = lines.findIndex((line) => line.trim() !== '');
     if (first === -1)
         return notes;
-    const title = /^ {0,3}#\s+(.+?)\s*#*\s*$/.exec(lines[first])?.[1];
+    // CommonMark: a closing sequence of `#` must be preceded by whitespace, so
+    // the final hash in `# v1.2.3#` is title text rather than a closing run.
+    const title = /^ {0,3}#[ \t]+(.+?)(?:[ \t]+#+)?[ \t]*$/.exec(lines[first])?.[1];
     if (title === undefined)
         return notes;
     const restated = new Set([version, `v${version}`].flatMap((form) => [
