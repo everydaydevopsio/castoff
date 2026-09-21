@@ -264,6 +264,8 @@ describe('run', () => {
     expect(coreMock.setFailed).not.toHaveBeenCalled();
   });
 
+  // Floating major and minor tags share the release commit with the exact
+  // version tag, so every shape the release workflow creates is excluded.
   const EXCLUDE_FLOATING = [
     'describe',
     '--tags',
@@ -272,6 +274,14 @@ describe('run', () => {
     'v[0-9]',
     '--exclude',
     'v[0-9][0-9]',
+    '--exclude',
+    'v[0-9].[0-9]',
+    '--exclude',
+    'v[0-9].[0-9][0-9]',
+    '--exclude',
+    'v[0-9][0-9].[0-9]',
+    '--exclude',
+    'v[0-9][0-9].[0-9][0-9]',
     'HEAD^'
   ];
 

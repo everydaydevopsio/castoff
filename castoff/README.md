@@ -53,6 +53,10 @@ avoid duplicates. Release-note content and sections are preserved. Passing
     tag: ${{ steps.bump.outputs.tag }}
 ```
 
+`@v2` takes every release in the major line. Pin `@v2.2` for patches only, or
+an exact version such as `@v2.2.1` to move nothing; see
+[Versions](../README.md#versions).
+
 Then pass the notes to a GitHub Release step:
 
 ```yaml

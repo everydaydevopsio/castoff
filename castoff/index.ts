@@ -157,21 +157,30 @@ function buildChangelogEntry(notes: string, tag: string, date: string): string {
   return `## [${version}] - ${date}\n\n${body || '_No release notes were generated._'}`;
 }
 
+/** One or two digits, the major and minor range floating tags are written in. */
+const DIGIT_RUNS = ['[0-9]', '[0-9][0-9]'];
+
 /**
- * Floating major tags (v1, v2, ... v99) that release workflows move onto each
- * release in a major series. They sit on the same commit as the exact version
- * tag, so `git describe` can report them in its place.
+ * Floating tags that release workflows move onto each release in a series:
+ * major (`v1`, `v2`, ... `v99`) and minor (`v2.2`, `v2.10`, ...). They sit on
+ * the same commit as the exact version tag, so `git describe` can report one
+ * of them in its place.
  */
-const FLOATING_MAJOR_TAGS = ['v[0-9]', 'v[0-9][0-9]'];
+const FLOATING_TAGS = [
+  ...DIGIT_RUNS.map((major) => `v${major}`),
+  ...DIGIT_RUNS.flatMap((major) =>
+    DIGIT_RUNS.map((minor) => `v${major}.${minor}`)
+  )
+];
 
 /**
  * Read the nearest tag before HEAD.
- * @param {boolean} exact - Skip floating major tags in favour of version tags
+ * @param {boolean} exact - Skip floating tags in favour of version tags
  * @returns {string} Tag name
  */
 function describePreviousTag(exact: boolean): string {
   const excludes = exact
-    ? FLOATING_MAJOR_TAGS.flatMap((pattern) => ['--exclude', pattern])
+    ? FLOATING_TAGS.flatMap((pattern) => ['--exclude', pattern])
     : [];
   return execFileSync(
     'git',
