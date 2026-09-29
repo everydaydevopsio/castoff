@@ -6,33 +6,22 @@
   "agents": [
     "local-dev",
     "cicd",
-    "observability",
     "linting",
-    "logging",
     "testing",
     "git-hooks",
     "docs",
     "publishing",
     "tasks",
     "plan-lifecycle",
-    "spec-kit",
     "testing-process",
     "core"
   ],
   "skills": [
     "owasp-security-scan",
-    "aws-health-review",
-    "aws-live-health-review",
-    "aws-weekly-security-review",
     "github-health-check",
     "github-pr-copilot-cycle",
     "ballast-audit",
-    "ballast-project-maintenance",
-    "docker-registry-publish",
-    "agent-performance-audit",
-    "speckit-bootstrap",
-    "speckit-reverse-engineer",
-    "speckit-delivery"
+    "ballast-project-maintenance"
   ],
   "ballastVersion": "5.21.0",
   "languages": [
@@ -51,5 +40,8 @@
     ]
   },
   "taskSystem": "github",
-  "deploymentModel": "none"
+  "deploymentModel": "none",
+  "publishingProfiles": [
+    "libraries"
+  ]
 }
