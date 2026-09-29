@@ -1,7 +1,7 @@
 {
   "targets": [
-    "codex",
-    "claude"
+    "claude",
+    "codex"
   ],
   "agents": [
     "local-dev",
@@ -14,7 +14,10 @@
     "docs",
     "publishing",
     "tasks",
-    "plan-lifecycle"
+    "plan-lifecycle",
+    "spec-kit",
+    "testing-process",
+    "core"
   ],
   "skills": [
     "owasp-security-scan",
@@ -25,9 +28,13 @@
     "github-pr-copilot-cycle",
     "ballast-audit",
     "ballast-project-maintenance",
-    "docker-registry-publish"
+    "docker-registry-publish",
+    "agent-performance-audit",
+    "speckit-bootstrap",
+    "speckit-reverse-engineer",
+    "speckit-delivery"
   ],
-  "ballastVersion": "5.18.3",
+  "ballastVersion": "5.21.0",
   "languages": [
     "typescript"
   ],
