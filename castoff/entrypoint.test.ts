@@ -51,6 +51,29 @@ describe('packaged action entry point', () => {
     }
   });
 
+  // Prettier resolves .prettierignore from its working directory, not from the
+  // workspace root. A package that formats itself needs its own, or
+  // `prettier:fix` rewrites the committed bundle CI then rejects.
+  it('gives every self-formatting package an ignore file covering dist', () => {
+    const root = new URL('../', import.meta.url);
+
+    for (const pkg of ['castoff', 'changelog']) {
+      const { scripts } = JSON.parse(
+        readFileSync(new URL(`${pkg}/package.json`, root), 'utf8')
+      ) as { scripts: Record<string, string> };
+      if (!scripts.prettier && !scripts['prettier:fix']) continue;
+
+      const ignored = readFileSync(
+        new URL(`${pkg}/.prettierignore`, root),
+        'utf8'
+      )
+        .split('\n')
+        .map((line) => line.trim());
+      expect(ignored).toContain('dist');
+      expect(ignored).toContain('coverage');
+    }
+  });
+
   it.each([
     [
       'invalid max_commits',
