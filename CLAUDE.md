@@ -46,8 +46,6 @@ Read and follow these rule files in `.claude/rules/` when they apply:
 - `.claude/rules/typescript-testing.md` — Testing specialist - sets up Jest (default) or Vitest for Vite projects, 50% coverage, and test step in build GitHub Action
 - `.claude/rules/git-hooks.md` — Rules for git-hooks
 - `.claude/rules/docs.md` — Documentation specialist - GitHub Markdown docs by default, or maintain existing Docusaurus sites with publish-docs automation
-- `.claude/rules/publishing.md` — Publishing specialist - release workflows for libraries, SDKs, and apps
-- `.claude/rules/publishing-libraries.md` — Library publishing specialist - npmjs for TypeScript, PyPI for Python, GitHub tags/releases for Go
 - `.claude/rules/tasks-task-system.md` — Task system integration - use the configured work item system and configure MCP when active
 - `.claude/rules/tasks-todo.md` — Branch-local TODO tracking - manage tasks/todo.md and triage before PR
 - `.claude/rules/plan-lifecycle.md` — Plan lifecycle - create, maintain, and graduate plans to ADRs

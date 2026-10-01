@@ -10,13 +10,11 @@
     "testing",
     "git-hooks",
     "docs",
-    "publishing",
     "tasks",
     "plan-lifecycle",
     "testing-process",
     "core"
   ],
-  "ballastVersion": "5.21.3",
   "skills": [
     "owasp-security-scan",
     "github-health-check",
@@ -24,6 +22,7 @@
     "ballast-audit",
     "ballast-project-maintenance"
   ],
+  "ballastVersion": "5.21.3",
   "languages": [
     "typescript"
   ],
@@ -40,8 +39,5 @@
     ]
   },
   "taskSystem": "github",
-  "deploymentModel": "none",
-  "publishingProfiles": [
-    "libraries"
-  ]
+  "deploymentModel": "none"
 }
