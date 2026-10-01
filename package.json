@@ -4,6 +4,9 @@
   "description": "Workspace root: git hooks, formatting, and shared tooling for the Castoff action",
   "license": "MIT",
   "packageManager": "pnpm@10.34.5",
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "prepare": "husky",
     "build": "pnpm -r build",

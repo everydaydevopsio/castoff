@@ -23,6 +23,34 @@ describe('packaged action entry point', () => {
     expect(Number(runtime?.[1])).toBeGreaterThanOrEqual(Number(minimum?.[1]));
   });
 
+  // .nvmrc, the action runtimes and every manifest name the same Node major,
+  // so a contributor's local Node matches what the published actions run on.
+  it('declares the .nvmrc Node major in every workspace manifest', () => {
+    const root = new URL('../', import.meta.url);
+    const nvmrc = readFileSync(new URL('.nvmrc', root), 'utf8').trim();
+    const major = nvmrc.match(/^v?(\d+)$/)?.[1];
+
+    expect(major).toBeDefined();
+
+    for (const manifest of [
+      'package.json',
+      'castoff/package.json',
+      'changelog/package.json'
+    ]) {
+      const { engines } = JSON.parse(
+        readFileSync(new URL(manifest, root), 'utf8')
+      ) as { engines?: { node?: string } };
+      expect(engines?.node).toBe(`>=${major}`);
+    }
+
+    for (const action of ['castoff/action.yml', 'changelog/action.yml']) {
+      const using = readFileSync(new URL(action, root), 'utf8').match(
+        /using: ['"]?node(\d+)/
+      );
+      expect(using?.[1]).toBe(major);
+    }
+  });
+
   it.each([
     [
       'invalid max_commits',
