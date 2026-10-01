@@ -35,6 +35,22 @@ jobs:
           ref: ${{ github.event.workflow_run.head_sha || github.sha }}
           fetch-depth: 0
 
+      # The bundle is built at release time and carried by the tag, so a
+      # checkout of main has none. Build it before any `uses: ./castoff` step.
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+          cache-dependency-path: 'pnpm-lock.yaml'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build the action bundle
+        run: pnpm build
+
       - name: Reject missing API key in workflow preflight
         id: missing_key_preflight
         continue-on-error: true
@@ -104,6 +120,22 @@ jobs:
         with:
           ref: ${{ github.event.workflow_run.head_sha || github.sha }}
           fetch-depth: 0
+
+      # The bundle is built at release time and carried by the tag, so a
+      # checkout of main has none. Build it before any `uses: ./castoff` step.
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+          cache-dependency-path: 'pnpm-lock.yaml'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build the action bundle
+        run: pnpm build
 
       - name: Require OpenAI API key
         env:

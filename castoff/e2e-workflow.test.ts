@@ -9,7 +9,15 @@ type Workflow = {
   concurrency: { group: string; 'cancel-in-progress': boolean };
   jobs: Record<
     string,
-    { if: string; steps: Array<{ uses?: string; with?: { ref?: string } }> }
+    {
+      if: string;
+      steps: Array<{
+        name?: string;
+        uses?: string;
+        run?: string;
+        with?: { ref?: string };
+      }>;
+    }
   >;
 };
 
@@ -81,6 +89,32 @@ describe('E2E after main CI (PRD 15.5)', () => {
       expect(
         evaluate(ref!, { event: { workflow_run: {} }, sha: 'manual-commit' })
       ).toBe('manual-commit');
+    }
+  });
+
+  // The bundle is built at release time, so a checkout of main has none.
+  // Running the local action before building it would test whatever the
+  // runner happened to have, or fail outright.
+  it('builds the action before running it from the working tree', () => {
+    for (const job of Object.values(workflow.jobs)) {
+      const local = job.steps.findIndex((step) => step.uses?.startsWith('./'));
+      expect(local).toBeGreaterThan(-1);
+
+      const before = job.steps.slice(0, local);
+      expect(
+        before.some((step) => step.uses?.startsWith('pnpm/action-setup'))
+      ).toBe(true);
+      expect(
+        before.some((step) => step.uses?.startsWith('actions/setup-node'))
+      ).toBe(true);
+      expect(
+        before.some((step) =>
+          step.run?.includes('pnpm install --frozen-lockfile')
+        )
+      ).toBe(true);
+      expect(before.some((step) => step.run?.includes('pnpm build'))).toBe(
+        true
+      );
     }
   });
 

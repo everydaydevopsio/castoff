@@ -3,4 +3,7 @@
 node_modules/
 .ballast/
 coverage/
+# Built at release time and carried by the tag, never committed to main.
+castoff/dist/
+changelog/dist/
 package-lock.json

@@ -1,70 +1,75 @@
-# Task: Close the gaps found auditing the repository against its installed rules
+# Task: Build the action bundle at release time
 
 ## Context
 
 - Date: 2026-10-01
-- Mode: Autonomous
-- Trigger: a review of every rule file in `.claude/rules/` against the actual
-  repository state. Nine findings, eight of them mechanical.
+- Mode: Approval-Required (design chosen with the user)
+- Trigger: #49 had to be rebuilt by hand because ncc inlines `openai` into the
+  committed bundle and Dependabot cannot run a build. Every future bump of a
+  bundled dependency would fail CI the same way.
+- Graduated to [ADR-009](../adr/009-release-time-bundle.md).
 
 ## Scope
 
-- In scope: the documentation set, the coverage gate, Node version declarations,
-  Dependabot grouping, badge coverage, task-tracking hygiene, and the
-  `CLAUDE.md` Repository Facts block.
-- Out of scope: the one historical commit that landed on `main` without a
-  branch. Nothing to fix in the tree; worth branch-protecting `main` instead.
+- In scope: where the bundle lives, and every workflow, hook and command that
+  assumed it was committed.
+- Out of scope: how the action resolves the previous tag. Keeping the bundle's
+  tagged commit an ancestor of `main` is exactly what avoids touching ADR-005.
 
 ## Acceptance Criteria
 
-- AC1: Documentation lives under `docs/` with an index, per the `docs` rule, and
-  carries Mermaid diagrams for the release pipeline and the two actions.
-- AC2: `main.ts` is inside the coverage gate in both packages, covered by a
-  test rather than by lowering the threshold.
-- AC3: Every manifest declares the Node major that `.nvmrc` and both
-  `action.yml` runtimes already name, and a test fails when they drift.
-- AC4: No root `TODO.md`; its one open item is a tracked GitHub issue.
+- AC1: Both `dist/` directories are gitignored and untracked on `main`.
+- AC2: Published tags still carry the bundle, so consumers are unaffected.
+- AC3: Tagged commits remain ancestors of `main`, so `git describe HEAD^` still
+  finds the previous release.
+- AC4: Nothing in CI or the hooks compares a committed bundle to a build.
+- AC5: Every workflow that runs `uses: ./castoff` builds it first.
+
+## Risks and Tradeoffs
+
+- Risk: the release path is only exercised by a real release. The workflow tests
+  assert the ordering that makes it correct, but the first release after this
+  change should be watched.
+- Tradeoff: one bookkeeping commit per release, visible in the next release's
+  commit range.
 
 ## Execution Checklist
 
-- [x] Add `docs/README.md` as the index and `docs/architecture.md` with a
-      component diagram, a release sequence diagram and the changelog writer's
-      state diagram.
-- [x] Move the ACT guide out of `.github/workflows/` to `docs/local-e2e-act.md`
-      and repoint the README links and `scripts/e2e-act.sh`.
-- [x] Collect coverage from `main.ts` in both packages and cover the entry
-      point wiring with `main.test.ts`.
-- [x] Add `engines.node` to all three manifests, with an alignment test in
-      `castoff/entrypoint.test.ts`.
-- [x] Add the missing `prettier` / `prettier:fix` scripts to `changelog/`.
-- [x] Add a `typescript` Dependabot group and `exclude-patterns` on the
-      catch-all production group.
-- [x] Add the E2E workflow badge to `README.md`.
-- [x] Promote the open root `TODO.md` item to
-      [issue #45](https://github.com/everydaydevopsio/castoff/issues/45) and
-      delete the file.
-- [x] Refresh the `CLAUDE.md` Repository Facts block.
+- [x] Confirm the ancestry constraint in `describePreviousTag` and ADR-005
+      before choosing a design.
+- [x] Tests first: untracked-and-ignored bundle, tag/strip/push ordering,
+      build-before-use in both E2E jobs.
+- [x] Gitignore and `git rm -r --cached` both `dist/` directories.
+- [x] Release workflow: `git add -f`, tag, strip, push.
+- [x] Drop the verification step from CI and the diff from `pre-push`.
+- [x] Build before `uses: ./castoff` in both E2E jobs.
+- [x] `make test` and `make test-coverage` depend on `build`; the entry-point
+      test names the missing bundle instead of failing obscurely.
+- [x] README, `docs/architecture.md`, repository facts, ADR-009.
 
 ## Test Strategy
 
-- Unit: `castoff/main.test.ts` and `changelog/main.test.ts` mock `./index.js`
-  and assert the entry point calls `run()` exactly once. Both files were
-  measured at 0% before the tests existed.
-- Failure-path: the engines test was run against the unmodified manifests first
-  and failed on the missing field, not on a typo in the test.
-- Regression: `pnpm lint`, `pnpm prettier`, `pnpm test:coverage`, `pnpm build`
-  plus the `castoff/dist/` and `changelog/dist/` diff check, and
-  `make lint-workflows`.
+- Unit: `castoff/bundle.test.ts` (new) asserts both paths are ignored and
+  untracked — all four assertions were watched failing first.
+- Integration: `release-workflow.test.ts` asserts tag → strip → push ordering
+  and the force-add; `e2e-workflow.test.ts` asserts each job installs and builds
+  before the local action.
+- Failure path: deleted both `dist/` directories and confirmed the entry-point
+  test reports the missing bundle with the command to fix it.
+- Regression: 205 tests, `make lint-workflows`, `pnpm lint`, `pnpm prettier`.
 
 ## Rollback Strategy
 
-- Trigger: a doc link or workflow-lint failure that is not fixable in place.
-- Rollback steps: the change is additive apart from two file moves and one
-  deletion; `git revert` restores both.
-- Validation after rollback: `make lint-workflows` and `pnpm test:coverage`.
+- Trigger: the first release after this change fails to tag, or publishes a tag
+  without a bundle.
+- Rollback steps: revert the PR, then `git add -f castoff/dist changelog/dist`
+  and commit to restore a tracked bundle on `main`.
+- Validation after rollback: `pnpm build` and a clean `git diff -- */dist/`.
 
 ## Outcome
 
-- Result: all eight mechanical findings fixed on this branch.
-- Evidence: see the Test Strategy commands above.
-- Follow-up: issue #45 carries the one item that was not in scope here.
+- Result: the bundle is built at release time and carried only by the tag.
+- Evidence: see Test Strategy; ADR-009 records the decision and the two
+  alternatives rejected.
+- Follow-up: watch the next release through, particularly the strip commit and
+  the previous-tag lookup in the release after it.

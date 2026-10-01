@@ -1,6 +1,6 @@
 import { describe, expect, it } from '@jest/globals';
 import { spawnSync } from 'node:child_process';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 describe('packaged action entry point', () => {
@@ -88,20 +88,22 @@ describe('packaged action entry point', () => {
       'Input required and not supplied: openai_api_key'
     ]
   ])('fails when executed with %s', (_name, apiKey, maxCommits, message) => {
-    const result = spawnSync(
-      process.execPath,
-      [fileURLToPath(new URL('./dist/index.js', import.meta.url))],
-      {
-        env: {
-          ...process.env,
-          INPUT_OPENAI_API_KEY: apiKey,
-          INPUT_TAG: 'v0.0.0-test',
-          INPUT_MAX_COMMITS: maxCommits
-        },
-        encoding: 'utf8',
-        timeout: 10000
-      }
-    );
+    const bundle = fileURLToPath(new URL('./dist/index.js', import.meta.url));
+    // Built at release time, so a fresh clone has none until `pnpm build`.
+    if (!existsSync(bundle)) {
+      throw new Error(`${bundle} is missing. Run \`pnpm build\` first.`);
+    }
+
+    const result = spawnSync(process.execPath, [bundle], {
+      env: {
+        ...process.env,
+        INPUT_OPENAI_API_KEY: apiKey,
+        INPUT_TAG: 'v0.0.0-test',
+        INPUT_MAX_COMMITS: maxCommits
+      },
+      encoding: 'utf8',
+      timeout: 10000
+    });
 
     expect(result.error).toBeUndefined();
     expect(result.status).toBe(1);
