@@ -10,6 +10,27 @@ the `changelog_entry` output of the Castoff action. Releases up to and including
 v2.0.0 predate this file; their notes remain on the
 [releases page](https://github.com/everydaydevopsio/castoff/releases).
 
+## [2.2.2] - 2026-10-01
+
+### Highlights
+
+- **Release-time action bundling:** The action bundle is now built during the release workflow. (#50)
+- **Floating minor-version tag:** Releases now update a floating minor tag alongside the existing major tag, allowing users to track a minor release line. (#38)
+- **Validated workflow examples:** Added linting for example workflows and documentation explaining how to use them. (#39)
+
+### Fixes
+
+- Ensured the release workflow builds the action before running tests. (#50)
+- Adjusted workflow linting to focus on checks relevant to the updated repository layout. (#50)
+- Addressed review findings in workflow validation and example documentation. (#39)
+- Resolved repository rule-compliance gaps and added a dedicated Prettier ignore file for the changelog. (#46)
+
+### Changes
+
+- Updated the OpenAI dependency to **7.23.0** and rebuilt the action bundle. (#42, #49)
+- Updated development and testing dependencies, including `@types/node` to **24.19.0** and `ts-jest` to **29.4.14**. (#40, #44, #47, #48)
+- Refreshed Ballast-managed rules and skills to **5.21.0**, narrowed the configuration to match repository needs, and removed the unused publishing agent. (#43)
+
 ## [2.2.1] - 2026-09-21
 
 ### Highlights
