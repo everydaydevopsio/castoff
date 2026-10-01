@@ -27,7 +27,7 @@ Update this section when those facts change. If live runtime state is required, 
 
 ## Installed agent rules
 
-Created by [Ballast](https://github.com/everydaydevopsio/ballast) v5.21.0. Do not edit this section.
+Created by [Ballast](https://github.com/everydaydevopsio/ballast) v5.21.3. Do not edit this section.
 
 ### Repository Tool Policy
 
@@ -56,7 +56,7 @@ Read and follow these rule files in `.claude/rules/` when they apply:
 
 ## Installed skills
 
-Created by [Ballast](https://github.com/everydaydevopsio/ballast) v5.21.0. Do not edit this section.
+Created by [Ballast](https://github.com/everydaydevopsio/ballast) v5.21.3. Do not edit this section.
 
 These skills are registered with Claude Code. Invoke one by name (for example `/ballast-audit`) when it is relevant:
 

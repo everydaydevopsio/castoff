@@ -1,4 +1,4 @@
-<!-- ballast:rule id="typescript/core" version="5.19.1" checksum="22ad24bac181451e31860dbb3ab53f3bd7dd2256b85b3d872e1cf31e71df2ba1" -->
+<!-- ballast:rule id="typescript/core" version="5.21.3" checksum="22ad24bac181451e31860dbb3ab53f3bd7dd2256b85b3d872e1cf31e71df2ba1" -->
 # Ballast Core Rules
 
 Compact engineering invariants for this repository (`ruleProfile: minimal`). The full Ballast rule set is not emitted in this profile; switch `ruleProfile` to `full` in `.rulesrc.json` and re-run `ballast install --refresh-config` when detailed guidance should be installed.

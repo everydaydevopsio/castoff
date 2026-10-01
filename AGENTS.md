@@ -4,7 +4,7 @@ This file provides guidance to Codex (CLI and app) for working in this repositor
 
 ## Installed agent rules
 
-Created by [Ballast](https://github.com/everydaydevopsio/ballast) v5.21.0. Do not edit this section.
+Created by [Ballast](https://github.com/everydaydevopsio/ballast) v5.21.3. Do not edit this section.
 
 ### Repository Tool Policy
 
@@ -33,7 +33,7 @@ Read and follow these rule files in `.codex/rules/` when they apply:
 
 ## Installed skills
 
-Created by [Ballast](https://github.com/everydaydevopsio/ballast) v5.21.0. Do not edit this section.
+Created by [Ballast](https://github.com/everydaydevopsio/ballast) v5.21.3. Do not edit this section.
 
 Read and use these skill files in `.codex/skills/` when they are relevant:
 

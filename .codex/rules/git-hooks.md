@@ -1,4 +1,4 @@
-<!-- ballast:rule id="typescript/git-hooks" version="5.19.1" checksum="3437cdb2b7b04b4b3ce4a0eaf9d2a24339e8e223448c3d8a495370a4e45b260f" -->
+<!-- ballast:rule id="typescript/git-hooks" version="5.21.3" checksum="3437cdb2b7b04b4b3ce4a0eaf9d2a24339e8e223448c3d8a495370a4e45b260f" -->
 # Git Hooks Rules
 
 These rules keep local Git hook orchestration consistent with the repository layout and testing strategy.
