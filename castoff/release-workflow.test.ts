@@ -111,3 +111,16 @@ it('strips the bundle from main once the tag has captured it', () => {
   // previous-tag lookup.
   expect(workflow.slice(push)).toContain('git push origin HEAD:main');
 });
+
+it('builds the bundle before running the local actions', () => {
+  const workflow = readFileSync(
+    new URL('../.github/workflows/release.yml', import.meta.url),
+    'utf8'
+  );
+  // actionlint cannot see this ordering once the bundle stops being committed,
+  // so it is asserted here instead.
+  const build = workflow.indexOf('- name: Build dist');
+  const local = workflow.indexOf('uses: ./');
+  expect(build).toBeGreaterThan(-1);
+  expect(local).toBeGreaterThan(build);
+});

@@ -26,6 +26,17 @@ describe('action bundles', () => {
     expect(tracked(path)).toEqual([]);
   });
 
+  // Narrow by design: actionlint's missing-`main:`-file message is expected
+  // now, every other finding is not.
+  it('ignores only the missing-bundle finding when linting workflows', () => {
+    const script = readFileSync(
+      new URL('scripts/lint-workflows.sh', `file://${root}`),
+      'utf8'
+    );
+    const ignores = [...script.matchAll(/-ignore '([^']+)'/g)].map((m) => m[1]);
+    expect(ignores).toEqual(['file "dist/index\\.js" does not exist']);
+  });
+
   it.each(['castoff/dist/', 'changelog/dist/'])('ignores %s', (path) => {
     const ignored = readFileSync(
       new URL('.gitignore', `file://${root}`),

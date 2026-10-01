@@ -32,4 +32,11 @@ if [[ ${#workflows[@]} -eq 0 ]]; then
 fi
 
 echo "Linting ${#workflows[@]} workflow files with actionlint."
-"$actionlint_bin" -color "${workflows[@]}"
+# The bundles are built at release time (ADR-009), so a checkout has none and
+# actionlint's static check for a local action's `main:` file always fires. The
+# invariant it approximates -- every workflow builds before it runs the local
+# action -- is asserted directly by release-workflow.test.ts and
+# e2e-workflow.test.ts, which can see the build step that actionlint cannot.
+"$actionlint_bin" -color \
+  -ignore 'file "dist/index\.js" does not exist' \
+  "${workflows[@]}"
