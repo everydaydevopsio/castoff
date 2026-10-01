@@ -87,10 +87,16 @@ leave the bundle on `main`.
 ## Verification
 
 `castoff/bundle.test.ts` asserts both `dist/` directories are gitignored and
-untracked. `castoff/release-workflow.test.ts` asserts the tag/strip/push
-ordering and the force-add. `castoff/e2e-workflow.test.ts` asserts every job
-installs and builds before running the local action. Full suite: 205 tests,
-plus `make lint-workflows`.
+untracked, that every workflow builds before it tests, and that the workflow
+linter's ignore list stays narrow. `castoff/release-workflow.test.ts` asserts
+the tag/strip/push ordering and the force-add. `castoff/e2e-workflow.test.ts`
+asserts every job installs and builds before running the local action. Full
+suite: 209 tests, plus `make lint-workflows`.
+
+The git mechanics were simulated in a scratch repository across two releases:
+the tag contains `dist/`, `main`'s tip does not, and
+`git describe --tags --abbrev=0 --exclude 'v[0-9]' HEAD^` from the following
+release commit resolves to the previous version tag.
 
 ## Lessons Learned
 
@@ -99,3 +105,11 @@ The packaging question looked independent of the action's behavior and was not:
 resolve their predecessor. Checking that coupling before choosing a design
 turned a redesign of the action's core into a change confined to the release
 workflow.
+
+Uncommitting a build artifact breaks every consumer of it, and the consumers are
+easy to miss because they never mention it. Three did: the E2E workflow ran the
+local action straight after checkout; `release.yml` ran `pnpm test` before it
+built anything, which would have failed every release at the test step; and
+actionlint statically resolves a local action's `main:` file. Each was found by
+a different mechanism — a test, review, and CI — and only the first was found
+before pushing.

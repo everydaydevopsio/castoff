@@ -46,6 +46,12 @@
 - [x] `make test` and `make test-coverage` depend on `build`; the entry-point
       test names the missing bundle instead of failing obscurely.
 - [x] README, `docs/architecture.md`, repository facts, ADR-009.
+- [x] Scope the actionlint ignore to the missing-bundle message only, after CI
+      showed it resolves a local action's `main:` file statically.
+- [x] Build before `pnpm test` in `release.yml` — Copilot caught that the
+      release ran tests before any build, so every release would have died at
+      the test step. Pinned by a build-before-test assertion over both
+      workflows.
 
 ## Test Strategy
 
@@ -56,7 +62,10 @@
   before the local action.
 - Failure path: deleted both `dist/` directories and confirmed the entry-point
   test reports the missing bundle with the command to fix it.
-- Regression: 205 tests, `make lint-workflows`, `pnpm lint`, `pnpm prettier`.
+- Regression: 209 tests, `make lint-workflows` (verified with both `dist/`
+  directories deleted), `pnpm lint`, `pnpm prettier`.
+- Simulation: two releases in a scratch repo confirming the tag carries the
+  bundle, `main`'s tip does not, and the previous-tag lookup still resolves.
 
 ## Rollback Strategy
 

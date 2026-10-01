@@ -49,6 +49,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # The entry-point tests execute the bundle, which is not committed, so it
+      # has to exist before they run. The release artifact is rebuilt after the
+      # version bump below, once the versions it ships with are set.
+      - name: Build action bundles
+        run: pnpm build
+
       - name: Run tests
         run: pnpm test
 

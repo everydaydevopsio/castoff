@@ -37,6 +37,19 @@ describe('action bundles', () => {
     expect(ignores).toEqual(['file "dist/index\\.js" does not exist']);
   });
 
+  // The entry-point tests execute the bundle. With nothing committed, any
+  // workflow that tests before it builds dies on a fresh checkout.
+  it.each(['ci.yml', 'release.yml'])('builds before it tests in %s', (file) => {
+    const workflow = readFileSync(
+      new URL(`.github/workflows/${file}`, `file://${root}`),
+      'utf8'
+    );
+    const build = workflow.indexOf('run: pnpm build');
+    const test = workflow.search(/run: pnpm test/);
+    expect(build).toBeGreaterThan(-1);
+    expect(test).toBeGreaterThan(build);
+  });
+
   it.each(['castoff/dist/', 'changelog/dist/'])('ignores %s', (path) => {
     const ignored = readFileSync(
       new URL('.gitignore', `file://${root}`),
