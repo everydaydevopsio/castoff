@@ -31,11 +31,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # The bundles are gitignored and built at release time; this build
+      # type-checks the sources and produces the dist/ the entry-point test runs.
       - name: Type-check and build action bundles
         run: pnpm build
-
-      - name: Verify committed action bundles
-        run: git diff --exit-code -- castoff/dist/ changelog/dist/
 
       - name: Run tests with coverage
         run: pnpm test:coverage

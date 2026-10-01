@@ -40,10 +40,10 @@ build:
 typecheck:
 	pnpm typecheck
 
-test:
+test: build
 	pnpm test
 
-test-coverage:
+test-coverage: build
 	pnpm test:coverage
 
 lint:

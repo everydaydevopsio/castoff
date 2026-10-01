@@ -10,3 +10,4 @@
 | [006: Manage tooling from a pnpm workspace root](006-pnpm-workspace-husky-root.md)                     | Accepted |
 | [007: Publish the changelog writer as a second action](007-changelog-action.md)                        | Accepted |
 | [008: Move a floating minor tag alongside the major](008-floating-minor-tag.md)                        | Accepted |
+| [009: Build the action bundle at release time](009-release-time-bundle.md)                             | Accepted |

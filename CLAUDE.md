@@ -20,7 +20,8 @@ Suggested facts to record:
 - Primary release/publish workflows: `.github/workflows/release.yml`
 - Preferred build/test/lint/format/coverage commands: `make build`, `make test`, `make test-coverage`, `make lint`, `make format`
 - Coverage threshold: 75% (lines, functions, branches, statements); coverage is collected from `index.ts` and `main.ts` in both packages
-- Generated or protected paths agents should avoid editing directly: `.ballast/`, `castoff/dist/`, `changelog/dist/`, `.husky/_/`
+- Generated or protected paths agents should avoid editing directly: `.ballast/`, `.husky/_/`
+- Action bundles: `castoff/dist/` and `changelog/dist/` are gitignored and never committed to `main`; the release workflow force-adds them into the tagged commit and strips them again in the next commit (ADR-009). Run `make build` after a fresh clone — `make test` depends on it
 - Git hooks: husky, installed by the root `prepare` script; `core.hooksPath` is `.husky/_`
 - Documentation layout: `README.md` is the overview, `docs/README.md` the index, `docs/architecture.md` holds the Mermaid diagrams, and each action documents its own inputs in `castoff/README.md` and `changelog/README.md`
 - Task tracking: `tasks/todo.md` is the branch-local record (lowercase, canonical — there is no root `TODO.md`); durable work goes to GitHub issues on `everydaydevopsio/castoff`

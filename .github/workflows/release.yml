@@ -49,6 +49,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # The entry-point tests execute the bundle, which is not committed, so it
+      # has to exist before they run. The release artifact is rebuilt after the
+      # version bump below, once the versions it ships with are set.
+      - name: Build action bundles
+        run: pnpm build
+
       - name: Run tests
         run: pnpm test
 
@@ -77,7 +83,9 @@ jobs:
       - name: Commit release artifacts
         run: |
           git add castoff/package.json changelog/package.json
-          git add castoff/dist/ changelog/dist/
+          # -f because the bundles are gitignored: this commit is the only one
+          # that carries them, and the tag below is what publishes them.
+          git add -f castoff/dist/ changelog/dist/
           git commit -m "chore: release ${{ steps.bump.outputs.tag }}"
 
       - name: Generate AI release notes
@@ -103,7 +111,9 @@ jobs:
           # Amend so the tag created below carries its own changelog.
           git commit --amend --no-edit
 
-      - name: Tag and push
+      # Tag before stripping the bundle: these tags are what consumers resolve,
+      # and the commit they name is the only one that carries dist/.
+      - name: Tag the release
         run: |
           git tag "${{ steps.bump.outputs.tag }}"
           # Floating tags follow the newest release in their series, so
@@ -111,6 +121,18 @@ jobs:
           # rather than moved when the series is new, which -f covers too.
           git tag -f "${{ steps.bump.outputs.major_tag }}"
           git tag -f "${{ steps.bump.outputs.minor_tag }}"
+
+      # main carries source, not build output. The tagged commit stays an
+      # ancestor of main, which is what the next release's previous-tag lookup
+      # walks (`git describe --tags HEAD^`, ADR-005); a release branch holding
+      # the bundle off main would break that.
+      - name: Drop the release bundle from main
+        run: |
+          git rm -r --cached --quiet castoff/dist changelog/dist
+          git commit -m "chore: drop the ${{ steps.bump.outputs.tag }} bundle from main"
+
+      - name: Push main and tags
+        run: |
           git push origin HEAD:main
           git push origin "${{ steps.bump.outputs.tag }}"
           git push origin --force \

@@ -8,7 +8,7 @@ it('generates notes after the local release commit but before publishing tags', 
   );
   const commit = workflow.indexOf('- name: Commit release artifacts');
   const notes = workflow.indexOf('- name: Generate AI release notes');
-  const publish = workflow.indexOf('- name: Tag and push');
+  const publish = workflow.indexOf('- name: Tag the release');
   expect(commit).toBeGreaterThan(-1);
   expect(notes).toBeGreaterThan(commit);
   expect(publish).toBeGreaterThan(notes);
@@ -25,7 +25,7 @@ it('commits both action bundles it rebuilt for the release', () => {
   const step = workflow.slice(commit, workflow.indexOf('- name: Generate AI'));
   expect(commit).toBeGreaterThan(build);
   // A bundle left unstaged would publish stale output under the new tag.
-  expect(step).toContain('git add castoff/dist/ changelog/dist/');
+  expect(step).toContain('git add -f castoff/dist/ changelog/dist/');
   expect(step).toContain('git add castoff/package.json changelog/package.json');
 });
 
@@ -39,7 +39,7 @@ it('updates the changelog into the release commit before publishing tags', () =>
   const amend = workflow.indexOf(
     '- name: Fold the changelog into the release commit'
   );
-  const publish = workflow.indexOf('- name: Tag and push');
+  const publish = workflow.indexOf('- name: Tag the release');
   expect(changelog).toBeGreaterThan(notes);
   expect(amend).toBeGreaterThan(changelog);
   expect(publish).toBeGreaterThan(amend);
@@ -72,7 +72,7 @@ it('moves a floating tag for the major and the minor series', () => {
   );
 
   const publish = workflow.slice(
-    workflow.indexOf('- name: Tag and push'),
+    workflow.indexOf('- name: Tag the release'),
     workflow.indexOf('- name: Create GitHub Release')
   );
   for (const series of ['major_tag', 'minor_tag']) {
@@ -85,4 +85,42 @@ it('moves a floating tag for the major and the minor series', () => {
   expect(publish).toContain('git tag "${{ steps.bump.outputs.tag }}"');
   expect(publish).not.toContain('git tag -f "${{ steps.bump.outputs.tag }}"');
   expect(publish).toContain('git push origin --force');
+});
+
+it('strips the bundle from main once the tag has captured it', () => {
+  const workflow = readFileSync(
+    new URL('../.github/workflows/release.yml', import.meta.url),
+    'utf8'
+  );
+  const tag = workflow.indexOf('- name: Tag the release');
+  const strip = workflow.indexOf('- name: Drop the release bundle from main');
+  const push = workflow.indexOf('- name: Push main and tags');
+  // Stripping before the tag would publish a tag with no bundle; stripping
+  // after the push would leave the bundle on main.
+  expect(tag).toBeGreaterThan(-1);
+  expect(strip).toBeGreaterThan(tag);
+  expect(push).toBeGreaterThan(strip);
+
+  const step = workflow.slice(strip, push);
+  expect(step).toContain('git rm -r --cached');
+  expect(step).toContain('castoff/dist changelog/dist');
+  expect(step).toContain('git commit');
+
+  // main ends on the commit without the bundle; the tag still points at the
+  // commit with it, and stays an ancestor of main for the next release's
+  // previous-tag lookup.
+  expect(workflow.slice(push)).toContain('git push origin HEAD:main');
+});
+
+it('builds the bundle before running the local actions', () => {
+  const workflow = readFileSync(
+    new URL('../.github/workflows/release.yml', import.meta.url),
+    'utf8'
+  );
+  // actionlint cannot see this ordering once the bundle stops being committed,
+  // so it is asserted here instead.
+  const build = workflow.indexOf('- name: Build dist');
+  const local = workflow.indexOf('uses: ./');
+  expect(build).toBeGreaterThan(-1);
+  expect(local).toBeGreaterThan(build);
 });

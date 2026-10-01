@@ -1,4 +1,3 @@
+# Build first: it type-checks, and the entry-point tests run the bundle.
 pnpm -r build
-# CI rejects a stale bundle; surface that here instead of after the push.
-git diff --exit-code -- castoff/dist/ changelog/dist/
 pnpm -r test

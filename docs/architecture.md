@@ -67,7 +67,7 @@ sequenceDiagram
   Maintainer->>WF: Run workflow (level: patch/minor/major)
   WF->>WF: Require OPENAI_API_KEY (fails before any change)
   WF->>WF: Install, test, bump both package.json files
-  WF->>WF: Build dist/, commit release artifacts
+  WF->>WF: Build dist/, commit release artifacts (git add -f dist/)
   WF->>CA: tag = vX.Y.Z
   CA->>GH: git describe / git log for the commit range
   CA-->>WF: release_notes, changelog_entry, model
@@ -76,6 +76,8 @@ sequenceDiagram
   opt updated == true
     WF->>WF: git commit --amend (fold CHANGELOG.md into the release commit)
   end
+  WF->>GH: Tag vX.Y.Z, force-move vX and vX.Y
+  WF->>WF: git rm --cached dist/, commit (main carries source only)
   WF->>GH: push main, push vX.Y.Z, force-move vX and vX.Y
   WF->>GH: Create release with release_notes as the body
 ```
@@ -88,6 +90,36 @@ Because `vX` and `vX.Y` are force-moved on every release, both floating tags
 always name a real published version — and because `castoff` excludes them when
 resolving the previous tag, moving them does not corrupt the next release's
 commit range.
+
+## Where the bundle lives
+
+GitHub Actions runs `dist/index.js` straight from whatever ref a consumer
+references — there is no build step on their side — so every published tag has
+to carry the bundle. It does not have to be on `main`, and it is not: `dist/` is
+gitignored, built locally with `pnpm build` and in CI for the tests, and
+committed only by the release workflow.
+
+```mermaid
+flowchart LR
+  bump[bump versions] --> rel[release commit<br/>carries dist]
+  rel --> drop[drop bundle<br/>main continues here]
+  drop --> next[next work]
+  vtag[tag v2.2.3] -. names .-> rel
+```
+
+The release commit carries the bundle and is what the tags name. The commit
+straight after it removes the bundle again, and that is what `main` ends on. The
+tagged commit therefore stays an _ancestor_ of `main`, which matters more than it
+looks: the action resolves the previous release with
+`git describe --tags --abbrev=0 HEAD^`, an ancestry walk (ADR-005). Parking the
+bundle on a release branch instead would put every tag off `main`, and each
+release would fail to find its predecessor and summarize the whole history.
+
+What this buys: ncc inlines runtime dependencies, so a committed bundle goes
+stale on every dependency bump. With the bundle out of `main`, a Dependabot PR
+touches the manifest and lockfile only, and nothing has to rebuild or verify a
+generated file under review. The trade is one bookkeeping commit per release,
+which shows up in the next release's commit range.
 
 ## What the changelog writer decides
 

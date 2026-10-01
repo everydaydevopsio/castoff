@@ -202,8 +202,14 @@ is pinned by the root `packageManager` field, so Corepack uses the same version
 as CI, and `.nvmrc` pins the Node major the actions declare in `action.yml`.
 
 Husky installs the hooks through the root `prepare` script. `pre-commit` runs
-lint-staged across the repository, and `pre-push` builds the bundle, verifies it
-matches the committed one, and runs the tests.
+lint-staged across the repository, and `pre-push` builds the bundles and runs
+the tests.
+
+The `dist/` bundles are not committed. They are gitignored and built at release
+time, so the published tag carries them and `main` never does — see
+[Architecture](docs/architecture.md#where-the-bundle-lives). Run `make build`
+(or `make test`, which depends on it) after a fresh clone; the entry-point tests
+run the bundle and will tell you to build if it is missing.
 
 Setup installs the Node version from `.nvmrc`, installs Corepack if missing for
 that Node version, enables pnpm, and installs dependencies from the workspace
