@@ -28000,7 +28000,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 1751:
+/***/ 3328:
 /***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
 
 
@@ -28011,7 +28011,7 @@ __nccwpck_require__.d(__webpack_exports__, {
 
 // UNUSED EXPORTS: appendAttribution, buildChangelogEntry, buildPrompt, demoteHeadings, extractNotes, formatCommits, formatReleaseDate, parseMaxCommits
 
-// NAMESPACE OBJECT: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/auth/x509-transport-state-browser.mjs
+// NAMESPACE OBJECT: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/auth/x509-transport-state-browser.mjs
 var x509_transport_state_browser_namespaceObject = {};
 __nccwpck_require__.r(x509_transport_state_browser_namespaceObject);
 __nccwpck_require__.d(x509_transport_state_browser_namespaceObject, {
@@ -30974,7 +30974,7 @@ function getIDToken(aud) {
  */
 
 //# sourceMappingURL=core.js.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/tslib.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/tslib.mjs
 function __classPrivateFieldSet(receiver, state, value, kind, f) {
     if (kind === "m")
         throw new TypeError("Private method is not writable");
@@ -30998,7 +30998,7 @@ function __classPrivateFieldIn(state, receiver) {
 }
 
 
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/utils/uuid.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/utils/uuid.mjs
 /**
  * https://stackoverflow.com/a/2117523
  */
@@ -31013,7 +31013,7 @@ let uuid4 = function () {
     return '10000000-1000-4000-8000-100000000000'.replace(/[018]/g, (c) => (+c ^ (randomByte() & (15 >> (+c / 4)))).toString(16));
 };
 //# sourceMappingURL=uuid.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/errors.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/errors.mjs
 function isAbortError(err) {
     return (typeof err === 'object' &&
         err !== null &&
@@ -31050,7 +31050,7 @@ const castToError = (err) => {
     return new Error(err);
 };
 //# sourceMappingURL=errors.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/core/error.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/core/error.mjs
 
 class error_OpenAIError extends Error {
 }
@@ -31199,7 +31199,7 @@ class SubjectTokenProviderError extends error_OpenAIError {
     }
 }
 //# sourceMappingURL=error.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/utils/values.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/utils/values.mjs
 
 // https://url.spec.whatwg.org/#url-scheme-string
 const startsWithSchemeRegexp = /^[a-z][a-z0-9+.-]*:/i;
@@ -31293,7 +31293,7 @@ const safeJSON = (text) => {
     }
 };
 //# sourceMappingURL=values.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/utils/sleep.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/utils/sleep.mjs
 const sleep = (ms, ...signals) => new Promise((resolve, reject) => {
     const activeSignals = [...new Set(signals.filter((signal) => signal != null))];
     let timeout;
@@ -31346,7 +31346,7 @@ const sleep = (ms, ...signals) => new Promise((resolve, reject) => {
     }
 });
 //# sourceMappingURL=sleep.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/utils/abort.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/utils/abort.mjs
 // Keep these optional runtime features out of the SDK's ES2020 type requirements.
 // SAFETY: These host features are optional and checked before use; the structural view avoids requiring newer ambient library declarations.
 const weakGlobals = globalThis;
@@ -31437,7 +31437,7 @@ function addRequestAbortListener(signal, abort, requestSignal) {
     return cleanup;
 }
 //# sourceMappingURL=abort.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/shims.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/shims.mjs
 /**
  * This module provides internal shims and utility functions for environments where certain Node.js or global types may not be available.
  *
@@ -31528,7 +31528,7 @@ async function CancelReadableStream(stream) {
     await cancelPromise;
 }
 //# sourceMappingURL=shims.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/utils/bytes.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/utils/bytes.mjs
 /** Copies byte arrays into one contiguous `Uint8Array` while preserving their order. */
 function concatBytes(buffers) {
     let length = 0;
@@ -31560,7 +31560,7 @@ function decodeUTF8(bytes) {
         ((decoder = new globalThis.TextDecoder()), (decodeUTF8_ = decoder.decode.bind(decoder))))(bytes);
 }
 //# sourceMappingURL=bytes.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/decoders/line.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/decoders/line.mjs
 var _LineDecoder_instances, _LineDecoder_buffer, _LineDecoder_start, _LineDecoder_end, _LineDecoder_searchIndex, _LineDecoder_skipLeadingLF, _LineDecoder_append;
 
 
@@ -31755,7 +31755,7 @@ function lineEndingLength(buffer, index) {
     return 0;
 }
 //# sourceMappingURL=line.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/utils/log.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/utils/log.mjs
 
 const levelNumbers = {
     off: 0,
@@ -31896,7 +31896,7 @@ const formatRequestDetails = (details) => {
     return details;
 };
 //# sourceMappingURL=log.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/core/streaming.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/core/streaming.mjs
 var _Stream_instances, _Stream_client, _Stream_isTeeBranch, _Stream_cancelIterator;
 
 
@@ -32550,7 +32550,7 @@ function partition(str, delimiter) {
     return [str, '', ''];
 }
 //# sourceMappingURL=streaming.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/parse.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/parse.mjs
 
 
 
@@ -32631,11 +32631,11 @@ function addRequestID(value, response) {
     });
 }
 //# sourceMappingURL=parse.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/version.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/version.mjs
 /** Version of the installed OpenAI SDK package. */
-const VERSION = '7.20.0'; // x-release-please-version
+const VERSION = '7.21.0'; // x-release-please-version
 //# sourceMappingURL=version.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/detect-platform.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/detect-platform.mjs
 
 const isRunningInBrowser = () => {
     return (
@@ -32792,7 +32792,7 @@ const getPlatformHeaders = () => {
     return (_platformHeaders ?? (_platformHeaders = getPlatformProperties()));
 };
 //# sourceMappingURL=detect-platform.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/request-options.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/request-options.mjs
 const jsonRequestBodyObservers = new WeakMap();
 /** Observes values produced by the actual JSON request serializer without changing them. */
 function observeJSONRequestBody(body, observer) {
@@ -32843,7 +32843,7 @@ const FallbackEncoder = ({ headers, body }) => {
     };
 };
 //# sourceMappingURL=request-options.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/qs/formats.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/qs/formats.mjs
 const default_format = 'RFC3986';
 const default_formatter = String;
 const formatters = {
@@ -32853,7 +32853,7 @@ const formatters = {
 const RFC1738 = 'RFC1738';
 const RFC3986 = 'RFC3986';
 //# sourceMappingURL=formats.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/qs/utils.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/qs/utils.mjs
 
 
 // oxlint-disable-next-line anti-slop/no-object-parameters -- The cached own-property predicate accepts arrays, callable objects, and records.
@@ -33389,7 +33389,7 @@ function maybe_map(val, fn) {
     return fn(val);
 }
 //# sourceMappingURL=utils.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/qs/stringify.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/qs/stringify.mjs
 
 
 
@@ -33673,13 +33673,13 @@ function stringify(object, opts = {}) {
     return joined.length > 0 ? prefix + joined : '';
 }
 //# sourceMappingURL=stringify.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/utils/query.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/utils/query.mjs
 
 function stringifyQuery(query) {
     return stringify(query, { arrayFormat: 'brackets' });
 }
 //# sourceMappingURL=query.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/data-residency.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/data-residency.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -33710,7 +33710,7 @@ function assertNoDataResidency(dataResidency, clientName) {
     }
 }
 //# sourceMappingURL=data-residency.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/core/api-promise.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/core/api-promise.mjs
 var _APIPromise_client;
 
 
@@ -33782,7 +33782,7 @@ class APIPromise extends Promise {
 }
 _APIPromise_client = new WeakMap();
 //# sourceMappingURL=api-promise.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/core/pagination.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/core/pagination.mjs
 var _AbstractPage_client;
 
 
@@ -33990,7 +33990,7 @@ class TokenPage extends AbstractPage {
     }
 }
 //# sourceMappingURL=pagination.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/auth/workload-identity-auth.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/auth/workload-identity-auth.mjs
 
 
 const SUBJECT_TOKEN_TYPES = {
@@ -34242,7 +34242,7 @@ class WorkloadIdentityAuth {
     }
 }
 //# sourceMappingURL=workload-identity-auth.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/auth/x509-api-origin.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/auth/x509-api-origin.mjs
 
 
 /** Sole API authority approved for OpenAI X.509 workload-identity federation. */
@@ -34267,7 +34267,7 @@ function assertX509APIOrigin(value) {
     return target;
 }
 //# sourceMappingURL=x509-api-origin.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/headers.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/headers.mjs
 
 const brand_privateNullableHeaders = /* @__PURE__ */ Symbol('brand.privateNullableHeaders');
 const httpTokenHeaderName = /^[!#$%&'*+\-.^_`|~0-9A-Za-z]+$/;
@@ -34344,7 +34344,7 @@ const isEmptyHeaders = (headers) => {
     return true;
 };
 //# sourceMappingURL=headers.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/auth/x509-transport-state-browser.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/auth/x509-transport-state-browser.mjs
 /** Browser-safe capability state keeps CommonJS outside the ordinary SDK ESM graph. */
 const registeredX509Transports = new WeakMap();
 const transientX509ConnectionErrors = new WeakSet();
@@ -34377,10 +34377,10 @@ const rememberX509Credential = WeakMap.prototype.set.bind(approvedX509Credential
 /** Resolves only credentials registered by the optional Node authentication helper. */
 const findX509Credential = WeakMap.prototype.get.bind(approvedX509Credentials);
 //# sourceMappingURL=x509-transport-state-browser.mjs.map
-// EXTERNAL MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/auth/x509-transport-state.js
-var x509_transport_state = __nccwpck_require__(4349);
+// EXTERNAL MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/auth/x509-transport-state.js
+var x509_transport_state = __nccwpck_require__(7696);
 var x509_transport_state_namespaceObject = /*#__PURE__*/__nccwpck_require__.t(x509_transport_state, 2);
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/auth/x509-transport-state.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/auth/x509-transport-state.mjs
 
 
 
@@ -34402,7 +34402,7 @@ const {
   findX509Credential: x509_transport_state_findX509Credential,
 } = state;
 
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/auth/x509-transport-registry.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/auth/x509-transport-registry.mjs
 
 
 const transientX509TransportCodes = new Set([
@@ -34451,7 +34451,7 @@ function resolveX509Transport(value) {
     return registered;
 }
 //# sourceMappingURL=x509-transport-registry.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/auth/x509-workload-identity-auth.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/auth/x509-workload-identity-auth.mjs
 var _X509WorkloadIdentityAuth_instances, _a, _X509WorkloadIdentityAuth_identityProviderId, _X509WorkloadIdentityAuth_serviceAccountId, _X509WorkloadIdentityAuth_configuredRefreshBufferMs, _X509WorkloadIdentityAuth_configuredRefreshBufferSeconds, _X509WorkloadIdentityAuth_organization, _X509WorkloadIdentityAuth_project, _X509WorkloadIdentityAuth_transport, _X509WorkloadIdentityAuth_refreshBufferMs, _X509WorkloadIdentityAuth_cachedToken, _X509WorkloadIdentityAuth_refresh, _X509WorkloadIdentityAuth_tokenGeneration, _X509WorkloadIdentityAuth_cancelRequestBody, _X509WorkloadIdentityAuth_assignToken, _X509WorkloadIdentityAuth_recoverRefreshFailure, _X509WorkloadIdentityAuth_fallbackToken, _X509WorkloadIdentityAuth_retireRefresh, _X509WorkloadIdentityAuth_beginRefresh, _X509WorkloadIdentityAuth_refreshToken, _X509WorkloadIdentityAuth_preflight, _X509WorkloadIdentityAuth_scope, _X509WorkloadIdentityAuth_assertTenantHeaders;
 
 
@@ -35230,7 +35230,7 @@ _a = X509WorkloadIdentityAuth, _X509WorkloadIdentityAuth_identityProviderId = ne
     }
 };
 //# sourceMappingURL=x509-workload-identity-auth.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/auth/x509-credential-options.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/auth/x509-credential-options.mjs
 
 
 
@@ -35352,7 +35352,7 @@ function prepareX509ClientClone(inherited, overrides, credential, currentlyX509)
     return { credential: nextCredential, provider: prepareProviderClone(inherited, overrides) };
 }
 //# sourceMappingURL=x509-credential-options.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/uploads.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/uploads.mjs
 
 
 
@@ -35816,7 +35816,7 @@ const addFormValue = async (form, key, value, options) => {
     }
 };
 //# sourceMappingURL=uploads.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/to-file.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/to-file.mjs
 
 /**
  * This check adds the arrayBuffer() method type because it is available and used at runtime
@@ -35928,18 +35928,18 @@ function propsForError(value) {
     return `; props: [${props.map((p) => `"${p}"`).join(', ')}]`;
 }
 //# sourceMappingURL=to-file.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/core/uploads.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/core/uploads.mjs
 
 
 //# sourceMappingURL=uploads.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/core/resource.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/core/resource.mjs
 class APIResource {
     constructor(client) {
         this._client = client;
     }
 }
 //# sourceMappingURL=resource.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/utils/path.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/utils/path.mjs
 
 /**
  * Percent-encodes a single URI path parameter while preserving RFC 3986 path characters.
@@ -36034,11 +36034,14 @@ const createPathTagFunction = (pathEncoder = encodeURIPath) => function path(sta
  */
 const path_path = /* @__PURE__ */ createPathTagFunction(encodeURIPath);
 //# sourceMappingURL=path.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/chat/completions/messages.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/chat/completions/messages.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const normalizeRequestOptionsForQueryKeys = new Set([
@@ -36102,15 +36105,19 @@ class Messages extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/chat/completions/${completionID}/messages`, (CursorPage), { query, ...options, __security: { bearerAuth: true } });
+        return this._client.getAPIList(path_path `/chat/completions/${completionID}/messages`, (CursorPage), resolveResourceRequestOptions(options, (options) => ({
+            query,
+            ...options,
+            __security: { bearerAuth: true },
+        })));
     }
 }
 //# sourceMappingURL=messages.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/error.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/error.mjs
 /** @deprecated Import from ./core/error instead */
 
 //# sourceMappingURL=error.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/lib/parser.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/lib/parser.mjs
 
 /** Returns whether an optional chat completion tool contains a function-tool definition. */
 function isChatCompletionFunctionTool(tool) {
@@ -36371,7 +36378,7 @@ function validateInputTools(tools) {
     }
 }
 //# sourceMappingURL=parser.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/lib/chatCompletionUtils.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/lib/chatCompletionUtils.mjs
 /** Returns whether a conversation message was produced by the assistant. */
 const isAssistantMessage = (message) => message?.role === 'assistant';
 /** Returns whether a conversation message contains the result of a tool call. */
@@ -36381,7 +36388,7 @@ function isPresent(obj) {
     return obj != null;
 }
 //# sourceMappingURL=chatCompletionUtils.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/lib/EventStream.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/lib/EventStream.mjs
 var _EventStream_instances, _EventStream_connectedPromise, _EventStream_resolveConnectedPromise, _EventStream_rejectConnectedPromise, _EventStream_endPromise, _EventStream_resolveEndPromise, _EventStream_rejectEndPromise, _EventStream_listeners, _EventStream_abortListeners, _EventStream_emittedListenerRegistrations, _EventStream_pendingListenerCleanup, _EventStream_pendingBufferedEventChecks, _EventStream_listenerDispatchDepth, _EventStream_ended, _EventStream_errored, _EventStream_aborted, _EventStream_catchingPromiseCreated, _EventStream_terminalFailure, _EventStream_abortFromSignal, _EventStream_removeAbortListeners, _EventStream_onceForEmitted, _EventStream_removeEmittedListener, _EventStream_cleanupEmittedListeners, _EventStream_handleError, _EventStream_settleTerminalEvent;
 
 
@@ -38046,7 +38053,7 @@ _EventStream_connectedPromise = new WeakMap(), _EventStream_resolveConnectedProm
     }
 };
 //# sourceMappingURL=EventStream.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/lib/RunnableFunction.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/lib/RunnableFunction.mjs
 /** Returns whether a runnable function provides a parser for its raw argument string. */
 function isRunnableFunctionWithParse(fn) {
     return typeof fn.parse === 'function';
@@ -38064,7 +38071,7 @@ class ParsingToolFunction {
     }
 }
 //# sourceMappingURL=RunnableFunction.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/lib/AbstractChatCompletionRunner.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/lib/AbstractChatCompletionRunner.mjs
 var _AbstractChatCompletionRunner_instances, AbstractChatCompletionRunner_a, _AbstractChatCompletionRunner_completionArrivedBeforeAbort, _AbstractChatCompletionRunner_afterCompletionInvoked, _AbstractChatCompletionRunner_getFinalContent, _AbstractChatCompletionRunner_getFinalMessage, _AbstractChatCompletionRunner_getFinalFunctionToolCall, _AbstractChatCompletionRunner_getFinalFunctionToolCallResult, _AbstractChatCompletionRunner_calculateTotalUsage, _AbstractChatCompletionRunner_throwIfAborted, _AbstractChatCompletionRunner_validateParams, _AbstractChatCompletionRunner_stringifyFunctionCallResult;
 
 
@@ -38534,7 +38541,7 @@ AbstractChatCompletionRunner_a = AbstractChatCompletionRunner, _AbstractChatComp
     return JSON.stringify(rawContent);
 };
 //# sourceMappingURL=AbstractChatCompletionRunner.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/lib/ChatCompletionRunner.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/lib/ChatCompletionRunner.mjs
 
 
 /** Executes function tools and follows up with non-streaming chat completion requests. */
@@ -38562,7 +38569,7 @@ class ChatCompletionRunner extends AbstractChatCompletionRunner {
     }
 }
 //# sourceMappingURL=ChatCompletionRunner.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/_vendor/partial-json-parser/parser.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/_vendor/partial-json-parser/parser.mjs
 const STR = 1;
 const NUM = 2;
 const ARR = 4;
@@ -38821,11 +38828,11 @@ const _parseJSON = (jsonString, allow) => {
 const partialParse = (input) => parseJSON(input, Allow.ALL ^ Allow.NUM);
 
 //# sourceMappingURL=parser.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/streaming.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/streaming.mjs
 /** @deprecated Import from ./core/streaming instead */
 
 //# sourceMappingURL=streaming.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/lib/ChatCompletionStream.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/lib/ChatCompletionStream.mjs
 var _ChatCompletionStream_instances, _ChatCompletionStream_params, _ChatCompletionStream_rejectsUnfinishedTurns, _ChatCompletionStream_audioDoneChoiceIndexes, _ChatCompletionStream_choiceEventStates, _ChatCompletionStream_currentChatCompletionSnapshot, _ChatCompletionStream_hasAutoParseableTool, _ChatCompletionStream_partialJSONParseBudget, _ChatCompletionStream_beginRequest, _ChatCompletionStream_getChoiceEventState, _ChatCompletionStream_addChunk, _ChatCompletionStream_emitToolCallDoneEvent, _ChatCompletionStream_emitContentDoneEvents, _ChatCompletionStream_validateStructuredSnapshots, _ChatCompletionStream_endRequest, _ChatCompletionStream_accumulateChatCompletion;
 
 
@@ -40555,7 +40562,7 @@ function assertNever(_x) {
     return _x;
 }
 //# sourceMappingURL=ChatCompletionStream.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/lib/ChatCompletionStreamingRunner.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/lib/ChatCompletionStreamingRunner.mjs
 
 
 
@@ -40614,7 +40621,7 @@ class ChatCompletionStreamingRunner extends ChatCompletionStream {
     }
 }
 //# sourceMappingURL=ChatCompletionStreamingRunner.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/chat/completions/completions.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/chat/completions/completions.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -40625,6 +40632,9 @@ class ChatCompletionStreamingRunner extends ChatCompletionStream {
 
 
 
+function completions_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const completions_normalizeRequestOptionsForQueryKeys = new Set([
@@ -40686,12 +40696,12 @@ class Completions extends APIResource {
         this.messages = new Messages(this._client);
     }
     create(body, options) {
-        return this._client.post('/chat/completions', {
+        return this._client.post('/chat/completions', completions_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             stream: body.stream ?? false,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Get a stored chat completion. Only Chat Completions that have been created with
@@ -40704,10 +40714,7 @@ class Completions extends APIResource {
      * ```
      */
     retrieve(completionID, options) {
-        return this._client.get(path_path `/chat/completions/${completionID}`, {
-            ...options,
-            __security: { bearerAuth: true },
-        });
+        return this._client.get(path_path `/chat/completions/${completionID}`, completions_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
     /**
      * Modify a stored chat completion. Only Chat Completions that have been created
@@ -40723,11 +40730,11 @@ class Completions extends APIResource {
      * ```
      */
     update(completionID, body, options) {
-        return this._client.post(path_path `/chat/completions/${completionID}`, {
+        return this._client.post(path_path `/chat/completions/${completionID}`, completions_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     list(query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = completions_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'metadata', 'model', 'order'], options);
@@ -40736,11 +40743,11 @@ class Completions extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList('/chat/completions', (CursorPage), {
+        return this._client.getAPIList('/chat/completions', (CursorPage), completions_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Delete a stored chat completion. Only Chat Completions that have been created
@@ -40753,10 +40760,7 @@ class Completions extends APIResource {
      * ```
      */
     delete(completionID, options) {
-        return this._client.delete(path_path `/chat/completions/${completionID}`, {
-            ...options,
-            __security: { bearerAuth: true },
-        });
+        return this._client.delete(path_path `/chat/completions/${completionID}`, completions_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
     parse(body, options) {
         validateInputTools(body.tools);
@@ -40786,7 +40790,7 @@ class Completions extends APIResource {
 
 Completions.Messages = Messages;
 //# sourceMappingURL=completions.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/chat/chat.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/chat/chat.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -40799,22 +40803,25 @@ class Chat extends APIResource {
 }
 Chat.Completions = Completions;
 //# sourceMappingURL=chat.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/chat/completions/index.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/chat/completions/index.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 //# sourceMappingURL=index.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/chat/index.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/chat/index.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 //# sourceMappingURL=index.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/admin-api-keys.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/admin-api-keys.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function admin_api_keys_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const admin_api_keys_normalizeRequestOptionsForQueryKeys = new Set([
@@ -40880,11 +40887,11 @@ class AdminAPIKeys extends APIResource {
      * ```
      */
     create(body, options) {
-        return this._client.post('/organization/admin_api_keys', {
+        return this._client.post('/organization/admin_api_keys', admin_api_keys_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Retrieve a single organization API key
@@ -40898,10 +40905,10 @@ class AdminAPIKeys extends APIResource {
      * ```
      */
     retrieve(keyID, options) {
-        return this._client.get(path_path `/organization/admin_api_keys/${keyID}`, {
+        return this._client.get(path_path `/organization/admin_api_keys/${keyID}`, admin_api_keys_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     list(query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = admin_api_keys_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'order'], options);
@@ -40910,11 +40917,11 @@ class AdminAPIKeys extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList('/organization/admin_api_keys', (CursorPage), {
+        return this._client.getAPIList('/organization/admin_api_keys', (CursorPage), admin_api_keys_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Delete an organization admin API key
@@ -40928,17 +40935,20 @@ class AdminAPIKeys extends APIResource {
      * ```
      */
     delete(keyID, options) {
-        return this._client.delete(path_path `/organization/admin_api_keys/${keyID}`, {
+        return this._client.delete(path_path `/organization/admin_api_keys/${keyID}`, admin_api_keys_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=admin-api-keys.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/audit-logs.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/audit-logs.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
+function audit_logs_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const audit_logs_normalizeRequestOptionsForQueryKeys = new Set([
@@ -41013,19 +41023,22 @@ class AuditLogs extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList('/organization/audit_logs', (ConversationCursorPage), {
+        return this._client.getAPIList('/organization/audit_logs', (ConversationCursorPage), audit_logs_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=audit-logs.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/certificates.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/certificates.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function certificates_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const certificates_normalizeRequestOptionsForQueryKeys = new Set([
@@ -41094,11 +41107,11 @@ class Certificates extends APIResource {
      * ```
      */
     create(body, options) {
-        return this._client.post('/organization/certificates', {
+        return this._client.post('/organization/certificates', certificates_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     retrieve(certificateID, query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = certificates_normalizeRequestOptionsForQuery(query, ['include'], options);
@@ -41107,11 +41120,11 @@ class Certificates extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.get(path_path `/organization/certificates/${certificateID}`, {
+        return this._client.get(path_path `/organization/certificates/${certificateID}`, certificates_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Modify a certificate. Note that only the name can be modified.
@@ -41125,11 +41138,11 @@ class Certificates extends APIResource {
      * ```
      */
     update(certificateID, body, options) {
-        return this._client.post(path_path `/organization/certificates/${certificateID}`, {
+        return this._client.post(path_path `/organization/certificates/${certificateID}`, certificates_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     list(query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = certificates_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'order'], options);
@@ -41138,7 +41151,11 @@ class Certificates extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList('/organization/certificates', (ConversationCursorPage), { query, ...options, __security: { adminAPIKeyAuth: true } });
+        return this._client.getAPIList('/organization/certificates', (ConversationCursorPage), certificates_resolveResourceRequestOptions(options, (options) => ({
+            query,
+            ...options,
+            __security: { adminAPIKeyAuth: true },
+        })));
     }
     /**
      * Delete a certificate from the organization.
@@ -41154,10 +41171,10 @@ class Certificates extends APIResource {
      * ```
      */
     delete(certificateID, options) {
-        return this._client.delete(path_path `/organization/certificates/${certificateID}`, {
+        return this._client.delete(path_path `/organization/certificates/${certificateID}`, certificates_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Activate certificates at the organization level.
@@ -41175,12 +41192,12 @@ class Certificates extends APIResource {
      * ```
      */
     activate(body, options) {
-        return this._client.getAPIList('/organization/certificates/activate', (Page), {
+        return this._client.getAPIList('/organization/certificates/activate', (Page), certificates_resolveResourceRequestOptions(options, (options) => ({
             body,
             method: 'post',
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Deactivate certificates at the organization level.
@@ -41198,13 +41215,21 @@ class Certificates extends APIResource {
      * ```
      */
     deactivate(body, options) {
-        return this._client.getAPIList('/organization/certificates/deactivate', (Page), { body, method: 'post', ...options, __security: { adminAPIKeyAuth: true } });
+        return this._client.getAPIList('/organization/certificates/deactivate', (Page), certificates_resolveResourceRequestOptions(options, (options) => ({
+            body,
+            method: 'post',
+            ...options,
+            __security: { adminAPIKeyAuth: true },
+        })));
     }
 }
 //# sourceMappingURL=certificates.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/data-retention.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/data-retention.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
+function data_retention_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class DataRetention extends APIResource {
     /**
      * Retrieves organization data retention controls.
@@ -41216,10 +41241,10 @@ class DataRetention extends APIResource {
      * ```
      */
     retrieve(options) {
-        return this._client.get('/organization/data_retention', {
+        return this._client.get('/organization/data_retention', data_retention_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Updates organization data retention controls.
@@ -41233,19 +41258,22 @@ class DataRetention extends APIResource {
      * ```
      */
     update(body, options) {
-        return this._client.post('/organization/data_retention', {
+        return this._client.post('/organization/data_retention', data_retention_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=data-retention.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/external-storage.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/external-storage.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function external_storage_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const external_storage_normalizeRequestOptionsForQueryKeys = new Set([
@@ -41316,11 +41344,11 @@ class ExternalStorage extends APIResource {
      * ```
      */
     create(body, options) {
-        return this._client.post('/organization/external_storage', {
+        return this._client.post('/organization/external_storage', external_storage_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Get one customer-managed external storage configuration.
@@ -41334,10 +41362,10 @@ class ExternalStorage extends APIResource {
      * ```
      */
     retrieve(externalStorageID, options) {
-        return this._client.get(path_path `/organization/external_storage/${externalStorageID}`, {
+        return this._client.get(path_path `/organization/external_storage/${externalStorageID}`, external_storage_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     list(query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = external_storage_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'order', 'project_id'], options);
@@ -41346,10 +41374,17 @@ class ExternalStorage extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList('/organization/external_storage', (CursorPage), { query, ...options, __security: { adminAPIKeyAuth: true } });
+        return this._client.getAPIList('/organization/external_storage', (CursorPage), external_storage_resolveResourceRequestOptions(options, (options) => ({
+            query,
+            ...options,
+            __security: { adminAPIKeyAuth: true },
+        })));
     }
     /**
-     * Soft-delete one customer-managed external storage configuration.
+     * Disconnect a customer-managed external storage configuration. Removing the
+     * project's last configuration restores organization-default retention if
+     * customer-managed retention was active. Repeating a deletion also completes any
+     * interrupted retention update. Cloud storage is unchanged.
      *
      * @example
      * ```ts
@@ -41360,10 +41395,10 @@ class ExternalStorage extends APIResource {
      * ```
      */
     delete(externalStorageID, options) {
-        return this._client.delete(path_path `/organization/external_storage/${externalStorageID}`, {
+        return this._client.delete(path_path `/organization/external_storage/${externalStorageID}`, external_storage_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Validate one customer-managed external storage configuration.
@@ -41377,18 +41412,21 @@ class ExternalStorage extends APIResource {
      * ```
      */
     validate(externalStorageID, options) {
-        return this._client.post(path_path `/organization/external_storage/${externalStorageID}/validate`, {
+        return this._client.post(path_path `/organization/external_storage/${externalStorageID}/validate`, external_storage_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=external-storage.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/invites.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/invites.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function invites_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const invites_normalizeRequestOptionsForQueryKeys = new Set([
@@ -41456,11 +41494,11 @@ class Invites extends APIResource {
      * ```
      */
     create(body, options) {
-        return this._client.post('/organization/invites', {
+        return this._client.post('/organization/invites', invites_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Retrieves an invite.
@@ -41474,10 +41512,10 @@ class Invites extends APIResource {
      * ```
      */
     retrieve(inviteID, options) {
-        return this._client.get(path_path `/organization/invites/${inviteID}`, {
+        return this._client.get(path_path `/organization/invites/${inviteID}`, invites_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     list(query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = invites_normalizeRequestOptionsForQuery(query, ['after', 'limit'], options);
@@ -41486,11 +41524,11 @@ class Invites extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList('/organization/invites', (ConversationCursorPage), {
+        return this._client.getAPIList('/organization/invites', (ConversationCursorPage), invites_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Delete an invite. If the invite has already been accepted, it cannot be deleted.
@@ -41504,18 +41542,21 @@ class Invites extends APIResource {
      * ```
      */
     delete(inviteID, options) {
-        return this._client.delete(path_path `/organization/invites/${inviteID}`, {
+        return this._client.delete(path_path `/organization/invites/${inviteID}`, invites_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=invites.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/roles.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/roles.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function roles_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const roles_normalizeRequestOptionsForQueryKeys = new Set([
@@ -41581,11 +41622,11 @@ class Roles extends APIResource {
      * ```
      */
     create(body, options) {
-        return this._client.post('/organization/roles', {
+        return this._client.post('/organization/roles', roles_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Retrieves an organization role.
@@ -41598,10 +41639,10 @@ class Roles extends APIResource {
      * ```
      */
     retrieve(roleID, options) {
-        return this._client.get(path_path `/organization/roles/${roleID}`, {
+        return this._client.get(path_path `/organization/roles/${roleID}`, roles_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Updates an existing organization role.
@@ -41614,11 +41655,11 @@ class Roles extends APIResource {
      * ```
      */
     update(roleID, body, options) {
-        return this._client.post(path_path `/organization/roles/${roleID}`, {
+        return this._client.post(path_path `/organization/roles/${roleID}`, roles_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     list(query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = roles_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'order'], options);
@@ -41627,11 +41668,11 @@ class Roles extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList('/organization/roles', (NextCursorPage), {
+        return this._client.getAPIList('/organization/roles', (NextCursorPage), roles_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Deletes a custom role from the organization.
@@ -41644,18 +41685,21 @@ class Roles extends APIResource {
      * ```
      */
     delete(roleID, options) {
-        return this._client.delete(path_path `/organization/roles/${roleID}`, {
+        return this._client.delete(path_path `/organization/roles/${roleID}`, roles_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=roles.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/spend-alerts.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/spend-alerts.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function spend_alerts_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const spend_alerts_normalizeRequestOptionsForQueryKeys = new Set([
@@ -41727,11 +41771,11 @@ class SpendAlerts extends APIResource {
      * ```
      */
     create(body, options) {
-        return this._client.post('/organization/spend_alerts', {
+        return this._client.post('/organization/spend_alerts', spend_alerts_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Retrieves an organization spend alert.
@@ -41745,10 +41789,10 @@ class SpendAlerts extends APIResource {
      * ```
      */
     retrieve(alertID, options) {
-        return this._client.get(path_path `/organization/spend_alerts/${alertID}`, {
+        return this._client.get(path_path `/organization/spend_alerts/${alertID}`, spend_alerts_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Updates an organization spend alert.
@@ -41771,11 +41815,11 @@ class SpendAlerts extends APIResource {
      * ```
      */
     update(alertID, body, options) {
-        return this._client.post(path_path `/organization/spend_alerts/${alertID}`, {
+        return this._client.post(path_path `/organization/spend_alerts/${alertID}`, spend_alerts_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     list(query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = spend_alerts_normalizeRequestOptionsForQuery(query, ['after', 'before', 'limit', 'order'], options);
@@ -41784,7 +41828,11 @@ class SpendAlerts extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList('/organization/spend_alerts', (ConversationCursorPage), { query, ...options, __security: { adminAPIKeyAuth: true } });
+        return this._client.getAPIList('/organization/spend_alerts', (ConversationCursorPage), spend_alerts_resolveResourceRequestOptions(options, (options) => ({
+            query,
+            ...options,
+            __security: { adminAPIKeyAuth: true },
+        })));
     }
     /**
      * Deletes an organization spend alert.
@@ -41798,16 +41846,19 @@ class SpendAlerts extends APIResource {
      * ```
      */
     delete(alertID, options) {
-        return this._client.delete(path_path `/organization/spend_alerts/${alertID}`, {
+        return this._client.delete(path_path `/organization/spend_alerts/${alertID}`, spend_alerts_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=spend-alerts.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/spend-limit.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/spend-limit.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
+function spend_limit_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class SpendLimit extends APIResource {
     /**
      * Get the organization's hard spend limit.
@@ -41819,10 +41870,10 @@ class SpendLimit extends APIResource {
      * ```
      */
     retrieve(options) {
-        return this._client.get('/organization/spend_limit', {
+        return this._client.get('/organization/spend_limit', spend_limit_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Create or replace the organization's hard spend limit.
@@ -41838,11 +41889,11 @@ class SpendLimit extends APIResource {
      * ```
      */
     update(body, options) {
-        return this._client.post('/organization/spend_limit', {
+        return this._client.post('/organization/spend_limit', spend_limit_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Delete the organization's hard spend limit.
@@ -41854,16 +41905,19 @@ class SpendLimit extends APIResource {
      * ```
      */
     delete(options) {
-        return this._client.delete('/organization/spend_limit', {
+        return this._client.delete('/organization/spend_limit', spend_limit_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=spend-limit.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/usage.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/usage.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
+function usage_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class Usage extends APIResource {
     /**
      * Get audio speeches usage details for the organization.
@@ -41877,11 +41931,11 @@ class Usage extends APIResource {
      * ```
      */
     audioSpeeches(query, options) {
-        return this._client.get('/organization/usage/audio_speeches', {
+        return this._client.get('/organization/usage/audio_speeches', usage_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Get audio transcriptions usage details for the organization.
@@ -41895,11 +41949,11 @@ class Usage extends APIResource {
      * ```
      */
     audioTranscriptions(query, options) {
-        return this._client.get('/organization/usage/audio_transcriptions', {
+        return this._client.get('/organization/usage/audio_transcriptions', usage_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Get code interpreter sessions usage details for the organization.
@@ -41913,11 +41967,11 @@ class Usage extends APIResource {
      * ```
      */
     codeInterpreterSessions(query, options) {
-        return this._client.get('/organization/usage/code_interpreter_sessions', {
+        return this._client.get('/organization/usage/code_interpreter_sessions', usage_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Get completions usage details for the organization.
@@ -41931,11 +41985,11 @@ class Usage extends APIResource {
      * ```
      */
     completions(query, options) {
-        return this._client.get('/organization/usage/completions', {
+        return this._client.get('/organization/usage/completions', usage_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Get costs details for the organization.
@@ -41949,11 +42003,11 @@ class Usage extends APIResource {
      * ```
      */
     costs(query, options) {
-        return this._client.get('/organization/costs', {
+        return this._client.get('/organization/costs', usage_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Get embeddings usage details for the organization.
@@ -41967,11 +42021,11 @@ class Usage extends APIResource {
      * ```
      */
     embeddings(query, options) {
-        return this._client.get('/organization/usage/embeddings', {
+        return this._client.get('/organization/usage/embeddings', usage_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Get file search calls usage details for the organization.
@@ -41985,11 +42039,11 @@ class Usage extends APIResource {
      * ```
      */
     fileSearchCalls(query, options) {
-        return this._client.get('/organization/usage/file_search_calls', {
+        return this._client.get('/organization/usage/file_search_calls', usage_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Get images usage details for the organization.
@@ -42003,11 +42057,11 @@ class Usage extends APIResource {
      * ```
      */
     images(query, options) {
-        return this._client.get('/organization/usage/images', {
+        return this._client.get('/organization/usage/images', usage_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Get moderations usage details for the organization.
@@ -42021,11 +42075,11 @@ class Usage extends APIResource {
      * ```
      */
     moderations(query, options) {
-        return this._client.get('/organization/usage/moderations', {
+        return this._client.get('/organization/usage/moderations', usage_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Get vector stores usage details for the organization.
@@ -42039,11 +42093,11 @@ class Usage extends APIResource {
      * ```
      */
     vectorStores(query, options) {
-        return this._client.get('/organization/usage/vector_stores', {
+        return this._client.get('/organization/usage/vector_stores', usage_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Get web search calls usage details for the organization.
@@ -42057,19 +42111,22 @@ class Usage extends APIResource {
      * ```
      */
     webSearchCalls(query, options) {
-        return this._client.get('/organization/usage/web_search_calls', {
+        return this._client.get('/organization/usage/web_search_calls', usage_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=usage.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/groups/roles.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/groups/roles.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function groups_roles_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const groups_roles_normalizeRequestOptionsForQueryKeys = new Set([
@@ -42136,11 +42193,11 @@ class roles_Roles extends APIResource {
      * ```
      */
     create(groupID, body, options) {
-        return this._client.post(path_path `/organization/groups/${groupID}/roles`, {
+        return this._client.post(path_path `/organization/groups/${groupID}/roles`, groups_roles_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Retrieves an organization role assigned to a group.
@@ -42156,10 +42213,10 @@ class roles_Roles extends APIResource {
      */
     retrieve(roleID, params, options) {
         const { group_id } = params;
-        return this._client.get(path_path `/organization/groups/${group_id}/roles/${roleID}`, {
+        return this._client.get(path_path `/organization/groups/${group_id}/roles/${roleID}`, groups_roles_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     list(groupID, query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = groups_roles_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'order'], options);
@@ -42168,7 +42225,11 @@ class roles_Roles extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/organization/groups/${groupID}/roles`, (NextCursorPage), { query, ...options, __security: { adminAPIKeyAuth: true } });
+        return this._client.getAPIList(path_path `/organization/groups/${groupID}/roles`, (NextCursorPage), groups_roles_resolveResourceRequestOptions(options, (options) => ({
+            query,
+            ...options,
+            __security: { adminAPIKeyAuth: true },
+        })));
     }
     /**
      * Unassigns an organization role from a group within the organization.
@@ -42184,18 +42245,21 @@ class roles_Roles extends APIResource {
      */
     delete(roleID, params, options) {
         const { group_id } = params;
-        return this._client.delete(path_path `/organization/groups/${group_id}/roles/${roleID}`, {
+        return this._client.delete(path_path `/organization/groups/${group_id}/roles/${roleID}`, groups_roles_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=roles.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/groups/users.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/groups/users.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function users_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const users_normalizeRequestOptionsForQueryKeys = new Set([
@@ -42262,11 +42326,11 @@ class Users extends APIResource {
      * ```
      */
     create(groupID, body, options) {
-        return this._client.post(path_path `/organization/groups/${groupID}/users`, {
+        return this._client.post(path_path `/organization/groups/${groupID}/users`, users_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Retrieves a user in a group.
@@ -42282,10 +42346,10 @@ class Users extends APIResource {
      */
     retrieve(userID, params, options) {
         const { group_id } = params;
-        return this._client.get(path_path `/organization/groups/${group_id}/users/${userID}`, {
+        return this._client.get(path_path `/organization/groups/${group_id}/users/${userID}`, users_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     list(groupID, query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = users_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'order'], options);
@@ -42294,7 +42358,11 @@ class Users extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/organization/groups/${groupID}/users`, (NextCursorPage), { query, ...options, __security: { adminAPIKeyAuth: true } });
+        return this._client.getAPIList(path_path `/organization/groups/${groupID}/users`, (NextCursorPage), users_resolveResourceRequestOptions(options, (options) => ({
+            query,
+            ...options,
+            __security: { adminAPIKeyAuth: true },
+        })));
     }
     /**
      * Removes a user from a group.
@@ -42310,14 +42378,14 @@ class Users extends APIResource {
      */
     delete(userID, params, options) {
         const { group_id } = params;
-        return this._client.delete(path_path `/organization/groups/${group_id}/users/${userID}`, {
+        return this._client.delete(path_path `/organization/groups/${group_id}/users/${userID}`, users_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=users.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/groups/groups.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/groups/groups.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -42326,6 +42394,9 @@ class Users extends APIResource {
 
 
 
+function groups_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const groups_normalizeRequestOptionsForQueryKeys = new Set([
@@ -42395,11 +42466,11 @@ class Groups extends APIResource {
      * ```
      */
     create(body, options) {
-        return this._client.post('/organization/groups', {
+        return this._client.post('/organization/groups', groups_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Retrieves a group.
@@ -42413,10 +42484,10 @@ class Groups extends APIResource {
      * ```
      */
     retrieve(groupID, options) {
-        return this._client.get(path_path `/organization/groups/${groupID}`, {
+        return this._client.get(path_path `/organization/groups/${groupID}`, groups_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Updates a group's information.
@@ -42430,11 +42501,11 @@ class Groups extends APIResource {
      * ```
      */
     update(groupID, body, options) {
-        return this._client.post(path_path `/organization/groups/${groupID}`, {
+        return this._client.post(path_path `/organization/groups/${groupID}`, groups_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     list(query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = groups_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'order'], options);
@@ -42443,11 +42514,11 @@ class Groups extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList('/organization/groups', (NextCursorPage), {
+        return this._client.getAPIList('/organization/groups', (NextCursorPage), groups_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Deletes a group from the organization.
@@ -42460,20 +42531,23 @@ class Groups extends APIResource {
      * ```
      */
     delete(groupID, options) {
-        return this._client.delete(path_path `/organization/groups/${groupID}`, {
+        return this._client.delete(path_path `/organization/groups/${groupID}`, groups_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 Groups.Users = Users;
 Groups.Roles = roles_Roles;
 //# sourceMappingURL=groups.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/api-keys.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/api-keys.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function api_keys_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const api_keys_normalizeRequestOptionsForQueryKeys = new Set([
@@ -42541,10 +42615,10 @@ class APIKeys extends APIResource {
      */
     retrieve(apiKeyID, params, options) {
         const { project_id } = params;
-        return this._client.get(path_path `/organization/projects/${project_id}/api_keys/${apiKeyID}`, {
+        return this._client.get(path_path `/organization/projects/${project_id}/api_keys/${apiKeyID}`, api_keys_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     list(projectID, query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = api_keys_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'owner_project_access'], options);
@@ -42553,7 +42627,11 @@ class APIKeys extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/organization/projects/${projectID}/api_keys`, (ConversationCursorPage), { query, ...options, __security: { adminAPIKeyAuth: true } });
+        return this._client.getAPIList(path_path `/organization/projects/${projectID}/api_keys`, (ConversationCursorPage), api_keys_resolveResourceRequestOptions(options, (options) => ({
+            query,
+            ...options,
+            __security: { adminAPIKeyAuth: true },
+        })));
     }
     /**
      * Deletes an API key from the project.
@@ -42572,18 +42650,21 @@ class APIKeys extends APIResource {
      */
     delete(apiKeyID, params, options) {
         const { project_id } = params;
-        return this._client.delete(path_path `/organization/projects/${project_id}/api_keys/${apiKeyID}`, {
+        return this._client.delete(path_path `/organization/projects/${project_id}/api_keys/${apiKeyID}`, api_keys_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=api-keys.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/certificates.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/certificates.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function projects_certificates_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const projects_certificates_normalizeRequestOptionsForQueryKeys = new Set([
@@ -42644,7 +42725,11 @@ class certificates_Certificates extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/organization/projects/${projectID}/certificates`, (ConversationCursorPage), { query, ...options, __security: { adminAPIKeyAuth: true } });
+        return this._client.getAPIList(path_path `/organization/projects/${projectID}/certificates`, (ConversationCursorPage), projects_certificates_resolveResourceRequestOptions(options, (options) => ({
+            query,
+            ...options,
+            __security: { adminAPIKeyAuth: true },
+        })));
     }
     /**
      * Activate certificates at the project level.
@@ -42663,7 +42748,12 @@ class certificates_Certificates extends APIResource {
      * ```
      */
     activate(projectID, body, options) {
-        return this._client.getAPIList(path_path `/organization/projects/${projectID}/certificates/activate`, (Page), { body, method: 'post', ...options, __security: { adminAPIKeyAuth: true } });
+        return this._client.getAPIList(path_path `/organization/projects/${projectID}/certificates/activate`, (Page), projects_certificates_resolveResourceRequestOptions(options, (options) => ({
+            body,
+            method: 'post',
+            ...options,
+            __security: { adminAPIKeyAuth: true },
+        })));
     }
     /**
      * Deactivate certificates at the project level. You can atomically and
@@ -42681,14 +42771,22 @@ class certificates_Certificates extends APIResource {
      * ```
      */
     deactivate(projectID, body, options) {
-        return this._client.getAPIList(path_path `/organization/projects/${projectID}/certificates/deactivate`, (Page), { body, method: 'post', ...options, __security: { adminAPIKeyAuth: true } });
+        return this._client.getAPIList(path_path `/organization/projects/${projectID}/certificates/deactivate`, (Page), projects_certificates_resolveResourceRequestOptions(options, (options) => ({
+            body,
+            method: 'post',
+            ...options,
+            __security: { adminAPIKeyAuth: true },
+        })));
     }
 }
 //# sourceMappingURL=certificates.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/data-retention.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/data-retention.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
+function projects_data_retention_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class data_retention_DataRetention extends APIResource {
     /**
      * Retrieves project data retention controls.
@@ -42702,10 +42800,10 @@ class data_retention_DataRetention extends APIResource {
      * ```
      */
     retrieve(projectID, options) {
-        return this._client.get(path_path `/organization/projects/${projectID}/data_retention`, {
+        return this._client.get(path_path `/organization/projects/${projectID}/data_retention`, projects_data_retention_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Updates project data retention controls.
@@ -42720,18 +42818,21 @@ class data_retention_DataRetention extends APIResource {
      * ```
      */
     update(projectID, body, options) {
-        return this._client.post(path_path `/organization/projects/${projectID}/data_retention`, {
+        return this._client.post(path_path `/organization/projects/${projectID}/data_retention`, projects_data_retention_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=data-retention.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/hosted-tool-permissions.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/hosted-tool-permissions.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
+function hosted_tool_permissions_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class HostedToolPermissions extends APIResource {
     /**
      * Returns hosted tool permissions for a project.
@@ -42745,10 +42846,10 @@ class HostedToolPermissions extends APIResource {
      * ```
      */
     retrieve(projectID, options) {
-        return this._client.get(path_path `/organization/projects/${projectID}/hosted_tool_permissions`, {
+        return this._client.get(path_path `/organization/projects/${projectID}/hosted_tool_permissions`, hosted_tool_permissions_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Updates hosted tool permissions for a project.
@@ -42762,18 +42863,21 @@ class HostedToolPermissions extends APIResource {
      * ```
      */
     update(projectID, body, options) {
-        return this._client.post(path_path `/organization/projects/${projectID}/hosted_tool_permissions`, {
+        return this._client.post(path_path `/organization/projects/${projectID}/hosted_tool_permissions`, hosted_tool_permissions_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=hosted-tool-permissions.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/model-permissions.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/model-permissions.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
+function model_permissions_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class ModelPermissions extends APIResource {
     /**
      * Returns model permissions for a project.
@@ -42787,10 +42891,10 @@ class ModelPermissions extends APIResource {
      * ```
      */
     retrieve(projectID, options) {
-        return this._client.get(path_path `/organization/projects/${projectID}/model_permissions`, {
+        return this._client.get(path_path `/organization/projects/${projectID}/model_permissions`, model_permissions_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Updates model permissions for a project.
@@ -42805,11 +42909,11 @@ class ModelPermissions extends APIResource {
      * ```
      */
     update(projectID, body, options) {
-        return this._client.post(path_path `/organization/projects/${projectID}/model_permissions`, {
+        return this._client.post(path_path `/organization/projects/${projectID}/model_permissions`, model_permissions_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Deletes model permissions for a project.
@@ -42823,18 +42927,21 @@ class ModelPermissions extends APIResource {
      * ```
      */
     delete(projectID, options) {
-        return this._client.delete(path_path `/organization/projects/${projectID}/model_permissions`, {
+        return this._client.delete(path_path `/organization/projects/${projectID}/model_permissions`, model_permissions_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=model-permissions.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/rate-limits.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/rate-limits.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function rate_limits_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const rate_limits_normalizeRequestOptionsForQueryKeys = new Set([
@@ -42895,7 +43002,11 @@ class RateLimits extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/organization/projects/${projectID}/rate_limits`, (ConversationCursorPage), { query, ...options, __security: { adminAPIKeyAuth: true } });
+        return this._client.getAPIList(path_path `/organization/projects/${projectID}/rate_limits`, (ConversationCursorPage), rate_limits_resolveResourceRequestOptions(options, (options) => ({
+            query,
+            ...options,
+            __security: { adminAPIKeyAuth: true },
+        })));
     }
     /**
      * Updates a project rate limit.
@@ -42911,19 +43022,22 @@ class RateLimits extends APIResource {
      */
     updateRateLimit(rateLimitID, params, options) {
         const { project_id, ...body } = params;
-        return this._client.post(path_path `/organization/projects/${project_id}/rate_limits/${rateLimitID}`, {
+        return this._client.post(path_path `/organization/projects/${project_id}/rate_limits/${rateLimitID}`, rate_limits_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=rate-limits.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/roles.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/roles.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function projects_roles_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const projects_roles_normalizeRequestOptionsForQueryKeys = new Set([
@@ -42990,11 +43104,11 @@ class projects_roles_Roles extends APIResource {
      * ```
      */
     create(projectID, body, options) {
-        return this._client.post(path_path `/projects/${projectID}/roles`, {
+        return this._client.post(path_path `/projects/${projectID}/roles`, projects_roles_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Retrieves a project role.
@@ -43010,10 +43124,10 @@ class projects_roles_Roles extends APIResource {
      */
     retrieve(roleID, params, options) {
         const { project_id } = params;
-        return this._client.get(path_path `/projects/${project_id}/roles/${roleID}`, {
+        return this._client.get(path_path `/projects/${project_id}/roles/${roleID}`, projects_roles_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Updates an existing project role.
@@ -43029,11 +43143,11 @@ class projects_roles_Roles extends APIResource {
      */
     update(roleID, params, options) {
         const { project_id, ...body } = params;
-        return this._client.post(path_path `/projects/${project_id}/roles/${roleID}`, {
+        return this._client.post(path_path `/projects/${project_id}/roles/${roleID}`, projects_roles_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     list(projectID, query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = projects_roles_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'order'], options);
@@ -43042,11 +43156,11 @@ class projects_roles_Roles extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/projects/${projectID}/roles`, (NextCursorPage), {
+        return this._client.getAPIList(path_path `/projects/${projectID}/roles`, (NextCursorPage), projects_roles_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Deletes a custom role from a project.
@@ -43062,18 +43176,21 @@ class projects_roles_Roles extends APIResource {
      */
     delete(roleID, params, options) {
         const { project_id } = params;
-        return this._client.delete(path_path `/projects/${project_id}/roles/${roleID}`, {
+        return this._client.delete(path_path `/projects/${project_id}/roles/${roleID}`, projects_roles_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=roles.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/spend-alerts.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/spend-alerts.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function projects_spend_alerts_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const projects_spend_alerts_normalizeRequestOptionsForQueryKeys = new Set([
@@ -43148,11 +43265,11 @@ class spend_alerts_SpendAlerts extends APIResource {
      * ```
      */
     create(projectID, body, options) {
-        return this._client.post(path_path `/organization/projects/${projectID}/spend_alerts`, {
+        return this._client.post(path_path `/organization/projects/${projectID}/spend_alerts`, projects_spend_alerts_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Retrieves a project spend alert.
@@ -43168,10 +43285,10 @@ class spend_alerts_SpendAlerts extends APIResource {
      */
     retrieve(alertID, params, options) {
         const { project_id } = params;
-        return this._client.get(path_path `/organization/projects/${project_id}/spend_alerts/${alertID}`, {
+        return this._client.get(path_path `/organization/projects/${project_id}/spend_alerts/${alertID}`, projects_spend_alerts_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Updates a project spend alert.
@@ -43196,11 +43313,11 @@ class spend_alerts_SpendAlerts extends APIResource {
      */
     update(alertID, params, options) {
         const { project_id, ...body } = params;
-        return this._client.post(path_path `/organization/projects/${project_id}/spend_alerts/${alertID}`, {
+        return this._client.post(path_path `/organization/projects/${project_id}/spend_alerts/${alertID}`, projects_spend_alerts_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     list(projectID, query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = projects_spend_alerts_normalizeRequestOptionsForQuery(query, ['after', 'before', 'limit', 'order'], options);
@@ -43209,7 +43326,11 @@ class spend_alerts_SpendAlerts extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/organization/projects/${projectID}/spend_alerts`, (ConversationCursorPage), { query, ...options, __security: { adminAPIKeyAuth: true } });
+        return this._client.getAPIList(path_path `/organization/projects/${projectID}/spend_alerts`, (ConversationCursorPage), projects_spend_alerts_resolveResourceRequestOptions(options, (options) => ({
+            query,
+            ...options,
+            __security: { adminAPIKeyAuth: true },
+        })));
     }
     /**
      * Deletes a project spend alert.
@@ -43225,17 +43346,20 @@ class spend_alerts_SpendAlerts extends APIResource {
      */
     delete(alertID, params, options) {
         const { project_id } = params;
-        return this._client.delete(path_path `/organization/projects/${project_id}/spend_alerts/${alertID}`, {
+        return this._client.delete(path_path `/organization/projects/${project_id}/spend_alerts/${alertID}`, projects_spend_alerts_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=spend-alerts.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/spend-limit.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/spend-limit.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
+function projects_spend_limit_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class spend_limit_SpendLimit extends APIResource {
     /**
      * Get a project's hard spend limit.
@@ -43249,10 +43373,10 @@ class spend_limit_SpendLimit extends APIResource {
      * ```
      */
     retrieve(projectID, options) {
-        return this._client.get(path_path `/organization/projects/${projectID}/spend_limit`, {
+        return this._client.get(path_path `/organization/projects/${projectID}/spend_limit`, projects_spend_limit_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Create or replace a project's hard spend limit.
@@ -43271,11 +43395,11 @@ class spend_limit_SpendLimit extends APIResource {
      * ```
      */
     update(projectID, body, options) {
-        return this._client.post(path_path `/organization/projects/${projectID}/spend_limit`, {
+        return this._client.post(path_path `/organization/projects/${projectID}/spend_limit`, projects_spend_limit_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Delete a project's hard spend limit.
@@ -43289,18 +43413,21 @@ class spend_limit_SpendLimit extends APIResource {
      * ```
      */
     delete(projectID, options) {
-        return this._client.delete(path_path `/organization/projects/${projectID}/spend_limit`, {
+        return this._client.delete(path_path `/organization/projects/${projectID}/spend_limit`, projects_spend_limit_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=spend-limit.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/groups/roles.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/groups/roles.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function projects_groups_roles_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class groups_roles_Roles extends APIResource {
     /**
      * Assigns a project role to a group within a project.
@@ -43316,11 +43443,11 @@ class groups_roles_Roles extends APIResource {
      */
     create(groupID, params, options) {
         const { project_id, ...body } = params;
-        return this._client.post(path_path `/projects/${project_id}/groups/${groupID}/roles`, {
+        return this._client.post(path_path `/projects/${project_id}/groups/${groupID}/roles`, projects_groups_roles_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Retrieves a project role assigned to a group.
@@ -43336,10 +43463,10 @@ class groups_roles_Roles extends APIResource {
      */
     retrieve(roleID, params, options) {
         const { project_id, group_id } = params;
-        return this._client.get(path_path `/projects/${project_id}/groups/${group_id}/roles/${roleID}`, {
+        return this._client.get(path_path `/projects/${project_id}/groups/${group_id}/roles/${roleID}`, projects_groups_roles_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Lists the project roles assigned to a group within a project.
@@ -43357,7 +43484,11 @@ class groups_roles_Roles extends APIResource {
      */
     list(groupID, params, options) {
         const { project_id, ...query } = params;
-        return this._client.getAPIList(path_path `/projects/${project_id}/groups/${groupID}/roles`, (NextCursorPage), { query, ...options, __security: { adminAPIKeyAuth: true } });
+        return this._client.getAPIList(path_path `/projects/${project_id}/groups/${groupID}/roles`, (NextCursorPage), projects_groups_roles_resolveResourceRequestOptions(options, (options) => ({
+            query,
+            ...options,
+            __security: { adminAPIKeyAuth: true },
+        })));
     }
     /**
      * Unassigns a project role from a group within a project.
@@ -43373,20 +43504,23 @@ class groups_roles_Roles extends APIResource {
      */
     delete(roleID, params, options) {
         const { project_id, group_id } = params;
-        return this._client.delete(path_path `/projects/${project_id}/groups/${group_id}/roles/${roleID}`, {
+        return this._client.delete(path_path `/projects/${project_id}/groups/${group_id}/roles/${roleID}`, projects_groups_roles_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=roles.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/groups/groups.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/groups/groups.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 
 
+function groups_groups_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const groups_groups_normalizeRequestOptionsForQueryKeys = new Set([
@@ -43457,11 +43591,11 @@ class groups_Groups extends APIResource {
      * ```
      */
     create(projectID, body, options) {
-        return this._client.post(path_path `/organization/projects/${projectID}/groups`, {
+        return this._client.post(path_path `/organization/projects/${projectID}/groups`, groups_groups_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Retrieves a project's group.
@@ -43477,11 +43611,11 @@ class groups_Groups extends APIResource {
      */
     retrieve(groupID, params, options) {
         const { project_id, ...query } = params;
-        return this._client.get(path_path `/organization/projects/${project_id}/groups/${groupID}`, {
+        return this._client.get(path_path `/organization/projects/${project_id}/groups/${groupID}`, groups_groups_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     list(projectID, query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = groups_groups_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'order'], options);
@@ -43490,7 +43624,11 @@ class groups_Groups extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/organization/projects/${projectID}/groups`, (NextCursorPage), { query, ...options, __security: { adminAPIKeyAuth: true } });
+        return this._client.getAPIList(path_path `/organization/projects/${projectID}/groups`, (NextCursorPage), groups_groups_resolveResourceRequestOptions(options, (options) => ({
+            query,
+            ...options,
+            __security: { adminAPIKeyAuth: true },
+        })));
     }
     /**
      * Revokes a group's access to a project.
@@ -43506,18 +43644,21 @@ class groups_Groups extends APIResource {
      */
     delete(groupID, params, options) {
         const { project_id } = params;
-        return this._client.delete(path_path `/organization/projects/${project_id}/groups/${groupID}`, {
+        return this._client.delete(path_path `/organization/projects/${project_id}/groups/${groupID}`, groups_groups_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 groups_Groups.Roles = groups_roles_Roles;
 //# sourceMappingURL=groups.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/service-accounts/api-keys.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/service-accounts/api-keys.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
+function service_accounts_api_keys_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class api_keys_APIKeys extends APIResource {
     /**
      * Creates an API key for a service account in the project.
@@ -43533,17 +43674,24 @@ class api_keys_APIKeys extends APIResource {
      */
     create(serviceAccountID, params, options) {
         const { project_id, ...body } = params;
-        return this._client.post(path_path `/organization/projects/${project_id}/service_accounts/${serviceAccountID}/api_keys`, { body, ...options, __security: { adminAPIKeyAuth: true } });
+        return this._client.post(path_path `/organization/projects/${project_id}/service_accounts/${serviceAccountID}/api_keys`, service_accounts_api_keys_resolveResourceRequestOptions(options, (options) => ({
+            body,
+            ...options,
+            __security: { adminAPIKeyAuth: true },
+        })));
     }
 }
 //# sourceMappingURL=api-keys.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/service-accounts/service-accounts.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/service-accounts/service-accounts.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 
 
+function service_accounts_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const service_accounts_normalizeRequestOptionsForQueryKeys = new Set([
@@ -43615,11 +43763,11 @@ class ServiceAccounts extends APIResource {
      * ```
      */
     create(projectID, body, options) {
-        return this._client.post(path_path `/organization/projects/${projectID}/service_accounts`, {
+        return this._client.post(path_path `/organization/projects/${projectID}/service_accounts`, service_accounts_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Retrieves a service account in the project.
@@ -43635,10 +43783,10 @@ class ServiceAccounts extends APIResource {
      */
     retrieve(serviceAccountID, params, options) {
         const { project_id } = params;
-        return this._client.get(path_path `/organization/projects/${project_id}/service_accounts/${serviceAccountID}`, {
+        return this._client.get(path_path `/organization/projects/${project_id}/service_accounts/${serviceAccountID}`, service_accounts_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Updates a service account in the project.
@@ -43654,7 +43802,11 @@ class ServiceAccounts extends APIResource {
      */
     update(serviceAccountID, params, options) {
         const { project_id, ...body } = params;
-        return this._client.post(path_path `/organization/projects/${project_id}/service_accounts/${serviceAccountID}`, { body, ...options, __security: { adminAPIKeyAuth: true } });
+        return this._client.post(path_path `/organization/projects/${project_id}/service_accounts/${serviceAccountID}`, service_accounts_resolveResourceRequestOptions(options, (options) => ({
+            body,
+            ...options,
+            __security: { adminAPIKeyAuth: true },
+        })));
     }
     list(projectID, query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = service_accounts_normalizeRequestOptionsForQuery(query, ['after', 'limit'], options);
@@ -43663,7 +43815,11 @@ class ServiceAccounts extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/organization/projects/${projectID}/service_accounts`, (ConversationCursorPage), { query, ...options, __security: { adminAPIKeyAuth: true } });
+        return this._client.getAPIList(path_path `/organization/projects/${projectID}/service_accounts`, (ConversationCursorPage), service_accounts_resolveResourceRequestOptions(options, (options) => ({
+            query,
+            ...options,
+            __security: { adminAPIKeyAuth: true },
+        })));
     }
     /**
      * Deletes a service account from the project.
@@ -43682,16 +43838,22 @@ class ServiceAccounts extends APIResource {
      */
     delete(serviceAccountID, params, options) {
         const { project_id } = params;
-        return this._client.delete(path_path `/organization/projects/${project_id}/service_accounts/${serviceAccountID}`, { ...options, __security: { adminAPIKeyAuth: true } });
+        return this._client.delete(path_path `/organization/projects/${project_id}/service_accounts/${serviceAccountID}`, service_accounts_resolveResourceRequestOptions(options, (options) => ({
+            ...options,
+            __security: { adminAPIKeyAuth: true },
+        })));
     }
 }
 ServiceAccounts.APIKeys = api_keys_APIKeys;
 //# sourceMappingURL=service-accounts.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/users/roles.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/users/roles.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function users_roles_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class users_roles_Roles extends APIResource {
     /**
      * Assigns a project role to a user within a project.
@@ -43707,11 +43869,11 @@ class users_roles_Roles extends APIResource {
      */
     create(userID, params, options) {
         const { project_id, ...body } = params;
-        return this._client.post(path_path `/projects/${project_id}/users/${userID}/roles`, {
+        return this._client.post(path_path `/projects/${project_id}/users/${userID}/roles`, users_roles_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Retrieves a project role assigned to a user.
@@ -43727,10 +43889,10 @@ class users_roles_Roles extends APIResource {
      */
     retrieve(roleID, params, options) {
         const { project_id, user_id } = params;
-        return this._client.get(path_path `/projects/${project_id}/users/${user_id}/roles/${roleID}`, {
+        return this._client.get(path_path `/projects/${project_id}/users/${user_id}/roles/${roleID}`, users_roles_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Lists the project roles assigned to a user within a project.
@@ -43748,7 +43910,11 @@ class users_roles_Roles extends APIResource {
      */
     list(userID, params, options) {
         const { project_id, ...query } = params;
-        return this._client.getAPIList(path_path `/projects/${project_id}/users/${userID}/roles`, (NextCursorPage), { query, ...options, __security: { adminAPIKeyAuth: true } });
+        return this._client.getAPIList(path_path `/projects/${project_id}/users/${userID}/roles`, (NextCursorPage), users_roles_resolveResourceRequestOptions(options, (options) => ({
+            query,
+            ...options,
+            __security: { adminAPIKeyAuth: true },
+        })));
     }
     /**
      * Unassigns a project role from a user within a project.
@@ -43764,20 +43930,23 @@ class users_roles_Roles extends APIResource {
      */
     delete(roleID, params, options) {
         const { project_id, user_id } = params;
-        return this._client.delete(path_path `/projects/${project_id}/users/${user_id}/roles/${roleID}`, {
+        return this._client.delete(path_path `/projects/${project_id}/users/${user_id}/roles/${roleID}`, users_roles_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=roles.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/users/users.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/users/users.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 
 
+function users_users_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const users_users_normalizeRequestOptionsForQueryKeys = new Set([
@@ -43849,11 +44018,11 @@ class users_Users extends APIResource {
      * ```
      */
     create(projectID, body, options) {
-        return this._client.post(path_path `/organization/projects/${projectID}/users`, {
+        return this._client.post(path_path `/organization/projects/${projectID}/users`, users_users_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Retrieves a user in the project.
@@ -43869,10 +44038,10 @@ class users_Users extends APIResource {
      */
     retrieve(userID, params, options) {
         const { project_id } = params;
-        return this._client.get(path_path `/organization/projects/${project_id}/users/${userID}`, {
+        return this._client.get(path_path `/organization/projects/${project_id}/users/${userID}`, users_users_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Modifies a user's role in the project.
@@ -43888,11 +44057,11 @@ class users_Users extends APIResource {
      */
     update(userID, params, options) {
         const { project_id, ...body } = params;
-        return this._client.post(path_path `/organization/projects/${project_id}/users/${userID}`, {
+        return this._client.post(path_path `/organization/projects/${project_id}/users/${userID}`, users_users_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     list(projectID, query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = users_users_normalizeRequestOptionsForQuery(query, ['after', 'limit'], options);
@@ -43901,7 +44070,11 @@ class users_Users extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/organization/projects/${projectID}/users`, (ConversationCursorPage), { query, ...options, __security: { adminAPIKeyAuth: true } });
+        return this._client.getAPIList(path_path `/organization/projects/${projectID}/users`, (ConversationCursorPage), users_users_resolveResourceRequestOptions(options, (options) => ({
+            query,
+            ...options,
+            __security: { adminAPIKeyAuth: true },
+        })));
     }
     /**
      * Deletes a user from the project.
@@ -43920,15 +44093,15 @@ class users_Users extends APIResource {
      */
     delete(userID, params, options) {
         const { project_id } = params;
-        return this._client.delete(path_path `/organization/projects/${project_id}/users/${userID}`, {
+        return this._client.delete(path_path `/organization/projects/${project_id}/users/${userID}`, users_users_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 users_Users.Roles = users_roles_Roles;
 //# sourceMappingURL=users.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/projects.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/projects/projects.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -43957,6 +44130,9 @@ users_Users.Roles = users_roles_Roles;
 
 
 
+function projects_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const projects_normalizeRequestOptionsForQueryKeys = new Set([
@@ -44038,11 +44214,11 @@ class Projects extends APIResource {
      * ```
      */
     create(body, options) {
-        return this._client.post('/organization/projects', {
+        return this._client.post('/organization/projects', projects_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Retrieves a project.
@@ -44056,10 +44232,10 @@ class Projects extends APIResource {
      * ```
      */
     retrieve(projectID, options) {
-        return this._client.get(path_path `/organization/projects/${projectID}`, {
+        return this._client.get(path_path `/organization/projects/${projectID}`, projects_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Modifies a project in the organization.
@@ -44073,11 +44249,11 @@ class Projects extends APIResource {
      * ```
      */
     update(projectID, body, options) {
-        return this._client.post(path_path `/organization/projects/${projectID}`, {
+        return this._client.post(path_path `/organization/projects/${projectID}`, projects_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     list(query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = projects_normalizeRequestOptionsForQuery(query, ['after', 'include_archived', 'limit'], options);
@@ -44086,11 +44262,11 @@ class Projects extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList('/organization/projects', (ConversationCursorPage), {
+        return this._client.getAPIList('/organization/projects', (ConversationCursorPage), projects_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Archives a project in the organization. Archived projects cannot be used or
@@ -44105,10 +44281,10 @@ class Projects extends APIResource {
      * ```
      */
     archive(projectID, options) {
-        return this._client.post(path_path `/organization/projects/${projectID}/archive`, {
+        return this._client.post(path_path `/organization/projects/${projectID}/archive`, projects_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 Projects.Users = users_Users;
@@ -44124,11 +44300,14 @@ Projects.SpendLimit = spend_limit_SpendLimit;
 Projects.SpendAlerts = spend_alerts_SpendAlerts;
 Projects.Certificates = certificates_Certificates;
 //# sourceMappingURL=projects.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/users/roles.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/users/roles.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function organization_users_roles_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const users_roles_normalizeRequestOptionsForQueryKeys = new Set([
@@ -44195,11 +44374,11 @@ class organization_users_roles_Roles extends APIResource {
      * ```
      */
     create(userID, body, options) {
-        return this._client.post(path_path `/organization/users/${userID}/roles`, {
+        return this._client.post(path_path `/organization/users/${userID}/roles`, organization_users_roles_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Retrieves an organization role assigned to a user.
@@ -44215,10 +44394,10 @@ class organization_users_roles_Roles extends APIResource {
      */
     retrieve(roleID, params, options) {
         const { user_id } = params;
-        return this._client.get(path_path `/organization/users/${user_id}/roles/${roleID}`, {
+        return this._client.get(path_path `/organization/users/${user_id}/roles/${roleID}`, organization_users_roles_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     list(userID, query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = users_roles_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'order'], options);
@@ -44227,7 +44406,11 @@ class organization_users_roles_Roles extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/organization/users/${userID}/roles`, (NextCursorPage), { query, ...options, __security: { adminAPIKeyAuth: true } });
+        return this._client.getAPIList(path_path `/organization/users/${userID}/roles`, (NextCursorPage), organization_users_roles_resolveResourceRequestOptions(options, (options) => ({
+            query,
+            ...options,
+            __security: { adminAPIKeyAuth: true },
+        })));
     }
     /**
      * Unassigns an organization role from a user within the organization.
@@ -44243,20 +44426,23 @@ class organization_users_roles_Roles extends APIResource {
      */
     delete(roleID, params, options) {
         const { user_id } = params;
-        return this._client.delete(path_path `/organization/users/${user_id}/roles/${roleID}`, {
+        return this._client.delete(path_path `/organization/users/${user_id}/roles/${roleID}`, organization_users_roles_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=roles.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/users/users.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/users/users.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 
 
+function organization_users_users_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const organization_users_users_normalizeRequestOptionsForQueryKeys = new Set([
@@ -44324,10 +44510,10 @@ class users_users_Users extends APIResource {
      * ```
      */
     retrieve(userID, options) {
-        return this._client.get(path_path `/organization/users/${userID}`, {
+        return this._client.get(path_path `/organization/users/${userID}`, organization_users_users_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Modifies a user's role in the organization.
@@ -44339,11 +44525,11 @@ class users_users_Users extends APIResource {
      * ```
      */
     update(userID, body, options) {
-        return this._client.post(path_path `/organization/users/${userID}`, {
+        return this._client.post(path_path `/organization/users/${userID}`, organization_users_users_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     list(query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = organization_users_users_normalizeRequestOptionsForQuery(query, ['after', 'emails', 'limit'], options);
@@ -44352,11 +44538,11 @@ class users_users_Users extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList('/organization/users', (ConversationCursorPage), {
+        return this._client.getAPIList('/organization/users', (ConversationCursorPage), organization_users_users_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     /**
      * Deletes a user from the organization.
@@ -44369,15 +44555,15 @@ class users_users_Users extends APIResource {
      * ```
      */
     delete(userID, options) {
-        return this._client.delete(path_path `/organization/users/${userID}`, {
+        return this._client.delete(path_path `/organization/users/${userID}`, organization_users_users_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
 }
 users_users_Users.Roles = organization_users_roles_Roles;
 //# sourceMappingURL=users.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/organization/organization.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/organization/organization.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -44409,7 +44595,6 @@ users_users_Users.Roles = organization_users_roles_Roles;
 class Organization extends APIResource {
     constructor() {
         super(...arguments);
-        this.externalStorage = new ExternalStorage(this._client);
         this.auditLogs = new AuditLogs(this._client);
         this.adminAPIKeys = new AdminAPIKeys(this._client);
         this.usage = new Usage(this._client);
@@ -44418,13 +44603,13 @@ class Organization extends APIResource {
         this.groups = new Groups(this._client);
         this.roles = new Roles(this._client);
         this.dataRetention = new DataRetention(this._client);
+        this.externalStorage = new ExternalStorage(this._client);
         this.spendLimit = new SpendLimit(this._client);
         this.spendAlerts = new SpendAlerts(this._client);
         this.certificates = new Certificates(this._client);
         this.projects = new Projects(this._client);
     }
 }
-Organization.ExternalStorage = ExternalStorage;
 Organization.AuditLogs = AuditLogs;
 Organization.AdminAPIKeys = AdminAPIKeys;
 Organization.Usage = Usage;
@@ -44433,12 +44618,13 @@ Organization.Users = users_users_Users;
 Organization.Groups = Groups;
 Organization.Roles = Roles;
 Organization.DataRetention = DataRetention;
+Organization.ExternalStorage = ExternalStorage;
 Organization.SpendLimit = SpendLimit;
 Organization.SpendAlerts = SpendAlerts;
 Organization.Certificates = Certificates;
 Organization.Projects = Projects;
 //# sourceMappingURL=organization.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/admin/admin.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/admin/admin.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -44451,10 +44637,13 @@ class Admin extends APIResource {
 }
 Admin.Organization = Organization;
 //# sourceMappingURL=admin.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/audio/speech.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/audio/speech.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
+function speech_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 /**
  * Turn audio into text or text into audio.
  */
@@ -44477,49 +44666,55 @@ class Speech extends APIResource {
      * ```
      */
     create(body, options) {
-        return this._client.post('/audio/speech', {
+        return this._client.post('/audio/speech', speech_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ Accept: 'application/octet-stream' }, options?.headers]),
             __security: { bearerAuth: true },
             __binaryResponse: true,
-        });
+        })));
     }
 }
 //# sourceMappingURL=speech.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/audio/transcriptions.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/audio/transcriptions.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
+function transcriptions_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 /**
  * Turn audio into text or text into audio.
  */
 class Transcriptions extends APIResource {
     create(body, options) {
-        return this._client.post('/audio/transcriptions', multipartFormRequestOptions({
+        return this._client.post('/audio/transcriptions', transcriptions_resolveResourceRequestOptions(options, (options) => multipartFormRequestOptions({
             body,
             ...options,
             stream: body.stream ?? false,
             __metadata: { model: body.model },
             __security: { bearerAuth: true },
-        }, this._client));
+        }, this._client)));
     }
 }
 //# sourceMappingURL=transcriptions.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/audio/translations.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/audio/translations.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
+function translations_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 /**
  * Turn audio into text or text into audio.
  */
 class Translations extends APIResource {
     create(body, options) {
-        return this._client.post('/audio/translations', multipartFormRequestOptions({ body, ...options, __metadata: { model: body.model }, __security: { bearerAuth: true } }, this._client));
+        return this._client.post('/audio/translations', translations_resolveResourceRequestOptions(options, (options) => multipartFormRequestOptions({ body, ...options, __metadata: { model: body.model }, __security: { bearerAuth: true } }, this._client)));
     }
 }
 //# sourceMappingURL=translations.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/audio/audio.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/audio/audio.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -44540,11 +44735,14 @@ Audio.Transcriptions = Transcriptions;
 Audio.Translations = Translations;
 Audio.Speech = Speech;
 //# sourceMappingURL=audio.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/batches.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/batches.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function batches_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const batches_normalizeRequestOptionsForQueryKeys = new Set([
@@ -44605,13 +44803,17 @@ class Batches extends APIResource {
      * Creates and executes a batch from an uploaded file of requests
      */
     create(body, options) {
-        return this._client.post('/batches', { body, ...options, __security: { bearerAuth: true } });
+        return this._client.post('/batches', batches_resolveResourceRequestOptions(options, (options) => ({
+            body,
+            ...options,
+            __security: { bearerAuth: true },
+        })));
     }
     /**
      * Retrieves a batch.
      */
     retrieve(batchID, options) {
-        return this._client.get(path_path `/batches/${batchID}`, { ...options, __security: { bearerAuth: true } });
+        return this._client.get(path_path `/batches/${batchID}`, batches_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
     list(query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = batches_normalizeRequestOptionsForQuery(query, ['after', 'limit'], options);
@@ -44620,11 +44822,11 @@ class Batches extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList('/batches', (CursorPage), {
+        return this._client.getAPIList('/batches', (CursorPage), batches_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Cancels an in-progress batch. The batch will be in status `cancelling` for up to
@@ -44632,19 +44834,19 @@ class Batches extends APIResource {
      * (if any) available in the output file.
      */
     cancel(batchID, options) {
-        return this._client.post(path_path `/batches/${batchID}/cancel`, {
-            ...options,
-            __security: { bearerAuth: true },
-        });
+        return this._client.post(path_path `/batches/${batchID}/cancel`, batches_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
 }
 //# sourceMappingURL=batches.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/assistants.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/assistants.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 
+function assistants_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const assistants_normalizeRequestOptionsForQueryKeys = new Set([
@@ -44707,12 +44909,12 @@ class Assistants extends APIResource {
      * @deprecated
      */
     create(body, options) {
-        return this._client.post('/assistants', {
+        return this._client.post('/assistants', assistants_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Retrieves an assistant.
@@ -44720,11 +44922,11 @@ class Assistants extends APIResource {
      * @deprecated
      */
     retrieve(assistantID, options) {
-        return this._client.get(path_path `/assistants/${assistantID}`, {
+        return this._client.get(path_path `/assistants/${assistantID}`, assistants_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Modifies an assistant.
@@ -44732,12 +44934,12 @@ class Assistants extends APIResource {
      * @deprecated
      */
     update(assistantID, body, options) {
-        return this._client.post(path_path `/assistants/${assistantID}`, {
+        return this._client.post(path_path `/assistants/${assistantID}`, assistants_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     list(query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = assistants_normalizeRequestOptionsForQuery(query, ['after', 'before', 'limit', 'order'], options);
@@ -44746,12 +44948,12 @@ class Assistants extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList('/assistants', (CursorPage), {
+        return this._client.getAPIList('/assistants', (CursorPage), assistants_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Delete an assistant.
@@ -44759,15 +44961,15 @@ class Assistants extends APIResource {
      * @deprecated
      */
     delete(assistantID, options) {
-        return this._client.delete(path_path `/assistants/${assistantID}`, {
+        return this._client.delete(path_path `/assistants/${assistantID}`, assistants_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=assistants.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/realtime/sessions.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/realtime/sessions.mjs
 
 
 class Sessions extends APIResource {
@@ -44796,7 +44998,7 @@ class Sessions extends APIResource {
     }
 }
 //# sourceMappingURL=sessions.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/realtime/transcription-sessions.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/realtime/transcription-sessions.mjs
 
 
 class TranscriptionSessions extends APIResource {
@@ -44825,7 +45027,7 @@ class TranscriptionSessions extends APIResource {
     }
 }
 //# sourceMappingURL=transcription-sessions.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/realtime/realtime.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/realtime/realtime.mjs
 
 
 
@@ -44844,12 +45046,15 @@ class Realtime extends APIResource {
 Realtime.Sessions = Sessions;
 Realtime.TranscriptionSessions = TranscriptionSessions;
 //# sourceMappingURL=realtime.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/agents/environments/files.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/agents/environments/files.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 
+function files_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class Files extends APIResource {
     /**
      * Copies inline bytes or a Files API file into a connected execution environment.
@@ -44870,12 +45075,12 @@ class Files extends APIResource {
      * ```
      */
     create(environmentID, body, options) {
-        return this._client.post(path_path `/agents/environments/${environmentID}/files`, {
+        return this._client.post(path_path `/agents/environments/${environmentID}/files`, files_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Lists live files on a connected execution environment with optional directory
@@ -44893,21 +45098,24 @@ class Files extends APIResource {
      * ```
      */
     list(environmentID, query = {}, options) {
-        return this._client.getAPIList(path_path `/agents/environments/${environmentID}/files`, (TokenPage), {
+        return this._client.getAPIList(path_path `/agents/environments/${environmentID}/files`, (TokenPage), files_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=files.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/agents/environments/templates.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/agents/environments/templates.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 
+function templates_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const templates_normalizeRequestOptionsForQueryKeys = new Set([
@@ -44973,12 +45181,12 @@ class Templates extends APIResource {
      * ```
      */
     create(body = {}, options) {
-        return this._client.post('/agents/environments/templates', {
+        return this._client.post('/agents/environments/templates', templates_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Retrieves reusable environment configuration without returning confidential
@@ -44994,11 +45202,11 @@ class Templates extends APIResource {
      * ```
      */
     retrieve(environmentTemplateID, options) {
-        return this._client.get(path_path `/agents/environments/templates/${environmentTemplateID}`, {
+        return this._client.get(path_path `/agents/environments/templates/${environmentTemplateID}`, templates_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Updates reusable environment configuration without returning confidential
@@ -45014,12 +45222,12 @@ class Templates extends APIResource {
      * ```
      */
     update(environmentTemplateID, body = {}, options) {
-        return this._client.post(path_path `/agents/environments/templates/${environmentTemplateID}`, {
+        return this._client.post(path_path `/agents/environments/templates/${environmentTemplateID}`, templates_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     list(query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = templates_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'order'], options);
@@ -45028,12 +45236,12 @@ class Templates extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList('/agents/environments/templates', (CursorPage), {
+        return this._client.getAPIList('/agents/environments/templates', (CursorPage), templates_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Deletes reusable environment configuration and all confidential template inputs.
@@ -45049,15 +45257,15 @@ class Templates extends APIResource {
      * ```
      */
     delete(environmentTemplateID, options) {
-        return this._client.delete(path_path `/agents/environments/templates/${environmentTemplateID}`, {
+        return this._client.delete(path_path `/agents/environments/templates/${environmentTemplateID}`, templates_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=templates.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/agents/environments/environments.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/agents/environments/environments.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -45066,6 +45274,9 @@ class Templates extends APIResource {
 
 
 
+function environments_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class Environments extends APIResource {
     constructor() {
         super(...arguments);
@@ -45086,17 +45297,17 @@ class Environments extends APIResource {
      * ```
      */
     retrieve(environmentID, options) {
-        return this._client.get(path_path `/agents/environments/${environmentID}`, {
+        return this._client.get(path_path `/agents/environments/${environmentID}`, environments_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 Environments.Files = Files;
 Environments.Templates = Templates;
 //# sourceMappingURL=environments.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/lib/agents/turn-state.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/lib/agents/turn-state.mjs
 var _TurnState_turnID, _TurnState_turnEnded, _TurnState_eventIDs, _TurnState_calls;
 
 /** Tracks one helper invocation's coordinator turn and duplicate deliveries.
@@ -45155,7 +45366,7 @@ class TurnState {
 }
 _TurnState_turnID = new WeakMap(), _TurnState_turnEnded = new WeakMap(), _TurnState_eventIDs = new WeakMap(), _TurnState_calls = new WeakMap();
 //# sourceMappingURL=turn-state.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/lib/agents/agent-session-stream.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/lib/agents/agent-session-stream.mjs
 var _AgentSessionStream_instances, _AgentSessionStream_consumed, _AgentSessionStream_stream, _AgentSessionStream_response, _AgentSessionStream_reading, _AgentSessionStream_sessions, _AgentSessionStream_sessionID, _AgentSessionStream_input, _AgentSessionStream_handlers, _AgentSessionStream_inputKey, _AgentSessionStream_options, _AgentSessionStream_iterate, _AgentSessionStream_result, _AgentSessionStream_checkAbort, _AgentSessionStream_abortError, _AgentSessionStream_wait, _AgentSessionStream_submit;
 
 
@@ -45426,12 +45637,15 @@ _AgentSessionStream_iterate = async function* _AgentSessionStream_iterate() {
     }
 };
 //# sourceMappingURL=agent-session-stream.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/agents/sessions/artifacts.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/agents/sessions/artifacts.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 
+function artifacts_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const artifacts_normalizeRequestOptionsForQueryKeys = new Set([
@@ -45500,11 +45714,11 @@ class Artifacts extends APIResource {
      */
     retrieve(artifactID, params, options) {
         const { session_id } = params;
-        return this._client.get(path_path `/agents/sessions/${session_id}/artifacts/${artifactID}`, {
+        return this._client.get(path_path `/agents/sessions/${session_id}/artifacts/${artifactID}`, artifacts_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     list(sessionID, query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = artifacts_normalizeRequestOptionsForQuery(query, ['after', 'environment_id', 'limit', 'order'], options);
@@ -45513,12 +45727,12 @@ class Artifacts extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/agents/sessions/${sessionID}/artifacts`, (CursorPage), {
+        return this._client.getAPIList(path_path `/agents/sessions/${sessionID}/artifacts`, (CursorPage), artifacts_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Deletes an immutable session artifact without deleting its live environment file
@@ -45536,11 +45750,11 @@ class Artifacts extends APIResource {
      */
     delete(artifactID, params, options) {
         const { session_id } = params;
-        return this._client.delete(path_path `/agents/sessions/${session_id}/artifacts/${artifactID}`, {
+        return this._client.delete(path_path `/agents/sessions/${session_id}/artifacts/${artifactID}`, artifacts_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Downloads immutable session artifact bytes after the execution environment
@@ -45561,7 +45775,7 @@ class Artifacts extends APIResource {
      */
     content(artifactID, params, options) {
         const { session_id } = params;
-        return this._client.get(path_path `/agents/sessions/${session_id}/artifacts/${artifactID}/content`, {
+        return this._client.get(path_path `/agents/sessions/${session_id}/artifacts/${artifactID}/content`, artifacts_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([
                 { 'OpenAI-Beta': 'agents=v1', Accept: 'application/octet-stream' },
@@ -45569,15 +45783,18 @@ class Artifacts extends APIResource {
             ]),
             __security: { bearerAuth: true },
             __binaryResponse: true,
-        });
+        })));
     }
 }
 //# sourceMappingURL=artifacts.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/agents/sessions/events.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/agents/sessions/events.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function events_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class Events extends APIResource {
     /**
      * Submits message, cancellation, or tool-result events to a managed agent session.
@@ -45609,7 +45826,7 @@ class Events extends APIResource {
      */
     create(sessionID, params, options) {
         const { 'Idempotency-Key': idempotencyKey, ...body } = params;
-        return this._client.post(path_path `/agents/sessions/${sessionID}/events`, {
+        return this._client.post(path_path `/agents/sessions/${sessionID}/events`, events_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([
@@ -45621,7 +45838,7 @@ class Events extends APIResource {
                 options?.headers,
             ]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Streams live events for an agent session. See
@@ -45636,21 +45853,27 @@ class Events extends APIResource {
      * ```
      */
     stream(sessionID, options) {
-        return this._client.get(path_path `/agents/sessions/${sessionID}/events`, {
+        return this._client.get(path_path `/agents/sessions/${sessionID}/events`, events_resolveResourceRequestOptions(options, (options) => ({
             ...options,
-            headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1', Accept: 'text/event-stream' }, options?.headers]),
+            headers: buildHeaders([
+                { 'OpenAI-Beta': 'agents=v1', Accept: 'text/event-stream' },
+                options?.headers,
+            ]),
             stream: true,
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=events.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/agents/sessions/items.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/agents/sessions/items.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 
+function items_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const items_normalizeRequestOptionsForQueryKeys = new Set([
@@ -45711,21 +45934,24 @@ class Items extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/agents/sessions/${sessionID}/items`, (CursorPage), {
+        return this._client.getAPIList(path_path `/agents/sessions/${sessionID}/items`, (CursorPage), items_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=items.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/agents/sessions/turns.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/agents/sessions/turns.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 
+function turns_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const turns_normalizeRequestOptionsForQueryKeys = new Set([
@@ -45795,11 +46021,11 @@ class Turns extends APIResource {
      */
     retrieve(turnID, params, options) {
         const { session_id } = params;
-        return this._client.get(path_path `/agents/sessions/${session_id}/turns/${turnID}`, {
+        return this._client.get(path_path `/agents/sessions/${session_id}/turns/${turnID}`, turns_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     list(sessionID, query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = turns_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'order'], options);
@@ -45808,21 +46034,24 @@ class Turns extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/agents/sessions/${sessionID}/turns`, (CursorPage), {
+        return this._client.getAPIList(path_path `/agents/sessions/${sessionID}/turns`, (CursorPage), turns_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=turns.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/agents/sessions/subagents/items.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/agents/sessions/subagents/items.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 
+function subagents_items_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class items_Items extends APIResource {
     /**
      * Lists this subagent's own items across all of its turns. See
@@ -45841,21 +46070,24 @@ class items_Items extends APIResource {
      */
     list(subagentID, params, options) {
         const { session_id, ...query } = params;
-        return this._client.getAPIList(path_path `/agents/sessions/${session_id}/subagents/${subagentID}/items`, (CursorPage), {
+        return this._client.getAPIList(path_path `/agents/sessions/${session_id}/subagents/${subagentID}/items`, (CursorPage), subagents_items_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=items.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/agents/sessions/subagents/turns/items.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/agents/sessions/subagents/turns/items.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 
+function turns_items_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class turns_items_Items extends APIResource {
     /**
      * Lists items belonging to one turn of this subagent. See
@@ -45874,16 +46106,16 @@ class turns_items_Items extends APIResource {
      */
     list(turnID, params, options) {
         const { session_id, subagent_id, ...query } = params;
-        return this._client.getAPIList(path_path `/agents/sessions/${session_id}/subagents/${subagent_id}/turns/${turnID}/items`, (CursorPage), {
+        return this._client.getAPIList(path_path `/agents/sessions/${session_id}/subagents/${subagent_id}/turns/${turnID}/items`, (CursorPage), turns_items_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=items.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/agents/sessions/subagents/turns/turns.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/agents/sessions/subagents/turns/turns.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -45891,6 +46123,9 @@ class turns_items_Items extends APIResource {
 
 
 
+function turns_turns_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class turns_Turns extends APIResource {
     constructor() {
         super(...arguments);
@@ -45914,11 +46149,11 @@ class turns_Turns extends APIResource {
      */
     retrieve(turnID, params, options) {
         const { session_id, subagent_id } = params;
-        return this._client.get(path_path `/agents/sessions/${session_id}/subagents/${subagent_id}/turns/${turnID}`, {
+        return this._client.get(path_path `/agents/sessions/${session_id}/subagents/${subagent_id}/turns/${turnID}`, turns_turns_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Lists all turns of this subagent, including turns after a resume. See
@@ -45937,17 +46172,17 @@ class turns_Turns extends APIResource {
      */
     list(subagentID, params, options) {
         const { session_id, ...query } = params;
-        return this._client.getAPIList(path_path `/agents/sessions/${session_id}/subagents/${subagentID}/turns`, (CursorPage), {
+        return this._client.getAPIList(path_path `/agents/sessions/${session_id}/subagents/${subagentID}/turns`, (CursorPage), turns_turns_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 turns_Turns.Items = turns_items_Items;
 //# sourceMappingURL=turns.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/agents/sessions/subagents/subagents.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/agents/sessions/subagents/subagents.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -45957,6 +46192,9 @@ turns_Turns.Items = turns_items_Items;
 
 
 
+function subagents_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const subagents_normalizeRequestOptionsForQueryKeys = new Set([
@@ -46030,11 +46268,11 @@ class Subagents extends APIResource {
      */
     retrieve(subagentID, params, options) {
         const { session_id } = params;
-        return this._client.get(path_path `/agents/sessions/${session_id}/subagents/${subagentID}`, {
+        return this._client.get(path_path `/agents/sessions/${session_id}/subagents/${subagentID}`, subagents_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     list(sessionID, query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = subagents_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'order'], options);
@@ -46043,18 +46281,18 @@ class Subagents extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/agents/sessions/${sessionID}/subagents`, (CursorPage), {
+        return this._client.getAPIList(path_path `/agents/sessions/${sessionID}/subagents`, (CursorPage), subagents_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 Subagents.Items = items_Items;
 Subagents.Turns = turns_Turns;
 //# sourceMappingURL=subagents.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/agents/sessions/sessions.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/agents/sessions/sessions.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -46071,6 +46309,9 @@ Subagents.Turns = turns_Turns;
 
 
 
+function sessions_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const sessions_normalizeRequestOptionsForQueryKeys = new Set([
@@ -46137,13 +46378,13 @@ class sessions_Sessions extends APIResource {
         return new AgentSessionStream(this, sessionID, params, options);
     }
     create(body, options) {
-        return this._client.post('/agents/sessions', {
+        return this._client.post('/agents/sessions', sessions_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             stream: body.stream ?? false,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Retrieves the current state of a managed agent session. See
@@ -46156,11 +46397,11 @@ class sessions_Sessions extends APIResource {
      * ```
      */
     retrieve(sessionID, options) {
-        return this._client.get(path_path `/agents/sessions/${sessionID}`, {
+        return this._client.get(path_path `/agents/sessions/${sessionID}`, sessions_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Updates session metadata, model, reasoning effort, or service tier. Model
@@ -46174,12 +46415,12 @@ class sessions_Sessions extends APIResource {
      * ```
      */
     update(sessionID, body = {}, options) {
-        return this._client.post(path_path `/agents/sessions/${sessionID}`, {
+        return this._client.post(path_path `/agents/sessions/${sessionID}`, sessions_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     list(query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = sessions_normalizeRequestOptionsForQuery(query, ['after', 'agent_id', 'limit', 'order'], options);
@@ -46188,12 +46429,12 @@ class sessions_Sessions extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList('/agents/sessions', (CursorPage), {
+        return this._client.getAPIList('/agents/sessions', (CursorPage), sessions_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Removes a managed agent session from the public API and returns a deletion
@@ -46209,11 +46450,11 @@ class sessions_Sessions extends APIResource {
      * ```
      */
     delete(sessionID, options) {
-        return this._client.delete(path_path `/agents/sessions/${sessionID}`, {
+        return this._client.delete(path_path `/agents/sessions/${sessionID}`, sessions_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 sessions_Sessions.Subagents = Subagents;
@@ -46222,12 +46463,15 @@ sessions_Sessions.Items = Items;
 sessions_Sessions.Events = Events;
 sessions_Sessions.Turns = Turns;
 //# sourceMappingURL=sessions.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/agents/vaults/credentials.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/agents/vaults/credentials.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 
+function credentials_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const credentials_normalizeRequestOptionsForQueryKeys = new Set([
@@ -46303,12 +46547,12 @@ class Credentials extends APIResource {
      * ```
      */
     create(vaultID, body, options) {
-        return this._client.post(path_path `/vaults/${vaultID}/credentials`, {
+        return this._client.post(path_path `/vaults/${vaultID}/credentials`, credentials_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Retrieves vault credential metadata without returning secret values. See
@@ -46325,11 +46569,11 @@ class Credentials extends APIResource {
      */
     retrieve(credentialID, params, options) {
         const { vault_id } = params;
-        return this._client.get(path_path `/vaults/${vault_id}/credentials/${credentialID}`, {
+        return this._client.get(path_path `/vaults/${vault_id}/credentials/${credentialID}`, credentials_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Rotates a vault credential's write-only secret and returns only credential
@@ -46350,12 +46594,12 @@ class Credentials extends APIResource {
      */
     update(credentialID, params, options) {
         const { vault_id, ...body } = params;
-        return this._client.post(path_path `/vaults/${vault_id}/credentials/${credentialID}`, {
+        return this._client.post(path_path `/vaults/${vault_id}/credentials/${credentialID}`, credentials_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     list(vaultID, query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = credentials_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'order', 'status'], options);
@@ -46364,12 +46608,12 @@ class Credentials extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/vaults/${vaultID}/credentials`, (CursorPage), {
+        return this._client.getAPIList(path_path `/vaults/${vaultID}/credentials`, (CursorPage), credentials_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Deletes a vault credential. See
@@ -46386,15 +46630,15 @@ class Credentials extends APIResource {
      */
     delete(credentialID, params, options) {
         const { vault_id } = params;
-        return this._client.delete(path_path `/vaults/${vault_id}/credentials/${credentialID}`, {
+        return this._client.delete(path_path `/vaults/${vault_id}/credentials/${credentialID}`, credentials_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=credentials.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/agents/vaults/vaults.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/agents/vaults/vaults.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -46402,6 +46646,9 @@ class Credentials extends APIResource {
 
 
 
+function vaults_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const vaults_normalizeRequestOptionsForQueryKeys = new Set([
@@ -46469,12 +46716,12 @@ class Vaults extends APIResource {
      * ```
      */
     create(body = {}, options) {
-        return this._client.post('/vaults', {
+        return this._client.post('/vaults', vaults_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Retrieves a vault by its ID. See
@@ -46488,11 +46735,11 @@ class Vaults extends APIResource {
      * ```
      */
     retrieve(vaultID, options) {
-        return this._client.get(path_path `/vaults/${vaultID}`, {
+        return this._client.get(path_path `/vaults/${vaultID}`, vaults_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     list(query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = vaults_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'order', 'status'], options);
@@ -46501,12 +46748,12 @@ class Vaults extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList('/vaults', (CursorPage), {
+        return this._client.getAPIList('/vaults', (CursorPage), vaults_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Deletes a vault and all its credentials. See
@@ -46520,16 +46767,16 @@ class Vaults extends APIResource {
      * ```
      */
     delete(vaultID, options) {
-        return this._client.delete(path_path `/vaults/${vaultID}`, {
+        return this._client.delete(path_path `/vaults/${vaultID}`, vaults_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 Vaults.Credentials = Credentials;
 //# sourceMappingURL=vaults.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/agents/agents.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/agents/agents.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -46541,6 +46788,9 @@ Vaults.Credentials = Credentials;
 
 
 
+function agents_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const agents_normalizeRequestOptionsForQueryKeys = new Set([
@@ -46612,12 +46862,12 @@ class Agents extends APIResource {
      * ```
      */
     create(body, options) {
-        return this._client.post('/agents', {
+        return this._client.post('/agents', agents_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Retrieves a reusable agent by ID. See
@@ -46629,11 +46879,11 @@ class Agents extends APIResource {
      * ```
      */
     retrieve(agentID, options) {
-        return this._client.get(path_path `/agents/${agentID}`, {
+        return this._client.get(path_path `/agents/${agentID}`, agents_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Updates a reusable agent. See
@@ -46645,12 +46895,12 @@ class Agents extends APIResource {
      * ```
      */
     update(agentID, body = {}, options) {
-        return this._client.post(path_path `/agents/${agentID}`, {
+        return this._client.post(path_path `/agents/${agentID}`, agents_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     list(query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = agents_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'order'], options);
@@ -46659,12 +46909,12 @@ class Agents extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList('/agents', (CursorPage), {
+        return this._client.getAPIList('/agents', (CursorPage), agents_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Deletes a reusable agent. See
@@ -46678,22 +46928,25 @@ class Agents extends APIResource {
      * ```
      */
     delete(agentID, options) {
-        return this._client.delete(path_path `/agents/${agentID}`, {
+        return this._client.delete(path_path `/agents/${agentID}`, agents_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'agents=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 Agents.Environments = Environments;
 Agents.Vaults = Vaults;
 Agents.Sessions = sessions_Sessions;
 //# sourceMappingURL=agents.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/chatkit/sessions.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/chatkit/sessions.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function chatkit_sessions_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class chatkit_sessions_Sessions extends APIResource {
     /**
      * Create a ChatKit session.
@@ -46708,12 +46961,12 @@ class chatkit_sessions_Sessions extends APIResource {
      * ```
      */
     create(body, options) {
-        return this._client.post('/chatkit/sessions', {
+        return this._client.post('/chatkit/sessions', chatkit_sessions_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'chatkit_beta=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Cancel an active ChatKit session and return its most recent metadata.
@@ -46727,20 +46980,23 @@ class chatkit_sessions_Sessions extends APIResource {
      * ```
      */
     cancel(sessionID, options) {
-        return this._client.post(path_path `/chatkit/sessions/${sessionID}/cancel`, {
+        return this._client.post(path_path `/chatkit/sessions/${sessionID}/cancel`, chatkit_sessions_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'chatkit_beta=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=sessions.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/chatkit/threads.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/chatkit/threads.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 
+function threads_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const threads_normalizeRequestOptionsForQueryKeys = new Set([
@@ -46804,11 +47060,11 @@ class Threads extends APIResource {
      * ```
      */
     retrieve(threadID, options) {
-        return this._client.get(path_path `/chatkit/threads/${threadID}`, {
+        return this._client.get(path_path `/chatkit/threads/${threadID}`, threads_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'chatkit_beta=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     list(query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = threads_normalizeRequestOptionsForQuery(query, ['after', 'before', 'limit', 'order', 'user'], options);
@@ -46817,12 +47073,12 @@ class Threads extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList('/chatkit/threads', (ConversationCursorPage), {
+        return this._client.getAPIList('/chatkit/threads', (ConversationCursorPage), threads_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'chatkit_beta=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Delete a ChatKit thread along with its items and stored attachments.
@@ -46835,11 +47091,11 @@ class Threads extends APIResource {
      * ```
      */
     delete(threadID, options) {
-        return this._client.delete(path_path `/chatkit/threads/${threadID}`, {
+        return this._client.delete(path_path `/chatkit/threads/${threadID}`, threads_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'chatkit_beta=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     listItems(threadID, query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = threads_normalizeRequestOptionsForQuery(query, ['after', 'before', 'limit', 'order'], options);
@@ -46848,16 +47104,16 @@ class Threads extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/chatkit/threads/${threadID}/items`, (ConversationCursorPage), {
+        return this._client.getAPIList(path_path `/chatkit/threads/${threadID}/items`, (ConversationCursorPage), threads_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'chatkit_beta=v1' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=threads.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/chatkit/chatkit.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/chatkit/chatkit.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -46874,29 +47130,80 @@ class ChatKit extends APIResource {
 ChatKit.Sessions = chatkit_sessions_Sessions;
 ChatKit.Threads = Threads;
 //# sourceMappingURL=chatkit.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/responses/input-items.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/responses/input-items.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 
+function input_items_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
+// Recognizable options across SDK runtime versions. Keep this independent of
+// private RequestOptions fields so older handwritten runtimes still compile.
+const input_items_normalizeRequestOptionsForQueryKeys = new Set([
+    'method',
+    'path',
+    'query',
+    'body',
+    'headers',
+    'maxRetries',
+    'stream',
+    'timeout',
+    'httpAgent',
+    'fetchOptions',
+    'signal',
+    'idempotencyKey',
+    'defaultBaseURL',
+    '__metadata',
+    '__binaryRequest',
+    '__binaryResponse',
+    '__streamClass',
+    '__security',
+    '__synthesizeEventData',
+]);
+function input_items_normalizeRequestOptionsForQuery(value, queryKeys, options) {
+    if (typeof value !== 'object' || value === null)
+        return undefined;
+    // Optional never fields can still be explicitly undefined unless consumers
+    // enable exactOptionalPropertyTypes. Snapshot data without invoking getters.
+    const entries = Object.entries(Object.getOwnPropertyDescriptors(value)).filter(([, descriptor]) => descriptor.enumerable && (!('value' in descriptor) || descriptor.value !== undefined));
+    const keys = entries.map(([key]) => key);
+    const requestOnly = keys.some((key) => input_items_normalizeRequestOptionsForQueryKeys.has(key) && !queryKeys.includes(key));
+    if (!requestOnly)
+        return undefined;
+    // Declared query fields, including stream, must use the query argument.
+    // Mixing them with request-only options is ambiguous and could change the return type.
+    if (options !== undefined ||
+        keys.some((key) => !input_items_normalizeRequestOptionsForQueryKeys.has(key) || queryKeys.includes(key))) {
+        throw new TypeError('Query parameters and request options must be passed as separate arguments.');
+    }
+    // The query position must not gain authority to change the request destination
+    // or transport. Those overrides require the explicit request options argument.
+    if (keys.some((key) => !['headers', 'maxRetries', 'timeout', 'signal', 'idempotencyKey', 'query'].includes(key))) {
+        throw new TypeError('Pass transport overrides in the explicit request options argument.');
+    }
+    // Copy only the validated fields. Spreading value would reintroduce undefined
+    // transport overrides, and deleting them would mutate the caller's object.
+    return Object.fromEntries(entries.map(([key, descriptor]) => {
+        if ('value' in descriptor)
+            return [key, descriptor.value];
+        return [key, descriptor.get ? Reflect.apply(descriptor.get, value, []) : undefined];
+    }));
+}
+/**
+ * Create and manage model responses.
+ */
 class InputItems extends APIResource {
-    /**
-     * Returns a list of input items for a given response.
-     *
-     * @example
-     * ```ts
-     * // Automatically fetches more pages as needed.
-     * for await (const betaResponseItem of client.beta.responses.inputItems.list(
-     *   'response_id',
-     * )) {
-     *   // ...
-     * }
-     * ```
-     */
     list(responseID, params = {}, options) {
+        const normalizeRequestOptionsForQueryOptions = input_items_normalizeRequestOptionsForQuery(params, ['after', 'betas', 'include', 'limit', 'order'], options);
+        if (normalizeRequestOptionsForQueryOptions !== undefined) {
+            options = normalizeRequestOptionsForQueryOptions;
+            params = {};
+        }
+        params = params;
         const { betas, ...query } = params ?? {};
-        return this._client.getAPIList(path_path `/responses/${responseID}/input_items?beta=true`, (CursorPage), {
+        return this._client.getAPIList(path_path `/responses/${responseID}/input_items?beta=true`, (CursorPage), input_items_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             headers: buildHeaders([
@@ -46904,14 +47211,20 @@ class InputItems extends APIResource {
                 options?.headers,
             ]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=input-items.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/responses/input-tokens.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/responses/input-tokens.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
+function input_tokens_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
+/**
+ * Create and manage model responses.
+ */
 class InputTokens extends APIResource {
     /**
      * Returns input token counts of the request.
@@ -46927,7 +47240,7 @@ class InputTokens extends APIResource {
      */
     count(params = {}, options) {
         const { betas, ...body } = params ?? {};
-        return this._client.post('/responses/input_tokens?beta=true', {
+        return this._client.post('/responses/input_tokens?beta=true', input_tokens_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([
@@ -46935,11 +47248,11 @@ class InputTokens extends APIResource {
                 options?.headers,
             ]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=input-tokens.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/responses/responses.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/responses/responses.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -46948,6 +47261,64 @@ class InputTokens extends APIResource {
 
 
 
+function responses_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
+// Recognizable options across SDK runtime versions. Keep this independent of
+// private RequestOptions fields so older handwritten runtimes still compile.
+const responses_normalizeRequestOptionsForQueryKeys = new Set([
+    'method',
+    'path',
+    'query',
+    'body',
+    'headers',
+    'maxRetries',
+    'stream',
+    'timeout',
+    'httpAgent',
+    'fetchOptions',
+    'signal',
+    'idempotencyKey',
+    'defaultBaseURL',
+    '__metadata',
+    '__binaryRequest',
+    '__binaryResponse',
+    '__streamClass',
+    '__security',
+    '__synthesizeEventData',
+]);
+function responses_normalizeRequestOptionsForQuery(value, queryKeys, options) {
+    if (typeof value !== 'object' || value === null)
+        return undefined;
+    // Optional never fields can still be explicitly undefined unless consumers
+    // enable exactOptionalPropertyTypes. Snapshot data without invoking getters.
+    const entries = Object.entries(Object.getOwnPropertyDescriptors(value)).filter(([, descriptor]) => descriptor.enumerable && (!('value' in descriptor) || descriptor.value !== undefined));
+    const keys = entries.map(([key]) => key);
+    const requestOnly = keys.some((key) => responses_normalizeRequestOptionsForQueryKeys.has(key) && !queryKeys.includes(key));
+    if (!requestOnly)
+        return undefined;
+    // Declared query fields, including stream, must use the query argument.
+    // Mixing them with request-only options is ambiguous and could change the return type.
+    if (options !== undefined ||
+        keys.some((key) => !responses_normalizeRequestOptionsForQueryKeys.has(key) || queryKeys.includes(key))) {
+        throw new TypeError('Query parameters and request options must be passed as separate arguments.');
+    }
+    // The query position must not gain authority to change the request destination
+    // or transport. Those overrides require the explicit request options argument.
+    if (keys.some((key) => !['headers', 'maxRetries', 'timeout', 'signal', 'idempotencyKey', 'query'].includes(key))) {
+        throw new TypeError('Pass transport overrides in the explicit request options argument.');
+    }
+    // Copy only the validated fields. Spreading value would reintroduce undefined
+    // transport overrides, and deleting them would mutate the caller's object.
+    return Object.fromEntries(entries.map(([key, descriptor]) => {
+        if ('value' in descriptor)
+            return [key, descriptor.value];
+        return [key, descriptor.get ? Reflect.apply(descriptor.get, value, []) : undefined];
+    }));
+}
+/**
+ * Create and manage model responses.
+ */
 class Responses extends APIResource {
     constructor() {
         super(...arguments);
@@ -46956,7 +47327,7 @@ class Responses extends APIResource {
     }
     create(params, options) {
         const { betas, ...body } = params;
-        return this._client.post('/responses?beta=true', {
+        return this._client.post('/responses?beta=true', responses_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([
@@ -46965,11 +47336,17 @@ class Responses extends APIResource {
             ]),
             stream: params.stream ?? false,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     retrieve(responseID, params = {}, options) {
+        const normalizeRequestOptionsForQueryOptions = responses_normalizeRequestOptionsForQuery(params, ['betas', 'include', 'include_obfuscation', 'starting_after', 'stream'], options);
+        if (normalizeRequestOptionsForQueryOptions !== undefined) {
+            options = normalizeRequestOptionsForQueryOptions;
+            params = {};
+        }
+        params = params;
         const { betas, ...query } = params ?? {};
-        return this._client.get(path_path `/responses/${responseID}?beta=true`, {
+        return this._client.get(path_path `/responses/${responseID}?beta=true`, responses_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             headers: buildHeaders([
@@ -46978,7 +47355,7 @@ class Responses extends APIResource {
             ]),
             stream: params?.stream ?? false,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Deletes a model response with the given ID.
@@ -46992,14 +47369,17 @@ class Responses extends APIResource {
      */
     delete(responseID, params = {}, options) {
         const { betas } = params ?? {};
-        return this._client.delete(path_path `/responses/${responseID}?beta=true`, {
+        return this._client.delete(path_path `/responses/${responseID}?beta=true`, responses_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([
-                { Accept: '*/*', ...(betas?.toString() != null ? { 'openai-beta': betas?.toString() } : undefined) },
+                {
+                    Accept: '*/*',
+                    ...(betas?.toString() != null ? { 'openai-beta': betas?.toString() } : undefined),
+                },
                 options?.headers,
             ]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Cancels a model response with the given ID. Only responses created with the
@@ -47015,14 +47395,14 @@ class Responses extends APIResource {
      */
     cancel(responseID, params = {}, options) {
         const { betas } = params ?? {};
-        return this._client.post(path_path `/responses/${responseID}/cancel?beta=true`, {
+        return this._client.post(path_path `/responses/${responseID}/cancel?beta=true`, responses_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([
                 { ...(betas?.toString() != null ? { 'openai-beta': betas?.toString() } : undefined) },
                 options?.headers,
             ]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Compact a conversation. Returns a compacted response object.
@@ -47042,7 +47422,7 @@ class Responses extends APIResource {
      */
     compact(params, options) {
         const { betas, ...body } = params;
-        return this._client.post('/responses/compact?beta=true', {
+        return this._client.post('/responses/compact?beta=true', responses_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([
@@ -47050,18 +47430,21 @@ class Responses extends APIResource {
                 options?.headers,
             ]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 Responses.InputItems = InputItems;
 Responses.InputTokens = InputTokens;
 //# sourceMappingURL=responses.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/threads/messages.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/threads/messages.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 
+function messages_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const messages_normalizeRequestOptionsForQueryKeys = new Set([
@@ -47126,12 +47509,12 @@ class messages_Messages extends APIResource {
      * @deprecated The Assistants API is deprecated in favor of the Responses API
      */
     create(threadID, body, options) {
-        return this._client.post(path_path `/threads/${threadID}/messages`, {
+        return this._client.post(path_path `/threads/${threadID}/messages`, messages_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Retrieve a message.
@@ -47140,11 +47523,11 @@ class messages_Messages extends APIResource {
      */
     retrieve(messageID, params, options) {
         const { thread_id } = params;
-        return this._client.get(path_path `/threads/${thread_id}/messages/${messageID}`, {
+        return this._client.get(path_path `/threads/${thread_id}/messages/${messageID}`, messages_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Modifies a message.
@@ -47153,12 +47536,12 @@ class messages_Messages extends APIResource {
      */
     update(messageID, params, options) {
         const { thread_id, ...body } = params;
-        return this._client.post(path_path `/threads/${thread_id}/messages/${messageID}`, {
+        return this._client.post(path_path `/threads/${thread_id}/messages/${messageID}`, messages_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     list(threadID, query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = messages_normalizeRequestOptionsForQuery(query, ['after', 'before', 'limit', 'order', 'run_id'], options);
@@ -47167,12 +47550,12 @@ class messages_Messages extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/threads/${threadID}/messages`, (CursorPage), {
+        return this._client.getAPIList(path_path `/threads/${threadID}/messages`, (CursorPage), messages_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Deletes a message.
@@ -47181,20 +47564,23 @@ class messages_Messages extends APIResource {
      */
     delete(messageID, params, options) {
         const { thread_id } = params;
-        return this._client.delete(path_path `/threads/${thread_id}/messages/${messageID}`, {
+        return this._client.delete(path_path `/threads/${thread_id}/messages/${messageID}`, messages_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=messages.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/threads/runs/steps.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/threads/runs/steps.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 
+function steps_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 /**
  * Build Assistants that can call models and use tools.
  *
@@ -47208,12 +47594,12 @@ class Steps extends APIResource {
      */
     retrieve(stepID, params, options) {
         const { thread_id, run_id, ...query } = params;
-        return this._client.get(path_path `/threads/${thread_id}/runs/${run_id}/steps/${stepID}`, {
+        return this._client.get(path_path `/threads/${thread_id}/runs/${run_id}/steps/${stepID}`, steps_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Returns a list of run steps belonging to a run.
@@ -47222,16 +47608,16 @@ class Steps extends APIResource {
      */
     list(runID, params, options) {
         const { thread_id, ...query } = params;
-        return this._client.getAPIList(path_path `/threads/${thread_id}/runs/${runID}/steps`, (CursorPage), {
+        return this._client.getAPIList(path_path `/threads/${thread_id}/runs/${runID}/steps`, (CursorPage), steps_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=steps.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/utils/base64.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/utils/base64.mjs
 
 
 const toBase64 = (data) => {
@@ -47289,7 +47675,7 @@ const toFloat32Array = (base64Str) => {
     }
 };
 //# sourceMappingURL=base64.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/utils/env.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/utils/env.mjs
 /**
  * Read an environment variable.
  *
@@ -47312,7 +47698,7 @@ const env_readEnv = (env) => {
     return undefined;
 };
 //# sourceMappingURL=env.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/utils.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/utils.mjs
 
 
 
@@ -47321,7 +47707,7 @@ const env_readEnv = (env) => {
 
 
 //# sourceMappingURL=utils.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/assistant-stream-delta.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/assistant-stream-delta.mjs
 
 
 const MAX_ASSISTANT_STREAM_ARRAY_GROWTH = 1024;
@@ -47630,7 +48016,7 @@ function createAssistantStreamArrayDeltaCommit(accumulator, delta, kind, cacheAr
     return () => commitAssistantStreamArrayProjection(projection);
 }
 //# sourceMappingURL=assistant-stream-delta.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/lib/AssistantStream.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/lib/AssistantStream.mjs
 var _AssistantStream_instances, _AssistantStream_runStepSnapshots, _AssistantStream_runStepIDOwners, _AssistantStream_activeRunStepID, _AssistantStream_messageSnapshots, _AssistantStream_messageIDOwners, _AssistantStream_messageSnapshot, _AssistantStream_activeMessageID, _AssistantStream_finalRun, _AssistantStream_currentContentIndex, _AssistantStream_currentContent, _AssistantStream_currentToolCallIndex, _AssistantStream_currentToolCall, _AssistantStream_currentEvent, _AssistantStream_currentRunSnapshot, _AssistantStream_currentRunStepSnapshot, _AssistantStream_addEvent, _AssistantStream_endRequest, _AssistantStream_validateRunStepEvent, _AssistantStream_reserveRunStepAlias, _AssistantStream_validateMessageEvent, _AssistantStream_reserveMessageAlias, _AssistantStream_handleMessage, _AssistantStream_handleRunStep, _AssistantStream_emitExposed, _AssistantStream_handleEvent, _AssistantStream_accumulateRunStep, _AssistantStream_accumulateMessage, _AssistantStream_accumulateContent, _AssistantStream_handleRun;
 
 
@@ -48351,7 +48737,7 @@ function AssistantStream_assertNever(_x) {
     return _x;
 }
 //# sourceMappingURL=AssistantStream.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/lib/polling.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/lib/polling.mjs
 
 
 
@@ -48480,7 +48866,7 @@ async function pollWithResponse(retrieve, intermediateStatuses, terminalStatuses
     }
 }
 //# sourceMappingURL=polling.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/lib/assistant-run-polling.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/lib/assistant-run-polling.mjs
 
 /**
  * Polls an assistant run through the resource's retrieve method, preserving the
@@ -48495,7 +48881,7 @@ function pollAssistantRun(resource, runID, params, options) {
     }), ['queued', 'in_progress', 'cancelling'], ['requires_action', 'incomplete', 'cancelled', 'completed', 'failed', 'expired'], options);
 }
 //# sourceMappingURL=assistant-run-polling.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/threads/runs/runs.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/threads/runs/runs.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -48505,6 +48891,9 @@ function pollAssistantRun(resource, runID, params, options) {
 
 
 
+function runs_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const runs_normalizeRequestOptionsForQueryKeys = new Set([
@@ -48569,7 +48958,7 @@ class Runs extends APIResource {
     }
     create(threadID, params, options) {
         const { include, ...body } = params;
-        return this._client.post(path_path `/threads/${threadID}/runs`, {
+        return this._client.post(path_path `/threads/${threadID}/runs`, runs_resolveResourceRequestOptions(options, (options) => ({
             query: { include },
             body,
             ...options,
@@ -48577,7 +48966,7 @@ class Runs extends APIResource {
             stream: params.stream ?? false,
             __synthesizeEventData: true,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Retrieves a run.
@@ -48586,11 +48975,11 @@ class Runs extends APIResource {
      */
     retrieve(runID, params, options) {
         const { thread_id } = params;
-        return this._client.get(path_path `/threads/${thread_id}/runs/${runID}`, {
+        return this._client.get(path_path `/threads/${thread_id}/runs/${runID}`, runs_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Modifies a run.
@@ -48599,12 +48988,12 @@ class Runs extends APIResource {
      */
     update(runID, params, options) {
         const { thread_id, ...body } = params;
-        return this._client.post(path_path `/threads/${thread_id}/runs/${runID}`, {
+        return this._client.post(path_path `/threads/${thread_id}/runs/${runID}`, runs_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     list(threadID, query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = runs_normalizeRequestOptionsForQuery(query, ['after', 'before', 'limit', 'order'], options);
@@ -48613,12 +49002,12 @@ class Runs extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/threads/${threadID}/runs`, (CursorPage), {
+        return this._client.getAPIList(path_path `/threads/${threadID}/runs`, (CursorPage), runs_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Cancels a run that is `in_progress`.
@@ -48627,11 +49016,11 @@ class Runs extends APIResource {
      */
     cancel(runID, params, options) {
         const { thread_id } = params;
-        return this._client.post(path_path `/threads/${thread_id}/runs/${runID}/cancel`, {
+        return this._client.post(path_path `/threads/${thread_id}/runs/${runID}/cancel`, runs_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * A helper to create a run an poll for a terminal state. More information on Run
@@ -48666,14 +49055,14 @@ class Runs extends APIResource {
     }
     submitToolOutputs(runID, params, options) {
         const { thread_id, ...body } = params;
-        return this._client.post(path_path `/threads/${thread_id}/runs/${runID}/submit_tool_outputs`, {
+        return this._client.post(path_path `/threads/${thread_id}/runs/${runID}/submit_tool_outputs`, runs_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             stream: params.stream ?? false,
             __synthesizeEventData: true,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * A helper to submit a tool output to a run and poll for a terminal run state.
@@ -48695,7 +49084,7 @@ class Runs extends APIResource {
 }
 Runs.Steps = Steps;
 //# sourceMappingURL=runs.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/threads/threads.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/threads/threads.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -48705,6 +49094,9 @@ Runs.Steps = Steps;
 
 
 
+function threads_threads_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 /**
  * Build Assistants that can call models and use tools.
  *
@@ -48722,12 +49114,12 @@ class threads_Threads extends APIResource {
      * @deprecated The Assistants API is deprecated in favor of the Responses API
      */
     create(body = {}, options) {
-        return this._client.post('/threads', {
+        return this._client.post('/threads', threads_threads_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Retrieves a thread.
@@ -48735,11 +49127,11 @@ class threads_Threads extends APIResource {
      * @deprecated The Assistants API is deprecated in favor of the Responses API
      */
     retrieve(threadID, options) {
-        return this._client.get(path_path `/threads/${threadID}`, {
+        return this._client.get(path_path `/threads/${threadID}`, threads_threads_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Modifies a thread.
@@ -48747,12 +49139,12 @@ class threads_Threads extends APIResource {
      * @deprecated The Assistants API is deprecated in favor of the Responses API
      */
     update(threadID, body, options) {
-        return this._client.post(path_path `/threads/${threadID}`, {
+        return this._client.post(path_path `/threads/${threadID}`, threads_threads_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Delete a thread.
@@ -48760,21 +49152,21 @@ class threads_Threads extends APIResource {
      * @deprecated The Assistants API is deprecated in favor of the Responses API
      */
     delete(threadID, options) {
-        return this._client.delete(path_path `/threads/${threadID}`, {
+        return this._client.delete(path_path `/threads/${threadID}`, threads_threads_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     createAndRun(body, options) {
-        return this._client.post('/threads/runs', {
+        return this._client.post('/threads/runs', threads_threads_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             stream: body.stream ?? false,
             __synthesizeEventData: true,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * A helper to create a thread, start a run and then poll for a terminal state.
@@ -48795,7 +49187,7 @@ class threads_Threads extends APIResource {
 threads_Threads.Runs = Runs;
 threads_Threads.Messages = messages_Messages;
 //# sourceMappingURL=threads.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/beta/beta.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/beta/beta.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -48828,44 +49220,50 @@ Beta.ChatKit = ChatKit;
 Beta.Assistants = Assistants;
 Beta.Threads = threads_Threads;
 //# sourceMappingURL=beta.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/completions.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/completions.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
+function resources_completions_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 /**
  * Given a prompt, the model will return one or more predicted completions, and can also return the probabilities of alternative tokens at each position.
  */
 class completions_Completions extends APIResource {
     create(body, options) {
-        return this._client.post('/completions', {
+        return this._client.post('/completions', resources_completions_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             stream: body.stream ?? false,
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=completions.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/containers/files/content.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/containers/files/content.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function content_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class Content extends APIResource {
     /**
      * Retrieve Container File Content
      */
     retrieve(fileID, params, options) {
         const { container_id } = params;
-        return this._client.get(path_path `/containers/${container_id}/files/${fileID}/content`, {
+        return this._client.get(path_path `/containers/${container_id}/files/${fileID}/content`, content_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ Accept: 'application/binary' }, options?.headers]),
             __security: { bearerAuth: true },
             __binaryResponse: true,
-        });
+        })));
     }
 }
 //# sourceMappingURL=content.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/containers/files/files.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/containers/files/files.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -48874,6 +49272,9 @@ class Content extends APIResource {
 
 
 
+function files_files_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const files_normalizeRequestOptionsForQueryKeys = new Set([
@@ -48938,17 +49339,14 @@ class files_Files extends APIResource {
      * a JSON request with a file ID.
      */
     create(containerID, body, options) {
-        return this._client.post(path_path `/containers/${containerID}/files`, maybeMultipartFormRequestOptions({ body, ...options, __security: { bearerAuth: true } }, this._client));
+        return this._client.post(path_path `/containers/${containerID}/files`, files_files_resolveResourceRequestOptions(options, (options) => maybeMultipartFormRequestOptions({ body, ...options, __security: { bearerAuth: true } }, this._client)));
     }
     /**
      * Retrieve Container File
      */
     retrieve(fileID, params, options) {
         const { container_id } = params;
-        return this._client.get(path_path `/containers/${container_id}/files/${fileID}`, {
-            ...options,
-            __security: { bearerAuth: true },
-        });
+        return this._client.get(path_path `/containers/${container_id}/files/${fileID}`, files_files_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
     list(containerID, query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = files_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'order'], options);
@@ -48957,27 +49355,27 @@ class files_Files extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/containers/${containerID}/files`, (CursorPage), {
+        return this._client.getAPIList(path_path `/containers/${containerID}/files`, (CursorPage), files_files_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Delete Container File
      */
     delete(fileID, params, options) {
         const { container_id } = params;
-        return this._client.delete(path_path `/containers/${container_id}/files/${fileID}`, {
+        return this._client.delete(path_path `/containers/${container_id}/files/${fileID}`, files_files_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 files_Files.Content = Content;
 //# sourceMappingURL=files.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/containers/containers.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/containers/containers.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -48985,6 +49383,9 @@ files_Files.Content = Content;
 
 
 
+function containers_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const containers_normalizeRequestOptionsForQueryKeys = new Set([
@@ -49046,16 +49447,17 @@ class Containers extends APIResource {
      * Create Container
      */
     create(body, options) {
-        return this._client.post('/containers', { body, ...options, __security: { bearerAuth: true } });
+        return this._client.post('/containers', containers_resolveResourceRequestOptions(options, (options) => ({
+            body,
+            ...options,
+            __security: { bearerAuth: true },
+        })));
     }
     /**
      * Retrieve Container
      */
     retrieve(containerID, options) {
-        return this._client.get(path_path `/containers/${containerID}`, {
-            ...options,
-            __security: { bearerAuth: true },
-        });
+        return this._client.get(path_path `/containers/${containerID}`, containers_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
     list(query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = containers_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'name', 'order'], options);
@@ -49064,29 +49466,32 @@ class Containers extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList('/containers', (CursorPage), {
+        return this._client.getAPIList('/containers', (CursorPage), containers_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Delete Container
      */
     delete(containerID, options) {
-        return this._client.delete(path_path `/containers/${containerID}`, {
+        return this._client.delete(path_path `/containers/${containerID}`, containers_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 Containers.Files = files_Files;
 //# sourceMappingURL=containers.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/content-provenance-checks.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/content-provenance-checks.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
+function content_provenance_checks_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class ContentProvenanceChecks extends APIResource {
     /**
      * Check whether an image or audio file contains known OpenAI provenance signals.
@@ -49100,15 +49505,18 @@ class ContentProvenanceChecks extends APIResource {
      * company's model, which the tool currently does not detect.
      */
     create(body, options) {
-        return this._client.post('/content_provenance_checks', multipartFormRequestOptions({ body, ...options, __security: { bearerAuth: true } }, this._client));
+        return this._client.post('/content_provenance_checks', content_provenance_checks_resolveResourceRequestOptions(options, (options) => multipartFormRequestOptions({ body, ...options, __security: { bearerAuth: true } }, this._client)));
     }
 }
 //# sourceMappingURL=content-provenance-checks.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/conversations/items.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/conversations/items.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function conversations_items_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const conversations_items_normalizeRequestOptionsForQueryKeys = new Set([
@@ -49170,23 +49578,23 @@ class conversations_items_Items extends APIResource {
      */
     create(conversationID, params, options) {
         const { include, ...body } = params;
-        return this._client.post(path_path `/conversations/${conversationID}/items`, {
+        return this._client.post(path_path `/conversations/${conversationID}/items`, conversations_items_resolveResourceRequestOptions(options, (options) => ({
             query: { include },
             body,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Get a single item from a conversation with the given IDs.
      */
     retrieve(itemID, params, options) {
         const { conversation_id, ...query } = params;
-        return this._client.get(path_path `/conversations/${conversation_id}/items/${itemID}`, {
+        return this._client.get(path_path `/conversations/${conversation_id}/items/${itemID}`, conversations_items_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     list(conversationID, query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = conversations_items_normalizeRequestOptionsForQuery(query, ['after', 'include', 'limit', 'order'], options);
@@ -49195,26 +49603,30 @@ class conversations_items_Items extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/conversations/${conversationID}/items`, (ConversationCursorPage), { query, ...options, __security: { bearerAuth: true } });
+        return this._client.getAPIList(path_path `/conversations/${conversationID}/items`, (ConversationCursorPage), conversations_items_resolveResourceRequestOptions(options, (options) => ({
+            query,
+            ...options,
+            __security: { bearerAuth: true },
+        })));
     }
     /**
      * Delete an item from a conversation with the given IDs.
      */
     delete(itemID, params, options) {
         const { conversation_id } = params;
-        return this._client.delete(path_path `/conversations/${conversation_id}/items/${itemID}`, {
-            ...options,
-            __security: { bearerAuth: true },
-        });
+        return this._client.delete(path_path `/conversations/${conversation_id}/items/${itemID}`, conversations_items_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
 }
 //# sourceMappingURL=items.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/conversations/conversations.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/conversations/conversations.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 
+function conversations_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 /**
  * Manage conversations and conversation items.
  */
@@ -49227,40 +49639,38 @@ class Conversations extends APIResource {
      * Create a conversation.
      */
     create(body = {}, options) {
-        return this._client.post('/conversations', { body, ...options, __security: { bearerAuth: true } });
+        return this._client.post('/conversations', conversations_resolveResourceRequestOptions(options, (options) => ({
+            body,
+            ...options,
+            __security: { bearerAuth: true },
+        })));
     }
     /**
      * Get a conversation
      */
     retrieve(conversationID, options) {
-        return this._client.get(path_path `/conversations/${conversationID}`, {
-            ...options,
-            __security: { bearerAuth: true },
-        });
+        return this._client.get(path_path `/conversations/${conversationID}`, conversations_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
     /**
      * Update a conversation
      */
     update(conversationID, body, options) {
-        return this._client.post(path_path `/conversations/${conversationID}`, {
+        return this._client.post(path_path `/conversations/${conversationID}`, conversations_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Delete a conversation. Items in the conversation will not be deleted.
      */
     delete(conversationID, options) {
-        return this._client.delete(path_path `/conversations/${conversationID}`, {
-            ...options,
-            __security: { bearerAuth: true },
-        });
+        return this._client.delete(path_path `/conversations/${conversationID}`, conversations_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
 }
 Conversations.Items = conversations_items_Items;
 //# sourceMappingURL=conversations.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/lib/embeddings.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/lib/embeddings.mjs
 
 /**
  * Sends the optimized embeddings request while preserving explicit encodings and
@@ -49316,7 +49726,7 @@ function createEmbedding(client, body, options) {
     });
 }
 //# sourceMappingURL=embeddings.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/embeddings.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/embeddings.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -49329,11 +49739,14 @@ class Embeddings extends APIResource {
     }
 }
 //# sourceMappingURL=embeddings.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/evals/runs/output-items.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/evals/runs/output-items.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function output_items_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 /**
  * Manage and run evals in the OpenAI platform.
  */
@@ -49343,27 +49756,31 @@ class OutputItems extends APIResource {
      */
     retrieve(outputItemID, params, options) {
         const { eval_id, run_id } = params;
-        return this._client.get(path_path `/evals/${eval_id}/runs/${run_id}/output_items/${outputItemID}`, {
-            ...options,
-            __security: { bearerAuth: true },
-        });
+        return this._client.get(path_path `/evals/${eval_id}/runs/${run_id}/output_items/${outputItemID}`, output_items_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
     /**
      * Get a list of output items for an evaluation run.
      */
     list(runID, params, options) {
         const { eval_id, ...query } = params;
-        return this._client.getAPIList(path_path `/evals/${eval_id}/runs/${runID}/output_items`, (CursorPage), { query, ...options, __security: { bearerAuth: true } });
+        return this._client.getAPIList(path_path `/evals/${eval_id}/runs/${runID}/output_items`, (CursorPage), output_items_resolveResourceRequestOptions(options, (options) => ({
+            query,
+            ...options,
+            __security: { bearerAuth: true },
+        })));
     }
 }
 //# sourceMappingURL=output-items.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/evals/runs/runs.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/evals/runs/runs.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 
 
+function runs_runs_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const runs_runs_normalizeRequestOptionsForQueryKeys = new Set([
@@ -49430,21 +49847,18 @@ class runs_Runs extends APIResource {
      * schema specified in the config of the evaluation.
      */
     create(evalID, body, options) {
-        return this._client.post(path_path `/evals/${evalID}/runs`, {
+        return this._client.post(path_path `/evals/${evalID}/runs`, runs_runs_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Get an evaluation run by ID.
      */
     retrieve(runID, params, options) {
         const { eval_id } = params;
-        return this._client.get(path_path `/evals/${eval_id}/runs/${runID}`, {
-            ...options,
-            __security: { bearerAuth: true },
-        });
+        return this._client.get(path_path `/evals/${eval_id}/runs/${runID}`, runs_runs_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
     list(evalID, query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = runs_runs_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'order', 'status'], options);
@@ -49453,42 +49867,39 @@ class runs_Runs extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/evals/${evalID}/runs`, (CursorPage), {
+        return this._client.getAPIList(path_path `/evals/${evalID}/runs`, (CursorPage), runs_runs_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Delete an eval run.
      */
     delete(runID, params, options) {
         const { eval_id } = params;
-        return this._client.delete(path_path `/evals/${eval_id}/runs/${runID}`, {
-            ...options,
-            __security: { bearerAuth: true },
-        });
+        return this._client.delete(path_path `/evals/${eval_id}/runs/${runID}`, runs_runs_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
     /**
      * Cancel an ongoing evaluation run.
      */
     cancel(runID, params, options) {
         const { eval_id } = params;
-        return this._client.post(path_path `/evals/${eval_id}/runs/${runID}`, {
-            ...options,
-            __security: { bearerAuth: true },
-        });
+        return this._client.post(path_path `/evals/${eval_id}/runs/${runID}`, runs_runs_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
 }
 runs_Runs.OutputItems = OutputItems;
 //# sourceMappingURL=runs.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/evals/evals.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/evals/evals.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 
 
+function evals_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const evals_normalizeRequestOptionsForQueryKeys = new Set([
@@ -49558,19 +49969,27 @@ class Evals extends APIResource {
      * the [Evals guide](https://developers.openai.com/api/docs/guides/evals).
      */
     create(body, options) {
-        return this._client.post('/evals', { body, ...options, __security: { bearerAuth: true } });
+        return this._client.post('/evals', evals_resolveResourceRequestOptions(options, (options) => ({
+            body,
+            ...options,
+            __security: { bearerAuth: true },
+        })));
     }
     /**
      * Get an evaluation by ID.
      */
     retrieve(evalID, options) {
-        return this._client.get(path_path `/evals/${evalID}`, { ...options, __security: { bearerAuth: true } });
+        return this._client.get(path_path `/evals/${evalID}`, evals_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
     /**
      * Update certain properties of an evaluation.
      */
     update(evalID, body, options) {
-        return this._client.post(path_path `/evals/${evalID}`, { body, ...options, __security: { bearerAuth: true } });
+        return this._client.post(path_path `/evals/${evalID}`, evals_resolveResourceRequestOptions(options, (options) => ({
+            body,
+            ...options,
+            __security: { bearerAuth: true },
+        })));
     }
     list(query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = evals_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'order', 'order_by'], options);
@@ -49579,22 +49998,22 @@ class Evals extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList('/evals', (CursorPage), {
+        return this._client.getAPIList('/evals', (CursorPage), evals_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Delete an evaluation.
      */
     delete(evalID, options) {
-        return this._client.delete(path_path `/evals/${evalID}`, { ...options, __security: { bearerAuth: true } });
+        return this._client.delete(path_path `/evals/${evalID}`, evals_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
 }
 Evals.Runs = runs_Runs;
 //# sourceMappingURL=evals.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/lib/file-processing.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/lib/file-processing.mjs
 
 
 /**
@@ -49623,7 +50042,7 @@ async function waitForFileProcessing(resource, id, pollInterval, maxWait) {
     return file;
 }
 //# sourceMappingURL=file-processing.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/files.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/files.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -49631,6 +50050,9 @@ async function waitForFileProcessing(resource, id, pollInterval, maxWait) {
 
 
 
+function resources_files_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const resources_files_normalizeRequestOptionsForQueryKeys = new Set([
@@ -49717,13 +50139,13 @@ class resources_files_Files extends APIResource {
      * storage limits.
      */
     create(body, options) {
-        return this._client.post('/files', multipartFormRequestOptions({ body, ...options, __security: { bearerAuth: true } }, this._client));
+        return this._client.post('/files', resources_files_resolveResourceRequestOptions(options, (options) => multipartFormRequestOptions({ body, ...options, __security: { bearerAuth: true } }, this._client)));
     }
     /**
      * Returns information about a specific file.
      */
     retrieve(fileID, options) {
-        return this._client.get(path_path `/files/${fileID}`, { ...options, __security: { bearerAuth: true } });
+        return this._client.get(path_path `/files/${fileID}`, resources_files_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
     list(query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = resources_files_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'order', 'purpose'], options);
@@ -49732,28 +50154,28 @@ class resources_files_Files extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList('/files', (CursorPage), {
+        return this._client.getAPIList('/files', (CursorPage), resources_files_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Delete a file and remove it from all vector stores.
      */
     delete(fileID, options) {
-        return this._client.delete(path_path `/files/${fileID}`, { ...options, __security: { bearerAuth: true } });
+        return this._client.delete(path_path `/files/${fileID}`, resources_files_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
     /**
      * Returns a response containing the contents of the specified file.
      */
     content(fileID, options) {
-        return this._client.get(path_path `/files/${fileID}/content`, {
+        return this._client.get(path_path `/files/${fileID}/content`, resources_files_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ Accept: 'application/binary' }, options?.headers]),
             __security: { bearerAuth: true },
             __binaryResponse: true,
-        });
+        })));
     }
     /**
      * Waits for the given file to be processed, default timeout is 30 mins.
@@ -49763,15 +50185,18 @@ class resources_files_Files extends APIResource {
     }
 }
 //# sourceMappingURL=files.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/methods.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/methods.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 class Methods extends APIResource {
 }
 //# sourceMappingURL=methods.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/alpha/graders.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/alpha/graders.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
+function graders_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 /**
  * Manage fine-tuning jobs to tailor a model to your specific training data.
  */
@@ -49794,11 +50219,11 @@ class Graders extends APIResource {
      * ```
      */
     run(body, options) {
-        return this._client.post('/fine_tuning/alpha/graders/run', {
+        return this._client.post('/fine_tuning/alpha/graders/run', graders_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Validate a grader.
@@ -49818,15 +50243,15 @@ class Graders extends APIResource {
      * ```
      */
     validate(body, options) {
-        return this._client.post('/fine_tuning/alpha/graders/validate', {
+        return this._client.post('/fine_tuning/alpha/graders/validate', graders_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=graders.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/alpha/alpha.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/alpha/alpha.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -49839,11 +50264,14 @@ class Alpha extends APIResource {
 }
 Alpha.Graders = Graders;
 //# sourceMappingURL=alpha.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/checkpoints/permissions.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/checkpoints/permissions.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function permissions_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const permissions_normalizeRequestOptionsForQueryKeys = new Set([
@@ -49919,7 +50347,12 @@ class Permissions extends APIResource {
      * ```
      */
     create(fineTunedModelCheckpoint, body, options) {
-        return this._client.getAPIList(path_path `/fine_tuning/checkpoints/${fineTunedModelCheckpoint}/permissions`, (Page), { body, method: 'post', ...options, __security: { adminAPIKeyAuth: true } });
+        return this._client.getAPIList(path_path `/fine_tuning/checkpoints/${fineTunedModelCheckpoint}/permissions`, (Page), permissions_resolveResourceRequestOptions(options, (options) => ({
+            body,
+            method: 'post',
+            ...options,
+            __security: { adminAPIKeyAuth: true },
+        })));
     }
     retrieve(fineTunedModelCheckpoint, query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = permissions_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'order', 'project_id'], options);
@@ -49928,11 +50361,11 @@ class Permissions extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.get(path_path `/fine_tuning/checkpoints/${fineTunedModelCheckpoint}/permissions`, {
+        return this._client.get(path_path `/fine_tuning/checkpoints/${fineTunedModelCheckpoint}/permissions`, permissions_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { adminAPIKeyAuth: true },
-        });
+        })));
     }
     list(fineTunedModelCheckpoint, query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = permissions_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'order', 'project_id'], options);
@@ -49941,7 +50374,11 @@ class Permissions extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/fine_tuning/checkpoints/${fineTunedModelCheckpoint}/permissions`, (ConversationCursorPage), { query, ...options, __security: { adminAPIKeyAuth: true } });
+        return this._client.getAPIList(path_path `/fine_tuning/checkpoints/${fineTunedModelCheckpoint}/permissions`, (ConversationCursorPage), permissions_resolveResourceRequestOptions(options, (options) => ({
+            query,
+            ...options,
+            __security: { adminAPIKeyAuth: true },
+        })));
     }
     /**
      * **NOTE:** This endpoint requires an
@@ -49964,11 +50401,14 @@ class Permissions extends APIResource {
      */
     delete(permissionID, params, options) {
         const { fine_tuned_model_checkpoint } = params;
-        return this._client.delete(path_path `/fine_tuning/checkpoints/${fine_tuned_model_checkpoint}/permissions/${permissionID}`, { ...options, __security: { adminAPIKeyAuth: true } });
+        return this._client.delete(path_path `/fine_tuning/checkpoints/${fine_tuned_model_checkpoint}/permissions/${permissionID}`, permissions_resolveResourceRequestOptions(options, (options) => ({
+            ...options,
+            __security: { adminAPIKeyAuth: true },
+        })));
     }
 }
 //# sourceMappingURL=permissions.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/checkpoints/checkpoints.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/checkpoints/checkpoints.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -49981,11 +50421,14 @@ class Checkpoints extends APIResource {
 }
 Checkpoints.Permissions = Permissions;
 //# sourceMappingURL=checkpoints.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/jobs/checkpoints.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/jobs/checkpoints.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function checkpoints_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const checkpoints_normalizeRequestOptionsForQueryKeys = new Set([
@@ -50049,17 +50492,24 @@ class checkpoints_Checkpoints extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/fine_tuning/jobs/${fineTuningJobID}/checkpoints`, (CursorPage), { query, ...options, __security: { bearerAuth: true } });
+        return this._client.getAPIList(path_path `/fine_tuning/jobs/${fineTuningJobID}/checkpoints`, (CursorPage), checkpoints_resolveResourceRequestOptions(options, (options) => ({
+            query,
+            ...options,
+            __security: { bearerAuth: true },
+        })));
     }
 }
 //# sourceMappingURL=checkpoints.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/jobs/jobs.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/jobs/jobs.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 
 
+function jobs_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const jobs_normalizeRequestOptionsForQueryKeys = new Set([
@@ -50138,7 +50588,11 @@ class Jobs extends APIResource {
      * ```
      */
     create(body, options) {
-        return this._client.post('/fine_tuning/jobs', { body, ...options, __security: { bearerAuth: true } });
+        return this._client.post('/fine_tuning/jobs', jobs_resolveResourceRequestOptions(options, (options) => ({
+            body,
+            ...options,
+            __security: { bearerAuth: true },
+        })));
     }
     /**
      * Get info about a fine-tuning job.
@@ -50153,10 +50607,7 @@ class Jobs extends APIResource {
      * ```
      */
     retrieve(fineTuningJobID, options) {
-        return this._client.get(path_path `/fine_tuning/jobs/${fineTuningJobID}`, {
-            ...options,
-            __security: { bearerAuth: true },
-        });
+        return this._client.get(path_path `/fine_tuning/jobs/${fineTuningJobID}`, jobs_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
     list(query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = jobs_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'metadata'], options);
@@ -50165,11 +50616,11 @@ class Jobs extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList('/fine_tuning/jobs', (CursorPage), {
+        return this._client.getAPIList('/fine_tuning/jobs', (CursorPage), jobs_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Immediately cancel a fine-tune job.
@@ -50182,10 +50633,7 @@ class Jobs extends APIResource {
      * ```
      */
     cancel(fineTuningJobID, options) {
-        return this._client.post(path_path `/fine_tuning/jobs/${fineTuningJobID}/cancel`, {
-            ...options,
-            __security: { bearerAuth: true },
-        });
+        return this._client.post(path_path `/fine_tuning/jobs/${fineTuningJobID}/cancel`, jobs_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
     listEvents(fineTuningJobID, query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = jobs_normalizeRequestOptionsForQuery(query, ['after', 'limit'], options);
@@ -50194,7 +50642,11 @@ class Jobs extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/fine_tuning/jobs/${fineTuningJobID}/events`, (CursorPage), { query, ...options, __security: { bearerAuth: true } });
+        return this._client.getAPIList(path_path `/fine_tuning/jobs/${fineTuningJobID}/events`, (CursorPage), jobs_resolveResourceRequestOptions(options, (options) => ({
+            query,
+            ...options,
+            __security: { bearerAuth: true },
+        })));
     }
     /**
      * Pause a fine-tune job.
@@ -50207,10 +50659,7 @@ class Jobs extends APIResource {
      * ```
      */
     pause(fineTuningJobID, options) {
-        return this._client.post(path_path `/fine_tuning/jobs/${fineTuningJobID}/pause`, {
-            ...options,
-            __security: { bearerAuth: true },
-        });
+        return this._client.post(path_path `/fine_tuning/jobs/${fineTuningJobID}/pause`, jobs_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
     /**
      * Resume a fine-tune job.
@@ -50223,15 +50672,12 @@ class Jobs extends APIResource {
      * ```
      */
     resume(fineTuningJobID, options) {
-        return this._client.post(path_path `/fine_tuning/jobs/${fineTuningJobID}/resume`, {
-            ...options,
-            __security: { bearerAuth: true },
-        });
+        return this._client.post(path_path `/fine_tuning/jobs/${fineTuningJobID}/resume`, jobs_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
 }
 Jobs.Checkpoints = checkpoints_Checkpoints;
 //# sourceMappingURL=jobs.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/fine-tuning.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/fine-tuning/fine-tuning.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -50256,13 +50702,13 @@ FineTuning.Jobs = Jobs;
 FineTuning.Checkpoints = Checkpoints;
 FineTuning.Alpha = Alpha;
 //# sourceMappingURL=fine-tuning.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/graders/grader-models.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/graders/grader-models.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 class GraderModels extends APIResource {
 }
 //# sourceMappingURL=grader-models.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/graders/graders.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/graders/graders.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -50275,10 +50721,13 @@ class graders_Graders extends APIResource {
 }
 graders_Graders.GraderModels = GraderModels;
 //# sourceMappingURL=graders.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/images.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/images.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
+function images_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 /**
  * Given a prompt and/or an input image, the model will generate a new image.
  */
@@ -50294,32 +50743,35 @@ class Images extends APIResource {
      * ```
      */
     createVariation(body, options) {
-        return this._client.post('/images/variations', multipartFormRequestOptions({ body, ...options, __security: { bearerAuth: true } }, this._client));
+        return this._client.post('/images/variations', images_resolveResourceRequestOptions(options, (options) => multipartFormRequestOptions({ body, ...options, __security: { bearerAuth: true } }, this._client)));
     }
     edit(body, options) {
-        return this._client.post('/images/edits', multipartFormRequestOptions({
+        return this._client.post('/images/edits', images_resolveResourceRequestOptions(options, (options) => multipartFormRequestOptions({
             body,
             ...options,
             stream: body.stream ?? false,
             __metadata: { ...options?.__metadata, ...(body.model == null ? {} : { model: body.model }) },
             __security: { bearerAuth: true },
-        }, this._client));
+        }, this._client)));
     }
     generate(body, options) {
-        return this._client.post('/images/generations', {
+        return this._client.post('/images/generations', images_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             stream: body.stream ?? false,
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=images.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/live/sessions.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/live/sessions.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function live_sessions_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class live_sessions_Sessions extends APIResource {
     /**
      * Accept an incoming SIP call. Supply session with type live, the model, and
@@ -50336,12 +50788,12 @@ class live_sessions_Sessions extends APIResource {
      * ```
      */
     accept(sessionID, body, options) {
-        return this._client.post(path_path `/live/sessions/${sessionID}/accept`, {
+        return this._client.post(path_path `/live/sessions/${sessionID}/accept`, live_sessions_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Get Live session content
@@ -50356,12 +50808,12 @@ class live_sessions_Sessions extends APIResource {
      * ```
      */
     downloadRecording(sessionID, options) {
-        return this._client.get(path_path `/live/sessions/${sessionID}/content`, {
+        return this._client.get(path_path `/live/sessions/${sessionID}/content`, live_sessions_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ Accept: 'application/binary' }, options?.headers]),
             __security: { bearerAuth: true },
             __binaryResponse: true,
-        });
+        })));
     }
     /**
      * Fork a stored Live session onto a new WebRTC connection.
@@ -50375,11 +50827,11 @@ class live_sessions_Sessions extends APIResource {
      * ```
      */
     fork(sessionID, body, options) {
-        return this._client.post(path_path `/live/sessions/${sessionID}/fork`, {
+        return this._client.post(path_path `/live/sessions/${sessionID}/fork`, live_sessions_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * End a SIP call identified by session_id.
@@ -50390,11 +50842,11 @@ class live_sessions_Sessions extends APIResource {
      * ```
      */
     hangup(sessionID, options) {
-        return this._client.post(path_path `/live/sessions/${sessionID}/hangup`, {
+        return this._client.post(path_path `/live/sessions/${sessionID}/hangup`, live_sessions_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Transfer a SIP call to another destination. Supply a nonblank target_uri for the
@@ -50408,12 +50860,12 @@ class live_sessions_Sessions extends APIResource {
      * ```
      */
     refer(sessionID, body, options) {
-        return this._client.post(path_path `/live/sessions/${sessionID}/refer`, {
+        return this._client.post(path_path `/live/sessions/${sessionID}/refer`, live_sessions_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Reject an incoming SIP call. Send a required SIP rejection status_code between
@@ -50427,28 +50879,28 @@ class live_sessions_Sessions extends APIResource {
      * ```
      */
     reject(sessionID, body, options) {
-        return this._client.post(path_path `/live/sessions/${sessionID}/reject`, {
+        return this._client.post(path_path `/live/sessions/${sessionID}/reject`, live_sessions_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=sessions.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/live/forks/forks.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/live/forks/forks.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 class Forks extends APIResource {
 }
 //# sourceMappingURL=forks.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/live/sideband/sideband.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/live/sideband/sideband.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 class Sideband extends APIResource {
 }
 //# sourceMappingURL=sideband.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/live/live.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/live/live.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -50457,6 +50909,9 @@ class Sideband extends APIResource {
 
 
 
+function live_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class Live extends APIResource {
     constructor() {
         super(...arguments);
@@ -50477,18 +50932,25 @@ class Live extends APIResource {
      * ```
      */
     create(body, options) {
-        return this._client.post('/live/sessions', { body, ...options, __security: { bearerAuth: true } });
+        return this._client.post('/live/sessions', live_resolveResourceRequestOptions(options, (options) => ({
+            body,
+            ...options,
+            __security: { bearerAuth: true },
+        })));
     }
 }
 Live.Sideband = Sideband;
 Live.Forks = Forks;
 Live.Sessions = live_sessions_Sessions;
 //# sourceMappingURL=live.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/models.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/models.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function models_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 /**
  * List and describe the various models available in the API.
  */
@@ -50498,27 +50960,30 @@ class Models extends APIResource {
      * the owner and permissioning.
      */
     retrieve(model, options) {
-        return this._client.get(path_path `/models/${model}`, { ...options, __security: { bearerAuth: true } });
+        return this._client.get(path_path `/models/${model}`, models_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
     /**
      * Lists the currently available models, and provides basic information about each
      * one such as the owner and availability.
      */
     list(options) {
-        return this._client.getAPIList('/models', (Page), { ...options, __security: { bearerAuth: true } });
+        return this._client.getAPIList('/models', (Page), models_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
     /**
      * Delete a fine-tuned model. You must have the Owner role in your organization to
      * delete a model.
      */
     delete(model, options) {
-        return this._client.delete(path_path `/models/${model}`, { ...options, __security: { bearerAuth: true } });
+        return this._client.delete(path_path `/models/${model}`, models_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
 }
 //# sourceMappingURL=models.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/moderations.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/moderations.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
+function moderations_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 /**
  * Given text and/or image inputs, classifies if those inputs are potentially harmful.
  */
@@ -50529,11 +50994,15 @@ class Moderations extends APIResource {
      * [moderation guide](https://developers.openai.com/api/docs/guides/moderation).
      */
     create(body, options) {
-        return this._client.post('/moderations', { body, ...options, __security: { bearerAuth: true } });
+        return this._client.post('/moderations', moderations_resolveResourceRequestOptions(options, (options) => ({
+            body,
+            ...options,
+            __security: { bearerAuth: true },
+        })));
     }
 }
 //# sourceMappingURL=moderations.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/multipart-encoding.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/multipart-encoding.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -50582,12 +51051,15 @@ async function encodedMultipartFormRequestOptions(options, client, encodings, ra
     };
 }
 //# sourceMappingURL=multipart-encoding.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/realtime/calls.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/realtime/calls.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 
+function calls_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class Calls extends APIResource {
     /**
      * Create a new Realtime API call over WebRTC and receive the SDP answer needed to
@@ -50601,7 +51073,7 @@ class Calls extends APIResource {
      * ```
      */
     create(body, options) {
-        return this._client.post('/realtime/calls', encodedMultipartFormRequestOptions({
+        return this._client.post('/realtime/calls', calls_resolveResourceRequestOptions(options, (options) => encodedMultipartFormRequestOptions({
             body,
             ...options,
             headers: buildHeaders([{ Accept: 'application/sdp' }, options?.headers]),
@@ -50610,7 +51082,7 @@ class Calls extends APIResource {
         }, this._client, {
             sdp: { content_type: 'application/sdp', json: false },
             session: { content_type: 'application/json', json: true },
-        }, 'sdp'));
+        }, 'sdp')));
     }
     /**
      * Accept an incoming SIP call and configure the realtime session that will handle
@@ -50624,12 +51096,12 @@ class Calls extends APIResource {
      * ```
      */
     accept(callID, body, options) {
-        return this._client.post(path_path `/realtime/calls/${callID}/accept`, {
+        return this._client.post(path_path `/realtime/calls/${callID}/accept`, calls_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * End an active Realtime API call, whether it was initiated over SIP or WebRTC.
@@ -50640,11 +51112,11 @@ class Calls extends APIResource {
      * ```
      */
     hangup(callID, options) {
-        return this._client.post(path_path `/realtime/calls/${callID}/hangup`, {
+        return this._client.post(path_path `/realtime/calls/${callID}/hangup`, calls_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Transfer an active SIP call to a new destination using the SIP REFER verb.
@@ -50657,12 +51129,12 @@ class Calls extends APIResource {
      * ```
      */
     refer(callID, body, options) {
-        return this._client.post(path_path `/realtime/calls/${callID}/refer`, {
+        return this._client.post(path_path `/realtime/calls/${callID}/refer`, calls_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Decline an incoming SIP call by returning a SIP status code to the caller.
@@ -50673,18 +51145,21 @@ class Calls extends APIResource {
      * ```
      */
     reject(callID, body = {}, options) {
-        return this._client.post(path_path `/realtime/calls/${callID}/reject`, {
+        return this._client.post(path_path `/realtime/calls/${callID}/reject`, calls_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=calls.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/realtime/client-secrets.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/realtime/client-secrets.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
+function client_secrets_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class ClientSecrets extends APIResource {
     /**
      * Create a Realtime client secret with an associated session configuration.
@@ -50710,15 +51185,15 @@ class ClientSecrets extends APIResource {
      * ```
      */
     create(body, options) {
-        return this._client.post('/realtime/client_secrets', {
+        return this._client.post('/realtime/client_secrets', client_secrets_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=client-secrets.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/realtime/realtime.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/realtime/realtime.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -50735,7 +51210,7 @@ class realtime_Realtime extends APIResource {
 realtime_Realtime.ClientSecrets = ClientSecrets;
 realtime_Realtime.Calls = Calls;
 //# sourceMappingURL=realtime.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/lib/ResponsesParser.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/lib/ResponsesParser.mjs
 
 
 /**
@@ -50935,7 +51410,7 @@ function addOutputText(rsp) {
     rsp.output_text = texts.join('');
 }
 //# sourceMappingURL=ResponsesParser.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/responses/output-text-index.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/responses/output-text-index.mjs
 /**
  * Stores output text lengths in a complete binary segment tree.
  *
@@ -51009,7 +51484,7 @@ class OutputTextIndex {
     }
 }
 //# sourceMappingURL=output-text-index.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/responses/canonical-output-text.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/responses/canonical-output-text.mjs
 
 function createCanonicalResponseContext() {
     return {
@@ -51125,7 +51600,7 @@ function updateOutputText(context, snapshot, outputIndex, previousText, nextText
             snapshot.output_text.slice(offset + previousText.length);
 }
 //# sourceMappingURL=canonical-output-text.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/responses/response-accumulator.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/responses/response-accumulator.mjs
 
 
 
@@ -52064,7 +52539,7 @@ function accumulateResponseWithContext(event, snapshot, context, rejectInvalidSh
     return response_accumulator_assertNever(dispatchEvent);
 }
 //# sourceMappingURL=response-accumulator.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/lib/responses/ResponseStream.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/lib/responses/ResponseStream.mjs
 var _ResponseStream_instances, _ResponseStream_params, _ResponseStream_currentResponseSnapshot, _ResponseStream_finalResponse, _ResponseStream_accumulatorContext, _ResponseStream_beginRequest, _ResponseStream_addEvent, _ResponseStream_endRequest;
 
 
@@ -52252,14 +52727,17 @@ function finalizeResponse(snapshot, params) {
     return maybeParseResponse(snapshot, params);
 }
 //# sourceMappingURL=ResponseStream.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/responses/input-items.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/responses/input-items.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function responses_input_items_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
-const input_items_normalizeRequestOptionsForQueryKeys = new Set([
+const responses_input_items_normalizeRequestOptionsForQueryKeys = new Set([
     'method',
     'path',
     'query',
@@ -52280,20 +52758,20 @@ const input_items_normalizeRequestOptionsForQueryKeys = new Set([
     '__security',
     '__synthesizeEventData',
 ]);
-function input_items_normalizeRequestOptionsForQuery(value, queryKeys, options) {
+function responses_input_items_normalizeRequestOptionsForQuery(value, queryKeys, options) {
     if (typeof value !== 'object' || value === null)
         return undefined;
     // Optional never fields can still be explicitly undefined unless consumers
     // enable exactOptionalPropertyTypes. Snapshot data without invoking getters.
     const entries = Object.entries(Object.getOwnPropertyDescriptors(value)).filter(([, descriptor]) => descriptor.enumerable && (!('value' in descriptor) || descriptor.value !== undefined));
     const keys = entries.map(([key]) => key);
-    const requestOnly = keys.some((key) => input_items_normalizeRequestOptionsForQueryKeys.has(key) && !queryKeys.includes(key));
+    const requestOnly = keys.some((key) => responses_input_items_normalizeRequestOptionsForQueryKeys.has(key) && !queryKeys.includes(key));
     if (!requestOnly)
         return undefined;
     // Declared query fields, including stream, must use the query argument.
     // Mixing them with request-only options is ambiguous and could change the return type.
     if (options !== undefined ||
-        keys.some((key) => !input_items_normalizeRequestOptionsForQueryKeys.has(key) || queryKeys.includes(key))) {
+        keys.some((key) => !responses_input_items_normalizeRequestOptionsForQueryKeys.has(key) || queryKeys.includes(key))) {
         throw new TypeError('Query parameters and request options must be passed as separate arguments.');
     }
     // The query position must not gain authority to change the request destination
@@ -52309,21 +52787,34 @@ function input_items_normalizeRequestOptionsForQuery(value, queryKeys, options) 
         return [key, descriptor.get ? Reflect.apply(descriptor.get, value, []) : undefined];
     }));
 }
+/**
+ * Create and manage model responses.
+ */
 class input_items_InputItems extends APIResource {
     list(responseID, query = {}, options) {
-        const normalizeRequestOptionsForQueryOptions = input_items_normalizeRequestOptionsForQuery(query, ['after', 'include', 'limit', 'order'], options);
+        const normalizeRequestOptionsForQueryOptions = responses_input_items_normalizeRequestOptionsForQuery(query, ['after', 'include', 'limit', 'order'], options);
         if (normalizeRequestOptionsForQueryOptions !== undefined) {
             options = normalizeRequestOptionsForQueryOptions;
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/responses/${responseID}/input_items`, (CursorPage), { query, ...options, __security: { bearerAuth: true } });
+        return this._client.getAPIList(path_path `/responses/${responseID}/input_items`, (CursorPage), responses_input_items_resolveResourceRequestOptions(options, (options) => ({
+            query,
+            ...options,
+            __security: { bearerAuth: true },
+        })));
     }
 }
 //# sourceMappingURL=input-items.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/responses/input-tokens.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/responses/input-tokens.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
+function responses_input_tokens_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
+/**
+ * Create and manage model responses.
+ */
 class input_tokens_InputTokens extends APIResource {
     /**
      * Returns input token counts of the request.
@@ -52337,15 +52828,15 @@ class input_tokens_InputTokens extends APIResource {
      * ```
      */
     count(body = {}, options) {
-        return this._client.post('/responses/input_tokens', {
+        return this._client.post('/responses/input_tokens', responses_input_tokens_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=input-tokens.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/responses/responses.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/responses/responses.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -52356,9 +52847,12 @@ class input_tokens_InputTokens extends APIResource {
 
 
 
+function responses_responses_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
-const responses_normalizeRequestOptionsForQueryKeys = new Set([
+const responses_responses_normalizeRequestOptionsForQueryKeys = new Set([
     'method',
     'path',
     'query',
@@ -52379,20 +52873,20 @@ const responses_normalizeRequestOptionsForQueryKeys = new Set([
     '__security',
     '__synthesizeEventData',
 ]);
-function responses_normalizeRequestOptionsForQuery(value, queryKeys, options) {
+function responses_responses_normalizeRequestOptionsForQuery(value, queryKeys, options) {
     if (typeof value !== 'object' || value === null)
         return undefined;
     // Optional never fields can still be explicitly undefined unless consumers
     // enable exactOptionalPropertyTypes. Snapshot data without invoking getters.
     const entries = Object.entries(Object.getOwnPropertyDescriptors(value)).filter(([, descriptor]) => descriptor.enumerable && (!('value' in descriptor) || descriptor.value !== undefined));
     const keys = entries.map(([key]) => key);
-    const requestOnly = keys.some((key) => responses_normalizeRequestOptionsForQueryKeys.has(key) && !queryKeys.includes(key));
+    const requestOnly = keys.some((key) => responses_responses_normalizeRequestOptionsForQueryKeys.has(key) && !queryKeys.includes(key));
     if (!requestOnly)
         return undefined;
     // Declared query fields, including stream, must use the query argument.
     // Mixing them with request-only options is ambiguous and could change the return type.
     if (options !== undefined ||
-        keys.some((key) => !responses_normalizeRequestOptionsForQueryKeys.has(key) || queryKeys.includes(key))) {
+        keys.some((key) => !responses_responses_normalizeRequestOptionsForQueryKeys.has(key) || queryKeys.includes(key))) {
         throw new TypeError('Query parameters and request options must be passed as separate arguments.');
     }
     // The query position must not gain authority to change the request destination
@@ -52408,6 +52902,9 @@ function responses_normalizeRequestOptionsForQuery(value, queryKeys, options) {
         return [key, descriptor.get ? Reflect.apply(descriptor.get, value, []) : undefined];
     }));
 }
+/**
+ * Create and manage model responses.
+ */
 class responses_Responses extends APIResource {
     constructor() {
         super(...arguments);
@@ -52415,12 +52912,12 @@ class responses_Responses extends APIResource {
         this.inputTokens = new input_tokens_InputTokens(this._client);
     }
     create(body, options) {
-        return this._client.post('/responses', {
+        return this._client.post('/responses', responses_responses_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             stream: body.stream ?? false,
             __security: { bearerAuth: true },
-        })._thenUnwrap((rsp) => {
+        })))._thenUnwrap((rsp) => {
             if ('object' in rsp && rsp.object === 'response') {
                 addOutputText(rsp);
             }
@@ -52428,18 +52925,18 @@ class responses_Responses extends APIResource {
         });
     }
     retrieve(responseID, query = {}, options) {
-        const normalizeRequestOptionsForQueryOptions = responses_normalizeRequestOptionsForQuery(query, ['include', 'include_obfuscation', 'starting_after', 'stream'], options);
+        const normalizeRequestOptionsForQueryOptions = responses_responses_normalizeRequestOptionsForQuery(query, ['include', 'include_obfuscation', 'starting_after', 'stream'], options);
         if (normalizeRequestOptionsForQueryOptions !== undefined) {
             options = normalizeRequestOptionsForQueryOptions;
             query = {};
         }
         query = query;
-        return this._client.get(path_path `/responses/${responseID}`, {
+        return this._client.get(path_path `/responses/${responseID}`, responses_responses_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             stream: query?.stream ?? false,
             __security: { bearerAuth: true },
-        })._thenUnwrap((rsp) => {
+        })))._thenUnwrap((rsp) => {
             if ('object' in rsp && rsp.object === 'response') {
                 addOutputText(rsp);
             }
@@ -52457,11 +52954,11 @@ class responses_Responses extends APIResource {
      * ```
      */
     delete(responseID, options) {
-        return this._client.delete(path_path `/responses/${responseID}`, {
+        return this._client.delete(path_path `/responses/${responseID}`, responses_responses_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     parse(body, options) {
         return this._client.responses
@@ -52487,10 +52984,7 @@ class responses_Responses extends APIResource {
      * ```
      */
     cancel(responseID, options) {
-        return this._client.post(path_path `/responses/${responseID}/cancel`, {
-            ...options,
-            __security: { bearerAuth: true },
-        });
+        return this._client.post(path_path `/responses/${responseID}/cancel`, responses_responses_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
     /**
      * Compact a conversation. Returns a compacted response object.
@@ -52508,39 +53002,49 @@ class responses_Responses extends APIResource {
      * ```
      */
     compact(body, options) {
-        return this._client.post('/responses/compact', { body, ...options, __security: { bearerAuth: true } });
+        return this._client.post('/responses/compact', responses_responses_resolveResourceRequestOptions(options, (options) => ({
+            body,
+            ...options,
+            __security: { bearerAuth: true },
+        })));
     }
 }
 responses_Responses.InputItems = input_items_InputItems;
 responses_Responses.InputTokens = input_tokens_InputTokens;
 //# sourceMappingURL=responses.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/safety/alerts.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/safety/alerts.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
+function alerts_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class Alerts extends APIResource {
     /**
      * Get a safety alert belonging to the authenticated API project.
      */
     retrieve(id, options) {
-        return this._client.get(path_path `/safety/alerts/${id}`, { ...options, __security: { bearerAuth: true } });
+        return this._client.get(path_path `/safety/alerts/${id}`, alerts_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
 }
 //# sourceMappingURL=alerts.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/safety/cases.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/safety/cases.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
+function cases_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class Cases extends APIResource {
     /**
      * Get a safety case by ID.
      */
     retrieve(id, options) {
-        return this._client.get(path_path `/safety/cases/${id}`, { ...options, __security: { bearerAuth: true } });
+        return this._client.get(path_path `/safety/cases/${id}`, cases_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
 }
 //# sourceMappingURL=cases.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/safety/safety.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/safety/safety.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -52550,53 +53054,59 @@ class Cases extends APIResource {
 class Safety extends APIResource {
     constructor() {
         super(...arguments);
-        this.alerts = new Alerts(this._client);
         this.cases = new Cases(this._client);
+        this.alerts = new Alerts(this._client);
     }
 }
-Safety.Alerts = Alerts;
 Safety.Cases = Cases;
+Safety.Alerts = Alerts;
 //# sourceMappingURL=safety.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/skills/content.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/skills/content.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function skills_content_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class content_Content extends APIResource {
     /**
      * Download a skill zip bundle by its ID.
      */
     retrieve(skillID, options) {
-        return this._client.get(path_path `/skills/${skillID}/content`, {
+        return this._client.get(path_path `/skills/${skillID}/content`, skills_content_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ Accept: 'application/binary' }, options?.headers]),
             __security: { bearerAuth: true },
             __binaryResponse: true,
-        });
+        })));
     }
 }
 //# sourceMappingURL=content.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/skills/versions/content.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/skills/versions/content.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function versions_content_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class versions_content_Content extends APIResource {
     /**
      * Download a skill version zip bundle.
      */
     retrieve(version, params, options) {
         const { skill_id } = params;
-        return this._client.get(path_path `/skills/${skill_id}/versions/${version}/content`, {
+        return this._client.get(path_path `/skills/${skill_id}/versions/${version}/content`, versions_content_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ Accept: 'application/binary' }, options?.headers]),
             __security: { bearerAuth: true },
             __binaryResponse: true,
-        });
+        })));
     }
 }
 //# sourceMappingURL=content.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/skills/versions/versions.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/skills/versions/versions.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -52604,6 +53114,9 @@ class versions_content_Content extends APIResource {
 
 
 
+function versions_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const versions_normalizeRequestOptionsForQueryKeys = new Set([
@@ -52674,10 +53187,7 @@ class Versions extends APIResource {
      */
     retrieve(version, params, options) {
         const { skill_id } = params;
-        return this._client.get(path_path `/skills/${skill_id}/versions/${version}`, {
-            ...options,
-            __security: { bearerAuth: true },
-        });
+        return this._client.get(path_path `/skills/${skill_id}/versions/${version}`, versions_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
     list(skillID, query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = versions_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'order'], options);
@@ -52686,26 +53196,23 @@ class Versions extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/skills/${skillID}/versions`, (CursorPage), {
+        return this._client.getAPIList(path_path `/skills/${skillID}/versions`, (CursorPage), versions_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Delete a skill version.
      */
     delete(version, params, options) {
         const { skill_id } = params;
-        return this._client.delete(path_path `/skills/${skill_id}/versions/${version}`, {
-            ...options,
-            __security: { bearerAuth: true },
-        });
+        return this._client.delete(path_path `/skills/${skill_id}/versions/${version}`, versions_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
 }
 Versions.Content = versions_content_Content;
 //# sourceMappingURL=versions.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/skills/skills.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/skills/skills.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -52715,6 +53222,9 @@ Versions.Content = versions_content_Content;
 
 
 
+function skills_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const skills_normalizeRequestOptionsForQueryKeys = new Set([
@@ -52785,17 +53295,17 @@ class Skills extends APIResource {
      * Get a skill by its ID.
      */
     retrieve(skillID, options) {
-        return this._client.get(path_path `/skills/${skillID}`, { ...options, __security: { bearerAuth: true } });
+        return this._client.get(path_path `/skills/${skillID}`, skills_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
     /**
      * Update the default version pointer for a skill.
      */
     update(skillID, body, options) {
-        return this._client.post(path_path `/skills/${skillID}`, {
+        return this._client.post(path_path `/skills/${skillID}`, skills_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     list(query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = skills_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'order'], options);
@@ -52804,27 +53314,30 @@ class Skills extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList('/skills', (CursorPage), {
+        return this._client.getAPIList('/skills', (CursorPage), skills_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Delete a skill by its ID.
      */
     delete(skillID, options) {
-        return this._client.delete(path_path `/skills/${skillID}`, { ...options, __security: { bearerAuth: true } });
+        return this._client.delete(path_path `/skills/${skillID}`, skills_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
 }
 Skills.Content = content_Content;
 Skills.Versions = Versions;
 //# sourceMappingURL=skills.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/uploads/parts.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/uploads/parts.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
+function parts_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 /**
  * Use Uploads to upload large files in multiple parts.
  */
@@ -52844,16 +53357,19 @@ class Parts extends APIResource {
      * [complete the Upload](https://developers.openai.com/api/reference/resources/uploads/methods/complete).
      */
     create(uploadID, body, options) {
-        return this._client.post(path_path `/uploads/${uploadID}/parts`, multipartFormRequestOptions({ body, ...options, __security: { bearerAuth: true } }, this._client));
+        return this._client.post(path_path `/uploads/${uploadID}/parts`, parts_resolveResourceRequestOptions(options, (options) => multipartFormRequestOptions({ body, ...options, __security: { bearerAuth: true } }, this._client)));
     }
 }
 //# sourceMappingURL=parts.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/uploads/uploads.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/uploads/uploads.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 
+function uploads_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 /**
  * Use Uploads to upload large files in multiple parts.
  */
@@ -52886,7 +53402,11 @@ class Uploads extends APIResource {
      * Returns the Upload object with status `pending`.
      */
     create(body, options) {
-        return this._client.post('/uploads', { body, ...options, __security: { bearerAuth: true } });
+        return this._client.post('/uploads', uploads_resolveResourceRequestOptions(options, (options) => ({
+            body,
+            ...options,
+            __security: { bearerAuth: true },
+        })));
     }
     /**
      * Cancels the Upload. No Parts may be added after an Upload is cancelled.
@@ -52894,10 +53414,7 @@ class Uploads extends APIResource {
      * Returns the Upload object with status `cancelled`.
      */
     cancel(uploadID, options) {
-        return this._client.post(path_path `/uploads/${uploadID}/cancel`, {
-            ...options,
-            __security: { bearerAuth: true },
-        });
+        return this._client.post(path_path `/uploads/${uploadID}/cancel`, uploads_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
     /**
      * Completes the
@@ -52917,16 +53434,16 @@ class Uploads extends APIResource {
      * object.
      */
     complete(uploadID, body, options) {
-        return this._client.post(path_path `/uploads/${uploadID}/complete`, {
+        return this._client.post(path_path `/uploads/${uploadID}/complete`, uploads_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 Uploads.Parts = Parts;
 //# sourceMappingURL=uploads.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/lib/vector-store-polling.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/lib/vector-store-polling.mjs
 
 /**
  * Polls an attached file through the resource's retrieve method until it completes,
@@ -52947,7 +53464,7 @@ function pollVectorStoreFileBatch(resource, vectorStoreID, batchID, options) {
     return pollWithResponse((headers) => resource.retrieve(batchID, { vector_store_id: vectorStoreID }, { ...options, headers }), ['in_progress'], ['failed', 'cancelled', 'completed'], options);
 }
 //# sourceMappingURL=vector-store-polling.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/lib/Util.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/lib/Util.mjs
 /**
  * Like `Promise.allSettled()` but throws an error if any promises are rejected.
  * Rejection reasons remain available on the thrown error's non-enumerable `rejections`
@@ -52973,7 +53490,7 @@ const allSettledWithThrow = async (promises) => {
     return values;
 };
 //# sourceMappingURL=Util.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/lib/vector-store-upload.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/lib/vector-store-upload.mjs
 
 /**
  * Uploads files with a shared iterator, then creates and polls the batch. Every
@@ -53012,7 +53529,7 @@ async function uploadAndPollVectorStoreFileBatch(resource, client, vectorStoreId
     return await resource.createAndPoll(vectorStoreId, { file_ids: allFileIds }, options);
 }
 //# sourceMappingURL=vector-store-upload.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/vector-stores/file-batches.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/vector-stores/file-batches.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -53020,28 +53537,31 @@ async function uploadAndPollVectorStoreFileBatch(resource, client, vectorStoreId
 
 
 
+function file_batches_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class FileBatches extends APIResource {
     /**
      * Create a vector store file batch.
      */
     create(vectorStoreID, body, options) {
-        return this._client.post(path_path `/vector_stores/${vectorStoreID}/file_batches`, {
+        return this._client.post(path_path `/vector_stores/${vectorStoreID}/file_batches`, file_batches_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Retrieves a vector store file batch.
      */
     retrieve(batchID, params, options) {
         const { vector_store_id } = params;
-        return this._client.get(path_path `/vector_stores/${vector_store_id}/file_batches/${batchID}`, {
+        return this._client.get(path_path `/vector_stores/${vector_store_id}/file_batches/${batchID}`, file_batches_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Cancel a vector store file batch. This attempts to cancel the processing of
@@ -53049,11 +53569,11 @@ class FileBatches extends APIResource {
      */
     cancel(batchID, params, options) {
         const { vector_store_id } = params;
-        return this._client.post(path_path `/vector_stores/${vector_store_id}/file_batches/${batchID}/cancel`, {
+        return this._client.post(path_path `/vector_stores/${vector_store_id}/file_batches/${batchID}/cancel`, file_batches_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Create a vector store batch and poll until all files have been processed.
@@ -53067,12 +53587,12 @@ class FileBatches extends APIResource {
      */
     listFiles(batchID, params, options) {
         const { vector_store_id, ...query } = params;
-        return this._client.getAPIList(path_path `/vector_stores/${vector_store_id}/file_batches/${batchID}/files`, (CursorPage), {
+        return this._client.getAPIList(path_path `/vector_stores/${vector_store_id}/file_batches/${batchID}/files`, (CursorPage), file_batches_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Wait for the given file batch to be processed.
@@ -53093,13 +53613,16 @@ class FileBatches extends APIResource {
     }
 }
 //# sourceMappingURL=file-batches.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/vector-stores/files.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/vector-stores/files.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 
 
+function vector_stores_files_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const vector_stores_files_normalizeRequestOptionsForQueryKeys = new Set([
@@ -53159,35 +53682,35 @@ class vector_stores_files_Files extends APIResource {
      * [vector store](https://developers.openai.com/api/reference/resources/vector_stores).
      */
     create(vectorStoreID, body, options) {
-        return this._client.post(path_path `/vector_stores/${vectorStoreID}/files`, {
+        return this._client.post(path_path `/vector_stores/${vectorStoreID}/files`, vector_stores_files_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Retrieves a vector store file.
      */
     retrieve(fileID, params, options) {
         const { vector_store_id } = params;
-        return this._client.get(path_path `/vector_stores/${vector_store_id}/files/${fileID}`, {
+        return this._client.get(path_path `/vector_stores/${vector_store_id}/files/${fileID}`, vector_stores_files_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Update attributes on a vector store file.
      */
     update(fileID, params, options) {
         const { vector_store_id, ...body } = params;
-        return this._client.post(path_path `/vector_stores/${vector_store_id}/files/${fileID}`, {
+        return this._client.post(path_path `/vector_stores/${vector_store_id}/files/${fileID}`, vector_stores_files_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     list(vectorStoreID, query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = vector_stores_files_normalizeRequestOptionsForQuery(query, ['after', 'before', 'filter', 'limit', 'order'], options);
@@ -53196,12 +53719,12 @@ class vector_stores_files_Files extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList(path_path `/vector_stores/${vectorStoreID}/files`, (CursorPage), {
+        return this._client.getAPIList(path_path `/vector_stores/${vectorStoreID}/files`, (CursorPage), vector_stores_files_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Delete a vector store file. This will remove the file from the vector store but
@@ -53211,11 +53734,11 @@ class vector_stores_files_Files extends APIResource {
      */
     delete(fileID, params, options) {
         const { vector_store_id } = params;
-        return this._client.delete(path_path `/vector_stores/${vector_store_id}/files/${fileID}`, {
+        return this._client.delete(path_path `/vector_stores/${vector_store_id}/files/${fileID}`, vector_stores_files_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Attach a file to the given vector store and wait for it to be processed.
@@ -53255,15 +53778,15 @@ class vector_stores_files_Files extends APIResource {
      */
     content(fileID, params, options) {
         const { vector_store_id } = params;
-        return this._client.getAPIList(path_path `/vector_stores/${vector_store_id}/files/${fileID}/content`, (Page), {
+        return this._client.getAPIList(path_path `/vector_stores/${vector_store_id}/files/${fileID}/content`, (Page), vector_stores_files_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 //# sourceMappingURL=files.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/vector-stores/vector-stores.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/vector-stores/vector-stores.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -53273,6 +53796,9 @@ class vector_stores_files_Files extends APIResource {
 
 
 
+function vector_stores_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const vector_stores_normalizeRequestOptionsForQueryKeys = new Set([
@@ -53335,33 +53861,33 @@ class VectorStores extends APIResource {
      * Create a vector store.
      */
     create(body, options) {
-        return this._client.post('/vector_stores', {
+        return this._client.post('/vector_stores', vector_stores_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Retrieves a vector store.
      */
     retrieve(vectorStoreID, options) {
-        return this._client.get(path_path `/vector_stores/${vectorStoreID}`, {
+        return this._client.get(path_path `/vector_stores/${vectorStoreID}`, vector_stores_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Modifies a vector store.
      */
     update(vectorStoreID, body, options) {
-        return this._client.post(path_path `/vector_stores/${vectorStoreID}`, {
+        return this._client.post(path_path `/vector_stores/${vectorStoreID}`, vector_stores_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     list(query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = vector_stores_normalizeRequestOptionsForQuery(query, ['after', 'before', 'limit', 'order'], options);
@@ -53370,47 +53896,50 @@ class VectorStores extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList('/vector_stores', (CursorPage), {
+        return this._client.getAPIList('/vector_stores', (CursorPage), vector_stores_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Delete a vector store.
      */
     delete(vectorStoreID, options) {
-        return this._client.delete(path_path `/vector_stores/${vectorStoreID}`, {
+        return this._client.delete(path_path `/vector_stores/${vectorStoreID}`, vector_stores_resolveResourceRequestOptions(options, (options) => ({
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Search a vector store for relevant chunks based on a query and file attributes
      * filter.
      */
     search(vectorStoreID, body, options) {
-        return this._client.getAPIList(path_path `/vector_stores/${vectorStoreID}/search`, (Page), {
+        return this._client.getAPIList(path_path `/vector_stores/${vectorStoreID}/search`, (Page), vector_stores_resolveResourceRequestOptions(options, (options) => ({
             body,
             method: 'post',
             ...options,
             headers: buildHeaders([{ 'OpenAI-Beta': 'assistants=v2' }, options?.headers]),
             __security: { bearerAuth: true },
-        });
+        })));
     }
 }
 VectorStores.Files = vector_stores_files_Files;
 VectorStores.FileBatches = FileBatches;
 //# sourceMappingURL=vector-stores.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/videos.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/videos.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
 
 
 
+function videos_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const videos_normalizeRequestOptionsForQueryKeys = new Set([
@@ -53473,7 +54002,7 @@ class Videos extends APIResource {
      * @deprecated The Sora API is scheduled to permanently shut down on September 24, 2026.
      */
     create(body, options) {
-        return this._client.post('/videos', multipartFormRequestOptions({ body, ...options, __security: { bearerAuth: true } }, this._client));
+        return this._client.post('/videos', videos_resolveResourceRequestOptions(options, (options) => multipartFormRequestOptions({ body, ...options, __security: { bearerAuth: true } }, this._client)));
     }
     /**
      * Fetch the latest metadata for a generated video.
@@ -53481,7 +54010,7 @@ class Videos extends APIResource {
      * @deprecated The Sora API is scheduled to permanently shut down on September 24, 2026.
      */
     retrieve(videoID, options) {
-        return this._client.get(path_path `/videos/${videoID}`, { ...options, __security: { bearerAuth: true } });
+        return this._client.get(path_path `/videos/${videoID}`, videos_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
     list(query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = videos_normalizeRequestOptionsForQuery(query, ['after', 'limit', 'order'], options);
@@ -53490,11 +54019,11 @@ class Videos extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList('/videos', (ConversationCursorPage), {
+        return this._client.getAPIList('/videos', (ConversationCursorPage), videos_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Permanently delete a completed or failed video and its stored assets.
@@ -53502,7 +54031,7 @@ class Videos extends APIResource {
      * @deprecated The Sora API is scheduled to permanently shut down on September 24, 2026.
      */
     delete(videoID, options) {
-        return this._client.delete(path_path `/videos/${videoID}`, { ...options, __security: { bearerAuth: true } });
+        return this._client.delete(path_path `/videos/${videoID}`, videos_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
     /**
      * Create a character from an uploaded video.
@@ -53510,7 +54039,7 @@ class Videos extends APIResource {
      * @deprecated The Sora API is scheduled to permanently shut down on September 24, 2026.
      */
     createCharacter(body, options) {
-        return this._client.post('/videos/characters', multipartFormRequestOptions({ body, ...options, __security: { bearerAuth: true } }, this._client));
+        return this._client.post('/videos/characters', videos_resolveResourceRequestOptions(options, (options) => multipartFormRequestOptions({ body, ...options, __security: { bearerAuth: true } }, this._client)));
     }
     downloadContent(videoID, query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = videos_normalizeRequestOptionsForQuery(query, ['variant'], options);
@@ -53519,13 +54048,13 @@ class Videos extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.get(path_path `/videos/${videoID}/content`, {
+        return this._client.get(path_path `/videos/${videoID}/content`, videos_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             headers: buildHeaders([{ Accept: 'application/binary' }, options?.headers]),
             __security: { bearerAuth: true },
             __binaryResponse: true,
-        });
+        })));
     }
     /**
      * Create a new video generation job by editing a source video or existing
@@ -53534,7 +54063,7 @@ class Videos extends APIResource {
      * @deprecated The Sora API is scheduled to permanently shut down on September 24, 2026.
      */
     edit(body, options) {
-        return this._client.post('/videos/edits', multipartFormRequestOptions({ body, ...options, __security: { bearerAuth: true } }, this._client));
+        return this._client.post('/videos/edits', videos_resolveResourceRequestOptions(options, (options) => multipartFormRequestOptions({ body, ...options, __security: { bearerAuth: true } }, this._client)));
     }
     /**
      * Create an extension of a completed video.
@@ -53542,7 +54071,7 @@ class Videos extends APIResource {
      * @deprecated The Sora API is scheduled to permanently shut down on September 24, 2026.
      */
     extend(body, options) {
-        return this._client.post('/videos/extensions', multipartFormRequestOptions({ body, ...options, __security: { bearerAuth: true } }, this._client));
+        return this._client.post('/videos/extensions', videos_resolveResourceRequestOptions(options, (options) => multipartFormRequestOptions({ body, ...options, __security: { bearerAuth: true } }, this._client)));
     }
     /**
      * Fetch a character.
@@ -53550,10 +54079,7 @@ class Videos extends APIResource {
      * @deprecated The Sora API is scheduled to permanently shut down on September 24, 2026.
      */
     getCharacter(characterID, options) {
-        return this._client.get(path_path `/videos/characters/${characterID}`, {
-            ...options,
-            __security: { bearerAuth: true },
-        });
+        return this._client.get(path_path `/videos/characters/${characterID}`, videos_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
     /**
      * Create a remix of a completed video using a refreshed prompt.
@@ -53561,11 +54087,11 @@ class Videos extends APIResource {
      * @deprecated The Sora API is scheduled to permanently shut down on September 24, 2026.
      */
     remix(videoID, body, options) {
-        return this._client.post(path_path `/videos/${videoID}/remix`, maybeMultipartFormRequestOptions({ body, ...options, __security: { bearerAuth: true } }, this._client));
+        return this._client.post(path_path `/videos/${videoID}/remix`, videos_resolveResourceRequestOptions(options, (options) => maybeMultipartFormRequestOptions({ body, ...options, __security: { bearerAuth: true } }, this._client)));
     }
 }
 //# sourceMappingURL=videos.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/lib/webhook-signature.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/lib/webhook-signature.mjs
 
 
 
@@ -53687,9 +54213,12 @@ async function verifyWebhookSignature(payload, signatureHeader, timestamp, webho
     throw new InvalidWebhookSignatureError('The given webhook signature does not match the expected signature');
 }
 //# sourceMappingURL=webhook-signature.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/webhooks/event-types.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/webhooks/event-types.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
+function event_types_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 class EventTypes extends APIResource {
     /**
      * Returns webhook event types visible to the authenticated project.
@@ -53701,11 +54230,11 @@ class EventTypes extends APIResource {
      * ```
      */
     list(options) {
-        return this._client.get('/webhook_event_types', { ...options, __security: { bearerAuth: true } });
+        return this._client.get('/webhook_event_types', event_types_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
 }
 //# sourceMappingURL=event-types.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/webhooks/webhooks.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/webhooks/webhooks.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 var _Webhooks_instances, _Webhooks_validateSecret, _Webhooks_getRequiredHeader;
 
@@ -53716,6 +54245,9 @@ var _Webhooks_instances, _Webhooks_validateSecret, _Webhooks_getRequiredHeader;
 
 
 
+function webhooks_resolveResourceRequestOptions(options, buildOptions) {
+    return Promise.resolve(options).then(buildOptions);
+}
 // Recognizable options across SDK runtime versions. Keep this independent of
 // private RequestOptions fields so older handwritten runtimes still compile.
 const webhooks_normalizeRequestOptionsForQueryKeys = new Set([
@@ -53788,7 +54320,11 @@ class Webhooks extends APIResource {
      * ```
      */
     create(body, options) {
-        return this._client.post('/webhook_endpoints', { body, ...options, __security: { bearerAuth: true } });
+        return this._client.post('/webhook_endpoints', webhooks_resolveResourceRequestOptions(options, (options) => ({
+            body,
+            ...options,
+            __security: { bearerAuth: true },
+        })));
     }
     /**
      * Retrieves a webhook endpoint for the authenticated project.
@@ -53801,10 +54337,7 @@ class Webhooks extends APIResource {
      * ```
      */
     retrieve(webhookEndpointID, options) {
-        return this._client.get(path_path `/webhook_endpoints/${webhookEndpointID}`, {
-            ...options,
-            __security: { bearerAuth: true },
-        });
+        return this._client.get(path_path `/webhook_endpoints/${webhookEndpointID}`, webhooks_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
     /**
      * Updates a webhook endpoint for the authenticated project.
@@ -53815,11 +54348,11 @@ class Webhooks extends APIResource {
      * ```
      */
     update(webhookEndpointID, body = {}, options) {
-        return this._client.post(path_path `/webhook_endpoints/${webhookEndpointID}`, {
+        return this._client.post(path_path `/webhook_endpoints/${webhookEndpointID}`, webhooks_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     list(query = {}, options) {
         const normalizeRequestOptionsForQueryOptions = webhooks_normalizeRequestOptionsForQuery(query, ['after', 'limit'], options);
@@ -53828,11 +54361,11 @@ class Webhooks extends APIResource {
             query = {};
         }
         query = query;
-        return this._client.getAPIList('/webhook_endpoints', (CursorPage), {
+        return this._client.getAPIList('/webhook_endpoints', (CursorPage), webhooks_resolveResourceRequestOptions(options, (options) => ({
             query,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Deletes a webhook endpoint for the authenticated project.
@@ -53845,10 +54378,7 @@ class Webhooks extends APIResource {
      * ```
      */
     delete(webhookEndpointID, options) {
-        return this._client.delete(path_path `/webhook_endpoints/${webhookEndpointID}`, {
-            ...options,
-            __security: { bearerAuth: true },
-        });
+        return this._client.delete(path_path `/webhook_endpoints/${webhookEndpointID}`, webhooks_resolveResourceRequestOptions(options, (options) => ({ ...options, __security: { bearerAuth: true } })));
     }
     /**
      * Rotates the signing secret for a webhook endpoint in the authenticated project.
@@ -53860,11 +54390,11 @@ class Webhooks extends APIResource {
      * ```
      */
     rotateSecret(webhookEndpointID, body = {}, options) {
-        return this._client.post(path_path `/webhook_endpoints/${webhookEndpointID}/rotate_secret`, {
+        return this._client.post(path_path `/webhook_endpoints/${webhookEndpointID}/rotate_secret`, webhooks_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Sends a sample event to a webhook endpoint for the authenticated project.
@@ -53878,11 +54408,11 @@ class Webhooks extends APIResource {
      * ```
      */
     test(webhookEndpointID, body, options) {
-        return this._client.post(path_path `/webhook_endpoints/${webhookEndpointID}/test`, {
+        return this._client.post(path_path `/webhook_endpoints/${webhookEndpointID}/test`, webhooks_resolveResourceRequestOptions(options, (options) => ({
             body,
             ...options,
             __security: { bearerAuth: true },
-        });
+        })));
     }
     /**
      * Validates that the given payload was sent by OpenAI and parses the payload.
@@ -53934,7 +54464,7 @@ _Webhooks_instances = new WeakSet(), _Webhooks_validateSecret = function _Webhoo
 };
 Webhooks.EventTypes = EventTypes;
 //# sourceMappingURL=webhooks.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/resources/index.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/resources/index.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
 
 
@@ -53964,7 +54494,7 @@ Webhooks.EventTypes = EventTypes;
 
 
 //# sourceMappingURL=index.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/realtime-credentials.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/realtime-credentials.mjs
 /** Selects a captured credential without treating an explicit null as absent. @internal */
 function getRealtimeAPIKey(client, captured) {
     return captured === undefined ? client?.apiKey : captured;
@@ -53984,7 +54514,7 @@ async function resolveRealtimeAPIKey(client) {
     return { apiKey: apiKey === undefined ? client.apiKey : apiKey, isProvider };
 }
 //# sourceMappingURL=realtime-credentials.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/provider.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/provider.mjs
 /**
  * A provider factory such as `bedrock(options)` captures configuration in a
  * definition, while every OpenAI client receives a fresh runtime from
@@ -54031,9 +54561,9 @@ function configureProvider(provider) {
     return definition.configure();
 }
 //# sourceMappingURL=provider.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/client.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/client.mjs
 // File generated from our OpenAPI spec by Castiron. See CONTRIBUTING.md for details.
-var _OpenAI_instances, client_a, _OpenAI_encoder, _OpenAI_x509Authentication, _OpenAI_x509Credential, _OpenAI_x509Fetch, _OpenAI_explicitDataResidency, _OpenAI_responseAttempts, _OpenAI_baseURLOverridden;
+var _OpenAI_instances, client_a, _OpenAI_encoder, _OpenAI_x509Authentication, _OpenAI_x509Credential, _OpenAI_x509Fetch, _OpenAI_explicitDataResidency, _OpenAI_responseAttempts, _OpenAI_sanitizedLoggers, _OpenAI_baseURLOverridden, _OpenAI_normalizeRetries, _OpenAI_isSensitiveLogKey, _OpenAI_sanitizeLogValue, _OpenAI_sanitizeLogger;
 
 
 
@@ -54182,6 +54712,9 @@ class OpenAI {
          */
         this.uploads = new Uploads(this);
         this.admin = new Admin(this);
+        /**
+         * Create and manage model responses.
+         */
         this.responses = new responses_Responses(this);
         this.live = new Live(this);
         this.realtime = new realtime_Realtime(this);
@@ -54261,7 +54794,7 @@ class OpenAI {
         this.baseURL = options.baseURL;
         __classPrivateFieldSet(this, _OpenAI_explicitDataResidency, residencyBaseURL !== undefined || inheritedResidencySelection, "f");
         this.timeout = options.timeout ?? client_a.DEFAULT_TIMEOUT; /* 10 minutes */
-        this.logger = options.logger ?? console;
+        this.logger = __classPrivateFieldGet(this, _OpenAI_instances, "m", _OpenAI_sanitizeLogger).call(this, options.logger ?? console);
         const defaultLogLevel = 'warn';
         // Set default logLevel early so that we can log a warning in parseLogLevel.
         this.logLevel = defaultLogLevel;
@@ -54270,7 +54803,7 @@ class OpenAI {
                 parseLogLevel(env_readEnv('OPENAI_LOG'), "process.env['OPENAI_LOG']", this) ??
                 defaultLogLevel;
         this.fetchOptions = options.fetchOptions;
-        this.maxRetries = options.maxRetries ?? 2;
+        this.maxRetries = __classPrivateFieldGet(this, _OpenAI_instances, "m", _OpenAI_normalizeRetries).call(this, options.maxRetries);
         this.fetch = options.fetch ?? getDefaultFetch();
         __classPrivateFieldSet(this, _OpenAI_encoder, FallbackEncoder, "f");
         const customHeadersEnv = provider || credential ? undefined : env_readEnv('OPENAI_CUSTOM_HEADERS');
@@ -54708,9 +55241,12 @@ class OpenAI {
     }
     async makeRequest(optionsInput, retriesRemaining, retryOfRequestLogID) {
         const options = await optionsInput;
-        const maxRetries = options.maxRetries ?? this.maxRetries;
+        const maxRetries = __classPrivateFieldGet(this, _OpenAI_instances, "m", _OpenAI_normalizeRetries).call(this, options.maxRetries ?? this.maxRetries);
         if (retriesRemaining == null) {
             retriesRemaining = maxRetries;
+        }
+        else {
+            retriesRemaining = Math.min(__classPrivateFieldGet(this, _OpenAI_instances, "m", _OpenAI_normalizeRetries).call(this, retriesRemaining), maxRetries);
         }
         const x509Authentication = __classPrivateFieldGet(this, _OpenAI_x509Authentication, "f");
         x509Authentication?.beginRequestPreparation();
@@ -55103,7 +55639,7 @@ class OpenAI {
             !Number.isFinite(timeoutMillis) ||
             timeoutMillis < 0 ||
             timeoutMillis > 60 * 1000) {
-            const maxRetries = options.maxRetries ?? this.maxRetries;
+            const maxRetries = __classPrivateFieldGet(this, _OpenAI_instances, "m", _OpenAI_normalizeRetries).call(this, options.maxRetries ?? this.maxRetries);
             timeoutMillis = this.calculateDefaultRetryTimeoutMillis(retriesRemaining, maxRetries);
         }
         const x509Authentication = __classPrivateFieldGet(this, _OpenAI_x509Authentication, "f");
@@ -55332,7 +55868,300 @@ client_a = OpenAI, _OpenAI_encoder = new WeakMap(), _OpenAI_x509Authentication =
     return (__classPrivateFieldGet(this, _OpenAI_explicitDataResidency, "f") ||
         this._provider !== undefined ||
         this.baseURL !== 'https://api.openai.com/v1');
+}, _OpenAI_normalizeRetries = function _OpenAI_normalizeRetries(value) {
+    return typeof value === 'number' && Number.isSafeInteger(value) && value >= 0 ? value : 2;
+}, _OpenAI_isSensitiveLogKey = function _OpenAI_isSensitiveLogKey(key) {
+    const normalized = key.replace(/[^a-z0-9]/gi, '').toLowerCase();
+    return /authorization|authentication|cookie|session|signature|assertion|connectionstring|devicecode|codeverifier|accountkey|mtlskey|proxyauth|(?:api|access|secret|private|security|refresh|id|bearer|aws|azure|openai|admin|client|proxy|auth)[a-z0-9]*(?:key|token|secret|password|passwd|pwd|credential|auth)|^(?:auth|key|sig|sas|jwt|bearer|pfx|p12)$|(?:sid|token|secret|password|passwd|pwd|credential|passphrase|apikey|accesskey|privatekey|username)s?$/.test(normalized);
+}, _OpenAI_sanitizeLogValue = function _OpenAI_sanitizeLogValue(value, seen) {
+    const maxDepth = 64;
+    const maxValues = 4096;
+    const redactString = (entry) => entry
+        .replace(/((?:[a-z][a-z0-9+.-]*:)?\/\/)([^/\s?#]*@)(?=[^/\s?#]+)/gi, '$1[REDACTED]@')
+        .replace(/(^|[\s(=])([^/\s]+:[^/\s]*@)(?=[^/\s@]+)/gi, '$1[REDACTED]@')
+        .replace(/(^|[\s,;])([a-z][a-z0-9_-]*)(\s*:\s*)([^\r\n,;]+)/gi, (match, prefix, key, separator) => __classPrivateFieldGet(this, _OpenAI_instances, "m", _OpenAI_isSensitiveLogKey).call(this, key) ? `${prefix}${key}${separator}[REDACTED]` : match)
+        .replace(/(^|[?&#;])([^=&;\s?#/]+)=([^&;\s#]+)/g, (match, separator, key) => {
+        let decoded = key;
+        try {
+            decoded = globalThis.decodeURIComponent(key);
+        }
+        catch { }
+        return __classPrivateFieldGet(this, _OpenAI_instances, "m", _OpenAI_isSensitiveLogKey).call(this, decoded) ? `${separator}${key}=[REDACTED]` : match;
+    });
+    const getLogString = (entry) => {
+        try {
+            return globalThis.String.prototype.valueOf.call(entry);
+        }
+        catch {
+            return undefined;
+        }
+    };
+    const isSensitiveLogLabel = (entry) => {
+        const label = getLogString(entry);
+        if (label !== undefined)
+            return __classPrivateFieldGet(this, _OpenAI_instances, "m", _OpenAI_isSensitiveLogKey).call(this, label);
+        try {
+            return entry instanceof globalThis.String;
+        }
+        catch {
+            return true;
+        }
+    };
+    const pending = [];
+    const pendingMaps = [];
+    let sanitizedValue;
+    const getOwnLogDescriptor = (entry, key) => {
+        try {
+            return {
+                descriptor: globalThis.Object.getOwnPropertyDescriptor(entry, key),
+                failed: false,
+            };
+        }
+        catch {
+            return { descriptor: undefined, failed: true };
+        }
+    };
+    const enqueue = (entry, depth, assign) => {
+        if (depth > maxDepth || pending.length >= maxValues) {
+            assign('[REDACTED]');
+            return;
+        }
+        pending.push({ value: entry, depth, assign });
+    };
+    enqueue(value, 0, (entry) => {
+        sanitizedValue = entry;
+    });
+    for (let cursor = 0; cursor < pending.length; cursor += 1) {
+        const { value: current, depth, assign } = pending[cursor];
+        if (typeof current === 'string') {
+            assign(redactString(current));
+            continue;
+        }
+        // Functions can carry inspection hooks; symbols can expose secret descriptions.
+        if (typeof current === 'function' || typeof current === 'symbol') {
+            assign('[REDACTED]');
+            continue;
+        }
+        if (typeof current !== 'object' || current === null) {
+            assign(current);
+            continue;
+        }
+        const previous = seen.get(current);
+        if (previous !== undefined) {
+            assign(previous);
+            continue;
+        }
+        // Brand checks and native operations can throw for caller-provided proxies.
+        try {
+            const boxedString = getLogString(current);
+            if (boxedString !== undefined) {
+                const sanitized = new globalThis.String(redactString(boxedString));
+                seen.set(current, sanitized);
+                assign(sanitized);
+                continue;
+            }
+            // Proxies and counterfeit String objects cannot expose their native payload.
+            // Do not let their indexed characters bypass whole-string redaction.
+            if (current instanceof globalThis.String) {
+                seen.set(current, '[REDACTED]');
+                assign('[REDACTED]');
+                continue;
+            }
+            const RuntimeHeaders = globalThis.Headers;
+            if (typeof RuntimeHeaders === 'function' && current instanceof RuntimeHeaders) {
+                const sanitized = new RuntimeHeaders();
+                seen.set(current, sanitized);
+                assign(sanitized);
+                RuntimeHeaders.prototype.forEach.call(current, (entry, key) => {
+                    sanitized.set(key, __classPrivateFieldGet(this, _OpenAI_instances, "m", _OpenAI_isSensitiveLogKey).call(this, key) ? '[REDACTED]' : redactString(entry));
+                });
+                continue;
+            }
+            if (current instanceof URL) {
+                const sanitized = new URL(URL.prototype.toString.call(current));
+                seen.set(current, sanitized);
+                assign(sanitized);
+                if (sanitized.username)
+                    sanitized.username = '[REDACTED]';
+                if (sanitized.password)
+                    sanitized.password = '[REDACTED]';
+                for (const [key] of sanitized.searchParams) {
+                    if (__classPrivateFieldGet(this, _OpenAI_instances, "m", _OpenAI_isSensitiveLogKey).call(this, key))
+                        sanitized.searchParams.set(key, '[REDACTED]');
+                }
+                if (sanitized.hash)
+                    sanitized.hash = redactString(sanitized.hash);
+                continue;
+            }
+            if (Array.isArray(current)) {
+                const lengthDescriptor = getOwnLogDescriptor(current, 'length');
+                if (lengthDescriptor.failed ||
+                    !lengthDescriptor.descriptor ||
+                    !('value' in lengthDescriptor.descriptor) ||
+                    typeof lengthDescriptor.descriptor.value !== 'number') {
+                    seen.set(current, '[REDACTED]');
+                    assign('[REDACTED]');
+                    continue;
+                }
+                const sanitized = [];
+                seen.set(current, sanitized);
+                assign(sanitized);
+                const limit = Math.min(lengthDescriptor.descriptor.value, maxValues);
+                const firstDescriptor = getOwnLogDescriptor(current, '0');
+                const firstKey = !firstDescriptor.failed && firstDescriptor.descriptor && 'value' in firstDescriptor.descriptor
+                    ? firstDescriptor.descriptor.value
+                    : undefined;
+                for (let index = 0; index < limit; index += 1) {
+                    const property = index === 0 ? firstDescriptor : getOwnLogDescriptor(current, `${index}`);
+                    if (property.failed) {
+                        sanitized[index] = '[REDACTED]';
+                        continue;
+                    }
+                    const descriptor = property.descriptor;
+                    if (!descriptor?.enumerable)
+                        continue;
+                    if (index === 1 &&
+                        (firstDescriptor.failed ||
+                            (firstDescriptor.descriptor && !('value' in firstDescriptor.descriptor)) ||
+                            isSensitiveLogLabel(firstKey))) {
+                        sanitized[index] = '[REDACTED]';
+                        continue;
+                    }
+                    if (!('value' in descriptor)) {
+                        sanitized[index] = '[REDACTED]';
+                        continue;
+                    }
+                    enqueue(descriptor.value, depth + 1, (entry) => {
+                        sanitized[index] = entry;
+                    });
+                }
+                sanitized.length = limit;
+                if (lengthDescriptor.descriptor.value > limit)
+                    sanitized[limit] = '[REDACTED]';
+                continue;
+            }
+            if (current instanceof globalThis.Map) {
+                const sanitized = new globalThis.Map();
+                const entries = [];
+                pendingMaps.push({ map: sanitized, entries });
+                seen.set(current, sanitized);
+                assign(sanitized);
+                globalThis.Map.prototype.forEach.call(current, (entry, key) => {
+                    const pair = ['[REDACTED]', '[REDACTED]'];
+                    entries.push(pair);
+                    enqueue(key, depth + 1, (safeKey) => {
+                        // Unsupported values must not expose the original object as a key.
+                        if (typeof safeKey !== 'function' &&
+                            typeof safeKey !== 'symbol' &&
+                            !(typeof key === 'object' && key !== null && safeKey === key)) {
+                            pair[0] = safeKey;
+                        }
+                    });
+                    if (isSensitiveLogLabel(key)) {
+                        return;
+                    }
+                    enqueue(entry, depth + 1, (safeEntry) => {
+                        pair[1] = safeEntry;
+                    });
+                });
+                continue;
+            }
+            if (current instanceof globalThis.Set) {
+                const sanitized = new globalThis.Set();
+                seen.set(current, sanitized);
+                assign(sanitized);
+                globalThis.Set.prototype.forEach.call(current, (entry) => {
+                    enqueue(entry, depth + 1, (safeEntry) => {
+                        sanitized.add(safeEntry);
+                    });
+                });
+                continue;
+            }
+            if (current instanceof globalThis.Date) {
+                assign(new globalThis.Date(globalThis.Date.prototype.getTime.call(current)));
+                continue;
+            }
+            const RuntimeReadableStream = globalThis.ReadableStream;
+            if ((typeof RuntimeReadableStream === 'function' && current instanceof RuntimeReadableStream) ||
+                current instanceof globalThis.ArrayBuffer ||
+                globalThis.ArrayBuffer.isView(current)) {
+                // Opaque payloads may carry credentials or custom inspection hooks.
+                // Redact their log representation without reading or consuming them.
+                seen.set(current, '[REDACTED]');
+                assign('[REDACTED]');
+                continue;
+            }
+            let keys;
+            try {
+                keys = globalThis.Reflect.ownKeys(current);
+            }
+            catch {
+                seen.set(current, '[REDACTED]');
+                assign('[REDACTED]');
+                continue;
+            }
+            const sanitized = {};
+            seen.set(current, sanitized);
+            assign(sanitized);
+            for (const key of keys) {
+                if (typeof key !== 'string')
+                    continue;
+                const property = getOwnLogDescriptor(current, key);
+                if (property.failed) {
+                    sanitized[key] = '[REDACTED]';
+                    continue;
+                }
+                const descriptor = property.descriptor;
+                if (!descriptor?.enumerable)
+                    continue;
+                if (__classPrivateFieldGet(this, _OpenAI_instances, "m", _OpenAI_isSensitiveLogKey).call(this, key)) {
+                    sanitized[key] = '[REDACTED]';
+                    continue;
+                }
+                if (!('value' in descriptor)) {
+                    sanitized[key] = '[REDACTED]';
+                    continue;
+                }
+                enqueue(descriptor.value, depth + 1, (safeEntry) => {
+                    sanitized[key] = safeEntry;
+                });
+            }
+        }
+        catch {
+            seen.set(current, '[REDACTED]');
+            assign('[REDACTED]');
+        }
+    }
+    // Populate in input order after both keys and values have been sanitized.
+    // Budget fallbacks can assign immediately while earlier entries are queued.
+    for (const { map, entries } of pendingMaps) {
+        for (const [key, entry] of entries)
+            map.set(key, entry);
+    }
+    return sanitizedValue;
+}, _OpenAI_sanitizeLogger = function _OpenAI_sanitizeLogger(logger) {
+    if (__classPrivateFieldGet(client_a, client_a, "f", _OpenAI_sanitizedLoggers).has(logger))
+        return logger;
+    const sanitized = new globalThis.Proxy(Object.create(null), {
+        get: (_facade, property) => {
+            const value = globalThis.Reflect.get(logger, property, logger);
+            if (typeof value !== 'function')
+                return value;
+            if (typeof property !== 'string' ||
+                !['debug', 'info', 'warn', 'error', 'trace', 'log'].includes(property)) {
+                return value.bind(logger);
+            }
+            return (...args) => {
+                const seen = new WeakMap();
+                return globalThis.Reflect.apply(value, logger, args.map((entry) => __classPrivateFieldGet(this, _OpenAI_instances, "m", _OpenAI_sanitizeLogValue).call(this, entry, seen)));
+            };
+        },
+        set: (_facade, property, value) => globalThis.Reflect.set(logger, property, value, logger),
+    });
+    __classPrivateFieldGet(client_a, client_a, "f", _OpenAI_sanitizedLoggers).add(sanitized);
+    return sanitized;
 };
+_OpenAI_sanitizedLoggers = { value: new globalThis.WeakSet() };
 OpenAI.OpenAI = client_a;
 OpenAI.DEFAULT_TIMEOUT = 600000; // 10 minutes
 OpenAI.OpenAIError = error_OpenAIError;
@@ -55427,7 +56256,7 @@ function isUndiciDispatcherVersionMismatchError(error) {
     return false;
 }
 //# sourceMappingURL=client.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/azure.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/azure.mjs
 
 
 
@@ -55574,7 +56403,7 @@ const _deployments_endpoints = new Set([
     '/images/edits',
 ]);
 //# sourceMappingURL=azure.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/internal/bedrock.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/internal/bedrock.mjs
 
 
 /** Identifies legacy Bedrock clients without importing the client class into WebSocket modules. */
@@ -55999,7 +56828,7 @@ function resolveBedrockBearerAuth(options, { allowEnvironment = true, } = {}) {
     return { factory: undefined, explicit: false };
 }
 //# sourceMappingURL=bedrock.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/bedrock.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/bedrock.mjs
 var bedrock_a;
 
 
@@ -56169,7 +56998,7 @@ class BedrockOpenAI extends OpenAI {
 }
 bedrock_a = brand_privateBedrockClient;
 //# sourceMappingURL=bedrock.mjs.map
-;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.20.0_undici@6.28.0/node_modules/openai/index.mjs
+;// CONCATENATED MODULE: ../node_modules/.pnpm/openai@7.21.0_undici@6.28.0/node_modules/openai/index.mjs
 
 
 
@@ -56402,7 +57231,7 @@ async function run() {
 /***/ ((module, __unused_webpack___webpack_exports__, __nccwpck_require__) => {
 
 __nccwpck_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
-/* harmony import */ var _index_js__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(1751);
+/* harmony import */ var _index_js__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(3328);
 
 await (0,_index_js__WEBPACK_IMPORTED_MODULE_0__/* .run */ .eF)();
 
@@ -56607,7 +57436,7 @@ module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("util");
 
 /***/ }),
 
-/***/ 4349:
+/***/ 7696:
 /***/ ((module, exports, __nccwpck_require__) => {
 
 /* module decorator */ module = __nccwpck_require__.nmd(module);
