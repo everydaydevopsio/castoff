@@ -6,13 +6,18 @@
   "type": "module",
   "private": true,
   "license": "MIT",
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "build": "pnpm typecheck && ncc build main.ts -o dist --license licenses.txt",
     "typecheck": "tsc --noEmit",
     "test": "NODE_OPTIONS='--experimental-vm-modules' jest",
     "test:coverage": "NODE_OPTIONS='--experimental-vm-modules' jest --coverage",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "prettier": "prettier . --check",
+    "prettier:fix": "prettier . --write"
   },
   "dependencies": {
     "@actions/core": "^3.0.1"

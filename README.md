@@ -1,6 +1,7 @@
 # Castoff
 
 [![CI](https://github.com/everydaydevopsio/castoff/actions/workflows/ci.yml/badge.svg)](https://github.com/everydaydevopsio/castoff/actions/workflows/ci.yml)
+[![E2E](https://github.com/everydaydevopsio/castoff/actions/workflows/e2e-ai-release-notes.yml/badge.svg)](https://github.com/everydaydevopsio/castoff/actions/workflows/e2e-ai-release-notes.yml)
 [![Release](https://github.com/everydaydevopsio/castoff/actions/workflows/release.yml/badge.svg)](https://github.com/everydaydevopsio/castoff/actions/workflows/release.yml)
 [![License](https://img.shields.io/github/license/everydaydevopsio/castoff)](LICENSE)
 [![GitHub Release](https://img.shields.io/github/v/release/everydaydevopsio/castoff)](https://github.com/everydaydevopsio/castoff/releases)
@@ -28,7 +29,7 @@ The default model is `gpt-6-astra`. Set the action's `model` input or its
 `OPENAI_MODEL` environment variable to override it; the explicit input takes
 precedence. For example, `OPENAI_MODEL=gpt-5.6-sol make e2e-act` runs the local
 E2E suite with an additional configured-model case. See the
-[ACT guide](.github/workflows/README-ACT.md) for key setup and model coverage.
+[ACT guide](docs/local-e2e-act.md) for key setup and model coverage.
 
 Every `release_notes` output ends with a deterministic attribution footer:
 
@@ -128,7 +129,7 @@ Two cases that look like a missing secret but are not:
   this check and fails later, in the action's own step, with the API error.
 
 For local E2E runs, `export OPENAI_API_KEY=...` before `make e2e-act`; see the
-[ACT guide](.github/workflows/README-ACT.md).
+[ACT guide](docs/local-e2e-act.md).
 
 ## Versions
 
@@ -147,6 +148,16 @@ uses: everydaydevopsio/castoff/changelog@v2.2
 
 The release workflow force-moves `vN` and `vN.M` onto each release, so both
 floating tags always name a real published version.
+
+## Documentation
+
+- [Documentation index](docs/README.md) — everything below, in one place.
+- [Architecture](docs/architecture.md) — how the two actions compose, what the
+  release pipeline does step by step, and when the changelog writer creates,
+  inserts or does nothing.
+- [Running E2E tests with ACT](docs/local-e2e-act.md) — run the real workflow
+  locally under Docker.
+- [Architecture decisions](adr/README.md) — why the repository works this way.
 
 ## Action Reference
 

@@ -14,14 +14,16 @@ Suggested facts to record:
 - Default branch: `main`
 - Primary package manager: `pnpm` (v10, pinned by the root `package.json` `packageManager` field; single lockfile at `pnpm-lock.yaml`)
 - pnpm workspace packages: root (git hooks, formatting), `castoff/` (release-notes action), `changelog/` (changelog action). Run scripts from the root: `pnpm build`, or `pnpm --filter castoff build` for one package
-- Version-file locations agents should check first: `.nvmrc`
-- Canonical config files: `package.json` (workspace root), `pnpm-workspace.yaml`, `castoff/package.json`, `changelog/package.json`, `castoff/eslint.config.js`, `castoff/jest.config.js`
-- Primary CI workflows: `.github/workflows/ci.yml`
+- Version-file locations agents should check first: `.nvmrc`; the same Node major is repeated in every `package.json` `engines` field and in both `action.yml` `using:` runtimes, and `castoff/entrypoint.test.ts` fails when they drift
+- Canonical config files: `package.json` (workspace root), `pnpm-workspace.yaml`, `castoff/package.json`, `changelog/package.json`, `castoff/eslint.config.js`, `changelog/eslint.config.js`, `castoff/jest.config.js`, `changelog/jest.config.js`, `Makefile`, `.github/dependabot.yml`
+- Primary CI workflows: `.github/workflows/ci.yml` (test, workflow lint, lint) and `.github/workflows/e2e-ai-release-notes.yml` (runs after a successful CI push to `main`; also `make e2e-act` locally)
 - Primary release/publish workflows: `.github/workflows/release.yml`
 - Preferred build/test/lint/format/coverage commands: `make build`, `make test`, `make test-coverage`, `make lint`, `make format`
-- Coverage threshold: 75% (lines, functions, branches, statements)
+- Coverage threshold: 75% (lines, functions, branches, statements); coverage is collected from `index.ts` and `main.ts` in both packages
 - Generated or protected paths agents should avoid editing directly: `.ballast/`, `castoff/dist/`, `changelog/dist/`, `.husky/_/`
 - Git hooks: husky, installed by the root `prepare` script; `core.hooksPath` is `.husky/_`
+- Documentation layout: `README.md` is the overview, `docs/README.md` the index, `docs/architecture.md` holds the Mermaid diagrams, and each action documents its own inputs in `castoff/README.md` and `changelog/README.md`
+- Task tracking: `tasks/todo.md` is the branch-local record (lowercase, canonical — there is no root `TODO.md`); durable work goes to GitHub issues on `everydaydevopsio/castoff`
 
 Update this section when those facts change. If live runtime state is required, discover it separately instead of treating it as a durable repo fact.
 

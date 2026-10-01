@@ -22,7 +22,13 @@ updates:
         patterns:
           - 'jest'
           - '@jest/*'
+          # Listed here rather than with typescript: the transform tracks the
+          # runner, so a jest major has to carry ts-jest with it.
           - 'ts-jest'
+      typescript:
+        patterns:
+          - 'typescript'
+          - '@types/*'
       dev-tooling:
         dependency-type: 'development'
         patterns:
@@ -34,10 +40,27 @@ updates:
           - 'husky'
           - 'lint-staged'
           - '@vercel/ncc'
+      # The catch-all. `dependency-type` already keeps the dev-only groups
+      # above out of it; the exclusions make that independent of how a
+      # dependency happens to be declared.
       production-dependencies:
         dependency-type: 'production'
         patterns:
           - '*'
+        exclude-patterns:
+          - 'jest'
+          - '@jest/*'
+          - 'ts-jest'
+          - 'typescript'
+          - '@types/*'
+          - 'eslint*'
+          - '@eslint/*'
+          - 'typescript-eslint'
+          - 'prettier'
+          - 'globals'
+          - 'husky'
+          - 'lint-staged'
+          - '@vercel/ncc'
 
   - package-ecosystem: 'github-actions'
     directory: '/'

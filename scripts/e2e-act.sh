@@ -4,7 +4,7 @@ set -euo pipefail
 WORKFLOW=".github/workflows/e2e-ai-release-notes.yml"
 
 if ! command -v act >/dev/null 2>&1; then
-  echo "ERROR: 'act' is not installed. See .github/workflows/README-ACT.md"
+  echo "ERROR: 'act' is not installed. See docs/local-e2e-act.md"
   exit 1
 fi
 

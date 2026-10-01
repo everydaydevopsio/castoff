@@ -7,7 +7,7 @@ export default {
   moduleNameMapper: {
     '^(\\.{1,2}/.*)\\.js$': '$1'
   },
-  collectCoverageFrom: ['index.ts'],
+  collectCoverageFrom: ['index.ts', 'main.ts'],
   coverageThreshold: {
     global: {
       lines: 75,

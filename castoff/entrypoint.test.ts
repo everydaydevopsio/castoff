@@ -23,6 +23,57 @@ describe('packaged action entry point', () => {
     expect(Number(runtime?.[1])).toBeGreaterThanOrEqual(Number(minimum?.[1]));
   });
 
+  // .nvmrc, the action runtimes and every manifest name the same Node major,
+  // so a contributor's local Node matches what the published actions run on.
+  it('declares the .nvmrc Node major in every workspace manifest', () => {
+    const root = new URL('../', import.meta.url);
+    const nvmrc = readFileSync(new URL('.nvmrc', root), 'utf8').trim();
+    const major = nvmrc.match(/^v?(\d+)$/)?.[1];
+
+    expect(major).toBeDefined();
+
+    for (const manifest of [
+      'package.json',
+      'castoff/package.json',
+      'changelog/package.json'
+    ]) {
+      const { engines } = JSON.parse(
+        readFileSync(new URL(manifest, root), 'utf8')
+      ) as { engines?: { node?: string } };
+      expect(engines?.node).toBe(`>=${major}`);
+    }
+
+    for (const action of ['castoff/action.yml', 'changelog/action.yml']) {
+      const using = readFileSync(new URL(action, root), 'utf8').match(
+        /using: ['"]?node(\d+)/
+      );
+      expect(using?.[1]).toBe(major);
+    }
+  });
+
+  // Prettier resolves .prettierignore from its working directory, not from the
+  // workspace root. A package that formats itself needs its own, or
+  // `prettier:fix` rewrites the committed bundle CI then rejects.
+  it('gives every self-formatting package an ignore file covering dist', () => {
+    const root = new URL('../', import.meta.url);
+
+    for (const pkg of ['castoff', 'changelog']) {
+      const { scripts } = JSON.parse(
+        readFileSync(new URL(`${pkg}/package.json`, root), 'utf8')
+      ) as { scripts: Record<string, string> };
+      if (!scripts.prettier && !scripts['prettier:fix']) continue;
+
+      const ignored = readFileSync(
+        new URL(`${pkg}/.prettierignore`, root),
+        'utf8'
+      )
+        .split('\n')
+        .map((line) => line.trim());
+      expect(ignored).toContain('dist');
+      expect(ignored).toContain('coverage');
+    }
+  });
+
   it.each([
     [
       'invalid max_commits',

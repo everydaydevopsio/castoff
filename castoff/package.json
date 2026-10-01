@@ -5,6 +5,9 @@
   "main": "dist/index.js",
   "type": "module",
   "license": "MIT",
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "build": "pnpm typecheck && ncc build main.ts -o dist --license licenses.txt",
     "typecheck": "tsc --noEmit",
