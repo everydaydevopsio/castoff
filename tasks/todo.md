@@ -1,84 +1,79 @@
-# Task: Build the action bundle at release time
+# Task: Document OpenAI model selection (#45)
 
 ## Context
 
-- Date: 2026-10-01
-- Mode: Approval-Required (design chosen with the user)
-- Trigger: #49 had to be rebuilt by hand because ncc inlines `openai` into the
-  committed bundle and Dependabot cannot run a build. Every future bump of a
-  bundled dependency would fail CI the same way.
-- Graduated to [ADR-009](../adr/009-release-time-bundle.md).
+- Date: 2026-11-03
+- Mode: Autonomous
+- Issue: [#45](https://github.com/everydaydevopsio/castoff/issues/45) — the
+  model precedence is documented, but there is no worked example of choosing a
+  model per repository, per workflow or from a reusable workflow.
 
 ## Scope
 
-- In scope: where the bundle lives, and every workflow, hook and command that
-  assumed it was committed.
-- Out of scope: how the action resolves the previous tag. Keeping the bundle's
-  tagged commit an ancestor of `main` is exactly what avoids touching ADR-005.
+- In scope: a model-selection guide, links from the three READMEs that already
+  state the precedence, and the same choice wired into both `examples/`
+  reusable workflows.
+- Out of scope: changing how the action resolves a model, and adding a live E2E
+  case for the `model` input (see Outcome).
 
 ## Acceptance Criteria
 
-- AC1: Both `dist/` directories are gitignored and untracked on `main`.
-- AC2: Published tags still carry the bundle, so consumers are unaffected.
-- AC3: Tagged commits remain ancestors of `main`, so `git describe HEAD^` still
-  finds the previous release.
-- AC4: Nothing in CI or the hooks compares a committed bundle to a build.
-- AC5: Every workflow that runs `uses: ./castoff` builds it first.
+- AC1: One guide covers the `model` input, the `OPENAI_MODEL` variable, which
+  wins, and how to confirm the model a release used.
+- AC2: Both example workflows accept an optional `model` input and read
+  `OPENAI_MODEL` themselves, so a caller can see the choice in a real workflow.
+- AC3: The reusable-workflow caveats are documented, not just the happy path.
 
 ## Risks and Tradeoffs
 
-- Risk: the release path is only exercised by a real release. The workflow tests
-  assert the ordering that makes it correct, but the first release after this
-  change should be watched.
-- Tradeoff: one bookkeeping commit per release, visible in the next release's
-  commit range.
+- Risk: the examples' `model` input defaults to `''`. A default naming a model
+  would silently outrank a caller's `OPENAI_MODEL` variable, so the empty
+  default is asserted by a test rather than left to convention.
+- Tradeoff: the guide duplicates the precedence rule that `castoff/README.md`
+  and the root README already state. Both now link to the guide instead of
+  growing their own examples.
 
 ## Execution Checklist
 
-- [x] Confirm the ancestry constraint in `describePreviousTag` and ADR-005
-      before choosing a design.
-- [x] Tests first: untracked-and-ignored bundle, tag/strip/push ordering,
-      build-before-use in both E2E jobs.
-- [x] Gitignore and `git rm -r --cached` both `dist/` directories.
-- [x] Release workflow: `git add -f`, tag, strip, push.
-- [x] Drop the verification step from CI and the diff from `pre-push`.
-- [x] Build before `uses: ./castoff` in both E2E jobs.
-- [x] `make test` and `make test-coverage` depend on `build`; the entry-point
-      test names the missing bundle instead of failing obscurely.
-- [x] README, `docs/architecture.md`, repository facts, ADR-009.
-- [x] Scope the actionlint ignore to the missing-bundle message only, after CI
-      showed it resolves a local action's `main:` file statically.
-- [x] Build before `pnpm test` in `release.yml` — Copilot caught that the
-      release ran tests before any build, so every release would have died at
-      the test step. Pinned by a build-before-test assertion over both
-      workflows.
+- [x] Confirm precedence against `castoff/index.ts` and `run.test.ts` rather
+      than the issue text.
+- [x] Confirm the two reusable-workflow rules against GitHub's documentation:
+      a caller's workflow-level `env` is not propagated, and `vars` inside a
+      called workflow resolves against the caller.
+- [x] Tests first: `examples-workflow.test.ts` asserts the `model` input, its
+      empty default, and the `OPENAI_MODEL` env wiring — watched failing.
+- [x] Add `docs/model-selection.md`; link it from `docs/README.md`,
+      `README.md` and `castoff/README.md`.
+- [x] Add the `model` input to both example workflows and document it in both
+      example READMEs.
+- [x] Fix the stale "commit the generated `dist/` files" instruction in
+      `castoff/README.md`, which ADR-009 reversed.
 
 ## Test Strategy
 
-- Unit: `castoff/bundle.test.ts` (new) asserts both paths are ignored and
-  untracked — all four assertions were watched failing first.
-- Integration: `release-workflow.test.ts` asserts tag → strip → push ordering
-  and the force-add; `e2e-workflow.test.ts` asserts each job installs and builds
-  before the local action.
-- Failure path: deleted both `dist/` directories and confirmed the entry-point
-  test reports the missing bundle with the command to fix it.
-- Regression: 209 tests, `make lint-workflows` (verified with both `dist/`
-  directories deleted), `pnpm lint`, `pnpm prettier`.
-- Simulation: two releases in a scratch repo confirming the tag carries the
-  bundle, `main`'s tip does not, and the previous-tag lookup still resolves.
+- Unit: `examples-workflow.test.ts` — two new assertions per example workflow
+  (input shape and step wiring), both watched failing before the workflows
+  changed.
+- Integration: `make lint-workflows` (actionlint over all five workflows,
+  including the two examples) and the full `make test` suite.
+- Failure path: covered by the existing precedence matrix in `run.test.ts`
+  (empty input, empty env, whitespace-only env), which is what the guide's
+  fall-through claims rest on.
+- Requirement mapping: AC1 → `docs/model-selection.md`; AC2 → the new tests;
+  AC3 → the reusable-workflow section and the failure-modes table.
 
 ## Rollback Strategy
 
-- Trigger: the first release after this change fails to tag, or publishes a tag
-  without a bundle.
-- Rollback steps: revert the PR, then `git add -f castoff/dist changelog/dist`
-  and commit to restore a tracked bundle on `main`.
-- Validation after rollback: `pnpm build` and a clean `git diff -- */dist/`.
+- Trigger: a caller reports that passing `model` to an example workflow sends
+  the wrong model.
+- Rollback steps: revert the workflow change; the docs stand alone.
+- Validation after rollback: `make test` and `make lint-workflows`.
 
 ## Outcome
 
-- Result: the bundle is built at release time and carried only by the tag.
-- Evidence: see Test Strategy; ADR-009 records the decision and the two
-  alternatives rejected.
-- Follow-up: watch the next release through, particularly the strip commit and
-  the previous-tag lookup in the release after it.
+- Result: pending review.
+- Evidence: `make test`, `make lint`, `make lint-workflows`, `pnpm prettier`.
+- Follow-up: the E2E matrix covers the default and both `OPENAI_MODEL` paths
+  but never sets the `model` input, so the documented "input wins" rule is only
+  proven by unit tests. Promote to an issue before merge if a live case is
+  wanted.

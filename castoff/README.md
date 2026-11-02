@@ -15,7 +15,9 @@ suitable for GitHub Releases.
   fails; this repository's release and E2E workflows reject a missing key up
   front, before any release change. See
   [OpenAI API key](../README.md#openai-api-key).
-- `model` (optional) – overrides `OPENAI_MODEL`; defaults to `gpt-6-astra` when neither is set
+- `model` (optional) – overrides `OPENAI_MODEL`; defaults to `gpt-6-astra` when
+  neither is set. See [Choosing an OpenAI model](../docs/model-selection.md)
+  for per-repository, per-workflow and reusable-workflow examples.
 - `tag` (required) – new release tag (e.g. `v1.2.3`)
 - `max_commits` (optional) – default: 200 (must be an integer between 1 and 1000)
 
@@ -69,6 +71,32 @@ Then pass the notes to a GitHub Release step:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
+## Choosing a Model
+
+The step above sends `gpt-6-astra`, the built-in default. To use another model,
+either set it on the step or configure it once for the repository:
+
+```yaml
+- name: AI Release Notes
+  id: ai_notes
+  uses: everydaydevopsio/castoff/castoff@v2
+  env:
+    # A configuration variable is not an environment variable until a workflow
+    # passes it, so this line is what makes the repository default take effect.
+    OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+  with:
+    openai_api_key: ${{ secrets.OPENAI_API_KEY }}
+    # Wins when nonempty; an empty value falls through to OPENAI_MODEL, then to
+    # gpt-6-astra, so both lines can stay in place.
+    model: ${{ inputs.model }}
+    tag: ${{ steps.bump.outputs.tag }}
+```
+
+[Choosing an OpenAI model](../docs/model-selection.md) covers the rest: a
+cheaper model for dry runs, how a reusable workflow takes the choice from its
+caller, how to confirm which model a release used, and what fails when the name
+is wrong.
+
 ## Changelog Entries
 
 `changelog_entry` reformats the generated notes for a `CHANGELOG.md` file:
@@ -112,10 +140,11 @@ pnpm prettier
 Run these commands from the repository root: this is a pnpm workspace with a
 single lockfile, and `pnpm prettier` checks the whole repository. `index.ts` contains the action logic and
 `main.ts` invokes it. The build checks source and test types, then bundles the
-entrypoint and dependencies with ncc into `dist/index.js`. Commit the generated
-`dist/` files whenever the action changes; CI verifies they match the source.
-GitHub runs this JavaScript bundle through `action.yml` without installing
-dependencies or compiling TypeScript. Workflow definitions remain YAML.
+entrypoint and dependencies with ncc into `dist/index.js`. That bundle is
+gitignored and built at release time, so the published tag carries it and `main`
+never does; run `make build` after a fresh clone. GitHub runs this JavaScript
+bundle through `action.yml` without installing dependencies or compiling
+TypeScript. Workflow definitions remain YAML.
 
 Jest transforms the TypeScript tests with ts-jest. ESM source imports retain
 `.js` extensions, which TypeScript, ncc and Jest resolve to the `.ts` source.
