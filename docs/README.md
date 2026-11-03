@@ -30,9 +30,9 @@ writes that entry into a Keep a Changelog file.
   `OPENAI_MODEL` variable, which one wins, and worked workflow examples.
 - [Running E2E tests with ACT](local-e2e-act.md) — run the real workflow
   locally under Docker, including model overrides.
-- [`examples/`](../examples) — reusable release workflows for a Node project
-  (release-it) and a Python project (bumpver), both callable with
-  `workflow_call`.
+- [`examples/`](../examples) — `workflow_call` release workflows for a Node
+  project (release-it) and a Python project (bumpver), written to be copied
+  into a repository's own `.github/workflows/` and called from there.
 
 ## Project records
 

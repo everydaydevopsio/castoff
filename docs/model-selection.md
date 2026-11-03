@@ -96,12 +96,16 @@ The action needs the tag history to diff against, so keep
 ## Reusable workflows
 
 The [`examples/`](../examples) release workflows take the same choice as an
-optional `model` input and read `OPENAI_MODEL` themselves:
+optional `model` input and read `OPENAI_MODEL` themselves. Copy one into your
+own `.github/workflows/` first: GitHub resolves a reusable workflow only at
+`.github/workflows/` in a repository root, so the copy under `examples/` here
+cannot be called from that path.
 
 ```yaml
 jobs:
   release:
-    uses: everydaydevopsio/castoff/examples/node-release-it-release-action/.github/workflows/release-it-bump.yml@v2
+    # Your copy of examples/node-release-it-release-action.
+    uses: your-org/release-workflows/.github/workflows/release-it-bump.yml@v1
     with:
       level: patch
       use_ai_release_notes: true

@@ -38,6 +38,15 @@ It will:
 
 ## Usage from a project repo
 
+GitHub resolves a reusable workflow only at `.github/workflows/` in the root of
+a repository — subdirectories are not supported — so the copy in this
+repository cannot be called from its path under `examples/`. Copy
+`release-it-bump.yml` into the `.github/workflows/` directory of your own
+project (or of a shared workflows repository), tag it, and call that copy. The
+snippets below use `your-org/release-workflows@v1` as a stand-in for wherever
+you put it; a copy in the same repository is called as
+`./.github/workflows/release-it-bump.yml`.
+
 ```yaml
 name: Release (Node + release-it)
 
@@ -60,7 +69,7 @@ on:
 
 jobs:
   release:
-    uses: everydaydevopsio/castoff/examples/node-release-it-release-action/.github/workflows/release-it-bump.yml@v2
+    uses: your-org/release-workflows/.github/workflows/release-it-bump.yml@v1
     with:
       level: ${{ github.event.inputs.level }}
       use_ai_release_notes: ${{ github.event.inputs.use_ai_release_notes }}
@@ -86,7 +95,7 @@ they compose:
 ```yaml
 jobs:
   release:
-    uses: everydaydevopsio/castoff/examples/node-release-it-release-action/.github/workflows/release-it-bump.yml@v2
+    uses: your-org/release-workflows/.github/workflows/release-it-bump.yml@v1
     with:
       level: patch
       use_ai_release_notes: true
@@ -132,7 +141,7 @@ in your own caller workflow, after this one succeeds:
 ```yaml
 jobs:
   release:
-    uses: everydaydevopsio/castoff/examples/node-release-it-release-action/.github/workflows/release-it-bump.yml@v2
+    uses: your-org/release-workflows/.github/workflows/release-it-bump.yml@v1
     with:
       level: ${{ github.event.inputs.level }}
       use_ai_release_notes: true
@@ -210,4 +219,4 @@ Two limits survive the fork and are worth knowing before you start:
   touched its siblings. Until that is configurable, either accept it or generate
   notes once for the repository rather than once per package.
 
-After pushing this repo, tag it (e.g. `v2`) and use that tag in callers.
+Tag your copy (e.g. `v1`) and reference that tag from callers.

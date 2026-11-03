@@ -48,6 +48,12 @@
       example READMEs.
 - [x] Fix the stale "commit the generated `dist/` files" instruction in
       `castoff/README.md`, which ADR-009 reversed.
+- [x] Bosun review (PR #57) — repoint every `uses:` that called a workflow
+      beneath `examples/`. GitHub resolves reusable workflows only at
+      `.github/workflows/` in a repository root, so those references could
+      never have started a run. Three were added by this branch and five were
+      pre-existing in the two example READMEs; all eight now point at a copy in
+      the caller's own `.github/workflows/`, with the copy step stated.
 
 ## Test Strategy
 
@@ -71,7 +77,8 @@
 
 ## Outcome
 
-- Result: pending review.
+- Result: reviewed by Bosun; its one high finding was confirmed against
+  GitHub's documentation and fixed in the same branch.
 - Evidence: `make test`, `make lint`, `make lint-workflows`, `pnpm prettier`.
 - Follow-up: the E2E matrix covers the default and both `OPENAI_MODEL` paths
   but never sets the `model` input, so the documented "input wins" rule is only
