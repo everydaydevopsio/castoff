@@ -38,6 +38,15 @@ It will:
 
 ## Usage from a project repo
 
+GitHub resolves a reusable workflow only at `.github/workflows/` in the root of
+a repository — subdirectories are not supported — so the copy in this
+repository cannot be called from its path under `examples/`. Copy
+`release-it-bump.yml` into the `.github/workflows/` directory of your own
+project (or of a shared workflows repository), tag it, and call that copy. The
+snippets below use `your-org/release-workflows@v1` as a stand-in for wherever
+you put it; a copy in the same repository is called as
+`./.github/workflows/release-it-bump.yml`.
+
 ```yaml
 name: Release (Node + release-it)
 
@@ -60,7 +69,7 @@ on:
 
 jobs:
   release:
-    uses: everydaydevopsio/castoff/examples/node-release-it-release-action/.github/workflows/release-it-bump.yml@v2
+    uses: your-org/release-workflows/.github/workflows/release-it-bump.yml@v1
     with:
       level: ${{ github.event.inputs.level }}
       use_ai_release_notes: ${{ github.event.inputs.use_ai_release_notes }}
@@ -68,6 +77,39 @@ jobs:
     secrets:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 ```
+
+## Choosing a model
+
+With `use_ai_release_notes: true`, the notes are written by `gpt-6-astra`
+unless something else is configured. There are two ways to change that, and
+they compose:
+
+- Set the repository (or organization) Actions variable `OPENAI_MODEL` in the
+  **calling** repository. The workflow reads it with `vars`, which resolves
+  against the caller, so every release that calls this workflow follows it with
+  no workflow edit.
+- Pass the optional `model` input for a single call. It wins over the variable
+  when nonempty, and leaving it unset falls back to the variable, then to the
+  default.
+
+```yaml
+jobs:
+  release:
+    uses: your-org/release-workflows/.github/workflows/release-it-bump.yml@v1
+    with:
+      level: patch
+      use_ai_release_notes: true
+      # Omit this line to follow the OPENAI_MODEL repository variable.
+      model: gpt-5.6-sol
+    secrets:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+```
+
+Setting `OPENAI_MODEL` in an `env:` block of your caller workflow does **not**
+work: GitHub does not propagate a caller's workflow-level environment into a
+called workflow. Use the input or the variable. See
+[Choosing an OpenAI model](https://github.com/everydaydevopsio/castoff/blob/main/docs/model-selection.md)
+for the full precedence rules and how to confirm which model a release used.
 
 ## Changelog entries
 
@@ -99,7 +141,7 @@ in your own caller workflow, after this one succeeds:
 ```yaml
 jobs:
   release:
-    uses: everydaydevopsio/castoff/examples/node-release-it-release-action/.github/workflows/release-it-bump.yml@v2
+    uses: your-org/release-workflows/.github/workflows/release-it-bump.yml@v1
     with:
       level: ${{ github.event.inputs.level }}
       use_ai_release_notes: true
@@ -177,4 +219,4 @@ Two limits survive the fork and are worth knowing before you start:
   touched its siblings. Until that is configurable, either accept it or generate
   notes once for the repository rather than once per package.
 
-After pushing this repo, tag it (e.g. `v2`) and use that tag in callers.
+Tag your copy (e.g. `v1`) and reference that tag from callers.

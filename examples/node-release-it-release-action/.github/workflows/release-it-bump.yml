@@ -13,6 +13,11 @@ on:
         required: false
         type: boolean
         default: false
+      model:
+        description: 'OpenAI model; empty falls back to the OPENAI_MODEL repository variable, then the action default'
+        required: false
+        type: string
+        default: ''
       update_changelog:
         description: 'Insert the generated notes into CHANGELOG.md (requires AI notes)'
         required: false
@@ -105,8 +110,14 @@ jobs:
         # created at all.
         continue-on-error: true
         uses: everydaydevopsio/castoff/castoff@v2
+        # Workflow-level `env` in the caller is not propagated into a called
+        # workflow, so the variable is read here, where `vars` resolves against
+        # the caller's repository. The `model` input wins when a caller sets it.
+        env:
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
         with:
           openai_api_key: ${{ secrets.OPENAI_API_KEY }}
+          model: ${{ inputs.model }}
           tag: ${{ steps.release_it.outputs.tag }}
 
       - name: Create GitHub Release (AI notes)

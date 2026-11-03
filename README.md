@@ -27,9 +27,12 @@ A GitHub Action that generates AI-powered release notes using OpenAI ChatGPT mod
 
 The default model is `gpt-6-astra`. Set the action's `model` input or its
 `OPENAI_MODEL` environment variable to override it; the explicit input takes
-precedence. For example, `OPENAI_MODEL=gpt-5.6-sol make e2e-act` runs the local
-E2E suite with an additional configured-model case. See the
-[ACT guide](docs/local-e2e-act.md) for key setup and model coverage.
+precedence. [Choosing an OpenAI model](docs/model-selection.md) works through
+setting one model for a repository, overriding it for a single workflow or run,
+and doing either from a reusable workflow. For example,
+`OPENAI_MODEL=gpt-5.6-sol make e2e-act` runs the local E2E suite with an
+additional configured-model case. See the [ACT guide](docs/local-e2e-act.md)
+for key setup and model coverage.
 
 Every `release_notes` output ends with a deterministic attribution footer:
 

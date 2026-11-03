@@ -100,6 +100,23 @@ describe.each(EXAMPLES)(
       expect(changelog.uses).toBe('everydaydevopsio/castoff/changelog@v2');
     });
 
+    it('lets a caller pick a model and defaults to the repository variable', () => {
+      // An empty `model` input is how the action falls through to
+      // OPENAI_MODEL, so the default has to stay empty rather than name a
+      // model: a default here would outrank the caller's variable.
+      const input = example.on.workflow_call.inputs.model;
+      expect(input.type).toBe('string');
+      expect(input.required ?? false).toBe(false);
+      expect(input.default).toBe('');
+
+      const notes = steps.find((s) => s.uses?.includes('castoff/castoff@'));
+      expect(notes?.with?.model).toBe('${{ inputs.model }}');
+      // Workflow-level `env` in the caller is not propagated into a called
+      // workflow, so the variable is read here, inside the called workflow,
+      // where `vars` resolves against the caller's repository.
+      expect(notes?.env?.OPENAI_MODEL).toBe('${{ vars.OPENAI_MODEL }}');
+    });
+
     it('needs no repository checkout to reach the changelog writer', () => {
       expect(steps.some((s) => s.with?.path === '.castoff')).toBe(false);
       expect(steps.some((s) => s.run?.includes('update-changelog.sh'))).toBe(
